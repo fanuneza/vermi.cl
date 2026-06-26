@@ -27,445 +27,139 @@ const homepageSchema = {
 
 <BaseLayout title="Inicio" description="Aprende vermicompostaje doméstico en Chile. Guías científicas y prácticas para reducir tus residuos orgánicos con lombrices californianas." schema={homepageSchema}>
   <!-- Hero Section -->
-  <section class="hero-section px-margin">
-    <div class="max-w-container hero-grid">
-      <div class="hero-content">
-        <span class="sticker-badge hero-tag">NUEVO CICLO</span>
-        <h1 class="hero-headline">
-          ¡Wena! Dale una mano a tus lombrices.
-          <!-- Handmade Underline SVG from Stitch mockup -->
-          <svg class="headline-underline-svg" preserveAspectRatio="none" viewBox="0 0 100 10">
-            <path d="M0,5 Q50,15 100,5" fill="none" stroke="var(--color-primary)" stroke-width="4"></path>
-          </svg>
-        </h1>
-        <p class="hero-desc">
-          Aprende a compostar en casa, reduce tus residuos orgánicos y crea abono para tus plantas con nuestra comunidad.
-        </p>
-        <div class="hero-buttons">
-          <a href="/blog" class="btn-brutal btn-hero-primary">
-            Quiero empezar
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </a>
-          <a href="/blog?category=Problemas" class="btn-brutal btn-hero-secondary">
-            Tengo un problema 🐛
-          </a>
-        </div>
+  <section class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+    <!-- Decorative Background Element -->
+    <div class="absolute -top-12 -left-12 w-64 h-64 bg-secondary-fixed rounded-full mix-blend-multiply opacity-60 blur-2xl z-[-1]"></div>
+    
+    <div class="lg:col-span-6 flex flex-col items-start gap-6 relative z-10">
+      <!-- Badge -->
+      <div class="bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md px-3 py-1 border-3 border-on-surface shadow-[4px_4px_0px_0px_#002201] rotate-[-3deg] uppercase tracking-wider sticker-badge inline-block">
+        Nuevo Ciclo
       </div>
       
-      <!-- Right Column Hero Image with Floating stickers from Stitch -->
-      <div class="hero-image-column">
-        <div class="hero-image-wrapper">
-          <img 
-            class="hero-img organic-shape-1 shadow-hard" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmxQ0tuH3Y-VTYu9gTVnXeSwzj3dTLbSHRK0uSQSM3p-F0jVkijLhi2cbih7kNB4tsceBHqHKn3N0CEGMOpu-k0t6MiNrsRpJjj5EdwU0OxmQ2yAVgolHkvgukqbaeh7PnyOVI0HpKAtplAUf3cQdNXpSx6vrv54aiL6LzKNVrg7h9hX3Ncsxx10JWzR9jrMfoATdSmXKQ6ySmgGDyD5yQyjADnNbo7CiKMe6_1TohG2CFyPBBUqjmoRJL_hxLFYL0Qr3nILL2co2z" 
-            alt="Vermicompostera activa en Chile"
-            width="600"
-            height="450"
-          />
-          
-          <!-- Decorative Floating Elements from Stitch mockup -->
-          <!-- Green Eco leaf Badge -->
-          <div class="floating-badge badge-leaf organic-shape-2 shadow-hard-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="var(--color-primary)" stroke="var(--color-ink)" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-          </div>
-          <!-- Red Bug report Badge -->
-          <div class="floating-badge badge-bug rounded-full shadow-hard-sm">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="var(--color-error-container)" stroke="var(--color-ink)" stroke-width="2"><rect x="3" y="11" width="18" height="2" rx="1"/><rect x="7" y="5" width="10" height="14" rx="2"/><path d="M12 2v3M4 5l2.5 2.5M20 5l-2.5 2.5M4 19l3-3M20 19l-3-3"/></svg>
-          </div>
+      <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-black text-on-surface leading-none relative uppercase m-0">
+        ¡Wena! Dale una mano a tus lombrices.
+        <svg class="absolute -bottom-4 left-0 w-full h-4 text-primary" preserveAspectRatio="none" viewBox="0 0 100 10">
+          <path d="M0,5 Q50,15 100,5" fill="none" stroke="currentColor" stroke-width="4"></path>
+        </svg>
+      </h1>
+      
+      <p class="font-body text-lg text-on-surface-variant max-w-md mt-2 leading-relaxed">
+        Aprende a compostar en casa, reduce tus residuos orgánicos y crea abono para tus plantas con nuestra comunidad.
+      </p>
+      
+      <div class="flex flex-wrap gap-4 mt-4">
+        <a href="/blog" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center gap-2 no-underline">
+          Quiero empezar
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+        <a href="/blog?category=Problemas" class="bg-secondary-container text-on-secondary-container font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center gap-2 rotate-1 no-underline">
+          Tengo un problema 🐛
+        </a>
+      </div>
+    </div>
+    
+    <div class="lg:col-span-6 relative mt-8 lg:mt-0">
+      <div class="relative w-full aspect-[4/3] md:aspect-square lg:aspect-[4/3] z-10">
+        <img 
+          class="w-full h-full object-cover organic-shape-1 border-4 border-on-surface hard-shadow bg-tertiary-fixed" 
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmxQ0tuH3Y-VTYu9gTVnXeSwzj3dTLbSHRK0uSQSM3p-F0jVkijLhi2cbih7kNB4tsceBHqHKn3N0CEGMOpu-k0t6MiNrsRpJjj5EdwU0OxmQ2yAVgolHkvgukqbaeh7PnyOVI0HpKAtplAUf3cQdNXpSx6vrv54aiL6LzKNVrg7h9hX3Ncsxx10JWzR9jrMfoATdSmXKQ6ySmgGDyD5yQyjADnNbo7CiKMe6_1TohG2CFyPBBUqjmoRJL_hxLFYL0Qr3nILL2co2z" 
+          alt="Compostaje de lombrices californianas" 
+          width="600" 
+          height="450" 
+          loading="eager" 
+          fetchpriority="high" 
+        />
+        <!-- Decorative Floating Elements -->
+        <div class="absolute -bottom-6 -right-6 bg-surface-dim p-4 border-4 border-on-surface organic-shape-2 shadow-[4px_4px_0px_0px_#002201] rotate-[15deg] hidden md:block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <div class="absolute -top-4 -left-4 bg-error-container p-2 border-2 border-on-surface rounded-full shadow-[2px_2px_0px_0px_#002201] rotate-[-10deg]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-on-error-container"><rect x="3" y="11" width="18" height="2" rx="1"/><rect x="7" y="5" width="10" height="14" rx="2"/><path d="M12 2v3M4 5l2.5 2.5M20 5l-2.5 2.5M4 19l3-3M20 19l-3-3"/></svg>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Interactive Food Search Widget -->
-  <section class="widget-section px-margin">
-    <div class="max-w-container">
-      <IsItCompostable />
-    </div>
-  </section>
+  <IsItCompostable />
 
-  <!-- Category Portals -->
-  <section class="portals-section px-margin py-stack-gap">
-    <div class="max-w-container">
-      <h2 class="section-title">
-        Aprende con nosotros
-        <div class="section-title-underline"></div>
-      </h2>
+  <!-- Category Cards Grid -->
+  <section class="w-full max-w-7xl relative z-10 flex flex-col gap-8">
+    <h2 class="font-headline text-3xl md:text-4xl font-black text-on-surface self-start relative inline-block uppercase">
+      Aprende con nosotros
+      <div class="absolute -bottom-2 left-0 w-full h-2 bg-secondary opacity-50 -rotate-1"></div>
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Card 1 -->
+      <a class="block bg-tertiary-fixed border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-2 rotate-1 no-underline" href="/blog?category=Manual">
+        <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] -rotate-3 group-hover:rotate-0 transition-transform">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+        </div>
+        <h3 class="font-headline text-2xl font-bold text-on-surface mb-2 group-hover:text-primary transition-colors uppercase">Manual de Inicio</h3>
+        <p class="font-body text-base text-on-surface-variant line-clamp-3">Todo lo que necesitas saber para armar tu primera vermicompostera sin morir en el intento.</p>
+        <div class="mt-4 flex justify-end">
+          <span class="font-label-md text-label-md text-on-surface bg-surface-dim px-2 py-1 border-2 border-on-surface sticker-badge text-xs">BASICO</span>
+        </div>
+      </a>
       
-      <div class="portals-grid">
-        <!-- Portal 1 -->
-        <a href="/blog?category=Manual" class="portal-card-link rotate-1">
-          <div class="portal-card organic-shape-2 shadow-hard" style="background-color: #FFFDF0;">
-            <div class="portal-icon-box shadow-hard-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
-            </div>
-            <h3 class="portal-title">Manual de Inicio</h3>
-            <p class="portal-desc">Todo lo que necesitas saber para armar tu primera vermicompostera en casa o departamento sin morir en el intento.</p>
-            <div class="portal-tag-row">
-              <span class="sticker-badge portal-badge">BÁSICO</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Portal 2 -->
-        <a href="/blog?category=Alimentación" class="portal-card-link rotate-minus">
-          <div class="portal-card organic-shape-1 shadow-hard" style="background-color: var(--color-secondary-fixed);">
-            <div class="portal-icon-box shadow-hard-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-secondary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-            </div>
-            <h3 class="portal-title">Alimentación</h3>
-            <p class="portal-desc">El menú perfecto para tus aliadas: balance ideal de humedad y nitrógeno (verde/marrón) y procesamiento rápido.</p>
-            <div class="portal-tag-row">
-              <span class="sticker-badge portal-badge" style="background-color: var(--color-secondary); color: var(--color-white);">DIARIO</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Portal 3 -->
-        <a href="/blog?category=Problemas" class="portal-card-link rotate-2">
-          <div class="portal-card organic-shape-3 shadow-hard" style="background-color: var(--color-mustard);">
-            <div class="portal-icon-box shadow-hard-sm">
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--color-error)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            </div>
-            <h3 class="portal-title">Solución de Problemas</h3>
-            <p class="portal-desc">¿Mal olor? ¿Invasión de mosquitas? ¿Lombrices inquietas? Identifica y neutraliza el colapso biológico a tiempo.</p>
-            <div class="portal-tag-row">
-              <span class="sticker-badge portal-badge" style="background-color: var(--color-error); color: var(--color-white);">URGENTE</span>
-            </div>
-          </div>
-        </a>
-      </div>
+      <!-- Card 2 -->
+      <a class="block bg-surface-container border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-1 -rotate-1 no-underline" href="/blog?category=Alimentación">
+        <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] rotate-2 group-hover:rotate-0 transition-transform">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-secondary"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+        </div>
+        <h3 class="font-headline text-2xl font-bold text-on-surface mb-2 group-hover:text-secondary transition-colors uppercase">Alimentación</h3>
+        <p class="font-body text-base text-on-surface-variant line-clamp-3">El menú perfecto para tus amigas: proporciones de secos y húmedos para un compost equilibrado.</p>
+        <div class="mt-4 flex justify-end">
+          <span class="font-label-md text-label-md text-on-surface bg-secondary-fixed-dim px-2 py-1 border-2 border-on-surface sticker-badge text-xs">DIARIO</span>
+        </div>
+      </a>
+      
+      <!-- Card 3 -->
+      <a class="block bg-inverse-primary border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-3 rotate-2 lg:col-span-1 md:col-span-2 no-underline" href="/blog?category=Problemas">
+        <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] -rotate-2 group-hover:rotate-0 transition-transform">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-tertiary"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        </div>
+        <h3 class="font-headline text-2xl font-bold text-on-surface mb-2 group-hover:text-tertiary transition-colors uppercase">Solución de Problemas</h3>
+        <p class="font-body text-base text-on-surface-variant line-clamp-3">¿Mosquitas? ¿Mal olor? ¿Lombrices escapistas? Identifica y soluciona los problemas más comunes.</p>
+        <div class="mt-4 flex justify-end">
+          <span class="font-label-md text-label-md text-on-surface bg-error-container px-2 py-1 border-2 border-on-surface sticker-badge text-xs">URGENTE</span>
+        </div>
+      </a>
     </div>
   </section>
 
   <!-- Latest Guides Section -->
-  <section class="guides-section px-margin py-stack-gap">
-    <div class="max-w-container">
-      <div class="section-header-flex">
-        <h2 class="section-title">
-          Últimas guías publicadas
-          <div class="section-title-underline" style="background-color: var(--color-secondary); opacity: 0.5;"></div>
-        </h2>
-        <a href="/blog" class="btn-brutal btn-ver-todo">Ver todas las guías</a>
-      </div>
-      
-      <div class="guides-grid">
-        {sortedPosts.map((post, idx) => {
-          // Stagger rotations for scrapbook look
-          const rotations = ["rotate(-1.5deg)", "rotate(1deg)", "rotate(-0.5deg)"];
-          const rot = rotations[idx % rotations.length];
-          return (
-            <BlogCard
-              title={post.data.title}
-              description={post.data.description}
-              slug={post.id}
-              pubDate={post.data.pubDate}
-              category={post.data.category}
-              difficulty={post.data.difficulty}
-              readingTime={post.data.readingTime}
-              rotation={rot}
-            />
-          );
-        })}
-      </div>
+  <section class="w-full max-w-7xl relative z-10 flex flex-col gap-8">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <h2 class="font-headline text-3xl md:text-4xl font-black text-on-surface relative inline-block uppercase">
+        Últimas guías publicadas
+        <div class="absolute -bottom-2 left-0 w-full h-2 bg-secondary opacity-50 -rotate-1"></div>
+      </h2>
+      <a href="/blog" class="bg-white text-on-background font-label-md text-label-md px-4 py-2 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 organic-brutalism no-underline">
+        Ver todas las guías
+      </a>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {sortedPosts.map((post, idx) => {
+        // Stagger rotations for scrapbook look
+        const rotations = ["rotate-[-1.5deg]", "rotate-[1deg]", "rotate-[-0.5deg]"];
+        const rot = rotations[idx % rotations.length];
+        return (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            slug={post.id}
+            pubDate={post.data.pubDate}
+            category={post.data.category}
+            difficulty={post.data.difficulty}
+            readingTime={post.data.readingTime}
+            rotation={rot}
+          />
+        );
+      })}
     </div>
   </section>
 </BaseLayout>
-
-<style>
-  /* Hero Styles */
-  .hero-section {
-    padding-top: 3.5rem;
-    padding-bottom: 2.5rem;
-  }
-
-  .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
-    align-items: center;
-  }
-
-  @media (min-width: 1024px) {
-    .hero-grid {
-      grid-template-columns: 7fr 5fr;
-    }
-  }
-
-  .hero-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-    position: relative;
-    z-index: 10;
-  }
-
-  .hero-tag {
-    transform: rotate(-3deg);
-    background-color: var(--color-tertiary-fixed);
-    border-radius: 0;
-    color: var(--color-ink);
-  }
-
-  .hero-headline {
-    font-family: var(--font-display);
-    font-size: 3rem;
-    font-weight: 900;
-    line-height: 1;
-    color: var(--color-ink);
-    position: relative;
-    text-transform: uppercase;
-  }
-
-  @media (min-width: 768px) {
-    .hero-headline {
-      font-size: 4rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .hero-headline {
-      font-size: 4.5rem;
-    }
-  }
-
-  .headline-underline-svg {
-    position: absolute;
-    bottom: -16px;
-    left: 0;
-    width: 100%;
-    height: 16px;
-    z-index: -1;
-  }
-
-  .hero-desc {
-    font-family: var(--font-sans);
-    font-size: 1.25rem;
-    color: var(--color-ink);
-    opacity: 0.9;
-    max-width: 500px;
-    line-height: 1.6;
-  }
-
-  .hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1rem;
-  }
-
-  .btn-hero-primary {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    border-radius: 8px; /* rounded-lg */
-  }
-
-  .btn-hero-secondary {
-    background-color: var(--color-secondary-fixed);
-    color: var(--color-ink);
-    border-radius: 8px;
-    transform: rotate(1deg);
-  }
-
-  .hero-image-column {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    position: relative;
-  }
-
-  .hero-image-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 500px;
-    aspect-ratio: 4/3;
-  }
-
-  .hero-img {
-    width: 100%;
-    height: 100%;
-    object-cover: cover;
-    border: 4px solid var(--color-ink);
-    background-color: var(--color-tertiary-fixed);
-    display: block;
-  }
-
-  /* Floating stickers on image */
-  .floating-badge {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 4px solid var(--color-ink);
-    background-color: var(--color-bg-warm);
-    z-index: 15;
-  }
-
-  .badge-leaf {
-    bottom: -20px;
-    right: -20px;
-    background-color: var(--color-surface-dim);
-    padding: 0.75rem;
-    transform: rotate(15deg);
-    display: none;
-  }
-
-  @media (min-width: 768px) {
-    .badge-leaf {
-      display: flex;
-    }
-  }
-
-  .badge-bug {
-    top: -16px;
-    left: -16px;
-    background-color: var(--color-error-container);
-    padding: 0.5rem;
-    transform: rotate(-10deg);
-    border-width: 2px;
-  }
-
-  /* Portals Styles */
-  .section-title {
-    font-family: var(--font-display);
-    font-size: 2.25rem;
-    font-weight: 900;
-    color: var(--color-ink);
-    margin-bottom: 2.5rem;
-    position: relative;
-    display: inline-block;
-    text-transform: uppercase;
-  }
-
-  .section-title-underline {
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 100%;
-    height: 8px;
-    background-color: var(--color-secondary);
-    opacity: 0.5;
-    transform: rotate(-1deg);
-    z-index: -1;
-  }
-
-  .portals-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .portals-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-
-  .portal-card-link {
-    text-decoration: none;
-    display: block;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .portal-card-link:hover {
-    transform: translateY(-8px);
-  }
-
-  .portal-card {
-    border: 4px solid var(--color-ink);
-    padding: 2rem;
-    min-height: 280px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    box-sizing: border-box;
-    position: relative;
-  }
-
-  .portal-icon-box {
-    margin-bottom: 1.25rem;
-    border: 2px solid var(--color-ink);
-    padding: 0.5rem;
-    width: max-content;
-    background-color: var(--color-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: rotate(-3deg);
-  }
-  .portal-card-link:hover .portal-icon-box {
-    transform: rotate(0deg);
-  }
-
-  .portal-title {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.5rem;
-    margin-bottom: 0.75rem;
-    color: var(--color-ink);
-    text-transform: uppercase;
-  }
-
-  .portal-desc {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    color: var(--color-ink);
-    flex-grow: 1;
-    margin-bottom: 1.5rem;
-    line-height: 1.5;
-  }
-
-  .portal-tag-row {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: auto;
-  }
-
-  .portal-badge {
-    border-radius: 0;
-    font-size: 0.7rem;
-    border-width: 2px;
-    box-shadow: 2px 2px 0px 0px var(--color-ink);
-    background-color: var(--color-surface-dim);
-    color: var(--color-ink);
-  }
-
-  .rotate-1 { transform: rotate(1deg); }
-  .rotate-minus { transform: rotate(-1deg); }
-  .rotate-2 { transform: rotate(1.5deg); }
-
-  /* Guides feed styles */
-  .section-header-flex {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .section-header-flex {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-
-  .btn-ver-todo {
-    align-self: flex-start;
-    border-radius: 4px;
-    background-color: var(--color-white);
-    color: var(--color-ink);
-  }
-
-  .guides-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .guides-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-</style>

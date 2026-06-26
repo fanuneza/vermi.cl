@@ -1,156 +1,69 @@
-/* global.css - Precise implementation of Stitch "Vermi Chile Edu Hub" design tokens */
+@import "tailwindcss";
 
-:root {
-  /* Color Palette matching Stitch screens exactly */
-  --color-bg-warm: #ecffe2; /* Light green canvas */
-  --color-ink: #002201; /* Very dark green ink */
-  --color-primary: #0f5238; /* Forest Green */
+@theme {
+  --color-background: #ecffe2;
+  --color-on-background: #002201;
+  --color-ink: #002201;
+  --color-primary: #0f5238;
   --color-primary-container: #2d6a4f;
   --color-on-primary-container: #a8e7c5;
-  --color-secondary: #a0401f; /* Terracotta */
+  --color-secondary: #a0401f;
   --color-secondary-container: #fe8760;
   --color-on-secondary-container: #732001;
-  --color-tertiary: #52453a; /* Earth */
+  --color-tertiary: #52453a;
   --color-tertiary-container: #6a5d51;
+  
+  /* Fixed and containers */
   --color-tertiary-fixed: #f2dfd0;
   --color-secondary-fixed: #ffdbd0;
-  
-  /* Surface containers */
-  --color-white: #ffffff;
+  --color-primary-fixed: #b1f0ce;
   --color-surface-dim: #b4e8a6;
   --color-surface-variant: #bcf0ae;
   --color-surface-container-low: #d6ffc9;
   --color-surface-container: #c7fcb8;
   --color-surface-container-high: #c1f6b3;
   --color-surface-container-highest: #bcf0ae;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface: #ecffe2;
+  --color-on-surface: #002201;
+  --color-on-surface-variant: #404943;
   
-  /* Semantic */
-  --color-error: #ba1a1a;
-  --color-error-container: #ffdad6;
-  --color-on-error-container: #93000a;
-  --color-mustard: #e9d7c8; /* Warning / Soft Yellow */
+  /* Semantic Badges & Extra Colors */
   --color-warning-badge: #F0C842;
   --color-safe-badge: #59C985;
   --color-danger-badge: #E05353;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-inverse-primary: #95d4b3;
+  --color-mustard: #e9d7c8;
   
-  /* Typography Scales */
-  --font-display: 'Bricolage Grotesque', sans-serif;
-  --font-sans: 'Fira Sans', sans-serif;
-  --font-mono: 'Space Mono', monospace;
-  --font-serif: 'Merriweather', serif;
-
-  /* Spacing */
+  /* Spacing overrides for utility mapping */
   --spacing-margin-mobile: 20px;
   --spacing-margin-desktop: 64px;
   --spacing-stack-gap-mobile: 32px;
   --spacing-stack-gap-desktop: 64px;
+  
+  /* Fonts */
+  --font-headline: "Bricolage Grotesque", sans-serif;
+  --font-body: "Fira Sans", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --font-serif: "Merriweather", serif;
 }
 
-/* Reset */
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background-color: var(--color-bg-warm);
-  color: var(--color-ink);
-  font-family: var(--font-sans);
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-  transition: all 0.1s ease;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Precise Scrapbook Organic Shapes */
+/* Custom organic and zine classes that complement Tailwind */
 .organic-shape-1 { border-radius: 60px 20px 50px 30px; }
 .organic-shape-2 { border-radius: 30px 50px 20px 40px; }
 .organic-shape-3 { border-radius: 20px 60px 40px 20px; }
 .organic-brutalism { border-radius: 4px 16px 8px 24px; }
 .organic-brutalism-alt { border-radius: 12px 4px 20px 8px; }
 
-/* Hard shadows matching Stitch designs */
+/* Hard shadows */
 .shadow-hard {
-  box-shadow: 6px 6px 0px 0px var(--color-ink);
+  box-shadow: 6px 6px 0px 0px #002201;
 }
-.shadow-hard-hover {
-  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.shadow-hard-hover:hover {
-  transform: translate(6px, 6px);
-  box-shadow: 0px 0px 0px 0px var(--color-ink);
-}
-
 .shadow-hard-sm {
-  box-shadow: 4px 4px 0px 0px var(--color-ink);
-}
-.shadow-hard-sm-hover {
-  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.shadow-hard-sm-hover:hover {
-  transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0px 0px var(--color-ink);
-}
-
-/* Brutalist Cards */
-.brutal-card {
-  background-color: var(--color-white);
-  border: 3px solid var(--color-ink);
-  box-shadow: 6px 6px 0px 0px var(--color-ink);
-  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 1.5rem;
-}
-.brutal-card:hover {
-  transform: translate(3px, 3px);
-  box-shadow: 3px 3px 0px 0px var(--color-ink);
-}
-
-/* Brutalist Buttons */
-.btn-brutal {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border: 2px solid var(--color-ink);
-  box-shadow: 4px 4px 0px 0px var(--color-ink);
-  font-family: var(--font-display);
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  background-color: var(--color-white);
-  color: var(--color-ink);
-  transition: all 0.1s ease;
-  user-select: none;
-}
-.btn-brutal:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px 0px var(--color-ink);
-}
-.btn-brutal:active {
-  transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0px 0px var(--color-ink);
+  box-shadow: 4px 4px 0px 0px #002201;
 }
 
 /* Sticker Badges */
@@ -160,16 +73,42 @@ img {
   font-size: 0.75rem;
   font-weight: bold;
   text-transform: uppercase;
-  border: 3px solid var(--color-ink);
-  box-shadow: 4px 4px 0px 0px var(--color-ink);
+  border: 3px solid #002201;
+  box-shadow: 4px 4px 0px 0px #002201;
   padding: 0.25rem 0.75rem;
-  background-color: var(--color-white);
-  color: var(--color-ink);
+  background-color: #ffffff;
+  color: #002201;
   user-select: none;
   border-radius: 0;
 }
 
-/* Torn Border Decorative Line */
+/* Buttons */
+.btn-brutal {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #002201;
+  box-shadow: 4px 4px 0px 0px #002201;
+  font-family: var(--font-headline);
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #ffffff;
+  color: #002201;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+.btn-brutal:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px #002201;
+}
+.btn-brutal:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px 0px #002201;
+}
+
+/* Torn border */
 .torn-border {
   position: relative;
 }
@@ -184,13 +123,13 @@ img {
     45deg,
     transparent,
     transparent 10px,
-    var(--color-ink) 10px,
-    var(--color-ink) 12px
+    #002201 10px,
+    #002201 12px
   );
   z-index: 10;
 }
 
-/* Responsive Spacing Utilities */
+/* Responsive margins & gaps helper mapping */
 .px-margin {
   padding-left: var(--spacing-margin-mobile);
   padding-right: var(--spacing-margin-mobile);
@@ -213,7 +152,6 @@ img {
   }
 }
 
-/* Layout Utilities */
 .max-w-container {
   max-width: 1140px;
   margin-left: auto;
@@ -221,35 +159,36 @@ img {
   width: 100%;
 }
 
+a {
+  transition: all 0.1s ease;
+  text-decoration: none;
+}
+
+/* Merriweather body styled for readability */
 .editorial-body {
   font-family: var(--font-serif);
   font-size: 1.125rem;
   line-height: 1.8;
-  color: var(--color-ink);
+  color: #002201;
 }
 .editorial-body p {
   margin-bottom: 1.5rem;
 }
 .editorial-body h2 {
-  font-family: var(--font-display);
-  font-weight: 900;
+  font-family: var(--font-headline);
+  font-weight: 800;
   font-size: 1.75rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
-  color: var(--color-ink);
+  color: #002201;
 }
 .editorial-body blockquote {
   border-left: 4px solid var(--color-primary);
   padding-left: 1rem;
   margin: 1.5rem 0;
-  font-family: var(--font-display);
+  font-family: var(--font-headline);
   font-size: 1.25rem;
   font-style: italic;
-}
-.editorial-body ul, .editorial-body ol {
-  margin-bottom: 1.5rem;
-  padding-left: 1.5rem;
-}
-.editorial-body li {
-  margin-bottom: 0.5rem;
+  background-color: var(--color-surface-container-low);
+  padding: 0.75rem 1rem;
 }

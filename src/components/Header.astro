@@ -1,131 +1,27 @@
 ---
-// Header.astro - Reusable Scrapbook Navigation Bar
+// Header.astro - Reusable Stitch-style Navigation Bar
 ---
-<nav class="nav-bar">
-  <a href="/" class="logo-link">
-    <div class="logo">
+<nav class="bg-surface dark:bg-surface-container w-full sticky top-0 z-50 border-b-4 border-on-surface shadow-[6px_6px_0px_0px_#002201] flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-full">
+  <a href="/" class="logo-link no-underline">
+    <div class="font-headline text-headline-md font-black text-primary border-2 border-on-surface px-2 py-1 rotate-[-2deg] bg-surface-container-low shadow-[4px_4px_0px_0px_#002201] transition-transform hover:rotate-0">
       vermi.cl
     </div>
   </a>
 
-  <div class="nav-links">
-    <a class="nav-link" href="/">Inicio</a>
-    <a class="nav-link active" href="/blog">Guías</a>
-    <a class="nav-link" href="#comunidad">Comunidad</a>
-    <a class="nav-link" href="#nosotros">Nosotros</a>
+  <div class="hidden md:flex items-center gap-6">
+    <a class="text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" href="/">Inicio</a>
+    <a class="text-primary font-bold border-b-4 border-primary pb-1 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" href="/blog">Guías</a>
+    <a class="text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" href="/#comunidad">Comunidad</a>
+    <a class="text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" href="/#nosotros">Nosotros</a>
   </div>
 
-  <div class="nav-actions">
-    <!-- Inline SVG Search Icon to optimize Lighthouse scores -->
-    <a href="#buscar" class="search-btn" aria-label="Buscar">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+  <div class="flex items-center gap-4">
+    <!-- Inline SVG Search Icon -->
+    <a href="/blog" class="text-primary hover:scale-110 transition-transform flex items-center justify-center" aria-label="Buscar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
     </a>
-    <a href="#unirse" class="btn-brutal btn-unirse">
+    <button class="bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 organic-brutalism rotate-[1deg]">
       Unirse
-    </a>
+    </button>
   </div>
 </nav>
-
-<style>
-  .nav-bar {
-    position: sticky;
-    top: 0;
-    z-index: 50;
-    background-color: var(--color-bg-warm);
-    border-bottom: 4px solid var(--color-ink);
-    box-shadow: 6px 6px 0px 0px var(--color-ink);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem var(--spacing-margin-mobile);
-    width: 100%;
-  }
-
-  @media (min-width: 768px) {
-    .nav-bar {
-      padding: 1rem var(--spacing-margin-desktop);
-    }
-  }
-
-  .logo-link {
-    text-decoration: none;
-  }
-
-  .logo {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--color-primary);
-    border: 2px solid var(--color-ink);
-    padding: 0.25rem 0.5rem;
-    transform: rotate(-2deg);
-    background-color: var(--color-surface-container-low);
-    box-shadow: 4px 4px 0px 0px var(--color-ink);
-    transition: transform 0.2s ease;
-  }
-  .logo:hover {
-    transform: rotate(0deg);
-  }
-
-  .nav-links {
-    display: none;
-    gap: 1.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .nav-links {
-      display: flex;
-      align-items: center;
-    }
-  }
-
-  .nav-link {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1.125rem;
-    color: var(--color-ink);
-    padding-bottom: 2px;
-    border-bottom: 2px solid transparent;
-  }
-  .nav-link:hover {
-    color: var(--color-primary);
-    transform: translate(1px, 1px);
-  }
-  .nav-link.active {
-    color: var(--color-primary);
-    border-bottom-color: var(--color-primary);
-  }
-
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .search-btn {
-    display: flex;
-    align-items: center;
-    transition: transform 0.1s ease;
-  }
-  .search-btn:hover {
-    transform: scale(1.1);
-  }
-
-  .btn-unirse {
-    padding: 0.5rem 1.25rem;
-    font-size: 0.875rem;
-    transform: rotate(1deg);
-    background-color: var(--color-primary-container);
-    color: var(--color-on-primary-container);
-    border-radius: 4px 16px 8px 24px; /* organic-brutalism border-radius */
-    box-shadow: 4px 4px 0px 0px var(--color-ink);
-  }
-  .btn-unirse:hover {
-    transform: translate(2px, 2px) rotate(1deg);
-    box-shadow: 2px 2px 0px 0px var(--color-ink);
-  }
-  .btn-unirse:active {
-    transform: translate(4px, 4px) rotate(1deg);
-    box-shadow: 0px 0px 0px 0px var(--color-ink);
-  }
-</style>

@@ -4,7 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
 
-// Get URL parameters on compilation/ssr/client side context
+// Get URL parameters
 const categoryFilter = Astro.url.searchParams.get('category');
 
 const posts = await getCollection('blog');
@@ -25,169 +25,69 @@ const archiveSchema = {
 };
 ---
 
-<BaseLayout title="Archivo de Guías" description="Explora nuestras guías y manuales educativos de vermicompostaje doméstico en Chile." schema={archiveSchema}>
-  <section class="archive-section px-margin py-stack-gap">
-    <div class="max-w-container">
-      <h1 class="archive-title">Archivo de Guías</h1>
-      <p class="archive-desc">
-        Aprende el funcionamiento biológico de tu compostera y neutraliza los problemas típicos del clima mediterráneo de Chile.
-      </p>
+<BaseLayout 
+  title="Archivo de Guías" 
+  description="Explora nuestras guías y manuales educativos de vermicompostaje doméstico en Chile." 
+  schema={archiveSchema}
+  mainClass="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap flex-grow w-full box-border"
+>
+  <section class="w-full relative z-10 flex flex-col items-start gap-6">
+    <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl text-on-surface font-black leading-tight tracking-tighter uppercase m-0">
+      Archivo de Guías
+    </h1>
+    <p class="font-body text-lg text-on-surface-variant max-w-2xl leading-relaxed m-0">
+      Aprende el funcionamiento biológico de tu compostera y neutraliza los problemas típicos del clima mediterráneo de Chile.
+    </p>
 
-      <!-- Category Filter Chips -->
-      <div class="filter-container">
-        <span class="filter-label">Filtrar por categoría:</span>
-        <div class="filter-chips">
-          <a href="/blog" class={`chip-btn ${!categoryFilter ? 'active' : ''}`}>
-            Todos
+    <!-- Category Filter Chips -->
+    <div class="flex flex-col gap-3 mb-8 items-start w-full">
+      <span class="font-mono text-xs font-bold text-on-surface uppercase tracking-wider">[ Filtrar por categoría ]</span>
+      <div class="flex flex-wrap gap-3">
+        <a 
+          href="/blog" 
+          class={`font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline ${!categoryFilter ? 'bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none' : 'bg-white text-on-surface'}`}
+        >
+          Todos
+        </a>
+        {categories.map(cat => (
+          <a 
+            href={`/blog?category=${cat}`} 
+            class={`font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline ${categoryFilter === cat ? 'bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none' : 'bg-white text-on-surface'}`}
+          >
+            {cat}
           </a>
-          {categories.map(cat => (
-            <a 
-              href={`/blog?category=${cat}`} 
-              class={`chip-btn ${categoryFilter === cat ? 'active' : ''}`}
-            >
-              {cat}
-            </a>
-          ))}
-        </div>
+        ))}
       </div>
-
-      <!-- Articles Grid -->
-      {filteredPosts.length > 0 ? (
-        <div class="archive-grid">
-          {filteredPosts.map((post, idx) => {
-            const rotations = ["rotate(-1deg)", "rotate(1.5deg)", "rotate(-0.5deg)", "rotate(1deg)"];
-            const rot = rotations[idx % rotations.length];
-            return (
-              <BlogCard
-                title={post.data.title}
-                description={post.data.description}
-                slug={post.id}
-                pubDate={post.data.pubDate}
-                category={post.data.category}
-                difficulty={post.data.difficulty}
-                readingTime={post.data.readingTime}
-                rotation={rot}
-              />
-            );
-          })}
-        </div>
-      ) : (
-        <div class="no-results brutal-card">
-          <h3>No se encontraron guías en esta categoría</h3>
-          <p>Pronto publicaremos más artículos sobre esta temática. Mientras tanto, explora las demás categorías.</p>
-          <a href="/blog" class="btn-brutal btn-brutal-primary mt-4">Ver todas las guías</a>
-        </div>
-      )}
     </div>
+
+    <!-- Articles Grid -->
+    {filteredPosts.length > 0 ? (
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+        {filteredPosts.map((post, idx) => {
+          const rotations = ["rotate-[-1.5deg]", "rotate-[1deg]", "rotate-[-0.5deg]", "rotate-[0.5deg]"];
+          const rot = rotations[idx % rotations.length];
+          return (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              slug={post.id}
+              pubDate={post.data.pubDate}
+              category={post.data.category}
+              difficulty={post.data.difficulty}
+              readingTime={post.data.readingTime}
+              rotation={rot}
+            />
+          );
+        })}
+      </div>
+    ) : (
+      <div class="text-center p-12 max-w-xl mx-auto border-4 border-on-surface shadow-hard bg-white organic-brutalism w-full box-border">
+        <h3 class="font-headline text-2xl font-black text-on-surface uppercase mb-3">No se encontraron guías</h3>
+        <p class="font-body text-base text-on-surface-variant mb-6">Pronto publicaremos más artículos sobre esta temática. Mientras tanto, explora las demás categorías.</p>
+        <a href="/blog" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center justify-center gap-2 max-w-xs mx-auto no-underline">
+          Ver todas las guías
+        </a>
+      </div>
+    )}
   </section>
 </BaseLayout>
-
-<style>
-  .archive-title {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-ink);
-    text-transform: uppercase;
-  }
-
-  .archive-desc {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    color: var(--color-ink);
-    opacity: 0.9;
-    max-width: 600px;
-    margin-bottom: 2.5rem;
-  }
-
-  .filter-container {
-    margin-bottom: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: flex-start;
-  }
-
-  .filter-label {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--color-ink);
-  }
-
-  .filter-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-
-  .chip-btn {
-    font-family: var(--font-mono);
-    font-size: 0.875rem;
-    font-weight: bold;
-    color: var(--color-ink);
-    border: 2px solid var(--color-ink);
-    padding: 0.4rem 1.25rem;
-    background-color: var(--color-bg-warm);
-    box-shadow: 2px 2px 0px 0px var(--color-ink);
-    text-decoration: none;
-    transition: all 0.1s ease;
-    border-radius: 9999px; /* rounded-pill / full */
-  }
-  .chip-btn:hover {
-    transform: translate(1px, 1px);
-    box-shadow: 1px 1px 0px 0px var(--color-ink);
-    background-color: var(--color-white);
-  }
-  .chip-btn.active {
-    background-color: var(--color-primary);
-    color: var(--color-white);
-    transform: translate(2px, 2px);
-    box-shadow: 0px 0px 0px 0px var(--color-ink);
-  }
-
-  .archive-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  @media (min-width: 768px) {
-    .archive-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .archive-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-  }
-
-  .no-results {
-    text-align: center;
-    padding: 3rem 2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    border: 3px solid var(--color-ink);
-    box-shadow: 6px 6px 0px 0px var(--color-ink);
-    background-color: var(--color-white);
-  }
-  .no-results h3 {
-    font-family: var(--font-display);
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-  }
-  .no-results p {
-    font-family: var(--font-sans);
-    color: var(--color-ink);
-    opacity: 0.9;
-    margin-bottom: 1.5rem;
-  }
-  
-  .mt-4 {
-    margin-top: 1rem;
-  }
-</style>

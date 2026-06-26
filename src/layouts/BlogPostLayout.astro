@@ -13,7 +13,7 @@ interface Props {
   heroImage?: string;
 }
 
-const { title, description, pubDate, category, difficulty = "Básico", readingTime = "5 min", author, heroImage = '/images/default-hero.jpg' } = Astro.props;
+const { title, description, pubDate, category, difficulty = "Básico", readingTime = "5 min", author, heroImage } = Astro.props;
 
 // Format Date
 const formattedDate = pubDate.toLocaleDateString('es-CL', {
@@ -24,10 +24,10 @@ const formattedDate = pubDate.toLocaleDateString('es-CL', {
 
 // Category styles mapping matching Stitch
 const categoryMeta = {
-  Manual: { tagBg: 'var(--color-tertiary-fixed)', tagText: 'var(--color-ink)', label: 'GUÍA PRÁCTICA' },
-  Alimentación: { tagBg: 'var(--color-secondary-fixed)', tagText: 'var(--color-ink)', label: 'ALIMENTACIÓN' },
-  Problemas: { tagBg: 'var(--color-mustard)', tagText: 'var(--color-ink)', label: 'SOLUCIÓN DE PROBLEMAS' },
-  Cosecha: { tagBg: 'var(--color-primary-fixed)', tagText: 'var(--color-ink)', label: 'COSECHA' }
+  Manual: { tagBg: 'bg-tertiary-fixed', tagText: 'text-on-tertiary-fixed', label: 'GUÍA PRÁCTICA' },
+  Alimentación: { tagBg: 'bg-secondary-fixed', tagText: 'text-on-secondary-fixed', label: 'ALIMENTACIÓN' },
+  Problemas: { tagBg: 'bg-mustard', tagText: 'text-on-background', label: 'SOLUCIÓN DE PROBLEMAS' },
+  Cosecha: { tagBg: 'bg-primary-fixed', tagText: 'text-on-background', label: 'COSECHA' }
 };
 const meta = categoryMeta[category] || categoryMeta.Manual;
 
@@ -57,403 +57,145 @@ const articleSchema = {
 };
 ---
 
-<BaseLayout title={title} description={description} ogImage={heroImage} schema={articleSchema}>
-  <div class="px-margin py-stack-gap max-w-container">
-    <div class="article-grid">
-      <!-- Main Column -->
-      <article class="main-column">
-        <header class="article-header">
-          <div class="badge-row">
-            <span class="sticker-badge cat-badge font-label-md text-label-md" style={`background-color: ${meta.tagBg}; color: ${meta.tagText};`}>
-              {meta.label}
-            </span>
-            <span class="sticker-badge date-badge font-label-md text-label-md bg-surface-container-low">{formattedDate}</span>
+<BaseLayout 
+  title={title} 
+  description={description} 
+  ogImage={heroImage} 
+  schema={articleSchema}
+  mainClass="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap flex-grow w-full box-border"
+>
+  <!-- Main Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter w-full">
+    
+    <!-- Article Content (Main Column) -->
+    <article class="lg:col-span-8 space-y-8">
+      <!-- Header -->
+      <header class="space-y-6">
+        <div class="flex flex-wrap gap-3">
+          <span class={`sticker-badge font-label-md text-label-md px-3 py-1 rotate-[-1deg] ${meta.tagBg} ${meta.tagText}`}>
+            {meta.label}
+          </span>
+          <span class="sticker-badge bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md px-3 py-1 rotate-[2deg]">
+            {formattedDate}
+          </span>
+        </div>
+        
+        <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl text-on-background font-black leading-tight tracking-tighter uppercase m-0">
+          {title}
+        </h1>
+        
+        <div class="flex items-center gap-4 border-t-2 border-b-2 border-on-surface py-4">
+          <div class="w-12 h-12 rounded-full border-2 border-on-surface overflow-hidden shadow-hard-sm">
+            <!-- Inline SVG placeholder avatar for Lighthouse -->
+            <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full text-primary p-2 bg-surface-container-low"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <div>
+            <p class="font-label-md text-label-md text-on-surface m-0">Por {author}</p>
+            <p class="font-body-md text-body-md text-on-surface-variant m-0">{readingTime} de lectura • Dificultad: {difficulty}</p>
           </div>
           
-          <h1 class="article-title">{title}</h1>
-          
-          <div class="author-row">
-            <div class="author-avatar rounded-full overflow-hidden shadow-hard-sm">
-              <!-- Inline SVG placeholder avatar for Lighthouse -->
-              <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="avatar-svg"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-            </div>
-            <div class="author-meta">
-              <p class="author-name">Por {author}</p>
-              <p class="reading-time">{readingTime} de lectura • Dificultad: {difficulty}</p>
-            </div>
-            
-            <div class="share-actions">
-              <button class="btn-brutal btn-icon organic-brutalism" aria-label="Compartir">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
-              </button>
-              <button class="btn-brutal btn-icon organic-brutalism-alt" aria-label="Me gusta">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
-              </button>
-            </div>
-          </div>
-        </header>
-
-        <!-- Article Image -->
-        <figure class="article-hero-figure relative w-full aspect-video border-4 border-on-surface organic-brutalism shadow-hard overflow-hidden rotate-[-1deg] bg-tertiary-fixed">
-          <!-- As we don't have local image files, we fall back to a colored canvas with text -->
-          <div class="image-fallback-placeholder">
-            <span class="fallback-text">{title}</span>
-          </div>
-        </figure>
-
-        <!-- Markdown content rendered here -->
-        <div class="content-body-wrapper organic-brutalism-alt shadow-hard">
-          <!-- Decorative Tape Sticker -->
-          <div class="tape-sticker"></div>
-          <div class="editorial-body">
-            <slot />
+          <div class="ml-auto flex gap-2">
+            <button class="w-10 h-10 bg-surface-container-high border-2 border-on-surface flex items-center justify-center hover:scale-110 hover:bg-primary-container hover:text-on-primary-container transition-all shadow-hard-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] organic-brutalism cursor-pointer" aria-label="Compartir">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            </button>
+            <button class="w-10 h-10 bg-surface-container-high border-2 border-on-surface flex items-center justify-center hover:scale-110 hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-hard-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] organic-brutalism-alt cursor-pointer" aria-label="Me gusta">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+            </button>
           </div>
         </div>
+      </header>
 
-        <div class="article-tags-row">
-          <span class="tag-hash">#{category.toLowerCase()}</span>
-          <span class="tag-hash">#compostaje</span>
-          <span class="tag-hash">#lombrices</span>
+      <!-- Hero Image -->
+      <figure class="relative w-full aspect-video border-4 border-on-surface organic-brutalism shadow-hard overflow-hidden rotate-[-1deg] bg-tertiary-fixed m-0">
+        {heroImage ? (
+          <img src={heroImage} alt={title} class="w-full h-full object-cover" />
+        ) : (
+          <div class="w-full h-full object-cover bg-tertiary-fixed flex items-center justify-center p-8 box-border">
+            <span class="font-headline text-2xl md:text-3xl text-on-surface text-center uppercase tracking-tight">{title}</span>
+          </div>
+        )}
+      </figure>
+
+      <!-- Content Body -->
+      <div class="editorial-body merriweather-body bg-surface-container-lowest p-6 md:p-8 border-2 border-on-surface shadow-hard organic-brutalism-alt relative">
+        <!-- Decorative tape sticker -->
+        <div class="absolute -top-3 left-10 w-20 h-6 bg-secondary-fixed/80 border border-on-surface rotate-[-5deg]"></div>
+        
+        <slot />
+      </div>
+
+      <!-- Tags -->
+      <div class="flex flex-wrap items-center justify-between gap-4 mt-8 pt-8 border-t-4 border-on-surface border-dashed">
+        <div class="flex gap-2">
+          <span class="px-3 py-1 bg-surface-container-high border-2 border-on-surface text-label-md font-label-md rotate-[2deg]">#{category.toLowerCase()}</span>
+          <span class="px-3 py-1 bg-surface-container-high border-2 border-on-surface text-label-md font-label-md rotate-[-1deg]">#compostaje</span>
         </div>
-      </article>
+      </div>
+    </article>
 
-      <!-- Sidebar -->
-      <aside class="sidebar-column">
-        <!-- Table of Contents Card -->
-        <div class="toc-card organic-shape-2 shadow-hard rotate-[1deg]">
-          <h3 class="sidebar-title flex items-center gap-2">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-            En esta guía
-          </h3>
-          <ul class="toc-list">
-            <li><a href="#intro">Introducción</a></li>
-            <li><a href="#sec1">1. Señales Clave</a></li>
-            <li><a href="#sec2">2. Métodos de Acción</a></li>
-            <li><a href="#sec3">3. Cuidado Biorregional</a></li>
-          </ul>
-        </div>
+    <!-- Sidebar (Secondary Column) -->
+    <aside class="lg:col-span-4 space-y-8 mt-8 lg:mt-0">
+      <!-- Table of Contents -->
+      <div class="bg-tertiary-fixed border-3 border-on-surface p-6 shadow-hard organic-brutalism rotate-[1deg]">
+        <h3 class="font-headline-md text-headline-md text-on-tertiary-fixed mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+          En esta guía
+        </h3>
+        <ul class="space-y-3 font-mono text-sm pl-0 list-none m-0">
+          <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2">
+            <a href="#intro" class="text-on-surface font-bold no-underline">Introducción</a>
+          </li>
+          <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2">
+            <a href="#sec1" class="text-on-surface font-bold no-underline"><span class="text-primary">1.</span> Señales Clave</a>
+          </li>
+          <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2">
+            <a href="#sec2" class="text-on-surface font-bold no-underline"><span class="text-primary">2.</span> Métodos de Acción</a>
+          </li>
+          <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2">
+            <a href="#sec3" class="text-on-surface font-bold no-underline"><span class="text-primary">3.</span> Cuidado Biorregional</a>
+          </li>
+        </ul>
+      </div>
 
-        <!-- CTA Sticker Card -->
-        <div class="cta-card organic-brutalism shadow-hard rotate-[-2deg]">
-          <h3 class="cta-title">¿Dudas con tu vermi?</h3>
-          <p class="cta-desc">Únete a nuestro canal huertero para resolver problemas de humedad y plagas en tiempo real con la comunidad.</p>
-          <button class="btn-brutal btn-brutal-primary cta-btn">Únete a la Comunidad</button>
-        </div>
+      <!-- CTA Sticker -->
+      <div class="bg-primary-container text-on-primary-container border-4 border-on-surface p-6 shadow-hard organic-brutalism-alt rotate-[-2deg] relative overflow-hidden group">
+        <div class="absolute -right-10 -top-10 w-32 h-32 bg-secondary rounded-full opacity-20 group-hover:scale-150 transition-transform duration-500"></div>
+        <h3 class="font-headline-lg-mobile text-headline-lg-mobile font-black mb-2 relative z-10 uppercase leading-none">¿Dudas con tu vermi?</h3>
+        <p class="font-body-md text-body-md mb-6 relative z-10 leading-relaxed">Únete a nuestro canal huertero para resolver problemas de humedad y plagas en tiempo real con la comunidad.</p>
+        <a href="#unirse" class="block w-full bg-secondary text-white font-mono text-sm font-bold text-center py-3 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 relative z-10 no-underline">
+          Únete a la comunidad
+        </a>
+      </div>
 
-        <!-- Related Guides -->
-        <div class="related-card organic-brutalism shadow-hard rotate-[0.5deg]">
-          <h3 class="sidebar-title">Te puede interesar</h3>
-          <div class="related-items">
-            <a href="/blog/que-alimentos-no-dar" class="related-item-link">
-              <div class="related-item">
-                <span class="related-category">Alimentación</span>
-                <h4 class="related-name">Qué alimentos NO dar a tus lombrices</h4>
+      <!-- Related Posts -->
+      <div class="bg-surface-container border-2 border-on-surface p-6 shadow-hard organic-brutalism rotate-[0.5deg]">
+        <h3 class="font-headline-md text-headline-md mb-4 border-b-2 border-on-surface pb-2 uppercase">Te podría interesar</h3>
+        <div class="space-y-4 flex flex-col gap-4">
+          <a class="block group no-underline" href="/blog/que-alimentos-no-dar">
+            <div class="flex gap-4 items-center">
+              <div class="w-16 h-16 bg-surface-dim border-2 border-on-surface shrink-0 organic-brutalism overflow-hidden flex items-center justify-center font-headline text-lg text-primary">
+                NO
               </div>
-            </a>
-            <hr class="divider-dashed" />
-            <a href="/blog/vermi-en-departamento" class="related-item-link">
-              <div class="related-item">
-                <span class="related-category">Manual</span>
-                <h4 class="related-name">Vermi en Departamento: Cómo empezar</h4>
+              <div>
+                <h4 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors line-clamp-2 uppercase m-0 leading-tight">Qué alimentos NO dar a tus lombrices</h4>
+                <span class="text-[10px] font-mono text-on-surface-variant font-bold">ALIMENTACIÓN</span>
               </div>
-            </a>
-          </div>
+            </div>
+          </a>
+          <div class="h-px w-full border-t-2 border-dashed border-on-surface"></div>
+          <a class="block group no-underline" href="/blog/vermi-en-departamento">
+            <div class="flex gap-4 items-center">
+              <div class="w-16 h-16 bg-surface-dim border-2 border-on-surface shrink-0 organic-brutalism-alt overflow-hidden flex items-center justify-center font-headline text-lg text-secondary">
+                DEPA
+              </div>
+              <div>
+                <h4 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors line-clamp-2 uppercase m-0 leading-tight">Vermi en Departamento: Cómo empezar</h4>
+                <span class="text-[10px] font-mono text-on-surface-variant font-bold">MANUAL</span>
+              </div>
+            </div>
+          </a>
         </div>
-      </aside>
-    </div>
+      </div>
+    </aside>
   </div>
 </BaseLayout>
-
-<style>
-  .article-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-
-  @media (min-width: 1024px) {
-    .article-grid {
-      grid-template-columns: 8fr 4fr;
-    }
-  }
-
-  .main-column {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .badge-row {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
-  }
-
-  .cat-badge {
-    border-radius: 0;
-  }
-
-  .date-badge {
-    background-color: var(--color-bg-warm);
-    border-radius: 0;
-  }
-
-  .article-title {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 2.25rem;
-    line-height: 1.1;
-    color: var(--color-ink);
-    margin-bottom: 1.5rem;
-    text-transform: uppercase;
-  }
-
-  @media (min-width: 768px) {
-    .article-title {
-      font-size: 3.5rem;
-    }
-  }
-
-  .author-row {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border-top: 3px solid var(--color-ink);
-    border-bottom: 3px solid var(--color-ink);
-    padding: 1rem 0;
-    flex-wrap: wrap;
-  }
-
-  .author-avatar {
-    width: 48px;
-    height: 48px;
-    border: 2px solid var(--color-ink);
-    background-color: var(--color-bg-warm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .avatar-svg {
-    color: var(--color-ink);
-  }
-
-  .author-meta {
-    flex-grow: 1;
-  }
-
-  .author-name {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.125rem;
-    color: var(--color-ink);
-  }
-
-  .reading-time {
-    font-family: var(--font-mono);
-    font-size: 0.8rem;
-    color: var(--color-ink);
-    opacity: 0.8;
-  }
-
-  .share-actions {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .btn-icon {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    justify-content: center;
-  }
-
-  .article-hero-figure {
-    overflow: hidden;
-  }
-
-  .image-fallback-placeholder {
-    aspect-ratio: 16/9;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    background: linear-gradient(135deg, var(--color-secondary-fixed) 0%, var(--color-secondary) 100%);
-    color: var(--color-white);
-    text-align: center;
-    box-sizing: border-box;
-  }
-
-  .fallback-text {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 1.5rem;
-    text-shadow: 2px 2px 0px var(--color-ink);
-    text-transform: uppercase;
-  }
-
-  @media (min-width: 768px) {
-    .fallback-text {
-      font-size: 2.25rem;
-    }
-  }
-
-  .content-body-wrapper {
-    position: relative;
-    background-color: var(--color-white);
-    border: 3px solid var(--color-ink);
-    padding: 2rem;
-  }
-
-  .tape-sticker {
-    position: absolute;
-    top: -12px;
-    left: 2rem;
-    width: 100px;
-    height: 24px;
-    background-color: rgba(160, 64, 31, 0.8); /* Terracotta translucent tape */
-    border: 1px solid var(--color-ink);
-    transform: rotate(-3deg);
-  }
-
-  .article-tags-row {
-    display: flex;
-    gap: 0.5rem;
-    border-top: 2px dashed var(--color-ink);
-    padding-top: 1rem;
-    margin-top: 1rem;
-  }
-
-  .tag-hash {
-    font-family: var(--font-mono);
-    font-weight: bold;
-    font-size: 0.875rem;
-    background-color: var(--color-white);
-    border: 2px solid var(--color-ink);
-    padding: 0.2rem 0.5rem;
-    transform: rotate(1deg);
-  }
-
-  /* Sidebar styling */
-  .sidebar-column {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  .sidebar-title {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 800;
-    border-bottom: 2px solid var(--color-ink);
-    padding-bottom: 0.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-ink);
-    text-transform: uppercase;
-  }
-
-  .toc-card {
-    background-color: var(--color-tertiary-fixed);
-    border: 3px solid var(--color-ink);
-    padding: 1.5rem;
-  }
-
-  .toc-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .toc-list li a {
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--color-ink);
-  }
-  .toc-list li a:hover {
-    color: var(--color-primary);
-  }
-
-  .cta-card {
-    background-color: var(--color-primary-container);
-    color: var(--color-on-primary-container);
-    border: 4px solid var(--color-ink);
-    padding: 1.5rem;
-  }
-
-  .cta-title {
-    font-family: var(--font-display);
-    font-weight: 900;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-  }
-
-  .cta-desc {
-    font-family: var(--font-sans);
-    font-size: 0.95rem;
-    margin-bottom: 1.25rem;
-    line-height: 1.5;
-  }
-
-  .cta-btn {
-    width: 100%;
-    background-color: var(--color-secondary);
-    color: var(--color-white);
-    border: 2px solid var(--color-ink);
-    box-shadow: 4px 4px 0px 0px var(--color-ink);
-    font-family: var(--font-display);
-    font-weight: 700;
-    text-align: center;
-    padding: 0.75rem;
-    cursor: pointer;
-  }
-  .cta-btn:hover {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px 0px var(--color-ink);
-  }
-
-  .related-card {
-    background-color: var(--color-surface-container);
-    border: 3px solid var(--color-ink);
-    padding: 1.5rem;
-  }
-
-  .related-items {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .related-item-link {
-    text-decoration: none;
-    color: var(--color-ink);
-  }
-
-  .related-category {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    color: var(--color-secondary);
-    font-weight: 700;
-  }
-
-  .related-name {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 1rem;
-    margin-top: 0.25rem;
-    text-transform: uppercase;
-    line-height: 1.2;
-  }
-  .related-item:hover .related-name {
-    color: var(--color-primary);
-  }
-
-  .divider-dashed {
-    border: none;
-    border-top: 2px dashed var(--color-ink);
-  }
-</style>
