@@ -18,9 +18,10 @@ Please respect the following rules at all times.
 ## 2. Technical Stack Defaults
 - **Astro Static Output**: Purely pre-rendered HTML pages (`output: 'static'`).
 - **npm**: With committed `package-lock.json`.
-- **Cloudflare Pages**: Deployed via GitHub integrations.
-- **Wrangler / KV**: Local Wrangler configurations live in `.wrangler/` (do not track in Git).
-- **CSS**: Pure custom, Vanilla CSS. **DO NOT** install or use Tailwind CSS or any heavy CSS framework.
+- **Cloudflare Pages**: Deployed via GitHub integrations. The build command `npm run build` outputs directly to the `/dist` directory.
+- **No Astro Adapter**: Do **NOT** configure or install any adapter (like `@astrojs/cloudflare`) in `astro.config.mjs`. Because the project is static, the adapter splits the output into `/dist/client/`, which breaks Cloudflare Pages' root integration and causes 404 errors.
+- **Wrangler**: Local Wrangler configurations live in `.wrangler/` (do not track in Git).
+- **CSS / Styling**: Built using **Tailwind CSS v4** (via `@tailwindcss/vite`) combined with custom Vanilla CSS utilities. Do **NOT** install heavy UI libraries or component kits.
 
 ---
 
@@ -36,7 +37,7 @@ All visual elements must conform to the **Organic-Brutalism Eco-Zine / Handcraft
 *   **Borders & Shadows**:
     - Custom borders: use standard Tailwind borders or `.border-4` / `.border-2` solid `#002201`.
     - Custom hard shadows: use `.shadow-hard` (`6px 6px 0px 0px #002201`) or `.shadow-hard-sm` (`4px 4px 0px 0px #002201`).
-*   **Palette Rules**: Use the mapped colors in `tailwind.config.mjs`:
+*   **Palette Rules**: Use the mapped colors in `tailwind.config.mjs` (or defined in Tailwind CSS variables):
     - Canvas Background: `bg-background` (`#ecffe2`)
     - Foreground Ink: `text-on-background` (`#002201`)
     - Forest Green Accent: `text-primary` / `bg-primary` (`#0f5238`)

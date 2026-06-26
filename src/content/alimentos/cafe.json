@@ -1,7 +1,7 @@
 {
   "name": "Borra de Café",
-  "category": "Húmedo / Carbono",
+  "category": "Húmedo / Nitrógeno",
   "status": "safe",
-  "chileanContext": "Residuo diario muy común en los hogares chilenos.",
-  "instructions": "Espárcelo de manera uniforme sobre la superficie del lecho. A las lombrices les encanta, pero evita echarlo en bloques compactados que impidan el paso del aire."
+  "chileanContext": "Residuo diario muy común en los hogares chilenos. Aunque visualmente es marrón, químicamente es un aporte alto en nitrógeno.",
+  "instructions": "Espárcelo de manera uniforme sobre la superficie del lecho. A las bacterias les encanta colonizarlo y a tus lombrices consumirlo, pero evita echarlo en bloques compactados para no bloquear el paso del oxígeno y evitar fermentaciones anaeróbicas (sin aire)."
 }
