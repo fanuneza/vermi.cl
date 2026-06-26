@@ -4,12 +4,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import IsItCompostable from '../components/IsItCompostable.astro';
 import BlogCard from '../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
+import { faWorm, faCarrot, faBookOpen, faAppleWhole, faSkullCrossbones } from '@fortawesome/free-solid-svg-icons';
+import { Image } from 'astro:assets';
+import heroImage from '../assets/images/hero.jpg';
 
 // Retrieve all posts and sort them by date (descending)
 const posts = await getCollection('blog');
 const sortedPosts = posts
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3); // Get latest 3 posts for the home feed
+
+const wormPaths = Array.isArray(faWorm.icon[4]) ? faWorm.icon[4] : [faWorm.icon[4]];
+const carrotPaths = Array.isArray(faCarrot.icon[4]) ? faCarrot.icon[4] : [faCarrot.icon[4]];
+const bookOpenPaths = Array.isArray(faBookOpen.icon[4]) ? faBookOpen.icon[4] : [faBookOpen.icon[4]];
+const appleWholePaths = Array.isArray(faAppleWhole.icon[4]) ? faAppleWhole.icon[4] : [faAppleWhole.icon[4]];
+const skullCrossbonesPaths = Array.isArray(faSkullCrossbones.icon[4]) ? faSkullCrossbones.icon[4] : [faSkullCrossbones.icon[4]];
 
 const homepageSchema = {
   "@context": "https://schema.org",
@@ -38,14 +47,14 @@ const homepageSchema = {
       </div>
       
       <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-black text-on-surface leading-none relative uppercase m-0">
-        Comienza a vermicompostar tus residuos en casa.
+        Comienza a vermicompostar tus residuos en casa
         <svg class="absolute -bottom-4 left-0 w-full h-4 text-primary" preserveAspectRatio="none" viewBox="0 0 100 10">
           <path d="M0,5 Q50,15 100,5" fill="none" stroke="currentColor" stroke-width="4"></path>
         </svg>
       </h1>
       
       <p class="font-body text-lg text-on-surface-variant max-w-md mt-2 leading-relaxed">
-        Aprende a reciclar tus residuos de cocina con lombrices californianas (<span class="italic font-bold">Eisenia fetida</span>). Transforma la materia orgánica en humus de alta calidad científica y dile adiós a la basura en tu hogar chileno.
+        Aprende a reciclar tus residuos de cocina con lombrices californianas (<span class="italic font-bold">Eisenia fetida</span>). Transforma la materia orgánica en humus de alta calidad agrícola y dile adiós a la basura en tu hogar chileno.
       </p>
       
       <div class="flex flex-wrap gap-4 mt-4">
@@ -61,21 +70,25 @@ const homepageSchema = {
     
     <div class="lg:col-span-6 relative mt-8 lg:mt-0">
       <div class="relative w-full aspect-[4/3] md:aspect-square lg:aspect-[4/3] z-10">
-        <img 
+        <Image 
           class="w-full h-full object-cover organic-shape-1 border-4 border-on-surface hard-shadow bg-tertiary-fixed" 
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmxQ0tuH3Y-VTYu9gTVnXeSwzj3dTLbSHRK0uSQSM3p-F0jVkijLhi2cbih7kNB4tsceBHqHKn3N0CEGMOpu-k0t6MiNrsRpJjj5EdwU0OxmQ2yAVgolHkvgukqbaeh7PnyOVI0HpKAtplAUf3cQdNXpSx6vrv54aiL6LzKNVrg7h9hX3Ncsxx10JWzR9jrMfoATdSmXKQ6ySmgGDyD5yQyjADnNbo7CiKMe6_1TohG2CFyPBBUqjmoRJL_hxLFYL0Qr3nILL2co2z" 
+          src={heroImage} 
           alt="Compostaje de lombrices californianas" 
-          width="600" 
-          height="450" 
+          width={600} 
+          height={450} 
           loading="eager" 
           fetchpriority="high" 
         />
         <!-- Decorative Floating Elements -->
         <div class="absolute -bottom-6 -right-6 bg-surface-dim p-4 border-4 border-on-surface organic-shape-2 shadow-[4px_4px_0px_0px_#002201] rotate-[15deg] hidden md:block">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="currentColor" class="text-primary"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faCarrot.icon[0]} ${faCarrot.icon[1]}`} fill="currentColor" class="text-primary">
+            {carrotPaths.map((d) => <path d={d} />)}
+          </svg>
         </div>
         <div class="absolute -top-4 -left-4 bg-error-container p-2 border-2 border-on-surface rounded-full shadow-[2px_2px_0px_0px_#002201] rotate-[-10deg]">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" class="text-on-error-container"><rect x="3" y="11" width="18" height="2" rx="1"/><rect x="7" y="5" width="10" height="14" rx="2"/><path d="M12 2v3M4 5l2.5 2.5M20 5l-2.5 2.5M4 19l3-3M20 19l-3-3"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox={`0 0 ${faWorm.icon[0]} ${faWorm.icon[1]}`} fill="currentColor" class="text-on-error-container">
+            {wormPaths.map((d) => <path d={d} />)}
+          </svg>
         </div>
       </div>
     </div>
@@ -95,9 +108,11 @@ const homepageSchema = {
       <!-- Card 1 -->
       <a class="block bg-tertiary-fixed border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-2 rotate-1 no-underline" href="/blog?category=Manual">
         <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] -rotate-3 group-hover:rotate-0 transition-transform">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faBookOpen.icon[0]} ${faBookOpen.icon[1]}`} fill="currentColor" class="text-primary">
+            {bookOpenPaths.map((d) => <path d={d} />)}
+          </svg>
         </div>
-        <h3 class="font-headline text-2xl font-bold text-on-surface mb-2 group-hover:text-primary transition-colors uppercase">Manual de Inicio</h3>
+        <h3 class="font-headline text-2xl font-bold text-on-surface mb-2 group-hover:text-primary transition-colors uppercase">Manual de inicio</h3>
         <p class="font-body text-base text-on-surface-variant line-clamp-3">Aprende a configurar la vermicompostera ideal para tu núcleo de cría utilizando desecho local y adáptala a la inercia térmica de tu balcón.</p>
         <div class="mt-4 flex justify-end">
           <span class="font-label-md text-label-md text-on-surface bg-surface-dim px-2 py-1 border-2 border-on-surface sticker-badge text-xs">BASICO</span>
@@ -107,7 +122,9 @@ const homepageSchema = {
       <!-- Card 2 -->
       <a class="block bg-surface-container border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-1 -rotate-1 no-underline" href="/blog?category=Alimentación">
         <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] rotate-2 group-hover:rotate-0 transition-transform">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-secondary"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faAppleWhole.icon[0]} ${faAppleWhole.icon[1]}`} fill="currentColor" class="text-secondary">
+            {appleWholePaths.map((d) => <path d={d} />)}
+          </svg>
         </div>
         <h3 class="font-headline text-2xl font-bold text-on-surface mb-2 group-hover:text-secondary transition-colors uppercase">Alimentación</h3>
         <p class="font-body text-base text-on-surface-variant line-clamp-3">El menú ideal para tus lombrices. Descubre el balance óptimo de nitrógeno y carbono y el truco de la congelación celular.</p>
@@ -119,9 +136,11 @@ const homepageSchema = {
       <!-- Card 3 -->
       <a class="block bg-inverse-primary border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-3 rotate-2 lg:col-span-1 md:col-span-2 no-underline" href="/blog?category=Problemas">
         <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] -rotate-2 group-hover:rotate-0 transition-transform">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-tertiary"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faSkullCrossbones.icon[0]} ${faSkullCrossbones.icon[1]}`} fill="currentColor" class="text-tertiary">
+            {skullCrossbonesPaths.map((d) => <path d={d} />)}
+          </svg>
         </div>
-        <h3 class="font-headline text-2xl font-bold text-on-surface mb-2 group-hover:text-tertiary transition-colors uppercase">Solución de Problemas</h3>
+        <h3 class="font-headline text-2xl font-bold text-on-surface mb-2 group-hover:text-tertiary transition-colors uppercase">Solución de problemas</h3>
         <p class="font-body text-base text-on-surface-variant line-clamp-3">¿Mosquitas, acidez o putrefacción anaeróbica? Evita la fuga nocturna de tu compostera y mantén el ecosistema estable y sin olor.</p>
         <div class="mt-4 flex justify-end">
           <span class="font-label-md text-label-md text-on-surface bg-error-container px-2 py-1 border-2 border-on-surface sticker-badge text-xs">URGENTE</span>

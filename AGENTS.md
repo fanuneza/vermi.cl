@@ -81,6 +81,8 @@ All visual elements must conform to the **Organic-Brutalism Eco-Zine / Handcraft
 - **Guidelines**: Refer to `docs/voice_and_tone.md` before generating or editing content.
 - **Chilean Spanish**: Content must use natural Chilean Spanish "tuteo" (e.g., "Aprende", "Tu vermi", "Comienza"). Use correct accents and grammar.
 - **Scientific Grounding**: Explain biological concepts (Eisenia fetida, metabolic lethargy, overfeeding, acidification) scientifically to resolve user anxiety and mitigate the "factor repulsivo".
+- **No Periods on Titles**: Heading elements (H1, H2, H3, H4) and page/article titles must never end in a period.
+- **Spanish Title Capitalization**: All heading elements (H1, H2, H3, H4) and page/article titles must follow Spanish title capitalization styling (sentence case). Only capitalize the first word and proper nouns (e.g. use "Manual de inicio" instead of "Manual de Inicio", "Solución de problemas" instead of "Solución de Problemas"). Do not use English title case.
 - **Encoding**: All files must be UTF-8. Never introduce mojibake or corrupted accent sequences.
 
 ---

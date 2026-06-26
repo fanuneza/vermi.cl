@@ -16,7 +16,7 @@ Las lombrices californianas (*Eisenia fetida*) no consumen directamente el tejid
 
 <div id="sec1"></div>
 
-## 1. Alimentos prohibidos: Peligro absoluto en la compostera
+## 1. Alimentos prohibidos: peligro absoluto en la compostera
 
 Existen ciertos elementos que nunca deben verterse en el sistema debido a riesgos sanitarios y de putrefacción:
 
@@ -26,7 +26,7 @@ Existen ciertos elementos que nunca deben verterse en el sistema debido a riesgo
 
 <div id="sec2"></div>
 
-## 2. Alimentos con los que moderar el pH (Uso restringido)
+## 2. Alimentos con los que moderar el pH (uso restringido)
 
 *   **Cítricos y cebollas**: En Chile abundan limones y cebollas. Sin embargo, contienen aceites irritantes y acidifican fuertemente el pH. Un sustrato muy ácido desencadena una fermentación ácida que provoca la fuga nocturna de las lombrices. 
 *   **¿Cómo dar cebolla de forma segura?**: Congélala previamente. Al congelarse, el agua interna forma cristales de hielo que rompen las paredes celulares del tejido. Al descongelarla, se ablanda y es colonizada rápidamente por microorganismos que neutralizan sus aceites antes de que afecte a las lombrices.

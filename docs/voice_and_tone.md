@@ -31,6 +31,8 @@ El contenido debe redactarse pensando en tres perfiles diferenciados:
 * **Científicamente Fundamentado**: Todo consejo práctico debe estar respaldado por la biología. En lugar de decir "no agregues mucha comida porque huele mal", explica la física y química detrás:
   > *"El exceso de comida húmeda compacta el sustrato, bloqueando el oxígeno. Esto genera condiciones anaeróbicas (sin aire) donde proliferan bacterias que acidifican el pH, liberando gases de amoníaco que irritan la piel permeable de tus lombrices."*
 * **Cercano pero Riguroso**: El tono es el de un vecino agrónomo o un amigo experto. No asustes al lector, acompáñalo en sus errores.
+* **Sin Puntos Finales en Títulos**: Los títulos principales (H1), subtítulos (H2, H3, H4) y cualquier cabecera de sección **nunca** deben finalizar con un punto final.
+* **Estilo de Mayúsculas en Títulos**: Los títulos principales (H1), subtítulos (H2, H3, H4) y cabeceras de sección deben seguir la norma del español: **solo la primera palabra y los nombres propios llevan mayúscula inicial** (mayúscula de tipo oracional o *sentence case*). Evita el uso del estilo inglés (mayúscula en cada palabra principal), por ejemplo: usa *"Manual de inicio"* en vez de *"Manual de Inicio"*, y *"Solución de problemas"* en vez de *"Solución de Problemas"*.
 
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "Vermi en Departamento: Cómo empezar sin olores ni plagas"
+title: "Vermi en departamento: cómo empezar sin olores ni plagas"
 description: "Guía paso a paso para montar tu primera vermicompostera en espacios reducidos controlando la ventilación y la inercia térmica."
 pubDate: 2024-11-05
 category: Manual
@@ -16,7 +16,7 @@ La buena noticia es que un sistema de vermicompostaje doméstico bien equilibrad
 
 <div id="sec1"></div>
 
-## 1. La cama perfecta: Sustrato inicial sin insumos importados
+## 1. La cama perfecta: sustrato inicial sin insumos importados
 
 Muchos manuales internacionales sugieren usar turba o fibra de coco para armar el sustrato inicial. En Chile, esto no es necesario y va en contra de la sustentabilidad. Podemos armar un sustrato perfecto con materiales de desecho local:
 
@@ -26,7 +26,7 @@ Muchos manuales internacionales sugieren usar turba o fibra de coco para armar e
 
 <div id="sec2"></div>
 
-## 2. El clima de Santiago: Mitigación térmica en balcones
+## 2. El clima de Santiago: mitigación térmica en balcones
 
 El Valle Central de Chile tiene climas extremos que requieren un manejo consciente de las temperaturas para proteger a las *Eisenia fetida*:
 
