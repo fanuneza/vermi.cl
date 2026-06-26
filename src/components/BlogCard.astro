@@ -24,29 +24,29 @@ const formattedDate = pubDate.toLocaleDateString('es-CL', {
 const categoryMeta = {
   Manual: {
     bg: '#FFFDF0', // Warm Cream
-    tagBg: '#D2691E',
-    tagText: '#FFFFFF',
+    tagBg: 'var(--color-primary)',
+    tagText: 'var(--color-white)',
     label: 'MANUAL DE INICIO',
     badge: 'BÁSICO'
   },
   Alimentación: {
-    bg: '#FFDBD0', // Terracotta Light
-    tagBg: '#1E3C2B',
-    tagText: '#FFFFFF',
+    bg: 'var(--color-secondary-fixed)', // Terracotta Light (#ffdbd0)
+    tagBg: 'var(--color-secondary)',
+    tagText: 'var(--color-white)',
     label: 'ALIMENTACIÓN',
     badge: 'DIARIO'
   },
   Problemas: {
-    bg: '#FFFBEA', // Warning Yellow
-    tagBg: '#C81D25',
-    tagText: '#FFFFFF',
+    bg: 'var(--color-mustard)', // Warning Yellow (#e9d7c8)
+    tagBg: 'var(--color-error)',
+    tagText: 'var(--color-white)',
     label: 'SOLUCIÓN DE PROBLEMAS',
     badge: 'URGENTE'
   },
   Cosecha: {
-    bg: '#B1F0CE', // Lighter Green
-    tagBg: '#1E3C2B',
-    tagText: '#FFFFFF',
+    bg: 'var(--color-primary-fixed)', // Lighter Green (#b1f0ce)
+    tagBg: 'var(--color-primary)',
+    tagText: 'var(--color-white)',
     label: 'COSECHA Y HUMUS',
     badge: 'RECOMPENSA'
   }
@@ -56,7 +56,7 @@ const meta = categoryMeta[category] || categoryMeta.Manual;
 ---
 
 <a href={`/blog/${slug}`} class="card-link" style={`transform: ${rotation};`}>
-  <article class="brutal-card card-article" style={`background-color: ${meta.bg};`}>
+  <article class="card-article organic-brutalism" style={`background-color: ${meta.bg};`}>
     <div class="card-header">
       <span class="sticker-badge card-tag" style={`background-color: ${meta.tagBg}; color: ${meta.tagText};`}>
         {meta.label}
@@ -82,8 +82,8 @@ const meta = categoryMeta[category] || categoryMeta.Manual;
   }
 
   .card-article {
-    border: var(--border-width-brutal) solid var(--color-ink);
-    box-shadow: var(--shadow-brutal);
+    border: 3px solid var(--color-ink);
+    box-shadow: 6px 6px 0px 0px var(--color-ink);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -93,8 +93,8 @@ const meta = categoryMeta[category] || categoryMeta.Manual;
   }
 
   .card-link:hover .card-article {
-    transform: translate(2px, 2px);
-    box-shadow: 2px 2px 0px 0px var(--color-ink);
+    transform: translate(3px, 3px);
+    box-shadow: 3px 3px 0px 0px var(--color-ink);
   }
 
   .card-header {
@@ -117,10 +117,12 @@ const meta = categoryMeta[category] || categoryMeta.Manual;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 700;
-    color: var(--color-gray-700);
+    color: var(--color-ink);
   }
 
   .card-title {
+    font-family: var(--font-display);
+    font-weight: 800;
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
     color: var(--color-ink);
@@ -128,12 +130,14 @@ const meta = categoryMeta[category] || categoryMeta.Manual;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    line-height: 1.2;
+    text-transform: uppercase;
   }
 
   .card-desc {
     font-family: var(--font-sans);
     font-size: 0.95rem;
-    color: var(--color-gray-700);
+    color: var(--color-ink);
     margin-bottom: 1.5rem;
     flex-grow: 1;
     display: -webkit-box;
@@ -154,7 +158,8 @@ const meta = categoryMeta[category] || categoryMeta.Manual;
   .meta-item {
     font-family: var(--font-mono);
     font-size: 0.75rem;
-    color: var(--color-gray-500);
+    color: var(--color-ink);
+    opacity: 0.8;
   }
 
   .difficulty-badge {
@@ -163,6 +168,7 @@ const meta = categoryMeta[category] || categoryMeta.Manual;
     font-weight: 700;
     border: 2px solid var(--color-ink);
     padding: 0.1rem 0.4rem;
-    background-color: var(--color-white);
+    background-color: var(--color-bg-warm);
+    color: var(--color-ink);
   }
 </style>

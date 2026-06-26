@@ -18,7 +18,7 @@
   <div class="nav-actions">
     <!-- Inline SVG Search Icon to optimize Lighthouse scores -->
     <a href="#buscar" class="search-btn" aria-label="Buscar">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
     </a>
     <a href="#unirse" class="btn-brutal btn-unirse">
       Unirse
@@ -55,11 +55,11 @@
     font-family: var(--font-display);
     font-size: 1.5rem;
     font-weight: 900;
-    color: var(--color-forest);
+    color: var(--color-primary);
     border: 2px solid var(--color-ink);
     padding: 0.25rem 0.5rem;
     transform: rotate(-2deg);
-    background-color: var(--color-white);
+    background-color: var(--color-surface-container-low);
     box-shadow: 4px 4px 0px 0px var(--color-ink);
     transition: transform 0.2s ease;
   }
@@ -88,12 +88,12 @@
     border-bottom: 2px solid transparent;
   }
   .nav-link:hover {
-    color: var(--color-forest);
+    color: var(--color-primary);
     transform: translate(1px, 1px);
   }
   .nav-link.active {
-    color: var(--color-forest);
-    border-bottom-color: var(--color-forest);
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
   }
 
   .nav-actions {
@@ -105,7 +105,6 @@
   .search-btn {
     display: flex;
     align-items: center;
-    color: var(--color-forest);
     transition: transform 0.1s ease;
   }
   .search-btn:hover {
@@ -113,12 +112,13 @@
   }
 
   .btn-unirse {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1.25rem;
     font-size: 0.875rem;
     transform: rotate(1deg);
-    background-color: var(--color-terracotta);
-    color: var(--color-white);
-    border-radius: 0;
+    background-color: var(--color-primary-container);
+    color: var(--color-on-primary-container);
+    border-radius: 4px 16px 8px 24px; /* organic-brutalism border-radius */
+    box-shadow: 4px 4px 0px 0px var(--color-ink);
   }
   .btn-unirse:hover {
     transform: translate(2px, 2px) rotate(1deg);

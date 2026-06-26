@@ -24,19 +24,31 @@ Please respect the following rules at all times.
 
 ---
 
-## 3. Styling & Neo-Brutalist Manifest
-All visual elements must conform to the **Neo-Brutalist Organic Zine / Handcrafted Farmer's Journal** manifest:
-*   **Sharp Corners**: `border-radius: 0px` strictly for all cards, panels, and buttons.
-*   **Thick Borders**: Constant `3px solid var(--color-ink)` (where ink is `#111111`).
-*   **Orthogonal Shadows**: `box-shadow: 4px 4px 0px 0px var(--color-ink)`.
-*   **Translation Hovers**: `transform: translate(2px, 2px)` coupled with diminished shadow `2px 2px 0px 0px var(--color-ink)` for interactive elements.
-*   **Palette Rules**: Use the semantic custom properties in `src/styles/global.css`:
-    - Canvas Background: `--color-bg-warm` (`#FFFDF0`)
-    - Foreground Ink: `--color-ink` (`#111111`)
-    - Terracotta Accent: `--color-terracotta` (`#D2691E`)
-    - Forest Green: `--color-forest` (`#1E3C2B`)
-    - Warning Yellow: `--color-mustard` (`#E6C229`)
-    - Crimson Danger: `--color-crimson` (`#C81D25`)
+## 3. Styling & Organic-Brutalism Zine Manifest
+All visual elements must conform to the **Organic-Brutalism Eco-Zine / Handcrafted Scrapbook** manifest defined in Stitch.
+*   **Tailwind CSS**: Use Tailwind CSS utility classes matching the Stitch designs exactly. Tailwind is compiled at build-time to ensure a perfect 100/100 Lighthouse performance score.
+*   **Organic Corners**: Handled via custom utility classes:
+    - `.organic-shape-1`: `border-radius: 60px 20px 50px 30px` (hero image)
+    - `.organic-shape-2`: `border-radius: 30px 50px 20px 40px` (portal cards, stickers)
+    - `.organic-shape-3`: `border-radius: 20px 60px 40px 20px` (compostable search widget)
+    - `.organic-brutalism`: `border-radius: 4px 16px 8px 24px` (card blocks, wrappers)
+    - `.organic-brutalism-alt`: `border-radius: 12px 4px 20px 8px` (details, comments)
+*   **Borders & Shadows**:
+    - Custom borders: use standard Tailwind borders or `.border-4` / `.border-2` solid `#002201`.
+    - Custom hard shadows: use `.shadow-hard` (`6px 6px 0px 0px #002201`) or `.shadow-hard-sm` (`4px 4px 0px 0px #002201`).
+*   **Palette Rules**: Use the mapped colors in `tailwind.config.mjs`:
+    - Canvas Background: `bg-background` (`#ecffe2`)
+    - Foreground Ink: `text-on-background` (`#002201`)
+    - Forest Green Accent: `text-primary` / `bg-primary` (`#0f5238`)
+    - Terracotta Accent: `text-secondary` / `bg-secondary` (`#a0401f`)
+    - Earth Brown: `text-tertiary` / `bg-tertiary` (`#52453a`)
+    - Warning/Mustard Yellow: `bg-warning-badge` (`#F0C842` / `bg-mustard` `#e9d7c8`)
+    - Safe/Green Badge: `bg-safe-badge` (`#59C985`)
+    - Danger/Red Badge: `bg-danger-badge` (`#E05353`)
+*   **Typography**:
+    - Headlines/Display: `font-headline` (`Bricolage Grotesque`)
+    - Body Text: `font-body-md` / `font-body-lg` (`Fira Sans` for UI, `Merriweather` for articles)
+    - Labels/Mono: `font-label-md` (`Space Mono`)
 
 ---
 
