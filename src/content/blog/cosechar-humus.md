@@ -5,7 +5,7 @@ pubDate: 2024-10-12
 category: Cosecha
 difficulty: Intermedio
 readingTime: "5 min"
-author: "Camila Verdejo"
+author: "Fabián Núñez"
 ---
 
 <div id="intro"></div>

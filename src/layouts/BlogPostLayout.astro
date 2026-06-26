@@ -1,6 +1,8 @@
 ---
 // BlogPostLayout.astro - Zine-style Article Detail Page Layout
 import BaseLayout from './BaseLayout.astro';
+import { Image } from 'astro:assets';
+import avatarImage from '../assets/images/avatar.jpg';
 
 interface Props {
   title: string;
@@ -85,9 +87,8 @@ const articleSchema = {
         </h1>
         
         <div class="flex items-center gap-4 border-t-2 border-b-2 border-on-surface py-4">
-          <div class="w-12 h-12 rounded-full border-2 border-on-surface overflow-hidden shadow-hard-sm">
-            <!-- Inline SVG placeholder avatar for Lighthouse -->
-            <svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full text-primary p-2 bg-surface-container-low"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <div class="w-12 h-12 rounded-full border-2 border-on-surface overflow-hidden shadow-hard-sm shrink-0">
+            <Image src={avatarImage} alt={author} class="w-full h-full object-cover" width={48} height={48} />
           </div>
           <div>
             <p class="font-label-md text-label-md text-on-surface m-0">Por {author}</p>
@@ -121,6 +122,29 @@ const articleSchema = {
         <!-- Decorative tape sticker -->
         <div class="absolute -top-3 left-10 w-20 h-6 bg-secondary-fixed/80 border border-on-surface rotate-[-5deg]"></div>
         
+        <!-- Table of Contents for Mobile -->
+        <div class="lg:hidden bg-tertiary-fixed border-3 border-on-surface p-6 mb-8 shadow-hard organic-brutalism rotate-[1deg]">
+          <h3 class="font-headline text-xl font-bold text-on-surface mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase">
+            <!-- Inline SVG for Table of Contents -->
+            <svg class="text-primary" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            En esta guía
+          </h3>
+          <ul class="space-y-3 font-mono text-sm pl-0 list-none m-0">
+            <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2">
+              <a href="#intro" class="text-on-surface font-bold no-underline">Introducción</a>
+            </li>
+            <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2">
+              <a href="#sec1" class="text-on-surface font-bold no-underline"><span class="text-primary">1.</span> Señales clave</a>
+            </li>
+            <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2">
+              <a href="#sec2" class="text-on-surface font-bold no-underline"><span class="text-primary">2.</span> Métodos de acción</a>
+            </li>
+            <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2">
+              <a href="#sec3" class="text-on-surface font-bold no-underline"><span class="text-primary">3.</span> Cuidado biorregional</a>
+            </li>
+          </ul>
+        </div>
+        
         <slot />
       </div>
 
@@ -136,7 +160,7 @@ const articleSchema = {
     <!-- Sidebar (Secondary Column) -->
     <aside class="lg:col-span-4 space-y-8 mt-8 lg:mt-0">
       <!-- Table of Contents -->
-      <div class="bg-tertiary-fixed border-3 border-on-surface p-6 shadow-hard organic-brutalism rotate-[1deg]">
+      <div class="hidden lg:block bg-tertiary-fixed border-3 border-on-surface p-6 shadow-hard organic-brutalism rotate-[1deg]">
         <h3 class="font-headline-md text-headline-md text-on-tertiary-fixed mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
           En esta guía

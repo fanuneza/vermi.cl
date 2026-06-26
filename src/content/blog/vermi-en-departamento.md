@@ -5,7 +5,7 @@ pubDate: 2024-11-05
 category: Manual
 difficulty: Principiante
 readingTime: "6 min"
-author: "Camila Verdejo"
+author: "Fabián Núñez"
 ---
 
 <div id="intro"></div>

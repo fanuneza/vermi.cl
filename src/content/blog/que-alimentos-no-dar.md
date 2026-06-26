@@ -5,7 +5,7 @@ pubDate: 2024-09-28
 category: Alimentación
 difficulty: Principiante
 readingTime: "4 min"
-author: "Camila Verdejo"
+author: "Fabián Núñez"
 ---
 
 <div id="intro"></div>
