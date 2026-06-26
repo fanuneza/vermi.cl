@@ -1,6 +1,6 @@
 ---
 title: "Vermi en Departamento: Cómo empezar sin olores ni plagas"
-description: "Guía paso a paso para montar tu primera cuna de lombrices en espacios reducidos controlando la ventilación y la inercia térmica."
+description: "Guía paso a paso para montar tu primera vermicompostera en espacios reducidos controlando la ventilación y la inercia térmica."
 pubDate: 2024-11-05
 category: Manual
 difficulty: Principiante
@@ -18,11 +18,11 @@ La buena noticia es que un sistema de vermicompostaje doméstico bien equilibrad
 
 ## 1. La cama perfecta: Sustrato inicial sin insumos importados
 
-Muchos manuales internacionales sugieren usar turba o fibra de coco para armar el lecho inicial. En Chile, esto no es necesario y va en contra de la sustentabilidad. Podemos armar una cuna perfecta con materiales de desecho local:
+Muchos manuales internacionales sugieren usar turba o fibra de coco para armar el sustrato inicial. En Chile, esto no es necesario y va en contra de la sustentabilidad. Podemos armar un sustrato perfecto con materiales de desecho local:
 
 *   **Paso 1: Cartón corrugado picado**: Reúne cajas de cartón café de embalaje (sin cintas plásticas ni corchetes). Córtalo en pedazos pequeños y remójalo en agua limpia por 10 minutos. Estruja con fuerza hasta que no gotee (debe quedar con la consistencia de una esponja húmeda).
 *   **Paso 2: Papel de diario picado**: El periódico tradicional aporta celulosa y actúa como un excelente aislante térmico. Pícalo en tiras.
-*   **Paso 3: Bandejas de huevo trituradas**: Aportan porosidad estructural que evita el apelmazamiento de la cuna y facilita la oxigenación bacteriana.
+*   **Paso 3: Bandejas de huevo trituradas**: Aportan porosidad estructural que evita el apelmazamiento del sustrato y facilita la oxigenación bacteriana.
 
 <div id="sec2"></div>
 
@@ -30,7 +30,7 @@ Muchos manuales internacionales sugieren usar turba o fibra de coco para armar e
 
 El Valle Central de Chile tiene climas extremos que requieren un manejo consciente de las temperaturas para proteger a las *Eisenia fetida*:
 
-*   **En Verano (Olas de calor >30°C)**: Las lombrices mueren masivamente si el termómetro interno del contenedor supera los 35°C. Sitúa tu compostera a la sombra absoluta en el balcón. Pulveriza agua fina sobre la cubierta superior para lograr enfriamiento evaporativo y entierra una botella plástica pequeña llena de agua congelada en una esquina del lecho; las lombrices se arrimarán a ella para escapar del calor extremo.
+*   **En Verano (Olas de calor >30°C)**: Las lombrices mueren masivamente si el termómetro interno del contenedor supera los 35°C. Sitúa tu compostera a la sombra absoluta en el balcón. Pulveriza agua fina sobre la cubierta superior para lograr enfriamiento evaporativo y entierra una botella plástica pequeña llena de agua congelada en una esquina del contenedor; las lombrices se arrimarán a ella para escapar del calor extremo.
 *   **En Invierno (Mañanas frías 0°C - 4°C)**: Las bajas temperaturas inducen un letargo metabólico donde se detiene la alimentación y reproducción. Adosa tu vermicompostera a un muro de hormigón orientado al norte o al este para aprovechar su inercia térmica (absorbe calor solar de día y lo irradia de noche). Agrega mantas interiores de arpillera húmeda sobre el sustrato.
 
 <blockquote>

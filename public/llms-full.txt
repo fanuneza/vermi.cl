@@ -32,7 +32,7 @@ En el clima de Santiago y el valle central, la baja humedad relativa del aire pu
 ## 2. Qué alimentos NO dar a tus lombrices y por qué
 URL de Referencia: https://vermi.cl/blog/que-alimentos-no-dar
 
-El colapso de una vermicompostera doméstica se asocia comúnmente al fenómeno de sobrealimentación. Los principiantes suelen asumir que añadir grandes volúmenes de alimento fresco beneficia a la población de lombrices, pero la realidad biológica es distinta. Las lombrices californianas (Eisenia fetida) consumen el biofilm bacteriano y de microorganismos que prolifera sobre la materia orgánica en descomposición. Echar alimentos inadecuados rompe el equilibrio químico del lecho.
+El colapso de una vermicompostera doméstica se asocia comúnmente al fenómeno de sobrealimentación. Los principiantes suelen asumir que añadir grandes volúmenes de alimento fresco beneficia a la población de lombrices, pero la realidad biológica es distinta. Las lombrices californianas (Eisenia fetida) consumen el biofilm bacteriano y de microorganismos que prolifera sobre la materia orgánica en descomposición. Echar alimentos inadecuados rompe el equilibrio químico del sustrato.
 
 ### Alimentos prohibidos (Peligro absoluto)
 *   **Carnes, grasas y lácteos**: Provocan putrefacción anaeróbica, malos olores intensos y atraen moscas de la carne y roedores.
@@ -40,12 +40,12 @@ El colapso de una vermicompostera doméstica se asocia comúnmente al fenómeno 
 *   **Heces de mascotas carnívoras (perros/gatos)**: Contienen patógenos y parásitos peligrosos que sobreviven al vermicompostaje doméstico.
 
 ### Alimentos con los que moderar el pH (Uso restringido)
-*   **Cítricos y cebollas**: Contienen aceites irritantes y acidifican fuertemente el pH. Un lecho muy ácido desencadena una fermentación ácida que provoca la fuga nocturna de las lombrices. 
+*   **Cítricos y cebollas**: Contienen aceites irritantes y acidifican fuertemente el pH. Un sustrato muy ácido desencadena una fermentación ácida que provoca la fuga nocturna de las lombrices. 
 *   **Neutralización**: Equilibra siempre los alimentos ácidos agregando cáscara de huevo molida (carbonato de calcio), que actúa como un amortiguador de pH natural.
 
 ### Prevención de la plaga de mosquitas en departamento
 1.  **La regla de la cubierta seca**: Cada vez que agregues materia orgánica húmeda (verde), cúbrela con una capa gruesa (2-4 cm) de cartón o papel de diario picado sin adhesivos químicos.
-2.  **Trocear e incorporar**: Entierra ligeramente la comida bajo el lecho activo en lugar de dejarla expuesta en la superficie.
+2.  **Trocear e incorporar**: Entierra ligeramente la comida bajo el sustrato activo en lugar de dejarla expuesta en la superficie.
 
 ---
 
@@ -57,10 +57,10 @@ Comenzar a compostar con lombrices californianas en un departamento urbano en Sa
 ### La cama perfecta sin insumos importados
 *   **Cartón corrugado picado**: Reúne cajas de cartón café de embalaje. Córtalo en pedazos pequeños y remójalo en agua limpia. Estruja con fuerza hasta que no gotee.
 *   **Papel de diario picado**: Aporta celulosa y actúa como un excelente aislante térmico.
-*   **Bandejas de huevo trituradas**: Aportan porosidad estructural que evita el apelmazamiento de la cuna y facilita la oxigenación bacteriana.
+*   **Bandejas de huevo trituradas**: Aportan porosidad estructural que evita el apelmazamiento del sustrato y facilita la oxigenación bacteriana.
 
 ### El clima de Santiago: Mitigación térmica en balcones
-*   **En Verano (Olas de calor >30°C)**: Sitúa tu compostera a la sombra absoluta en el balcón. Pulveriza agua fina sobre la cubierta superior para lograr enfriamiento evaporativo y entierra una botella plástica pequeña llena de agua congelada en una esquina del lecho como escape térmico.
+*   **En Verano (Olas de calor >30°C)**: Sitúa tu compostera a la sombra absoluta en el balcón. Pulveriza agua fina sobre la cubierta superior para lograr enfriamiento evaporativo y entierra una botella plástica pequeña llena de agua congelada en una esquina del contenedor como escape térmico.
 *   **En Invierno (Mañanas frías 0°C - 4°C)**: Adosa tu vermicompostera a un muro de hormigón orientado al norte o al este para aprovechar su inercia térmica. Agrega mantas interiores de arpillera húmeda sobre el sustrato.
 
 ### Apoyo municipal y dónde conseguir lombrices en RM

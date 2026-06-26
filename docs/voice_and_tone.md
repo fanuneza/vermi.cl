@@ -27,16 +27,16 @@ El contenido debe redactarse pensando en tres perfiles diferenciados:
 ---
 
 ## 3. Tono y Estilo de Redacción
-* **Español Chileno Natural ("Tuteo")**: Escribe de "tú" ("Aprende", "Monta tu cuna", "Si ves que..."). Evita expresiones demasiado peninsulares o traducciones literales de guías anglosajonas. Usa modismos chilenos naturales sin caer en la informalidad vulgar (ej. "¡Wena!", "Dale una mano", "Huerteros").
+* **Español Chileno Natural ("Tuteo")**: Escribe de "tú" ("Aprende", "Prepara tu compostera", "Si ves que..."). Evita expresiones demasiado peninsulares o traducciones de guías anglosajonas. Usa modismos chilenos naturales y cercanos, pero evita caer en jergas informales o vulgares (evita términos como "¡Wena!", "huerteros", o "dale una mano").
 * **Científicamente Fundamentado**: Todo consejo práctico debe estar respaldado por la biología. En lugar de decir "no agregues mucha comida porque huele mal", explica la física y química detrás:
-  > *"El exceso de comida húmeda compacta el lecho, bloqueando el oxígeno. Esto genera condiciones anaeróbicas (sin aire) donde proliferan bacterias que acidifican el pH, liberando gases de amoníaco que irritan la piel permeable de tus lombrices."*
+  > *"El exceso de comida húmeda compacta el sustrato, bloqueando el oxígeno. Esto genera condiciones anaeróbicas (sin aire) donde proliferan bacterias que acidifican el pH, liberando gases de amoníaco que irritan la piel permeable de tus lombrices."*
 * **Cercano pero Riguroso**: El tono es el de un vecino agrónomo o un amigo experto. No asustes al lector, acompáñalo en sus errores.
 
 ---
 
 ## 4. Mitigación del "Factor Repulsivo"
 La descomposición y los gusanos pueden generar rechazo inicial. El texto debe mitigar este factor:
-* **Uso de Términos Adecuados**: Prefiere "cama de cultivo", "sustrato", " Eisenia fetida", "lombrices californianas" o "núcleo de cría" en lugar de palabras con connotaciones sucias.
+* **Uso de Términos Adecuados**: Prefiere "sustrato", "medio", "compostera", "Eisenia fetida", "lombrices californianas" o "núcleo de cría" en lugar de términos rebuscados o con connotaciones sucias. Evita utilizar "cuna de lombrices" o "lecho" por resultar poco naturales en el hablar chileno; prefiere "compostera", "vermicompostera", "caja", "contenedor", "medio" o "sustrato".
 * **Enfoque en Soluciones Científicas**:
   * Para evitar mosquitas de la fruta: Enseñar la técnica de la **cubierta seca permanente** (papel o cartón picado que bloquea el acceso de insectos).
   * Para acelerar la asimilación: Explicar el truco de **congelar y triturar los residuos**. Al congelarse, el agua se expande en cristales de hielo que rompen las paredes celulares de los vegetales, permitiendo que las bacterias colonicen la materia orgánica en tiempo récord al descongelarse.

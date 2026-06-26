@@ -12,11 +12,11 @@ author: "Camila Verdejo"
 
 El colapso de una vermicompostera doméstica se asocia comúnmente al fenómeno de sobrealimentación. Los principiantes suelen asumir que añadir grandes volúmenes de alimento fresco beneficia a la población de lombrices, pero la realidad biológica es distinta.
 
-Las lombrices californianas (*Eisenia fetida*) no consumen directamente el tejido vegetal fresco, sino el biofilm bacteriano y de microorganismos que prolifera sobre la materia orgánica en descomposición. Echar alimentos inadecuados rompe el equilibrio químico del lecho y puede diezmar tu colonia.
+Las lombrices californianas (*Eisenia fetida*) no consumen directamente el tejido vegetal fresco, sino el biofilm bacteriano y de microorganismos que prolifera sobre la materia orgánica en descomposición. Echar alimentos inadecuados rompe el equilibrio químico del sustrato y puede diezmar tu colonia.
 
 <div id="sec1"></div>
 
-## 1. Alimentos prohibidos: Peligro absoluto en el lecho
+## 1. Alimentos prohibidos: Peligro absoluto en la compostera
 
 Existen ciertos elementos que nunca deben verterse en el sistema debido a riesgos sanitarios y de putrefacción:
 
@@ -28,7 +28,7 @@ Existen ciertos elementos que nunca deben verterse en el sistema debido a riesgo
 
 ## 2. Alimentos con los que moderar el pH (Uso restringido)
 
-*   **Cítricos y cebollas**: En Chile abundan limones y cebollas. Sin embargo, contienen aceites irritantes y acidifican fuertemente el pH. Un lecho muy ácido desencadena una fermentación ácida que provoca la fuga nocturna de las lombrices. 
+*   **Cítricos y cebollas**: En Chile abundan limones y cebollas. Sin embargo, contienen aceites irritantes y acidifican fuertemente el pH. Un sustrato muy ácido desencadena una fermentación ácida que provoca la fuga nocturna de las lombrices. 
 *   **¿Cómo dar cebolla de forma segura?**: Congélala previamente. Al congelarse, el agua interna forma cristales de hielo que rompen las paredes celulares del tejido. Al descongelarla, se ablanda y es colonizada rápidamente por microorganismos que neutralizan sus aceites antes de que afecte a las lombrices.
 
 <blockquote>
@@ -42,4 +42,4 @@ Existen ciertos elementos que nunca deben verterse en el sistema debido a riesgo
 Si vives en departamento, la mosca de la fruta es tu peor enemiga. Sigue estas dos directrices científicas:
 
 1.  **La regla de la cubierta seca**: Cada vez que agregues materia orgánica húmeda (verde), cúbrela con una capa gruesa (2-4 cm) de cartón o papel de diario picado sin adhesivos químicos. Esto crea una barrera física que impide que las moscas depositen sus huevos.
-2.  **Trocear e incorporar**: Entierra ligeramente la comida bajo el lecho activo en lugar de dejarla expuesta en la superficie.
+2.  **Trocear e incorporar**: Entierra ligeramente la comida bajo el sustrato activo en lugar de dejarla expuesta en la superficie.

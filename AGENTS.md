@@ -79,7 +79,7 @@ All visual elements must conform to the **Organic-Brutalism Eco-Zine / Handcraft
 
 ## 7. Voice, Tone, and Copywriting
 - **Guidelines**: Refer to `docs/voice_and_tone.md` before generating or editing content.
-- **Chilean Spanish**: Content must use natural Chilean Spanish "tuteo" (e.g., "Aprende", "Tu vermi", "¡Wena!"). Use correct accents and grammar.
+- **Chilean Spanish**: Content must use natural Chilean Spanish "tuteo" (e.g., "Aprende", "Tu vermi", "Comienza"). Use correct accents and grammar.
 - **Scientific Grounding**: Explain biological concepts (Eisenia fetida, metabolic lethargy, overfeeding, acidification) scientifically to resolve user anxiety and mitigate the "factor repulsivo".
 - **Encoding**: All files must be UTF-8. Never introduce mojibake or corrupted accent sequences.
 

@@ -1,6 +1,6 @@
 # vermi.cl 🪱
 
-¡Wena! Bienvenidos a **vermi.cl**, un centro educativo y tecnológico chileno enfocado en la **lombricultura urbana (worm composting)** adaptada al clima de la biorregión central de Chile. 
+Bienvenidos a **vermi.cl**, un centro educativo y tecnológico chileno enfocado en la **lombricultura urbana (vermicompostaje)** adaptada al clima de la biorregión central de Chile. 
 
 El portal es 100% de código abierto, sin fines comerciales ni e-commerce, diseñado para divulgar la ciencia de la lombricultura y empoderar a hogares (de departamento y de casa) para que reciclen sus residuos orgánicos de forma exitosa mediante *Eisenia fetida* (lombriz californiana).
 
