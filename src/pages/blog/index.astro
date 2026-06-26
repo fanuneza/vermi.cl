@@ -1,0 +1,180 @@
+---
+// index.astro - Guides archive page with category filtering
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+// Get URL parameters on compilation/ssr/client side context
+const categoryFilter = Astro.url.searchParams.get('category');
+
+const posts = await getCollection('blog');
+const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+// Filter by category if param is present
+const filteredPosts = categoryFilter 
+  ? sortedPosts.filter(post => post.data.category === categoryFilter)
+  : sortedPosts;
+
+const categories = ['Manual', 'Alimentación', 'Problemas', 'Cosecha'];
+
+const archiveSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Guías de Vermicompostaje",
+  "description": "Explora nuestras guías clasificadas para principiantes, alimentación de lombrices, control de plagas y cosecha de humus."
+};
+---
+
+<BaseLayout title="Archivo de Guías" description="Explora nuestras guías y manuales educativos de vermicompostaje doméstico en Chile." schema={archiveSchema}>
+  <section class="archive-section px-margin py-stack-gap">
+    <div class="max-w-container">
+      <h1 class="archive-title">Archivo de Guías</h1>
+      <p class="archive-desc">
+        Aprende el funcionamiento biológico de tu compostera y neutraliza los problemas típicos del clima mediterráneo de Chile.
+      </p>
+
+      <!-- Category Filter Chips -->
+      <div class="filter-container">
+        <span class="filter-label">Filtrar por categoría:</span>
+        <div class="filter-chips">
+          <a href="/blog" class={`chip-btn ${!categoryFilter ? 'active' : ''}`}>
+            Todos
+          </a>
+          {categories.map(cat => (
+            <a 
+              href={`/blog?category=${cat}`} 
+              class={`chip-btn ${categoryFilter === cat ? 'active' : ''}`}
+            >
+              {cat}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Articles Grid -->
+      {filteredPosts.length > 0 ? (
+        <div class="archive-grid">
+          {filteredPosts.map((post, idx) => {
+            const rotations = ["rotate(-1deg)", "rotate(1.5deg)", "rotate(-0.5deg)", "rotate(1deg)"];
+            const rot = rotations[idx % rotations.length];
+            return (
+              <BlogCard
+                title={post.data.title}
+                description={post.data.description}
+                slug={post.id}
+                pubDate={post.data.pubDate}
+                category={post.data.category}
+                difficulty={post.data.difficulty}
+                readingTime={post.data.readingTime}
+                rotation={rot}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <div class="no-results brutal-card">
+          <h3>No se encontraron guías en esta categoría</h3>
+          <p>Pronto publicaremos más artículos sobre esta temática. Mientras tanto, explora las demás categorías.</p>
+          <a href="/blog" class="btn-brutal btn-brutal-primary mt-4">Ver todas las guías</a>
+        </div>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .archive-title {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-ink);
+  }
+
+  .archive-desc {
+    font-size: 1.125rem;
+    color: var(--color-gray-700);
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+  }
+
+  .filter-container {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .filter-label {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .filter-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .chip-btn {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: var(--color-ink);
+    border: 2px solid var(--color-ink);
+    padding: 0.4rem 1rem;
+    background-color: var(--color-white);
+    box-shadow: 2px 2px 0px 0px var(--color-ink);
+    text-decoration: none;
+    transition: all 0.1s ease;
+  }
+  .chip-btn:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0px 0px var(--color-ink);
+    background-color: var(--color-gray-100);
+  }
+  .chip-btn.active {
+    background-color: var(--color-forest);
+    color: var(--color-white);
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 0px 0px var(--color-ink);
+  }
+
+  .archive-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .archive-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .archive-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    border-radius: 0;
+  }
+  .no-results h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .no-results p {
+    color: var(--color-gray-700);
+    margin-bottom: 1.5rem;
+  }
+  
+  .mt-4 {
+    margin-top: 1rem;
+  }
+</style>

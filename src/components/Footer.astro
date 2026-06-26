@@ -1,0 +1,108 @@
+---
+// Footer.astro - Chunky Handcrafted Zine Footer
+---
+<footer class="footer-container">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="logo">vermi.cl</span>
+      <p class="copyright">© 2026 vermi.cl — Hecho con tierra, lombrices y mucho cariño.</p>
+    </div>
+    
+    <div class="footer-links">
+      <a href="#privacidad" class="footer-link">Privacidad</a>
+      <a href="#contacto" class="footer-link">Contacto</a>
+      <a href="#sustentabilidad" class="footer-link">Sustentabilidad</a>
+      <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="footer-link instagram-link">
+        Instagram
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-container {
+    background-color: var(--color-white);
+    border: 3px solid var(--color-ink);
+    box-shadow: 6px 6px 0px 0px var(--color-ink);
+    margin: 4rem var(--spacing-margin-mobile) 2rem var(--spacing-margin-mobile);
+    padding: 2rem;
+    max-width: 1140px;
+    width: calc(100% - 2 * var(--spacing-margin-mobile));
+    align-self: center;
+  }
+
+  @media (min-width: 1140px) {
+    .footer-container {
+      width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1.5fr 1fr;
+    }
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 900;
+    color: var(--color-terracotta);
+    transform: rotate(-1.5deg);
+    display: inline-block;
+  }
+
+  .copyright {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-gray-700);
+  }
+
+  .footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .footer-links {
+      justify-content: flex-end;
+    }
+  }
+
+  .footer-link {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: var(--color-ink);
+    text-decoration: none;
+    transition: transform 0.1s ease;
+  }
+  .footer-link:hover {
+    color: var(--color-forest);
+    transform: translateY(-2px);
+  }
+
+  .instagram-link {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+</style>

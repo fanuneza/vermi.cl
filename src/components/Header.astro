@@ -1,0 +1,131 @@
+---
+// Header.astro - Reusable Scrapbook Navigation Bar
+---
+<nav class="nav-bar">
+  <a href="/" class="logo-link">
+    <div class="logo">
+      vermi.cl
+    </div>
+  </a>
+
+  <div class="nav-links">
+    <a class="nav-link" href="/">Inicio</a>
+    <a class="nav-link active" href="/blog">Guías</a>
+    <a class="nav-link" href="#comunidad">Comunidad</a>
+    <a class="nav-link" href="#nosotros">Nosotros</a>
+  </div>
+
+  <div class="nav-actions">
+    <!-- Inline SVG Search Icon to optimize Lighthouse scores -->
+    <a href="#buscar" class="search-btn" aria-label="Buscar">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </a>
+    <a href="#unirse" class="btn-brutal btn-unirse">
+      Unirse
+    </a>
+  </div>
+</nav>
+
+<style>
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background-color: var(--color-bg-warm);
+    border-bottom: 4px solid var(--color-ink);
+    box-shadow: 6px 6px 0px 0px var(--color-ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem var(--spacing-margin-mobile);
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .nav-bar {
+      padding: 1rem var(--spacing-margin-desktop);
+    }
+  }
+
+  .logo-link {
+    text-decoration: none;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--color-forest);
+    border: 2px solid var(--color-ink);
+    padding: 0.25rem 0.5rem;
+    transform: rotate(-2deg);
+    background-color: var(--color-white);
+    box-shadow: 4px 4px 0px 0px var(--color-ink);
+    transition: transform 0.2s ease;
+  }
+  .logo:hover {
+    transform: rotate(0deg);
+  }
+
+  .nav-links {
+    display: none;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .nav-link {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--color-ink);
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+  }
+  .nav-link:hover {
+    color: var(--color-forest);
+    transform: translate(1px, 1px);
+  }
+  .nav-link.active {
+    color: var(--color-forest);
+    border-bottom-color: var(--color-forest);
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .search-btn {
+    display: flex;
+    align-items: center;
+    color: var(--color-forest);
+    transition: transform 0.1s ease;
+  }
+  .search-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .btn-unirse {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    transform: rotate(1deg);
+    background-color: var(--color-terracotta);
+    color: var(--color-white);
+    border-radius: 0;
+  }
+  .btn-unirse:hover {
+    transform: translate(2px, 2px) rotate(1deg);
+    box-shadow: 2px 2px 0px 0px var(--color-ink);
+  }
+  .btn-unirse:active {
+    transform: translate(4px, 4px) rotate(1deg);
+    box-shadow: 0px 0px 0px 0px var(--color-ink);
+  }
+</style>

@@ -1,0 +1,168 @@
+---
+// BlogCard.astro - Reusable Neo-Brutalist Zine Post Card
+interface Props {
+  title: string;
+  description: string;
+  slug: string;
+  pubDate: Date;
+  category: 'Manual' | 'Alimentación' | 'Problemas' | 'Cosecha';
+  difficulty?: string;
+  readingTime?: string;
+  rotation?: string; // e.g. "rotate(1deg)" or "rotate(-1.5deg)"
+}
+
+const { title, description, slug, pubDate, category, difficulty = "Básico", readingTime, rotation = "rotate(0deg)" } = Astro.props;
+
+// Date formatter
+const formattedDate = pubDate.toLocaleDateString('es-CL', {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric'
+}).toUpperCase();
+
+// Category styles mapping
+const categoryMeta = {
+  Manual: {
+    bg: '#FFFDF0', // Warm Cream
+    tagBg: '#D2691E',
+    tagText: '#FFFFFF',
+    label: 'MANUAL DE INICIO',
+    badge: 'BÁSICO'
+  },
+  Alimentación: {
+    bg: '#FFDBD0', // Terracotta Light
+    tagBg: '#1E3C2B',
+    tagText: '#FFFFFF',
+    label: 'ALIMENTACIÓN',
+    badge: 'DIARIO'
+  },
+  Problemas: {
+    bg: '#FFFBEA', // Warning Yellow
+    tagBg: '#C81D25',
+    tagText: '#FFFFFF',
+    label: 'SOLUCIÓN DE PROBLEMAS',
+    badge: 'URGENTE'
+  },
+  Cosecha: {
+    bg: '#B1F0CE', // Lighter Green
+    tagBg: '#1E3C2B',
+    tagText: '#FFFFFF',
+    label: 'COSECHA Y HUMUS',
+    badge: 'RECOMPENSA'
+  }
+};
+
+const meta = categoryMeta[category] || categoryMeta.Manual;
+---
+
+<a href={`/blog/${slug}`} class="card-link" style={`transform: ${rotation};`}>
+  <article class="brutal-card card-article" style={`background-color: ${meta.bg};`}>
+    <div class="card-header">
+      <span class="sticker-badge card-tag" style={`background-color: ${meta.tagBg}; color: ${meta.tagText};`}>
+        {meta.label}
+      </span>
+      <span class="date-label">{formattedDate}</span>
+    </div>
+    
+    <h3 class="card-title">{title}</h3>
+    <p class="card-desc">{description}</p>
+    
+    <div class="card-footer">
+      {readingTime && <span class="meta-item">{readingTime}</span>}
+      <span class="difficulty-badge">{difficulty}</span>
+    </div>
+  </article>
+</a>
+
+<style>
+  .card-link {
+    display: block;
+    text-decoration: none;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card-article {
+    border: var(--border-width-brutal) solid var(--color-ink);
+    box-shadow: var(--shadow-brutal);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 250px;
+    padding: 1.5rem;
+    transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .card-link:hover .card-article {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px var(--color-ink);
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .card-tag {
+    box-shadow: 2px 2px 0px 0px var(--color-ink);
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-width: 2px;
+  }
+
+  .date-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-gray-700);
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-ink);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-desc {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-gray-700);
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px dashed var(--color-ink);
+    padding-top: 0.75rem;
+    margin-top: auto;
+  }
+
+  .meta-item {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-gray-500);
+  }
+
+  .difficulty-badge {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    border: 2px solid var(--color-ink);
+    padding: 0.1rem 0.4rem;
+    background-color: var(--color-white);
+  }
+</style>

@@ -141,3 +141,13 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Astro, Wrangler, and local tool directories
+.astro/
+.wrangler/
+.antigravitycli/
+dist/
+
+# Project documentation ignores (keep only tone & voice)
+docs/*
+!docs/voice_and_tone.md
