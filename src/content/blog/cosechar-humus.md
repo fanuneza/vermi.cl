@@ -37,7 +37,7 @@ El objetivo principal es separar el humus de las lombrices sin causarles estrés
 1.  **Dejar de alimentar la bandeja inferior**: Cuando la bandeja inferior parezca lista, deja de añadir comida fresca en ella.
 2.  **Preparar el nivel superior**: Coloca comida altamente atractiva (como cáscaras de plátano congeladas y trituradas) en la bandeja inmediatamente superior junto con abundante cartón húmedo.
 3.  **Aprovechar la migración**: Las lombrices, hambrientas y atraídas por los compuestos volátiles de la fruta fresca, subirán por los orificios del fondo de la nueva bandeja en un plazo de 10 a 14 días.
-4.  **Retirar la bandeja inferior**: Una vez que la gran mayoría de la población haya subido, la bandeja inferior contendrá humus prácticamente libre de lombrices, listo para tamizar.
+4.  **Retirar la bandeja inferior**: Una vez que la gran mayoría de la población haya subido, la bandeja inferior contendrá humus prácticamente libre de lombrices, listo para tamizar o harnear.
 
 <div id="sec3"></div>
 

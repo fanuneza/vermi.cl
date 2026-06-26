@@ -19,7 +19,7 @@ El contenido debe redactarse pensando en tres perfiles diferenciados:
    * **Necesidad**: Guías paso a paso ultra simplificadas, validación visual y respuestas inmediatas (ej. "¿Le puedo echar esto?").
 2. **Horticultores Suburbanos Intermedios**:
    * **Dolores/Ansiedades**: Manejo de sistemas modulares en patios o terrazas, optimización de humedad y aceleración del ciclo durante estaciones cambiantes.
-   * **Necesidad**: Instrucciones detalladas sobre balances de carbono/nitrógeno (marrón vs. verde) y mantenimiento de la humedad en climas secos.
+   * **Necesidad**: Instrucciones detalladas sobre balances de carbono/nitrógeno (café vs. verde) y mantenimiento de la humedad en climas secos.
 3. **Optimizadores Técnicos de Alto Rendimiento**:
    * **Dolores/Ansiedades**: Calidad del humus, control exacto de macronutrientes (NPK), reproducción acelerada y gestión de sistemas continuos (CFT) a mayor escala.
    * **Necesidad**: Artículos con fundamentos de biología molecular de *Eisenia fetida*, tasas de degradación y física de la inercia térmica.
@@ -62,3 +62,22 @@ Las guías internacionales recomiendan insumos o cuidados incompatibles con el c
 Cuando sea pertinente, el contenido debe vincularse al ecosistema local:
 * **Programas Municipales**: Informar sobre la entrega de vermicomposteras gratuitas en comunas aliadas de la Región Metropolitana (ej. Peñalolén, Ñuñoa, Providencia, Maipú).
 * **Proveedores Locales**: Mencionar alternativas para adquirir núcleos de lombrices de forma ética y local (ej. *Lombrices Californianas Chile* en Puente Alto, *De Raiz Chile* en Lo Barnechea, *Geociclos* o *Humus Chile*).
+
+---
+
+## 7. Glosario de Jerga Aceptada y Vocabulario Técnico
+
+Para evitar traducciones literales o tecnicismos poco naturales y adaptarnos al vocabulario real chileno, sigue esta tabla de equivalencias en todo el contenido:
+
+| Término a Evitar | Término Aceptado | Justificación Científica y Contexto Chileno |
+| :--- | :--- | :--- |
+| **Gusanos**, **Bichos** | **Lombrices**, **Lombrices californianas**, o *Eisenia fetida* | "Gusanos" evoca suciedad (factor repulsivo). *Eisenia fetida* (en cursiva) aporta el rigor científico necesario. |
+| **Cuna**, **Nido** | **Compostera**, **Vermicompostera**, o **Contenedor** | "Cuna" suena infantil o poco natural en el hablar cotidiano chileno. "Compostera" o "vermicompostera" es la denominación estándar en Chile; "caja" o "contenedor" se usan cuando nos referimos al cajón plástico físico. |
+| **Lecho**, **Cama** | **Sustrato**, **Medio**, o **Zona de actividad** | "Lecho" y "cama" son traducciones literales del inglés (*bedding*). En Chile se habla de "sustrato de cultivo" o "medio". |
+| **Humus líquido** | **Lixiviados** | El humus es estrictamente sólido (materia orgánica estabilizada). El líquido que drena es agua excedente cargada de nutrientes solubles, llamada científicamente **lixiviado**. Nunca debe llamarse humus líquido. |
+| **Té de humus**, **Té de compost** | **Té de humus** (solo si es aireado activamente) | El lixiviado (drenaje pasivo) no es lo mismo que el "té de humus" (que es una infusión de humus sólido aireada con una bomba para multiplicar bacterias aeróbicas). |
+| **Basura orgánica**, **Desechos** | **Residuos húmedos**, **Aportes verdes**, o **Sobras de cocina** | "Basura" desvaloriza el residuo. "Aporte verde" o "sobras de cocina" son términos más cercanos y útiles para explicar la relación química carbono-nitrógeno (C:N). |
+| **Aporte marrón**, **Secos** | **Aporte café**, **Material seco**, o **Cubierta seca** | En Chile no se usa "marrón", sino "café". Hablamos de "aportes cafés" o "material seco" (cartón, hojas secas) para equilibrar la humedad de los aportes verdes. |
+| **Cosechar humus** | **Cosechar**, **Tamizar**, o **Harnear** | "Tamizar" o "harnear" (pasar por una rejilla/harnero para separar las lombrices del compost terminado) son los términos cotidianos locales de los huerteros en Chile. |
+| **Líquido de abajo** | **Bandeja de recolección** o **Colector de líquidos** | Define formalmente la parte inferior de la vermicompostera donde se acumulan los lixiviados. |
+
