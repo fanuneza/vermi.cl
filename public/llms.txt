@@ -1,13 +1,16 @@
 # vermi.cl - Lombricultura doméstica en Chile
 
-Portal educativo dedicado al vermicompostaje doméstico, reciclaje orgánico y biología del suelo adaptado al clima de Chile.
+> Portal educativo dedicado al vermicompostaje doméstico, reciclaje orgánico y biología del suelo adaptado al clima de Chile.
 
 ## Canales principales
-- Inicio: https://vermi.cl (contiene buscador "¿Puedo echarle esto?")
-- Guías y manuales: https://vermi.cl/blog
-- Canal RSS: https://vermi.cl/feed.xml
+- [Inicio](https://vermi.cl) (contiene buscador "¿Puedo echarle esto?")
+- [Guías y manuales](https://vermi.cl/blog)
+- [Canal RSS](https://vermi.cl/feed.xml)
 
 ## Guías del repositorio
-- Cosecha de humus: https://vermi.cl/blog/cosechar-humus
-- Alimentos prohibidos: https://vermi.cl/blog/que-alimentos-no-dar
-- Vermicompostaje en departamento: https://vermi.cl/blog/vermi-en-departamento
+- [Cosecha de humus](https://vermi.cl/blog/cosechar-humus)
+- [Alimentos prohibidos](https://vermi.cl/blog/que-alimentos-no-dar)
+- [Vermicompostaje en departamento](https://vermi.cl/blog/vermi-en-departamento)
+
+## Optional
+- [Manual completo para LLMs](https://vermi.cl/llms-full.txt) - Versión completa e indexable de todos los contenidos.

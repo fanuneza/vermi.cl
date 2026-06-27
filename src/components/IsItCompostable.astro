@@ -84,8 +84,7 @@
     return indexPromise;
   };
 
-  // Eagerly trigger search index load immediately in the background
-  loadSearchIndex();
+  // We removed the eager global loadSearchIndex() call to optimize Lighthouse scores.
 
   const normalizeString = (str: string) => 
     str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -101,7 +100,7 @@
   const renderMarkdownItalics = (str: string) => 
     escapeHTML(str).replace(/\*(.*?)\*/g, "<i>$1</i>");
 
-  const handleSearchEvent = () => {
+  const handleSearchEvent = async () => {
     const rawQuery = lookupInput.value.trim();
     const query = normalizeString(rawQuery);
     
@@ -112,6 +111,7 @@
       return;
     }
 
+    await loadSearchIndex();
     if (!isIndexLoaded) return;
 
     // Tiered search matching to prioritize names over keywords
@@ -169,6 +169,10 @@
   lookupInput.addEventListener('focus', () => loadSearchIndex());
   lookupInput.addEventListener('input', handleSearchEvent);
 
+  // Prefetch index on mouse hover or touch start to speed up response
+  lookupInput.addEventListener('pointerover', () => loadSearchIndex(), { once: true });
+  lookupInput.addEventListener('touchstart', () => loadSearchIndex(), { once: true });
+
   // Suggestion buttons click handler
   suggestionButtons.forEach(btn => {
     btn.addEventListener('click', async (e) => {
@@ -177,5 +181,8 @@
       await loadSearchIndex();
       handleSearchEvent();
     });
+    // Prefetch index on suggestion button hover/touch
+    btn.addEventListener('pointerover', () => loadSearchIndex(), { once: true });
+    btn.addEventListener('touchstart', () => loadSearchIndex(), { once: true });
   });
 </script>
