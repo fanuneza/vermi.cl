@@ -37,7 +37,7 @@ Existen ciertos elementos que nunca deben verterse en el sistema debido a riesgo
 
 <div id="sec3"></div>
 
-## 3. Prevención de la plaga de mosquitas en departamento
+## 3. Prevención de la plaga de mosquitos en departamento
 
 Si vives en departamento, la mosca de la fruta es tu peor enemiga. Sigue estas dos directrices científicas:
 

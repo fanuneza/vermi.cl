@@ -10,13 +10,13 @@ author: "Fabián Núñez"
 
 <div id="intro"></div>
 
-Comenzar a compostar con lombrices californianas en un departamento urbano en Santiago genera un gran dilema inicial: la preocupación por los malos olores y el miedo a una invasión de mosquitas en el balcón o la cocina. 
+Comenzar a compostar con lombrices californianas en un departamento urbano en Santiago genera un gran dilema inicial: la preocupación por los malos olores y el miedo a una invasión de mosquitos en el balcón o la cocina. 
 
 La buena noticia es que un sistema de vermicompostaje doméstico bien equilibrado es completamente inodoro. De hecho, produce un agradable aroma a tierra mojada de bosque sureño. La clave está en comprender las bases biológicas del ecosistema y usar los insumos locales a nuestro favor.
 
 <div id="sec1"></div>
 
-## 1. La cama perfecta: sustrato inicial sin insumos importados
+## 1. El sustrato inicial perfecto sin insumos importados
 
 Muchos manuales internacionales sugieren usar turba o fibra de coco para armar el sustrato inicial. En Chile, esto no es necesario y va en contra de la sustentabilidad. Podemos armar un sustrato perfecto con materiales de desecho local:
 

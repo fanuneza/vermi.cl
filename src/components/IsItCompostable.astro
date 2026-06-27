@@ -2,7 +2,7 @@
 // IsItCompostable.astro - The "¿Las lombrices pueden comer esto?" Interactive Widget
 ---
 <div class="relative w-full max-w-4xl bg-surface-container-high border-4 border-on-background organic-shape-3 p-6 md:p-12 shadow-hard my-8 z-10 box-border mx-auto">
-  <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-surface text-on-background font-headline text-xl md:text-2xl px-6 py-2 border-4 border-on-background shadow-hard-sm rotate-[-2deg] font-black whitespace-nowrap uppercase">
+  <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-surface text-on-background font-headline text-sm md:text-2xl px-4 md:px-6 py-2 border-4 border-on-background shadow-hard-sm rotate-[-2deg] font-black w-[90%] md:w-auto text-center md:whitespace-nowrap uppercase">
     ¿Las lombrices pueden comer esto?
   </div>
 
@@ -53,6 +53,7 @@
 <script>
   let searchIndex: any[] = [];
   let isIndexLoaded = false;
+  let indexPromise: Promise<void> | null = null;
 
   const lookupInput = document.getElementById('food-lookup-input') as HTMLInputElement;
   const statusDisplay = document.getElementById('status-display-card') as HTMLDivElement;
@@ -64,18 +65,27 @@
   const matchedInstructions = document.getElementById('matched-instructions') as HTMLParagraphElement;
   const suggestionButtons = document.querySelectorAll('.btn-suggestion');
 
-  // Lazy-load the static JSON search index on first interaction
-  const loadSearchIndex = async () => {
-    if (isIndexLoaded) return;
-    try {
-      const response = await fetch('/api/alimentos.json');
-      if (!response.ok) throw new Error('Error al descargar el índice de alimentos.');
-      searchIndex = await response.json();
-      isIndexLoaded = true;
-    } catch (error) {
-      console.error('Error de inicialización del buscador local:', error);
-    }
+  // Eager load / lazy fallback index loader
+  const loadSearchIndex = (): Promise<void> => {
+    if (indexPromise) return indexPromise;
+    indexPromise = fetch('/api/alimentos.json')
+      .then(res => {
+        if (!res.ok) throw new Error('Error al descargar el índice de alimentos.');
+        return res.json();
+      })
+      .then(data => {
+        searchIndex = data;
+        isIndexLoaded = true;
+      })
+      .catch(err => {
+        console.error('Error de inicialización del buscador local:', err);
+        indexPromise = null; // Reset promise to allow retry
+      });
+    return indexPromise;
   };
+
+  // Eagerly trigger search index load immediately in the background
+  loadSearchIndex();
 
   const normalizeString = (str: string) => 
     str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
@@ -104,7 +114,7 @@
 
     if (!isIndexLoaded) return;
 
-    // Tiered search matching to prioritize names over keywords (e.g. "palta" matches palta.json instead of cuescos.json)
+    // Tiered search matching to prioritize names over keywords
     let filteredItem = searchIndex.find((item: any) => normalizeString(item.name) === query);
     
     if (!filteredItem) {
@@ -123,7 +133,7 @@
       fallbackMessage.classList.add('hidden');
       statusDisplay.classList.remove('hidden');
 
-      // Safe DOM manipulation to prevent XSS
+      // Safe DOM manipulation
       matchedFoodName.textContent = filteredItem.name;
 
       if (filteredItem.nutrition) {
@@ -156,15 +166,15 @@
   };
 
   // Bind event listeners
-  lookupInput.addEventListener('focus', loadSearchIndex);
+  lookupInput.addEventListener('focus', () => loadSearchIndex());
   lookupInput.addEventListener('input', handleSearchEvent);
 
   // Suggestion buttons click handler
   suggestionButtons.forEach(btn => {
     btn.addEventListener('click', async (e) => {
-      await loadSearchIndex();
       const food = (e.currentTarget as HTMLButtonElement).getAttribute('data-food') || '';
       lookupInput.value = food;
+      await loadSearchIndex();
       handleSearchEvent();
     });
   });
