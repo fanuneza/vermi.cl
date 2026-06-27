@@ -1,0 +1,72 @@
+---
+// sustentabilidad.astro - Sustainability Report Page
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Reporte de Sostenibilidad" 
+  description="Explora el impacto ambiental de nuestra comunidad y el volumen de residuos orgánicos recuperados mediante vermicompostaje en Chile."
+  mainClass="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-16 flex-grow w-full box-border"
+>
+  <!-- Header Ripped Ticket -->
+  <header class="bg-surface-container border-4 border-on-surface shadow-hard p-8 md:p-12 -rotate-1 relative overflow-hidden rounded-xl w-full box-border">
+    <div class="absolute -top-6 -right-6 font-mono text-[120px] text-primary opacity-15 pointer-events-none select-none">🌱</div>
+    <div class="relative z-10 flex flex-col gap-4">
+      <span class="inline-block bg-tertiary text-on-tertiary border-2 border-on-surface px-3 py-1 font-label-md text-label-md w-max rotate-[2deg]">2024</span>
+      <h1 class="font-headline text-4xl md:text-5xl font-black text-primary m-0 uppercase leading-none">Reporte de Sostenibilidad</h1>
+      <p class="font-body text-lg text-on-surface-variant mt-2 max-w-[600px] leading-relaxed m-0">
+        Un vistazo profundo a nuestro impacto ambiental, avances en compostaje urbano y la comunidad que hace posible transformar residuos en vida.
+      </p>
+    </div>
+  </header>
+
+  <!-- Editorial Content Block -->
+  <article class="flex flex-col gap-8 bg-surface-container-lowest p-6 md:p-10 border-4 border-on-surface rotate-1 rounded-xl shadow-hard w-full box-border mt-8">
+    <section class="space-y-4">
+      <h2 class="font-headline text-2xl md:text-3xl text-secondary m-0 uppercase">
+        🌍 Impacto 2024
+      </h2>
+      <p class="font-body text-base text-on-surface leading-relaxed m-0">
+        Durante este año, hemos visto un crecimiento exponencial en la adopción del vermicompostaje en espacios urbanos reducidos de Chile. Nuestra comunidad ha logrado desviar toneladas de residuos orgánicos de los vertederos sanitarios nacionales.
+      </p>
+      
+      <!-- Stats Bento Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+        <div class="bg-surface-container-low p-6 border-2 border-on-surface shadow-[4px_4px_0px_0px_#002201] rounded-sm transform rotate-[-1deg] text-center">
+          <span class="font-headline text-4xl md:text-5xl text-primary block font-black">15 Ton</span>
+          <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mt-2 block">Residuos Recuperados</span>
+        </div>
+        <div class="bg-surface-container-low p-6 border-2 border-on-surface shadow-[4px_4px_0px_0px_#002201] rounded-sm transform rotate-[1deg] text-center">
+          <span class="font-headline text-4xl md:text-5xl text-primary block font-black">+5k</span>
+          <span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider mt-2 block">Núcleos Entregados</span>
+        </div>
+      </div>
+    </section>
+    
+    <hr class="border-t-4 border-on-surface border-dotted my-4"/>
+    
+    <section class="space-y-6">
+      <h2 class="font-headline text-2xl md:text-3xl text-primary m-0 uppercase">🐛 Desafíos y Aprendizajes</h2>
+      <ul class="space-y-6 list-none pl-0 m-0">
+        <li class="flex items-start gap-4">
+          <div class="mt-1 w-8 h-8 border-2 border-on-surface bg-secondary-fixed flex items-center justify-center shrink-0 rounded-sm shadow-[2px_2px_0px_0px_#002201]">
+            <span class="text-on-surface font-bold font-mono text-sm">✗</span>
+          </div>
+          <div>
+            <strong class="font-label-md text-label-md text-on-surface block mb-1 text-base uppercase">Manejo de Humedad en Invierno</strong>
+            <p class="font-body text-base text-on-surface-variant m-0 leading-relaxed">Las bajas temperaturas dificultaron la regulación de humedad en balcones de departamentos de la zona central sin sol directo, requiriendo material seco adicional.</p>
+          </div>
+        </li>
+        <li class="flex items-start gap-4">
+          <div class="mt-1 w-8 h-8 border-2 border-on-surface bg-secondary-fixed flex items-center justify-center shrink-0 rounded-sm shadow-[2px_2px_0px_0px_#002201]">
+            <span class="text-on-surface font-bold font-mono text-sm">✗</span>
+          </div>
+          <div>
+            <strong class="font-label-md text-label-md text-on-surface block mb-1 text-base uppercase">Educación Continua</strong>
+            <p class="font-body text-base text-on-surface-variant m-0 leading-relaxed">Identificamos la necesidad de guías interactivas más accesibles sobre la correcta alimentación de la vermicompostera para evitar plagas domésticas secundarias.</p>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </article>
+</BaseLayout>

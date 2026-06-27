@@ -1,0 +1,71 @@
+---
+// nosotros.astro - About Us Standalone Page
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout 
+  title="Nosotros" 
+  description="Conoce al colectivo de amantes de la tierra detrás de vermi.cl y nuestro propósito de democratizar el vermicompostaje urbano en Chile."
+  mainClass="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-16 flex-grow w-full box-border"
+>
+  <!-- Hero Section -->
+  <section class="mb-12 md:mb-16 p-8 bg-surface-container border-4 border-on-surface shadow-hard transform rotate-1 rounded-xl max-w-4xl mx-auto lg:mx-0">
+    <h1 class="font-headline text-4xl md:text-5xl text-primary mb-4 m-0 uppercase leading-none">El Equipo Detrás de la Tierra</h1>
+    <p class="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl mt-4 mb-0 leading-relaxed">
+      Transformando restos en recursos. Somos un colectivo de amantes de la tierra dedicados a democratizar el vermicompostaje urbano.
+    </p>
+  </section>
+
+  <!-- Main Content Area - Bento Grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full">
+    <!-- Team Polaroid -->
+    <div class="lg:col-span-7 transform -rotate-1 hover:rotate-0 transition-transform duration-200">
+      <div class="bg-surface-container-lowest p-6 pb-12 border-4 border-on-surface shadow-hard rounded-xl organic-brutalism">
+        <div class="aspect-[4/3] bg-tertiary-fixed border-2 border-on-surface rounded-sm overflow-hidden flex items-center justify-center font-headline text-2xl text-[#002201] font-black uppercase">
+          vermi.cl team 🐛
+        </div>
+        <div class="mt-6 text-center">
+          <span class="font-label-md text-label-md text-on-surface tracking-widest uppercase">El equipo vermi.cl, 2024</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Side Scraps -->
+    <div class="lg:col-span-5 flex flex-col gap-8">
+      <!-- Mission Scrap -->
+      <div class="bg-[#e9d7c8] p-6 border-4 border-on-surface shadow-hard transform rotate-1 rounded-xl organic-brutalism-alt">
+        <h2 class="font-headline text-2xl font-black text-on-surface mb-3 flex items-center gap-2 uppercase">
+          🌱 Nuestra Misión
+        </h2>
+        <p class="font-body text-base text-on-surface-variant leading-relaxed m-0">
+          Creemos que el futuro de nuestras ciudades depende de cómo tratamos la tierra hoy. Nuestro objetivo es simple: convertir cada hogar en un pequeño ecosistema productor de <strong class="text-primary">oro negro</strong>.
+        </p>
+      </div>
+      
+      <!-- Values Scrap -->
+      <div class="bg-surface p-6 border-4 border-on-surface shadow-hard transform -rotate-1 rounded-xl organic-brutalism">
+        <h3 class="font-headline text-2xl font-black text-primary mb-4 uppercase">¿Por qué lo hacemos?</h3>
+        <ul class="space-y-4 list-none pl-0 m-0">
+          <li class="flex items-start gap-3">
+            <div class="mt-1 w-6 h-6 border-2 border-on-surface bg-secondary-container rounded-sm flex items-center justify-center shrink-0">
+              <span class="font-mono text-sm font-bold text-on-surface">✓</span>
+            </div>
+            <div>
+              <strong class="font-label-md text-label-md block mb-1">Reducir Residuos</strong>
+              <span class="text-sm text-on-surface-variant">Menos basura en los vertederos, más nutrientes para las plantas.</span>
+            </div>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="mt-1 w-6 h-6 border-2 border-on-surface bg-primary-fixed rounded-sm flex items-center justify-center shrink-0">
+              <span class="font-mono text-sm font-bold text-on-surface">✓</span>
+            </div>
+            <div>
+              <strong class="font-label-md text-label-md block mb-1">Comunidad</strong>
+              <span class="text-sm text-on-surface-variant">Compartir conocimientos y conectar con la naturaleza urbana.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

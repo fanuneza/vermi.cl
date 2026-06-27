@@ -1,5 +1,10 @@
 ---
 // Header.astro - Reusable Stitch-style Navigation Bar
+const { pathname } = Astro.url;
+
+const isHome = pathname === '/' || pathname === '/index.html';
+const isBlog = pathname.startsWith('/blog');
+const isNosotros = pathname.startsWith('/nosotros');
 ---
 <nav class="bg-surface dark:bg-surface-container w-full sticky top-0 z-50 border-b-4 border-on-surface shadow-[6px_6px_0px_0px_#002201] flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-full">
   
@@ -20,10 +25,9 @@
 
   <!-- Middle: Navigation Links (Desktop Only) -->
   <div class="hidden md:flex items-center gap-6">
-    <a class="text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" href="/">Inicio</a>
-    <a class="text-primary font-bold border-b-4 border-primary pb-1 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" href="/blog">Guías</a>
-    <a class="text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" href="/#comunidad">Comunidad</a>
-    <a class="text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" href="/#nosotros">Nosotros</a>
+    <a class={isHome ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/">Inicio</a>
+    <a class={isBlog ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/blog">Guías</a>
+    <a class={isNosotros ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/nosotros">Nosotros</a>
   </div>
 
   <!-- Right Side: Actions (Desktop and Mobile) -->
@@ -34,12 +38,12 @@
     </a>
     
     <!-- Desktop Join Button -->
-    <button class="hidden md:block bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 organic-brutalism rotate-[1deg] cursor-pointer">
+    <button id="join-trigger-desktop" class="hidden md:block bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 organic-brutalism rotate-[1deg] cursor-pointer">
       Unirse
     </button>
 
     <!-- Mobile Join Button -->
-    <button class="md:hidden text-primary font-headline-md font-bold hover:scale-105 active:scale-95 transition-transform cursor-pointer">
+    <button id="join-trigger-mobile" class="md:hidden text-primary font-headline-md font-bold hover:scale-105 active:scale-95 transition-transform cursor-pointer">
       Unirse
     </button>
   </div>
@@ -113,12 +117,75 @@
   </div>
 </aside>
 
+<!-- Join Modal Overlay -->
+<div id="join-modal" class="fixed inset-0 bg-[#002201]/70 z-[200] transition-opacity duration-300 opacity-0 pointer-events-none flex items-center justify-center p-4">
+  <div class="bg-[#FFFBEA] border-4 border-on-surface p-8 max-w-md w-full shadow-hard relative transform rotate-[-0.5deg] organic-brutalism box-border">
+    <!-- Decorative Tape -->
+    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-28 h-7 bg-secondary-container/90 border-2 border-on-surface -rotate-2 z-10"></div>
+    
+    <!-- Close Button -->
+    <button id="close-modal" aria-label="Cerrar modal" class="absolute -top-3 -right-3 text-on-surface hover:text-secondary transition-colors p-2 rotate-[5deg] hover:rotate-[15deg] bg-surface-container border-2 border-on-surface rounded-full shadow-hard-sm active:translate-y-[2px] active:translate-x-[2px] active:shadow-none cursor-pointer flex items-center justify-center z-20">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 384 512" fill="currentColor">
+        <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 47.5c-11.3-13.6-31.5-15.4-45.1-4.1s-15.4 31.5-4.1 45.1L142.9 256 7.5 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 464.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L241.1 256 376.6 84.5z"/>
+      </svg>
+    </button>
+    
+    <div class="flex flex-col gap-4 mt-2">
+      <span class="inline-block bg-primary text-on-primary border-2 border-on-surface px-3 py-1 font-label-md text-label-md w-max rotate-[1deg] uppercase tracking-wider">Comunidad</span>
+      <h2 class="font-headline text-2xl md:text-3xl font-black text-on-surface uppercase m-0 leading-none">Únete a la Colonia 🐛</h2>
+      <p class="font-body text-sm text-on-surface-variant leading-relaxed m-0">
+        Sé parte del mayor grupo de vermicompostadores de Chile. Recibe alertas biológicas estacionales y comparte tus experiencias con el humus.
+      </p>
+      
+      <!-- Action buttons inside modal -->
+      <div class="flex flex-col gap-3 mt-4 w-full">
+        <!-- WhatsApp group invite placeholder -->
+        <a 
+          href="https://chat.whatsapp.com" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="bg-[#25D366] text-white border-2 border-on-surface py-3 px-4 font-mono text-xs font-bold text-center shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all rounded-sm no-underline flex items-center justify-center gap-2"
+        >
+          <span>Grupo de WhatsApp 💬</span>
+        </a>
+        
+        <div class="h-px border-t-2 border-dashed border-on-surface my-2"></div>
+        
+        <!-- Newsletter signup -->
+        <form class="space-y-4" onsubmit="event.preventDefault(); alert('¡Gracias por unirte! Revisa tu correo pronto.'); this.reset(); document.getElementById('join-modal').classList.add('pointer-events-none', 'opacity-0'); document.getElementById('join-modal').classList.remove('opacity-100');">
+          <div class="flex flex-col gap-1.5">
+            <label class="font-label-md text-[10px] uppercase text-[#154212] tracking-wider" for="modal-email">Newsletter Mensual</label>
+            <input 
+              type="email" 
+              id="modal-email" 
+              placeholder="tu-correo@lombriz.cl" 
+              required 
+              class="w-full bg-white border-2 border-on-surface px-3 py-2 text-sm font-body text-on-surface placeholder-on-surface/40 rounded-sm focus:ring-0 focus:outline-none"
+            />
+          </div>
+          <button 
+            type="submit" 
+            class="w-full bg-secondary text-white border-2 border-on-surface py-2.5 px-4 font-mono text-xs font-bold shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all rounded-sm cursor-pointer"
+          >
+            Suscribirse ✉
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
     const trigger = document.getElementById('menu-trigger');
     const close = document.getElementById('close-drawer');
     const drawer = document.getElementById('nav-drawer');
     const overlay = document.getElementById('drawer-overlay');
+
+    const modal = document.getElementById('join-modal');
+    const closeModal = document.getElementById('close-modal');
+    const desktopJoin = document.getElementById('join-trigger-desktop');
+    const mobileJoin = document.getElementById('join-trigger-mobile');
 
     if (!trigger || !close || !drawer || !overlay) return;
 
@@ -136,8 +203,41 @@
       document.body.style.overflow = '';
     }
 
+    function openModal() {
+      closeDrawer(); // Close mobile drawer if open
+      if (modal) {
+        modal.classList.remove('pointer-events-none', 'opacity-0');
+        modal.classList.add('opacity-100');
+      }
+    }
+
+    function hideModal() {
+      if (modal) {
+        modal.classList.remove('opacity-100');
+        modal.classList.add('pointer-events-none', 'opacity-0');
+      }
+    }
+
     trigger.addEventListener('click', openDrawer);
     close.addEventListener('click', closeDrawer);
     overlay.addEventListener('click', closeDrawer);
+
+    if (desktopJoin) desktopJoin.addEventListener('click', openModal);
+    if (mobileJoin) mobileJoin.addEventListener('click', openModal);
+    if (closeModal) closeModal.addEventListener('click', hideModal);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) hideModal();
+      });
+    }
+
+    // Also support any global link pointing to #unirse
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (target && target.closest('[href="#unirse"]')) {
+        e.preventDefault();
+        openModal();
+      }
+    });
   });
 </script>
