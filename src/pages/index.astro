@@ -36,11 +36,11 @@ const homepageSchema = {
 
 <BaseLayout title="Inicio" description="Aprende vermicompostaje doméstico en Chile. Guías científicas y prácticas para reducir tus residuos orgánicos con lombrices californianas." schema={homepageSchema}>
   <!-- Hero Section -->
-  <section class="w-full max-w-7xl grid grid-cols-1 min-[1400px]:grid-cols-12 gap-8 min-[1400px]:gap-12 items-center relative z-10">
+  <section class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
     <!-- Decorative Background Element -->
     <div class="absolute -top-12 -left-12 w-64 h-64 bg-secondary-fixed rounded-full mix-blend-multiply opacity-60 blur-2xl z-[-1]"></div>
     
-    <div class="min-[1400px]:col-span-6 flex flex-col items-start gap-6 relative z-10">
+    <div class="lg:col-span-6 flex flex-col items-start gap-6 relative z-10">
       <!-- Badge -->
       <div class="bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md px-3 py-1 border-3 border-on-surface shadow-[4px_4px_0px_0px_#002201] rotate-[-3deg] uppercase tracking-wider sticker-badge inline-block">
         Nuevo ciclo
@@ -68,14 +68,16 @@ const homepageSchema = {
       </div>
     </div>
     
-    <div class="min-[1400px]:col-span-6 relative mt-8 min-[1400px]:mt-0 order-first min-[1400px]:order-none">
-      <div class="relative w-full aspect-[4/3] md:aspect-square min-[1400px]:aspect-[4/3] z-10">
+    <div class="lg:col-span-6 relative mt-8 lg:mt-0 order-first lg:order-none">
+      <div class="relative w-full aspect-[4/3] md:aspect-square lg:aspect-[4/3] z-10">
         <Image 
           class="w-full h-full object-cover organic-shape-1 border-4 border-on-surface hard-shadow bg-tertiary-fixed" 
           src={heroImage} 
           alt="Compostaje de lombrices californianas" 
           width={600} 
           height={450} 
+          widths={[320, 480, 600]}
+          sizes="(max-width: 480px) 320px, (max-width: 1024px) 480px, 600px"
           loading="eager" 
           fetchpriority="high" 
         />
