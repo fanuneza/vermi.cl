@@ -234,93 +234,91 @@ const articleSchema = {
     </aside>
   </div>
 
-  <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      const shareBtn = document.getElementById('share-btn');
-      const likeBtn = document.getElementById('like-btn');
-      const likeIcon = document.getElementById('like-icon');
+  <script>
+    const shareBtn = document.getElementById('share-btn');
+    const likeBtn = document.getElementById('like-btn');
+    const likeIcon = document.getElementById('like-icon');
 
-      // Get current post slug from pathname for local storage key
-      const postSlug = window.location.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '-');
-      const likeStorageKey = `vermi-liked-${postSlug}`;
+    // Get current post slug from pathname for local storage key
+    const postSlug = window.location.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '-');
+    const likeStorageKey = `vermi-liked-${postSlug}`;
 
-      // Share logic: native share if available, fallback to clipboard copy
-      if (shareBtn) {
-        shareBtn.addEventListener('click', async () => {
-          const shareData = {
-            title: document.title,
-            text: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
-            url: window.location.href
-          };
+    // Share logic: native share if available, fallback to clipboard copy
+    if (shareBtn) {
+      shareBtn.addEventListener('click', async () => {
+        const shareData = {
+          title: document.title,
+          text: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+          url: window.location.href
+        };
 
-          if (navigator.share) {
-            try {
-              await navigator.share(shareData);
-            } catch (err) {
-              console.log('Share sheet dismissed or failed:', err);
-            }
-          } else {
-            // Fallback to copy clipboard
-            try {
-              await navigator.clipboard.writeText(window.location.href);
-              
-              // Visual feedback: briefly modify button background
-              const originalBg = shareBtn.className;
-              shareBtn.classList.add('bg-primary-container', 'text-on-primary-container');
-              const originalTitle = shareBtn.getAttribute('aria-label');
-              shareBtn.setAttribute('aria-label', '¡Copiado!');
-              
-              // Create a temporary floating bubble or toast for feedback
-              const toast = document.createElement('div');
-              toast.className = 'fixed bottom-8 right-8 bg-[#002201] text-[#ecffe2] border-2 border-[#002201] px-4 py-2 font-mono text-xs font-bold rounded-lg shadow-hard z-[100] animate-bounce';
-              toast.textContent = '🐛 ¡Enlace copiado al portapapeles!';
-              document.body.appendChild(toast);
-              
-              setTimeout(() => {
-                shareBtn.className = originalBg;
-                shareBtn.setAttribute('aria-label', originalTitle || 'Compartir');
-                toast.remove();
-              }, 2500);
-            } catch (err) {
-              console.error('Failed to copy link:', err);
-            }
+        if (navigator.share) {
+          try {
+            await navigator.share(shareData);
+          } catch (err) {
+            console.log('Share sheet dismissed or failed:', err);
           }
-        });
+        } else {
+          // Fallback to copy clipboard
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            
+            // Visual feedback: briefly modify button background
+            const originalBg = shareBtn.className;
+            shareBtn.classList.add('bg-primary-container', 'text-on-primary-container');
+            const originalTitle = shareBtn.getAttribute('aria-label');
+            shareBtn.setAttribute('aria-label', '¡Copiado!');
+            
+            // Create a temporary floating bubble or toast for feedback
+            const toast = document.createElement('div');
+            toast.className = 'fixed bottom-8 right-8 bg-[#002201] text-[#ecffe2] border-2 border-[#002201] px-4 py-2 font-mono text-xs font-bold rounded-lg shadow-hard z-[100] animate-bounce';
+            toast.textContent = '🐛 ¡Enlace copiado al portapapeles!';
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+              shareBtn.className = originalBg;
+              shareBtn.setAttribute('aria-label', originalTitle || 'Compartir');
+              toast.remove();
+            }, 2500);
+          } catch (err) {
+            console.error('Failed to copy link:', err);
+          }
+        }
+      });
+    }
+
+    // Like logic: local storage state toggle
+    if (likeBtn && likeIcon) {
+      const likeCountEl = document.getElementById('like-count');
+      const isLiked = localStorage.getItem(likeStorageKey) === 'true';
+      
+      let count = 14;
+      if (isLiked) {
+        likeIcon.setAttribute('fill', '#E05353');
+        likeIcon.setAttribute('stroke', '#E05353');
+        count = 15;
+      }
+      if (likeCountEl) {
+        likeCountEl.textContent = count.toString();
       }
 
-      // Like logic: local storage state toggle
-      if (likeBtn && likeIcon) {
-        const likeCountEl = document.getElementById('like-count');
-        const isLiked = localStorage.getItem(likeStorageKey) === 'true';
-        
-        let count = 14;
-        if (isLiked) {
+      likeBtn.addEventListener('click', () => {
+        const currentlyLiked = localStorage.getItem(likeStorageKey) === 'true';
+        if (currentlyLiked) {
+          localStorage.setItem(likeStorageKey, 'false');
+          likeIcon.setAttribute('fill', 'none');
+          likeIcon.setAttribute('stroke', 'currentColor');
+          count--;
+        } else {
+          localStorage.setItem(likeStorageKey, 'true');
           likeIcon.setAttribute('fill', '#E05353');
           likeIcon.setAttribute('stroke', '#E05353');
-          count = 15;
+          count++;
         }
         if (likeCountEl) {
           likeCountEl.textContent = count.toString();
         }
-
-        likeBtn.addEventListener('click', () => {
-          const currentlyLiked = localStorage.getItem(likeStorageKey) === 'true';
-          if (currentlyLiked) {
-            localStorage.setItem(likeStorageKey, 'false');
-            likeIcon.setAttribute('fill', 'none');
-            likeIcon.setAttribute('stroke', 'currentColor');
-            count--;
-          } else {
-            localStorage.setItem(likeStorageKey, 'true');
-            likeIcon.setAttribute('fill', '#E05353');
-            likeIcon.setAttribute('stroke', '#E05353');
-            count++;
-          }
-          if (likeCountEl) {
-            likeCountEl.textContent = count.toString();
-          }
-        });
-      }
-    });
+      });
+    }
   </script>
 </BaseLayout>

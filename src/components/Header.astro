@@ -154,7 +154,7 @@ const isNosotros = pathname.startsWith('/nosotros');
         <div class="h-px border-t-2 border-dashed border-on-surface my-2"></div>
         
         <!-- Newsletter signup -->
-        <form class="space-y-4" onsubmit="event.preventDefault(); alert('¡Gracias por unirte! Revisa tu correo pronto.'); this.reset(); document.getElementById('join-modal').classList.add('pointer-events-none', 'opacity-0'); document.getElementById('join-modal').classList.remove('opacity-100');">
+        <form id="newsletter-form" class="space-y-4">
           <div class="flex flex-col gap-1.5">
             <label class="font-label-md text-[10px] uppercase text-[#154212] tracking-wider" for="modal-email">Newsletter Mensual</label>
             <input 
@@ -177,48 +177,47 @@ const isNosotros = pathname.startsWith('/nosotros');
   </div>
 </div>
 
-<script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
-    const trigger = document.getElementById('menu-trigger');
-    const close = document.getElementById('close-drawer');
-    const drawer = document.getElementById('nav-drawer');
-    const overlay = document.getElementById('drawer-overlay');
+<script>
+  const trigger = document.getElementById('menu-trigger');
+  const close = document.getElementById('close-drawer');
+  const drawer = document.getElementById('nav-drawer');
+  const overlay = document.getElementById('drawer-overlay');
 
-    const modal = document.getElementById('join-modal');
-    const closeModal = document.getElementById('close-modal');
-    const desktopJoin = document.getElementById('join-trigger-desktop');
-    const mobileJoin = document.getElementById('join-trigger-mobile');
+  const modal = document.getElementById('join-modal');
+  const closeModal = document.getElementById('close-modal');
+  const desktopJoin = document.getElementById('join-trigger-desktop');
+  const mobileJoin = document.getElementById('join-trigger-mobile');
+  const newsletterForm = document.getElementById('newsletter-form') as HTMLFormElement | null;
 
-    if (!trigger || !close || !drawer || !overlay) return;
-
-    function openDrawer() {
+  if (trigger && close && drawer && overlay) {
+    const openDrawer = () => {
       drawer.classList.remove('-translate-x-full');
       overlay.classList.remove('opacity-0', 'pointer-events-none');
       overlay.classList.add('opacity-100', 'pointer-events-auto');
       document.body.style.overflow = 'hidden';
-    }
+    };
 
-    function closeDrawer() {
+    const closeDrawer = () => {
       drawer.classList.add('-translate-x-full');
       overlay.classList.remove('opacity-100', 'pointer-events-auto');
       overlay.classList.add('opacity-0', 'pointer-events-none');
       document.body.style.overflow = '';
-    }
+    };
 
-    function openModal() {
+    const openModal = () => {
       closeDrawer(); // Close mobile drawer if open
       if (modal) {
         modal.classList.remove('pointer-events-none', 'opacity-0');
         modal.classList.add('opacity-100');
       }
-    }
+    };
 
-    function hideModal() {
+    const hideModal = () => {
       if (modal) {
         modal.classList.remove('opacity-100');
         modal.classList.add('pointer-events-none', 'opacity-0');
       }
-    }
+    };
 
     trigger.addEventListener('click', openDrawer);
     close.addEventListener('click', closeDrawer);
@@ -233,13 +232,22 @@ const isNosotros = pathname.startsWith('/nosotros');
       });
     }
 
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('¡Gracias por unirte! Revisa tu correo pronto.');
+        newsletterForm.reset();
+        hideModal();
+      });
+    }
+
     // Also support any global link pointing to #unirse
     document.addEventListener('click', (e) => {
-      const target = e.target;
+      const target = e.target as HTMLElement | null;
       if (target && target.closest('[href="#unirse"]')) {
         e.preventDefault();
         openModal();
       }
     });
-  });
+  }
 </script>

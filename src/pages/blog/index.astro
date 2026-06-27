@@ -87,82 +87,80 @@ const archiveSchema = {
     </div>
   </section>
 
-  <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterContainer = document.getElementById('filter-container');
-      const filterLinks = filterContainer ? filterContainer.querySelectorAll('a') : [];
-      const postWrappers = document.querySelectorAll('.post-card-wrapper');
-      const noPostsMessage = document.getElementById('no-posts-message');
-      const resetBtn = document.getElementById('reset-filter-btn');
+  <script>
+    const filterContainer = document.getElementById('filter-container');
+    const filterLinks = filterContainer ? filterContainer.querySelectorAll('a') : [];
+    const postWrappers = document.querySelectorAll('.post-card-wrapper');
+    const noPostsMessage = document.getElementById('no-posts-message');
+    const resetBtn = document.getElementById('reset-filter-btn');
 
-      function applyFilter(category) {
-        let visibleCount = 0;
-        
-        postWrappers.forEach(wrapper => {
-          const postCategory = wrapper.getAttribute('data-category');
-          if (!category || postCategory === category) {
-            wrapper.style.display = 'block';
-            visibleCount++;
-          } else {
-            wrapper.style.display = 'none';
-          }
-        });
-
-        // Show/hide empty state message
-        if (noPostsMessage) {
-          if (visibleCount === 0) {
-            noPostsMessage.style.display = 'block';
-          } else {
-            noPostsMessage.style.display = 'none';
-          }
+    function applyFilter(category: string | null) {
+      let visibleCount = 0;
+      
+      postWrappers.forEach(wrapper => {
+        const postCategory = wrapper.getAttribute('data-category');
+        if (!category || postCategory === category) {
+          (wrapper as HTMLElement).style.display = 'block';
+          visibleCount++;
+        } else {
+          (wrapper as HTMLElement).style.display = 'none';
         }
+      });
 
-        // Update active styling of filter links
-        filterLinks.forEach(link => {
-          const href = link.getAttribute('href');
-          const linkCat = href.includes('category=') ? decodeURIComponent(href.split('category=')[1]) : null;
-          
-          if (linkCat === category) {
-            link.className = 'font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none rounded-full no-underline';
-          } else {
-            link.className = 'font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-white text-on-surface shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline';
-          }
-        });
+      // Show/hide empty state message
+      if (noPostsMessage) {
+        if (visibleCount === 0) {
+          noPostsMessage.style.display = 'block';
+        } else {
+          noPostsMessage.style.display = 'none';
+        }
       }
 
-      // Read query parameter initially
-      const urlParams = new URLSearchParams(window.location.search);
-      const initialCategory = urlParams.get('category');
-      applyFilter(initialCategory);
-
-      // Intercept clicks on filter links to perform instant client-side filtering without full page reload!
+      // Update active styling of filter links
       filterLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const href = link.getAttribute('href');
-          const newCat = href.includes('category=') ? decodeURIComponent(href.split('category=')[1]) : null;
-          
-          // Update URL search params without page reload
-          const newUrl = newCat ? `${window.location.pathname}?category=${encodeURIComponent(newCat)}` : window.location.pathname;
-          window.history.pushState({ category: newCat }, '', newUrl);
-          
-          applyFilter(newCat);
-        });
+        const href = link.getAttribute('href') || '';
+        const linkCat = href.includes('category=') ? decodeURIComponent(href.split('category=')[1]) : null;
+        
+        if (linkCat === category) {
+          link.className = 'font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none rounded-full no-underline';
+        } else {
+          link.className = 'font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-white text-on-surface shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline';
+        }
       });
+    }
 
-      if (resetBtn) {
-        resetBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          window.history.pushState({ category: null }, '', window.location.pathname);
-          applyFilter(null);
-        });
-      }
+    // Read query parameter initially
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category');
+    applyFilter(initialCategory);
 
-      // Listen to history popstate (e.g. back button)
-      window.addEventListener('popstate', () => {
-        const currentParams = new URLSearchParams(window.location.search);
-        applyFilter(currentParams.get('category'));
+    // Intercept clicks on filter links to perform instant client-side filtering without full page reload!
+    filterLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href') || '';
+        const newCat = href.includes('category=') ? decodeURIComponent(href.split('category=')[1]) : null;
+        
+        // Update URL search params without page reload
+        const newUrl = newCat ? `${window.location.pathname}?category=${encodeURIComponent(newCat)}` : window.location.pathname;
+        window.history.pushState({ category: newCat }, '', newUrl);
+        
+        applyFilter(newCat);
       });
+    });
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.history.pushState({ category: null }, '', window.location.pathname);
+        applyFilter(null);
+      });
+    }
+
+    // Listen to history popstate (e.g. back button)
+    window.addEventListener('popstate', () => {
+      const currentParams = new URLSearchParams(window.location.search);
+      applyFilter(currentParams.get('category'));
     });
   </script>
 </BaseLayout>

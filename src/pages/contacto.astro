@@ -45,7 +45,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <!-- Decorative Tape -->
       <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-8 bg-surface-variant/80 border-2 border-[#002201] -rotate-3 z-10"></div>
       
-      <form class="space-y-8 relative z-0" onsubmit="event.preventDefault(); alert('¡Mensaje enviado con éxito! Nos contactaremos contigo pronto.'); this.reset();">
+      <form id="contact-form" class="space-y-8 relative z-0">
         <!-- Name Field -->
         <div class="flex flex-col gap-2">
           <label class="font-label-md text-label-md text-[#154212] uppercase tracking-wider" for="name">Tu Nombre</label>
@@ -98,3 +98,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  const contactForm = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('¡Mensaje enviado con éxito! Nos contactaremos contigo pronto.');
+      contactForm.reset();
+    });
+  }
+</script>
