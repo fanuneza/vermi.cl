@@ -1,5 +1,19 @@
 @import "tailwindcss";
 
+/* Fontsource Local Fonts (Self-hosted for performance and CSP compliance) */
+@import "@fontsource-variable/bricolage-grotesque";
+@import "@fontsource/fira-sans/400.css";
+@import "@fontsource/fira-sans/500.css";
+@import "@fontsource/fira-sans/700.css";
+@import "@fontsource/space-mono/400.css";
+@import "@fontsource/space-mono/700.css";
+@import "@fontsource/merriweather/300.css";
+@import "@fontsource/merriweather/400.css";
+@import "@fontsource/merriweather/700.css";
+@import "@fontsource/merriweather/300-italic.css";
+@import "@fontsource/merriweather/400-italic.css";
+@import "@fontsource/merriweather/700-italic.css";
+
 @theme {
   --color-background: #ecffe2;
   --color-on-background: #002201;

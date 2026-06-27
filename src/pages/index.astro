@@ -5,7 +5,7 @@ import IsItCompostable from '../components/IsItCompostable.astro';
 import BlogCard from '../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
 import { faWorm, faCarrot, faBookOpen, faAppleWhole, faSkullCrossbones } from '@fortawesome/free-solid-svg-icons';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import heroImage from '../assets/images/hero.jpg';
 
 // Retrieve all posts and sort them by date (descending)
@@ -32,9 +32,31 @@ const homepageSchema = {
     "query-input": "required name=search_term_string"
   }
 };
+
+// Optimize LCP hero image for responsive preloading
+const optimizedHero = await getImage({
+  src: heroImage,
+  width: 600,
+  height: 450,
+  format: 'webp',
+  widths: [320, 480, 600]
+});
+
+const heroSrcSet = optimizedHero.srcSet.values
+  .map(item => `${item.url} ${item.descriptor}`)
+  .join(', ');
 ---
 
 <BaseLayout title="Inicio" description="Aprende vermicompostaje doméstico en Chile. Guías científicas y prácticas para reducir tus residuos orgánicos con lombrices californianas." schema={homepageSchema}>
+  <link 
+    rel="preload" 
+    as="image" 
+    href={optimizedHero.src} 
+    imagesrcset={heroSrcSet} 
+    imagesizes="(max-width: 480px) 320px, (max-width: 1024px) 480px, 600px"
+    fetchpriority="high" 
+    slot="head"
+  />
   <!-- Hero Section -->
   <section class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
     <!-- Decorative Background Element -->
