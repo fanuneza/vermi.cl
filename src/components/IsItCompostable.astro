@@ -1,9 +1,9 @@
 ---
-// IsItCompostable.astro - The "¿Le puedo echar esto?" Interactive Widget
+// IsItCompostable.astro - The "¿Las lombrices pueden comer esto?" Interactive Widget
 ---
 <div class="relative w-full max-w-4xl bg-surface-container-high border-4 border-on-background organic-shape-3 p-6 md:p-12 shadow-hard my-8 z-10 box-border mx-auto">
   <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-surface text-on-background font-headline text-xl md:text-2xl px-6 py-2 border-4 border-on-background shadow-hard-sm rotate-[-2deg] font-black whitespace-nowrap uppercase">
-    ¿Le puedo echar esto?
+    ¿Las lombrices pueden comer esto?
   </div>
 
   <div class="flex flex-col gap-6 mt-6">
@@ -104,12 +104,20 @@
 
     if (!isIndexLoaded) return;
 
-    // Normalize and match
-    const filteredItem = searchIndex.find((item: any) =>
-      normalizeString(item.name).includes(query) ||
-      normalizeString(item.category).includes(query) ||
-      (item.keywords && normalizeString(item.keywords).includes(query))
-    );
+    // Tiered search matching to prioritize names over keywords (e.g. "palta" matches palta.json instead of cuescos.json)
+    let filteredItem = searchIndex.find((item: any) => normalizeString(item.name) === query);
+    
+    if (!filteredItem) {
+      filteredItem = searchIndex.find((item: any) => normalizeString(item.name).includes(query));
+    }
+    
+    if (!filteredItem) {
+      filteredItem = searchIndex.find((item: any) => normalizeString(item.category).includes(query));
+    }
+    
+    if (!filteredItem) {
+      filteredItem = searchIndex.find((item: any) => item.keywords && normalizeString(item.keywords).includes(query));
+    }
 
     if (filteredItem) {
       fallbackMessage.classList.add('hidden');

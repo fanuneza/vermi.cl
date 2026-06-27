@@ -16,7 +16,7 @@ El contenido debe redactarse pensando en tres perfiles diferenciados:
 
 1. **Principiantes Urbanos de Departamento**:
    * **Dolores/Ansiedades**: Miedo a los malos olores, plagas (mosquitas de la fruta) en espacios cerrados y ansiedad por la muerte de sus lombrices.
-   * **Necesidad**: Guías paso a paso ultra simplificadas, validación visual y respuestas inmediatas (ej. "¿Le puedo echar esto?").
+   * **Necesidad**: Guías paso a paso ultra simplificadas, validación visual y respuestas inmediatas (ej. "¿Las lombrices pueden comer esto?").
 2. **Horticultores Suburbanos Intermedios**:
    * **Dolores/Ansiedades**: Manejo de sistemas modulares en patios o terrazas, optimización de humedad y aceleración del ciclo durante estaciones cambiantes.
    * **Necesidad**: Instrucciones detalladas sobre balances de carbono/nitrógeno (café vs. verde) y mantenimiento de la humedad en climas secos.

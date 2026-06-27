@@ -98,7 +98,7 @@ Document any skipped checks and explain the reasoning.
 
 ---
 
-## 9. Food Search Database ("¿Le puedo echar esto?")
+## 9. Food Search Database ("¿Las lombrices pueden comer esto?")
 The interactive food search on the homepage uses a client-side search index generated from local JSON files:
 - **Data Location**: JSON entries reside in `src/content/alimentos/` (e.g., `platano.json`, `cafe.json`).
 - **Schema & Validation**: Defined in `src/content.config.ts`. The schema fields are:
