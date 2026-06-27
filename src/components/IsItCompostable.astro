@@ -106,7 +106,7 @@
     const filteredItem = searchIndex.find((item: any) =>
       normalizeString(item.name).includes(query) ||
       normalizeString(item.category).includes(query) ||
-      (item.chileanContext && normalizeString(item.chileanContext).includes(query))
+      (item.keywords && normalizeString(item.keywords).includes(query))
     );
 
     if (filteredItem) {

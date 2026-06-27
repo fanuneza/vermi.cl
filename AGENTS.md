@@ -58,6 +58,7 @@ All visual elements must conform to the **Organic-Brutalism Eco-Zine / Handcraft
 - **Imports Alias**: Use the `@/*` alias for imports inside `src/`. Astro resolves these through `tsconfig.json`.
 - **framework Entrypoints**: Do not delete pages, layouts, or config files simply because static analysis tools mark them unreachable.
 - **Icon Assets**: Prefer inline SVGs over external font-awesome CDNs or font loader bundles to guarantee maximum loading speed.
+- **Never Use Local Paths**: NEVER use absolute local paths (e.g., `file:///C:/Users/...` or `C:\Users\...`) inside any project files, codebase comments, configuration files, or guidelines in the repository. Always use repository-relative paths instead (e.g., `src/content/alimentos/` or `src/content.config.ts`) to prevent exposing local usernames and ensure full project portability across all environments.
 
 ---
 
@@ -94,3 +95,24 @@ npx astro check
 npm run build
 ```
 Document any skipped checks and explain the reasoning.
+
+---
+
+## 9. Food Search Database ("¿Le puedo echar esto?")
+The interactive food search on the homepage uses a client-side search index generated from local JSON files:
+- **Data Location**: JSON entries reside in `src/content/alimentos/` (e.g., `platano.json`, `cafe.json`).
+- **Schema & Validation**: Defined in `src/content.config.ts`. The schema fields are:
+  * `name` (string): Common Chilean name (sentence case).
+  * `category` (string): Group label (e.g. "Húmedo / Frutas", "Seco / Carbono").
+  * `status` (enum: `'safe'`, `'warning'`, `'danger'`): Composting safety level.
+  * `instructions` (string): Handling advice.
+  * `nutrition` (string, optional): Plant-relevant nutrients details.
+- **Endpoint**: `src/pages/api/alimentos.json.ts` maps and compiles these files into a single indexable static JSON array at build time.
+- **Search Component**: `src/components/IsItCompostable.astro` fetches the API endpoint, performs accent-insensitive search logic, and renders the result card.
+
+### Rules for Adding New Food Entries
+1.  **Scientific Grounding**: All claims, safety classifications, and instructions must be backed by scientific research. Explain the biological *why* (e.g., cell wall breakdown in freezing, azufrado oil irritation, anaerobic putrefaction).
+2.  **Nutritional Profiles**: Every edible entry must include the `nutrition` field mapping NPK values or key soil nutrients (Nitrogen, Potassium, Phosphorus, Calcium, Carbon, Sulfur) and explain which part of plant development they enhance (foliar growth, flowering, roots, etc.).
+3.  **Local Context Integration**: The copy must use natural Chilean Spanish ("tuteo") and naturally weave in the Chilean domestic context (e.g., waste from asados, pebre, orange peel tea, palta abundancy) inside the `instructions` paragraph.
+4.  **Scientific Name Formatting**: Wrap scientific names in single asterisks (e.g. `*Eisenia fetida*`). The frontend component escapes HTML and parses these specifically into `<i>` tags. Do not write raw HTML.
+5.  **Capitalization & Punctuation**: Food names should follow Spanish sentence case (only capitalize the first letter and proper nouns, e.g. "Borra de café"). Instructions and nutrition copy must be complete sentences ending in periods, but titles/names must not.

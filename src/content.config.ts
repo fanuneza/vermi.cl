@@ -26,7 +26,8 @@ const alimentos = defineCollection({
     status: z.enum(['safe', 'warning', 'danger']),
     chileanContext: z.string().optional(),
     instructions: z.string(),
-    nutrition: z.string().optional()
+    nutrition: z.string().optional(),
+    keywords: z.string().optional()
   })
 });
 

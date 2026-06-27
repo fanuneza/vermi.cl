@@ -11,6 +11,7 @@ export async function GET() {
       chileanContext: item.data.chileanContext,
       instructions: item.data.instructions,
       nutrition: item.data.nutrition,
+      keywords: item.data.keywords,
     }));
     
     return new Response(JSON.stringify(indexableData), {
