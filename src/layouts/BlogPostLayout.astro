@@ -34,12 +34,16 @@ const categoryMeta = {
 const meta = categoryMeta[category] || categoryMeta.Manual;
 
 // JSON-LD BlogPosting Schema for SEO and AI Search engines
+const schemaImage = heroImage ? new URL(heroImage, 'https://vermi.cl').toString() : 'https://vermi.cl/favicon.svg';
+
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": title,
   "description": description,
   "datePublished": pubDate.toISOString(),
+  "dateModified": pubDate.toISOString(),
+  "image": schemaImage,
   "author": {
     "@type": "Person",
     "name": author
@@ -65,6 +69,11 @@ const articleSchema = {
   ogImage={heroImage} 
   schema={articleSchema}
   mainClass="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap flex-grow w-full box-border"
+  articleMeta={{
+    publishedTime: pubDate.toISOString(),
+    modifiedTime: pubDate.toISOString(),
+    author: author
+  }}
 >
   <!-- Main Grid -->
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-12 w-full">
