@@ -1,0 +1,8 @@
+{
+  "name": "Comida cocinada y aliñada",
+  "category": "Prohibido / Alimentos Procesados",
+  "status": "danger",
+  "instructions": "La comida cocinada, restos de platos preparados y ensaladas aliñadas están estrictamente prohibidos en la vermicompostera. Contienen aceites de cocina, sal (sodio) y aderezos ácidos (limón, vinagre, mayonesa). El aceite bloquea la respiración cutánea de las lombrices causando asfixia, y la sal destruye sus tejidos por presión osmótica. Además, atraen moscas de la carne, roedores y causan anaerobiosis ácida.",
+  "nutrition": "Contiene grasas y sodio perjudiciales que desequilibran el humus y compactan el suelo, anulando cualquier valor nutricional.",
+  "keywords": "cocido, cocinado, aliñado, ensaladas aliñadas, aceite, sal, aderezos, comida preparada, sobras, guiso, fritura"
+}
