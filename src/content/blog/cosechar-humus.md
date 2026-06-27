@@ -1,5 +1,5 @@
 ---
-title: "Cuándo y cómo cosechar tu humus... sin molestar a las lombrices"
+title: "Cómo cosechar y harnear el humus de lombriz paso a paso"
 description: "El momento de cosechar el humus es uno de los más esperados en el vermicompostaje. Es la recompensa a meses de reciclar tus orgánicos."
 pubDate: 2024-10-12
 category: Cosecha
@@ -10,40 +10,42 @@ author: "Fabián Núñez"
 
 <div id="intro"></div>
 
-El momento de cosechar el humus es uno de los más esperados en el vermicompostaje. Es la recompensa a meses de reciclar tus orgánicos. Pero, ¿cómo saber si está listo sin perturbar el ecosistema de tu vermicompostera?
+Llegará un momento en que tu vermicompostera vertical o tu caja de cultivo estará llena de una tierra oscura, con un profundo y agradable aroma a bosque húmedo. Ese material es el humus de lombriz, uno de los fertilizantes orgánicos más potentes y balanceados que existen en la naturaleza, repleto de ácidos húmicos, fúlvicos y una rica microbiota benéfica. 
 
-El "oro negro" de la jardinería no se hace de la noche a la mañana. Las lombrices californianas (*Eisenia fetida*) trabajan a su propio ritmo, transformando cáscaras, restos de café y cartón en un abono rico en nutrientes y microorganismos benéficos.
+Sin embargo, extraer este tesoro sin dañar a la población de *Eisenia fetida* ni perder los capullos (huevos) requiere de técnica y paciencia. En este artículo aprenderás cómo separar de manera eficiente las lombrices del sustrato terminado utilizando métodos mecánicos y biológicos adaptados al contexto local.
 
 <div id="sec1"></div>
 
-## 1. Señales clave de que el humus está listo
+## 1. El método de la separación por migración lumínica
 
-Antes de meter las manos a la tierra, observa. Un humus maduro tiene características físicas y biológicas muy específicas:
+Dado que las lombrices californianas son fotofóbicas (escapan activamente de la luz para proteger su piel de la radiación ultravioleta y la deshidratación), podemos usar la luz solar a nuestro favor mediante el método de las pirámides.
 
-*   **Color y textura**: Debe ser de un color café oscuro, casi negro, y tener una textura suelta y granulada, similar a la borra del café usado.
-*   **Olor**: Debe oler a tierra húmeda de bosque, nunca a descomposición o amoníaco. Un mal olor indica fermentación anaeróbica residual.
-*   **Reconocimiento de materiales**: Ya no deberías poder identificar los restos originales de vegetales ni el cartón (salvo alguna cáscara de huevo terca que tarda más en degradarse).
+### Paso 1: El secado previo controlado
+Un par de semanas antes de realizar la cosecha, suspende por completo la adición de residuos húmedos y disminuye ligeramente los riegos finos. El humus no debe estar pastoso; necesitas que adquiera una consistencia suelta y desmenuzable para facilitar el tamizado posterior.
 
-<blockquote>
-  "Cosechar humus es un ejercicio de paciencia. Si las lombrices aún están activas en una zona de la bandeja, déjalas terminar su ciclo biológico antes de retirar su producción."
-</blockquote>
+### Paso 2: Formación de pirámides
+Busca una lona plástica o una mesa amplia a la sombra (o bajo luz difusa en tu terraza). Extrae el sustrato procesado de tu compostera y forma pequeños montículos o pirámides cónicas sobre la superficie. 
+
+### Paso 3: Raspado selectivo
+Espera unos 15 a 20 minutos. Al notar la presencia de claridad, todas las lombrices migrarán verticalmente hacia el centro y la base de cada pirámide. Con tus manos o una paleta pequeña, comienza a raspar suavemente la capa exterior y superior de humus de cada montículo, acumulándola en un balde aparte. Cuando comiences a ver lombrices expuestas, detén el raspado, espera otros 10 minutos para que vuelvan a profundizar, y repite el proceso hasta que solo te quede un núcleo denso concentrado de lombrices en el fondo de cada pirámide.
 
 <div id="sec2"></div>
 
-## 2. Métodos de acción y cosecha amigables
+## 2. El proceso de tamizado o harneado
 
-El objetivo principal es separar el humus de las lombrices sin causarles estrés ni provocar bajas en la población activa. El método de la **migración vertical** es el más eficiente en composteras de niveles:
+Una vez recolectado el humus rugoso, notarás que aún contiene trozos pequeños de cartón sin degradar, algunas hojas secas y cápsulas duras de semillas. Para lograr una textura fina, homogénea y comercial, debes **harnear** el material.
 
-1.  **Dejar de alimentar la bandeja inferior**: Cuando la bandeja inferior parezca lista, deja de añadir comida fresca en ella.
-2.  **Preparar el nivel superior**: Coloca comida altamente atractiva (como cáscaras de plátano congeladas y trituradas) en la bandeja inmediatamente superior junto con abundante cartón húmedo.
-3.  **Aprovechar la migración**: Las lombrices, hambrientas y atraídas por los compuestos volátiles de la fruta fresca, subirán por los orificios del fondo de la nueva bandeja en un plazo de 10 a 14 días.
-4.  **Retirar la bandeja inferior**: Una vez que la gran mayoría de la población haya subido, la bandeja inferior contendrá humus prácticamente libre de lombrices, listo para tamizar o harnear.
+Utiliza un harnero o tamiz casero con una malla metálica de entre 3 y 5 milímetros. Pasa el humus cosechado a través de la rejilla realizando movimientos horizontales firmes. Este proceso no solo refina el producto final, sino que te permite recuperar de forma manual los capullos que hayan quedado atrapados en el descarte, devolviéndolos a la zona de actividad de tu compostera para que continúen con el ciclo de reproducción.
 
 <div id="sec3"></div>
 
-## 3. Cuidado biorregional y secado en el Valle Central
+## 3. Distinciones biológicas críticas: lixiviados frente a té de humus
 
-En el clima de Santiago y el valle central, la baja humedad relativa del aire puede secar el humus demasiado rápido una vez cosechado, matando la microbiota benéfica. 
+Es muy común confundir los subproductos líquidos de tu sistema, pero químicamente representan elementos completamente distintos que debes aprender a nombrar y usar correctamente:
 
-*   **Secado controlado**: Esparce el humus cosechado a la sombra sobre una lona por no más de 24 horas. Evita la exposición solar directa del patio para impedir la radiación UV en los microorganismos.
-*   **Almacenamiento**: Guárdalo en sacos de arpillera o contenedores con micro-perforaciones que mantengan la humedad interna entre un **40% y 50%**. Debe sentirse húmedo al tacto pero no pegajoso.
+| Producto | Origen y Características | Uso Correcto |
+| :--- | :--- | :--- |
+| **Lixiviados** | Es el agua excedente de los aportes verdes que drena de forma pasiva por gravedad hacia la bandeja de recolección inferior. Contiene nutrientes disueltos, pero si el sistema ha tenido zonas compactadas, puede arrastrar compuestos anaeróbicos o ácidos. | Debe diluirse obligatoriamente en agua sin cloro (proporción mínima 1:10) antes de aplicarse al riego de plantas para evitar quemaduras radiculares. |
+| **Té de humus** | Es una infusión activa elaborada sumergiendo humus sólido cosechado en agua limpia y aireada artificialmente mediante una bomba de acuario durante 24 a 48 horas. | Este proceso multiplica de forma exponencial los miles de millones de bacterias aeróbicas benéficas fijadoras de nitrógeno. Se aplica de forma foliar o directa al suelo como un shot de vida microbiológica pura. |
+
+Almacena tu humus sólido harneado en sacos de arpillera o bolsas de plástico perforadas que permitan el intercambio de oxígeno, manteniendo una humedad residual del 40% para que los microorganismos benéficos sigan vivos hasta el momento de aplicarlo en tus maceteros o huertos urbanos.
