@@ -74,10 +74,14 @@
     }
   };
 
+  const normalizeString = (str: string) => 
+    str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
   const handleSearchEvent = () => {
-    const rawQuery = lookupInput.value.toLowerCase().trim();
+    const rawQuery = lookupInput.value.trim();
+    const query = normalizeString(rawQuery);
     
-    if (rawQuery.length < 2) {
+    if (query.length < 2) {
       statusDisplay.classList.add('hidden');
       fallbackMessage.classList.remove('hidden');
       fallbackMessage.textContent = 'Escribe al menos dos letras para iniciar la consulta microbiológica del residuo.';
@@ -86,11 +90,11 @@
 
     if (!isIndexLoaded) return;
 
-    // Fuzzy matching logic
+    // Normalize and match
     const filteredItem = searchIndex.find((item: any) =>
-      item.name.toLowerCase().includes(rawQuery) ||
-      item.category.toLowerCase().includes(rawQuery) ||
-      (item.chileanContext && item.chileanContext.toLowerCase().includes(rawQuery))
+      normalizeString(item.name).includes(query) ||
+      normalizeString(item.category).includes(query) ||
+      (item.chileanContext && normalizeString(item.chileanContext).includes(query))
     );
 
     if (filteredItem) {
