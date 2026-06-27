@@ -46,7 +46,7 @@ const homepageSchema = {
         Nuevo ciclo
       </div>
       
-      <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl font-black text-on-surface leading-none relative uppercase m-0">
+      <h1 class="font-headline text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-on-surface leading-tight sm:leading-none relative uppercase m-0">
         Comienza a vermicompostar tus residuos en casa
         <svg class="absolute -bottom-4 left-0 w-full h-4 text-primary" preserveAspectRatio="none" viewBox="0 0 100 10">
           <path d="M0,5 Q50,15 100,5" fill="none" stroke="currentColor" stroke-width="4"></path>
@@ -82,13 +82,13 @@ const homepageSchema = {
           fetchpriority="high" 
         />
         <!-- Decorative Floating Elements -->
-        <div class="absolute -bottom-6 -right-6 bg-surface-dim p-4 border-4 border-on-surface organic-shape-2 shadow-[4px_4px_0px_0px_#002201] rotate-[15deg] hidden md:block">
+        <div class="absolute -bottom-2 -right-2 bg-surface-dim p-4 border-4 border-on-surface organic-shape-2 shadow-[4px_4px_0px_0px_#002201] rotate-[15deg]">
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faCarrot.icon[0]} ${faCarrot.icon[1]}`} fill="currentColor" class="text-primary">
             {carrotPaths.map((d) => <path d={d} />)}
           </svg>
         </div>
-        <div class="absolute -top-4 -left-4 bg-error-container p-2 border-2 border-on-surface rounded-full shadow-[2px_2px_0px_0px_#002201] rotate-[-10deg]">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox={`0 0 ${faWorm.icon[0]} ${faWorm.icon[1]}`} fill="currentColor" class="text-on-error-container">
+        <div class="absolute -top-2 -left-2 bg-error-container p-3 border-2 border-on-surface rounded-full shadow-[2px_2px_0px_0px_#002201] rotate-[-10deg]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox={`0 0 ${faWorm.icon[0]} ${faWorm.icon[1]}`} fill="currentColor" class="text-on-error-container">
             {wormPaths.map((d) => <path d={d} />)}
           </svg>
         </div>

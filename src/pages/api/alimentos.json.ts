@@ -10,13 +10,14 @@ export async function GET() {
       status: item.data.status,
       chileanContext: item.data.chileanContext,
       instructions: item.data.instructions,
+      nutrition: item.data.nutrition,
     }));
     
     return new Response(JSON.stringify(indexableData), {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Cache-Control': 'public, max-age=3600, must-revalidate'
+        'Cache-Control': 'no-cache, no-store, must-revalidate'
       }
     });
   } catch (error) {

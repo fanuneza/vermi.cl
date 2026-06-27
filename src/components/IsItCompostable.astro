@@ -36,8 +36,8 @@
     </div>
     <h3 id="matched-food-name" class="font-headline text-2xl md:text-3xl font-black text-on-background mb-3 uppercase">Cáscara de plátano</h3>
     
-    <div class="border-l-4 border-secondary pl-3 mb-4 bg-black/5 py-1">
-      <p id="matched-chilean-context" class="font-mono text-xs italic text-on-background m-0"></p>
+    <div id="matched-nutrition-container" class="border-l-4 border-secondary pl-3 mb-4 bg-black/5 py-1">
+      <p id="matched-nutrition" class="font-mono text-xs italic text-on-background m-0"></p>
     </div>
     
     <p id="matched-instructions" class="font-body text-base text-on-background leading-relaxed m-0"></p>
@@ -57,7 +57,8 @@
   const fallbackMessage = document.getElementById('search-fallback-message') as HTMLDivElement;
   const badgeIndicator = document.getElementById('badge-indicator') as HTMLSpanElement;
   const matchedFoodName = document.getElementById('matched-food-name') as HTMLHeadingElement;
-  const matchedChileanContext = document.getElementById('matched-chilean-context') as HTMLParagraphElement;
+  const matchedNutritionContainer = document.getElementById('matched-nutrition-container') as HTMLDivElement;
+  const matchedNutrition = document.getElementById('matched-nutrition') as HTMLParagraphElement;
   const matchedInstructions = document.getElementById('matched-instructions') as HTMLParagraphElement;
   const suggestionButtons = document.querySelectorAll('.btn-suggestion');
 
@@ -76,6 +77,17 @@
 
   const normalizeString = (str: string) => 
     str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+  const escapeHTML = (str: string) => 
+    str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  const renderMarkdownItalics = (str: string) => 
+    escapeHTML(str).replace(/\*(.*?)\*/g, "<i>$1</i>");
 
   const handleSearchEvent = () => {
     const rawQuery = lookupInput.value.trim();
@@ -103,8 +115,15 @@
 
       // Safe DOM manipulation to prevent XSS
       matchedFoodName.textContent = filteredItem.name;
-      matchedChileanContext.textContent = `🇨🇱 Contexto Nacional: ${filteredItem.chileanContext || 'Información general.'}`;
-      matchedInstructions.textContent = filteredItem.instructions;
+
+      if (filteredItem.nutrition) {
+        matchedNutritionContainer.classList.remove('hidden');
+        matchedNutrition.textContent = `🌱 Perfil Nutricional: ${filteredItem.nutrition}`;
+      } else {
+        matchedNutritionContainer.classList.add('hidden');
+      }
+
+      matchedInstructions.innerHTML = renderMarkdownItalics(filteredItem.instructions);
 
       if (filteredItem.status === 'safe' || filteredItem.status === 'seguro') {
         statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-[#E8F8EE] mt-6 box-border';
