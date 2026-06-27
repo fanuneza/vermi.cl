@@ -1,6 +1,8 @@
 ---
 // nosotros.astro - About Us Standalone Page
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import teamImage from '../assets/images/lombrices.jpeg';
 ---
 
 <BaseLayout 
@@ -21,9 +23,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- Team Polaroid -->
     <div class="lg:col-span-7 transform -rotate-1 hover:rotate-0 transition-transform duration-200">
       <div class="bg-surface-container-lowest p-6 pb-12 border-4 border-on-surface shadow-hard rounded-xl organic-brutalism">
-        <div class="aspect-[4/3] bg-tertiary-fixed border-2 border-on-surface rounded-sm overflow-hidden flex items-center justify-center font-headline text-2xl text-[#002201] font-black uppercase">
-          vermi.cl team 🐛
-        </div>
+        <Image 
+          src={teamImage} 
+          alt="Fotografía detallada de lombrices californianas en compostaje activo" 
+          class="w-full h-auto object-cover border-2 border-on-surface rounded-sm"
+        />
         <div class="mt-6 text-center">
           <span class="font-label-md text-label-md text-on-surface tracking-widest uppercase">El equipo vermi.cl, 2024</span>
         </div>

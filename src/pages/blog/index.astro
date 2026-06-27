@@ -10,11 +10,6 @@ const categoryFilter = Astro.url.searchParams.get('category');
 const posts = await getCollection('blog');
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-// Filter by category if param is present
-const filteredPosts = categoryFilter 
-  ? sortedPosts.filter(post => post.data.category === categoryFilter)
-  : sortedPosts;
-
 const categories = ['Manual', 'Alimentación', 'Problemas', 'Cosecha'];
 
 const archiveSchema = {
@@ -42,17 +37,17 @@ const archiveSchema = {
     <!-- Category Filter Chips -->
     <div class="flex flex-col gap-3 mb-8 items-start w-full">
       <h2 class="font-mono text-xs font-bold text-on-surface uppercase tracking-wider m-0">[ Filtrar por categoría ]</h2>
-      <div class="flex flex-wrap gap-3">
+      <div id="filter-container" class="flex flex-wrap gap-3">
         <a 
           href="/blog" 
-          class={`font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline ${!categoryFilter ? 'bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none' : 'bg-white text-on-surface'}`}
+          class="font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none rounded-full no-underline"
         >
           Todos
         </a>
         {categories.map(cat => (
           <a 
             href={`/blog?category=${cat}`} 
-            class={`font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline ${categoryFilter === cat ? 'bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none' : 'bg-white text-on-surface'}`}
+            class="font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-white text-on-surface shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline"
           >
             {cat}
           </a>
@@ -61,12 +56,12 @@ const archiveSchema = {
     </div>
 
     <!-- Articles Grid -->
-    {filteredPosts.length > 0 ? (
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-        {filteredPosts.map((post, idx) => {
-          const rotations = ["rotate-[-1.5deg]", "rotate-[1deg]", "rotate-[-0.5deg]", "rotate-[0.5deg]"];
-          const rot = rotations[idx % rotations.length];
-          return (
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+      {sortedPosts.map((post, idx) => {
+        const rotations = ["rotate-[-1.5deg]", "rotate-[1deg]", "rotate-[-0.5deg]", "rotate-[0.5deg]"];
+        const rot = rotations[idx % rotations.length];
+        return (
+          <div class="post-card-wrapper" data-category={post.data.category}>
             <BlogCard
               title={post.data.title}
               description={post.data.description}
@@ -77,17 +72,97 @@ const archiveSchema = {
               readingTime={post.data.readingTime}
               rotation={rot}
             />
-          );
-        })}
-      </div>
-    ) : (
-      <div class="text-center p-12 max-w-xl mx-auto border-4 border-on-surface shadow-hard bg-white organic-brutalism w-full box-border">
-        <h3 class="font-headline text-2xl font-black text-on-surface uppercase mb-3">No se encontraron guías</h3>
-        <p class="font-body text-base text-on-surface-variant mb-6">Pronto publicaremos más artículos sobre esta temática. Mientras tanto, explora las demás categorías.</p>
-        <a href="/blog" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center justify-center gap-2 max-w-xs mx-auto no-underline">
-          Ver todas las guías
-        </a>
-      </div>
-    )}
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Empty State -->
+    <div id="no-posts-message" style="display: none;" class="text-center p-12 max-w-xl mx-auto border-4 border-on-surface shadow-hard bg-white organic-brutalism w-full box-border">
+      <h3 class="font-headline text-2xl font-black text-on-surface uppercase mb-3">No se encontraron guías</h3>
+      <p class="font-body text-base text-on-surface-variant mb-6">Pronto publicaremos más artículos sobre esta temática. Mientras tanto, explora las demás categorías.</p>
+      <a href="/blog" id="reset-filter-btn" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center justify-center gap-2 max-w-xs mx-auto no-underline">
+        Ver todas las guías
+      </a>
+    </div>
   </section>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterContainer = document.getElementById('filter-container');
+      const filterLinks = filterContainer ? filterContainer.querySelectorAll('a') : [];
+      const postWrappers = document.querySelectorAll('.post-card-wrapper');
+      const noPostsMessage = document.getElementById('no-posts-message');
+      const resetBtn = document.getElementById('reset-filter-btn');
+
+      function applyFilter(category) {
+        let visibleCount = 0;
+        
+        postWrappers.forEach(wrapper => {
+          const postCategory = wrapper.getAttribute('data-category');
+          if (!category || postCategory === category) {
+            wrapper.style.display = 'block';
+            visibleCount++;
+          } else {
+            wrapper.style.display = 'none';
+          }
+        });
+
+        // Show/hide empty state message
+        if (noPostsMessage) {
+          if (visibleCount === 0) {
+            noPostsMessage.style.display = 'block';
+          } else {
+            noPostsMessage.style.display = 'none';
+          }
+        }
+
+        // Update active styling of filter links
+        filterLinks.forEach(link => {
+          const href = link.getAttribute('href');
+          const linkCat = href.includes('category=') ? decodeURIComponent(href.split('category=')[1]) : null;
+          
+          if (linkCat === category) {
+            link.className = 'font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none rounded-full no-underline';
+          } else {
+            link.className = 'font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-white text-on-surface shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline';
+          }
+        });
+      }
+
+      // Read query parameter initially
+      const urlParams = new URLSearchParams(window.location.search);
+      const initialCategory = urlParams.get('category');
+      applyFilter(initialCategory);
+
+      // Intercept clicks on filter links to perform instant client-side filtering without full page reload!
+      filterLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          const newCat = href.includes('category=') ? decodeURIComponent(href.split('category=')[1]) : null;
+          
+          // Update URL search params without page reload
+          const newUrl = newCat ? `${window.location.pathname}?category=${encodeURIComponent(newCat)}` : window.location.pathname;
+          window.history.pushState({ category: newCat }, '', newUrl);
+          
+          applyFilter(newCat);
+        });
+      });
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.history.pushState({ category: null }, '', window.location.pathname);
+          applyFilter(null);
+        });
+      }
+
+      // Listen to history popstate (e.g. back button)
+      window.addEventListener('popstate', () => {
+        const currentParams = new URLSearchParams(window.location.search);
+        applyFilter(currentParams.get('category'));
+      });
+    });
+  </script>
 </BaseLayout>
