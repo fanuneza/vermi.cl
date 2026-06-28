@@ -26,7 +26,7 @@
   --color-on-secondary-container: #732001;
   --color-tertiary: #52453a;
   --color-tertiary-container: #6a5d51;
-  
+
   /* Fixed and containers */
   --color-tertiary-fixed: #f2dfd0;
   --color-secondary-fixed: #ffdbd0;
@@ -41,23 +41,23 @@
   --color-surface: #ecffe2;
   --color-on-surface: #002201;
   --color-on-surface-variant: #404943;
-  
+
   /* Semantic Badges & Extra Colors */
-  --color-warning-badge: #F0C842;
-  --color-safe-badge: #59C985;
-  --color-danger-badge: #E05353;
+  --color-warning-badge: #f0c842;
+  --color-safe-badge: #59c985;
+  --color-danger-badge: #e05353;
   --color-error: #ba1a1a;
   --color-error-container: #ffdad6;
   --color-on-error-container: #93000a;
   --color-inverse-primary: #95d4b3;
   --color-mustard: #e9d7c8;
-  
+
   /* Spacing overrides for utility mapping */
   --spacing-margin-mobile: 20px;
   --spacing-margin-desktop: 64px;
   --spacing-stack-gap-mobile: 32px;
   --spacing-stack-gap-desktop: 64px;
-  
+
   /* Fonts */
   --font-headline: "Bricolage Grotesque", sans-serif;
   --font-body: "Fira Sans", sans-serif;
@@ -66,11 +66,21 @@
 }
 
 /* Custom organic and zine classes that complement Tailwind */
-.organic-shape-1 { border-radius: 60px 20px 50px 30px; }
-.organic-shape-2 { border-radius: 30px 50px 20px 40px; }
-.organic-shape-3 { border-radius: 20px 60px 40px 20px; }
-.organic-brutalism { border-radius: 4px 16px 8px 24px; }
-.organic-brutalism-alt { border-radius: 12px 4px 20px 8px; }
+.organic-shape-1 {
+  border-radius: 60px 20px 50px 30px;
+}
+.organic-shape-2 {
+  border-radius: 30px 50px 20px 40px;
+}
+.organic-shape-3 {
+  border-radius: 20px 60px 40px 20px;
+}
+.organic-brutalism {
+  border-radius: 4px 16px 8px 24px;
+}
+.organic-brutalism-alt {
+  border-radius: 12px 4px 20px 8px;
+}
 
 /* Hard shadows */
 .shadow-hard {
@@ -127,7 +137,7 @@
   position: relative;
 }
 .torn-border::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -5px;
   left: 0;
