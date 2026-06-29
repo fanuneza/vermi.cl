@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://vermi.cl/sitemap.xml
-Schemamap: https://vermi.cl/schemamap.xml

@@ -89,8 +89,13 @@ assertMatch(
 
 assertMatch(
   robotsTxt,
-  /Schemamap:\s+https:\/\/vermi\.cl\/schemamap\.xml/,
-  "robots.txt is missing the Schemamap directive.",
+  /Sitemap:\s+https:\/\/vermi\.cl\/sitemap\.xml/,
+  "robots.txt is missing the sitemap directive.",
+);
+assertNoMatch(
+  robotsTxt,
+  /Schemamap:/,
+  "robots.txt should not include the non-standard Schemamap directive.",
 );
 assertMatch(
   schemamapXml,

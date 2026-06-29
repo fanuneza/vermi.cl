@@ -120,7 +120,7 @@ Keep these routes and artifacts aligned whenever SEO infrastructure changes:
 - `src/pages/blog/[...slug].md.ts`: Markdown alternates for collection entries.
 - `src/pages/sitemap.xml.ts`: sitemap with `gitLastmod()`-backed dates where possible.
 - `src/pages/591c2b87f0b68c44f260215f5d8e9da3.txt.ts`: IndexNow key route.
-- `public/robots.txt`: must advertise both `Sitemap` and `Schemamap`.
+- `public/robots.txt`: keep it standards-compliant for validators like PSI. Advertise `Sitemap` only; expose semantic discovery through `/.well-known/api-catalog` and `/schemamap.xml` as normal routes instead of a custom robots directive.
 - `public/_headers`: must retain `No-Vary-Search` for campaign params.
 - `.lycheeignore` and `.github/workflows/lychee.yml`: link-checking exclusions and workflow scope.
 
