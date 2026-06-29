@@ -26,5 +26,10 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "@jdevalk/astro-seo-graph": {
+      "astro": "$astro"
+    }
   }
 }
