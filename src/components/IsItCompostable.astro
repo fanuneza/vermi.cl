@@ -14,6 +14,7 @@
         type="text"
         id="food-lookup-input"
         placeholder="Ej: cáscara de plátano, café, cítricos..."
+        aria-label="Buscar si un alimento se puede compostar con lombrices"
         class="w-full border-none bg-transparent py-4 pl-14 pr-4 font-headline text-xl text-on-background placeholder:text-outline focus:ring-0 focus:outline-none"
         autocomplete="off"
       />
@@ -51,7 +52,16 @@
 </div>
 
 <script>
-  let searchIndex: any[] = [];
+  interface FoodEntry {
+    name: string;
+    category: string;
+    status: "safe" | "warning" | "danger" | "seguro" | "moderacion" | "peligro";
+    instructions: string;
+    nutrition?: string;
+    keywords?: string;
+  }
+
+  let searchIndex: FoodEntry[] = [];
   let isIndexLoaded = false;
   let indexPromise: Promise<void> | null = null;
 
@@ -74,7 +84,7 @@
         return res.json();
       })
       .then(data => {
-        searchIndex = data;
+        searchIndex = data as FoodEntry[];
         isIndexLoaded = true;
       })
       .catch(err => {
@@ -100,9 +110,20 @@
   const renderMarkdownItalics = (str: string) => 
     escapeHTML(str).replace(/\*(.*?)\*/g, "<i>$1</i>");
 
+  const syncQueryParam = (rawQuery: string) => {
+    const url = new URL(window.location.href);
+    if (rawQuery.length >= 2) {
+      url.searchParams.set('q', rawQuery);
+    } else {
+      url.searchParams.delete('q');
+    }
+    window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+  };
+
   const handleSearchEvent = async () => {
     const rawQuery = lookupInput.value.trim();
     const query = normalizeString(rawQuery);
+    syncQueryParam(rawQuery);
     
     if (query.length < 2) {
       statusDisplay.classList.add('hidden');
@@ -115,18 +136,18 @@
     if (!isIndexLoaded) return;
 
     // Tiered search matching to prioritize names over keywords
-    let filteredItem = searchIndex.find((item: any) => normalizeString(item.name) === query);
+    let filteredItem = searchIndex.find((item) => normalizeString(item.name) === query);
     
     if (!filteredItem) {
-      filteredItem = searchIndex.find((item: any) => normalizeString(item.name).includes(query));
+      filteredItem = searchIndex.find((item) => normalizeString(item.name).includes(query));
     }
     
     if (!filteredItem) {
-      filteredItem = searchIndex.find((item: any) => normalizeString(item.category).includes(query));
+      filteredItem = searchIndex.find((item) => normalizeString(item.category).includes(query));
     }
     
     if (!filteredItem) {
-      filteredItem = searchIndex.find((item: any) => item.keywords && normalizeString(item.keywords).includes(query));
+      filteredItem = searchIndex.find((item) => item.keywords && normalizeString(item.keywords).includes(query));
     }
 
     if (filteredItem) {
@@ -172,6 +193,14 @@
   // Prefetch index on mouse hover or touch start to speed up response
   lookupInput.addEventListener('pointerover', () => loadSearchIndex(), { once: true });
   lookupInput.addEventListener('touchstart', () => loadSearchIndex(), { once: true });
+
+  const initialQuery = new URLSearchParams(window.location.search).get('q');
+  if (initialQuery) {
+    lookupInput.value = initialQuery;
+    loadSearchIndex().then(() => {
+      handleSearchEvent();
+    });
+  }
 
   // Suggestion buttons click handler
   suggestionButtons.forEach(btn => {

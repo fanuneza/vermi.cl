@@ -7,12 +7,12 @@ export const GET: APIRoute = async () => {
   const siteUrl = "https://vermi.cl";
 
   const staticPages = [
-    { path: "", file: "src/pages/index.astro" },
-    { path: "/blog", file: "src/pages/blog/index.astro" },
-    { path: "/nosotros", file: "src/pages/nosotros.astro" },
-    { path: "/contacto", file: "src/pages/contacto.astro" },
-    { path: "/sustentabilidad", file: "src/pages/sustentabilidad.astro" },
-    { path: "/privacidad", file: "src/pages/privacidad.astro" },
+    { path: "/", file: "src/pages/index.astro" },
+    { path: "/blog/", file: "src/pages/blog/index.astro" },
+    { path: "/nosotros/", file: "src/pages/nosotros.astro" },
+    { path: "/contacto/", file: "src/pages/contacto.astro" },
+    { path: "/sustentabilidad/", file: "src/pages/sustentabilidad.astro" },
+    { path: "/privacidad/", file: "src/pages/privacidad.astro" },
   ];
 
   const urls = [
@@ -24,9 +24,9 @@ export const GET: APIRoute = async () => {
       return {
         loc: `${siteUrl}${page.path}`,
         changefreq:
-          page.path === "" || page.path === "/blog" ? "weekly" : "monthly",
+          page.path === "/" || page.path === "/blog/" ? "weekly" : "monthly",
         priority:
-          page.path === "" ? "1.0" : page.path === "/blog" ? "0.9" : "0.7",
+          page.path === "/" ? "1.0" : page.path === "/blog/" ? "0.9" : "0.7",
         lastmod,
       };
     }),
@@ -38,7 +38,7 @@ export const GET: APIRoute = async () => {
           ? new Date(post.data.pubDate).toISOString().split("T")[0]
           : new Date().toISOString().split("T")[0];
       return {
-        loc: `${siteUrl}/blog/${post.id}`,
+        loc: `${siteUrl}/blog/${post.id}/`,
         changefreq: "monthly",
         priority: "0.8",
         lastmod,

@@ -101,12 +101,30 @@ All visual elements must conform to the **Organic-Brutalism Eco-Zine / Handcraft
 Before making a commit, run:
 
 ```bash
-npx prettier . --write
-npx astro check
+npm run format
+npm run check
 npm run build
+npm run test
 ```
 
 Document any skipped checks and explain the reasoning.
+
+## 8.1 SEO and agent-discovery surfaces
+
+Keep these routes and artifacts aligned whenever SEO infrastructure changes:
+
+- `src/utils/schema.ts`: typed Schema.org graph builder shared by layouts and endpoints.
+- `src/pages/schema/post.json.ts`: consolidated JSON-LD corpus for blog content.
+- `src/pages/schemamap.xml.ts`: semantic discovery map.
+- `src/pages/.well-known/api-catalog.ts`: RFC 9727 linkset catalog for schema endpoints.
+- `src/pages/blog/[...slug].md.ts`: Markdown alternates for collection entries.
+- `src/pages/sitemap.xml.ts`: sitemap with `gitLastmod()`-backed dates where possible.
+- `src/pages/591c2b87f0b68c44f260215f5d8e9da3.txt.ts`: IndexNow key route.
+- `public/robots.txt`: must advertise both `Sitemap` and `Schemamap`.
+- `public/_headers`: must retain `No-Vary-Search` for campaign params.
+- `.lycheeignore` and `.github/workflows/lychee.yml`: link-checking exclusions and workflow scope.
+
+Base metadata is generated in `src/layouts/BaseLayout.astro`. Do not rely on individual pages to emit the only JSON-LD payload for a route; the layout must always produce a base graph and merge page-specific nodes when present.
 
 ---
 

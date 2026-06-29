@@ -1,86 +1,49 @@
-# vermi.cl 🪱
+# vermi.cl
 
-Bienvenidos a **vermi.cl**, un centro educativo y tecnológico chileno enfocado en la **lombricultura urbana (vermicompostaje)** adaptada al clima de la biorregión central de Chile.
+`vermi.cl` es un sitio estático en Astro 7 sobre lombricultura doméstica en Chile. El foco del repositorio es combinar contenido educativo en español chileno, rendimiento extremo y una capa SEO/AI-ready verificable en build.
 
-El portal es 100% de código abierto, sin fines comerciales ni e-commerce, diseñado para divulgar la ciencia de la lombricultura y empoderar a hogares (de departamento y de casa) para que reciclen sus residuos orgánicos de forma exitosa mediante _Eisenia fetida_ (lombriz californiana).
+## Qué incluye
 
----
+- Guías editoriales en `src/content/blog/`
+- Buscador client-side `¿Las lombrices pueden comer esto?` con índice generado desde `src/content/alimentos/`
+- RSS, sitemap, schemamap, catálogo API y alternates Markdown para crawlers y agentes
+- Headers de Cloudflare Pages endurecidos en `public/_headers`
 
-## 🌟 Características Clave
+## Desarrollo local
 
-- **¿Es compostable? (Buscador Inteligente)**: Widget interactivo en la página principal para buscar de forma instantánea si un residuo (platano, cítricos, cartón, café, etc.) se puede echar a la vermicompostera y cómo prepararlo.
-- **Enfoque Científico sin Asco**: Artículos prácticos explicados desde la biología molecular y química (acidificación, condiciones anaeróbicas, letargo térmico) para resolver dudas de manera objetiva.
-- **Adaptación Biorregional Chilena**: Guías específicas para el clima mediterráneo semiárido del Valle Central (gestión de calor extremo en verano, heladas en invierno, y reemplazo de insumos comerciales por cartón reciclado y hojas de árboles urbanos como el plátano oriental).
-- **Rendimiento Extremo**: Optimizado para un **score de 100/100 en Lighthouse** (Rendimiento, Accesibilidad, Buenas Prácticas y SEO).
-
----
-
-## 🎨 Estética Visual: Eco-Zine / Organic-Brutalism
-
-El sitio sigue un manifiesto visual de **Zine Ecológico / Scrapbook Hecho a Mano**:
-
-- **Bordes y Sombras Brutalistas**: Bordes negros sólidos y sombras duras (`shadow-hard`).
-- **Formas Orgánicas**: Esquinas asimétricas mediante radios de curvatura personalizados (`.organic-shape-1`, `.organic-shape-2`).
-- **Paleta de Colores Terrosos**:
-  - **Fondo:** Verde muy pálido / papel reciclado (`#ecffe2`)
-  - **Texto Principal:** Verde bosque ultra oscuro (`#002201`)
-  - **Detalles/Acentos:** Verde pino (`#0f5238`), Terracota arcillosa (`#a0401f`) y Amarillo mostaza (`#F0C842`).
-
----
-
-## 🛠️ Tecnologías Utilizadas
-
-- **Framework**: [Astro v7](https://astro.build/) (Generación de Sitios Estáticos - SSG).
-- **Estilos**: [Tailwind CSS v4](https://tailwindcss.com/) (compilado en tiempo de compilación para máxima velocidad).
-- **Infraestructura**: Desplegado en **Cloudflare Pages** a través de integración continua con GitHub.
-- **SEO & AI-Ready**: Cuenta con un feed RSS generado dinámicamente (`/feed.xml`), además de archivos compatibles con buscadores de IA (`/llms.txt` y `/llms-full.txt`).
-
----
-
-## 🚀 Comandos de Desarrollo
-
-Asegúrate de tener instalado [Node.js](https://nodejs.org/).
-
-### 1. Clonar el repositorio e instalar dependencias
+Requiere Node.js y npm.
 
 ```bash
 npm install
-```
-
-### 2. Levantar el servidor de desarrollo
-
-Inicia un servidor local con recarga rápida (HMR):
-
-```bash
 npm run dev
 ```
 
-Abre tu navegador en `http://localhost:4321`.
+El sitio queda en `http://localhost:4321`.
 
-### 3. Ejecutar diagnóstico de tipos
-
-Verifica que las referencias TypeScript e integridad de Astro estén correctas:
+## Comandos principales
 
 ```bash
-npx astro check
-```
-
-### 4. Compilar para producción
-
-Genera el sitio web estático optimizado en la carpeta `/dist`:
-
-```bash
+npm run format
+npm run check
 npm run build
+npm run test
 ```
 
----
+`npm run build` genera la salida estática en `dist/`. `npm run test` valida los artefactos SEO clave ya construidos, incluyendo JSON-LD, canonical/noindex y endpoints de descubrimiento.
 
-## ☁️ Configuración de Despliegue en Cloudflare Pages
+## Estructura útil
 
-El despliegue está automatizado con la integración de GitHub de Cloudflare Pages:
+- `src/pages/`: rutas Astro y endpoints estáticos
+- `src/layouts/`: layout base y layout de artículos
+- `src/utils/schema.ts`: builder tipado de Schema.org
+- `public/`: assets raíz, `robots.txt`, `llms.txt`, `llms-full.txt`, `_headers`
+- `.github/workflows/lychee.yml`: auditoría continua de enlaces
 
-- **Build Command**: `npm run build`
-- **Build Output Directory**: `dist`
+## Despliegue
 
-> [!NOTE]
-> El proyecto está configurado como **completamente estático** (`output: 'static'`). No requiere de adaptadores de servidor (SSR), lo que permite que se compile directamente a la carpeta `/dist`, optimizando el rendimiento global en la red de borde de Cloudflare.
+Cloudflare Pages debe usar:
+
+- Build command: `npm run build`
+- Output directory: `dist`
+
+El proyecto es estrictamente `output: "static"` y no debe usar adapters de Astro.

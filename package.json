@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "prebuild": "npx prettier . --write",
+    "format": "prettier . --write",
+    "check": "astro check",
+    "test": "node ./scripts/test-seo.mjs",
+    "prebuild": "npm run format",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

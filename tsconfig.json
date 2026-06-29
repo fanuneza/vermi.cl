@@ -1,5 +1,6 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "include": [".astro/types.d.ts", "**/*", "src/pages/.well-known/**/*"],
   "compilerOptions": {
     "moduleResolution": "bundler",
     "jsx": "react-jsx",

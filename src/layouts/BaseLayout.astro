@@ -1,10 +1,12 @@
 ---
 // BaseLayout.astro - Core Layout Shell for vermi.cl
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import defaultOgImage from '../assets/images/hero.jpg';
-import Seo from '@jdevalk/astro-seo-graph/Seo.astro';
-import '../styles/global.css';
+import Seo from "@jdevalk/astro-seo-graph/Seo.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import defaultOgImage from "../assets/images/hero.jpg";
+import "../styles/global.css";
+import { buildSchemaGraph, SITE_URL } from "../utils/schema";
+import type { GraphEntity } from "@jdevalk/seo-graph-core";
 
 interface ArticleMeta {
   publishedTime?: string;
@@ -16,40 +18,101 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
-  schema?: Record<string, any>;
+  canonical?: string;
+  noindex?: boolean;
+  schema?: Record<string, unknown>;
   mainClass?: string;
   articleMeta?: ArticleMeta;
 }
 
-const { 
-  title, 
-  description, 
-  ogImage = defaultOgImage.src, 
+const {
+  title,
+  description,
+  ogImage = defaultOgImage.src,
+  canonical,
+  noindex = false,
   schema,
   mainClass = "flex-grow flex flex-col items-center w-full px-margin-mobile md:px-margin-desktop py-stack-gap md:py-16 gap-16 md:gap-24",
-  articleMeta
+  articleMeta,
 } = Astro.props;
 
-// SEO Helper calculations
-const siteUrl = 'https://vermi.cl';
-const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const canonicalUrl = canonical || new URL(Astro.url.pathname, SITE_URL).toString();
 
 const makeAbsoluteUrl = (urlPath: string) => {
-  if (!urlPath) return '';
-  if (urlPath.startsWith('http://') || urlPath.startsWith('https://')) return urlPath;
-  return `${siteUrl}${urlPath.startsWith('/') ? '' : '/'}${urlPath}`;
+  if (!urlPath) return "";
+  if (urlPath.startsWith("http://") || urlPath.startsWith("https://")) return urlPath;
+  return `${SITE_URL}${urlPath.startsWith("/") ? "" : "/"}${urlPath}`;
 };
 
 const ogImageAbsolute = makeAbsoluteUrl(ogImage);
-const isArticle = Astro.url.pathname.startsWith('/blog/') && Astro.url.pathname !== '/blog';
-const ogType = isArticle ? 'article' : 'website';
+const isArticle =
+  Astro.url.pathname.startsWith("/blog/") && Astro.url.pathname !== "/blog";
+const ogType = isArticle ? "article" : "website";
 
-const seoArticle = isArticle && articleMeta ? {
-  publishedTime: articleMeta.publishedTime ? new Date(articleMeta.publishedTime) : undefined,
-  modifiedTime: articleMeta.modifiedTime ? new Date(articleMeta.modifiedTime) : undefined,
-  authors: articleMeta.author ? [`${siteUrl}/nosotros/`] : undefined,
-  section: 'Lombricultura'
-} : undefined;
+const seoArticle =
+  isArticle && articleMeta
+    ? {
+        publishedTime: articleMeta.publishedTime
+          ? new Date(articleMeta.publishedTime)
+          : undefined,
+        modifiedTime: articleMeta.modifiedTime
+          ? new Date(articleMeta.modifiedTime)
+          : undefined,
+        authors: articleMeta.author ? [`${SITE_URL}/nosotros/`] : undefined,
+        section: "Lombricultura",
+      }
+    : undefined;
+
+const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+const baseGraph = buildSchemaGraph({
+  pageType: isHome ? "website" : "webpage",
+  url: canonicalUrl,
+  title,
+  description,
+});
+
+const mergedNodes = new Map<string, Record<string, unknown>>();
+const anonymousNodes: GraphEntity[] = [];
+
+const upsertNode = (node: Record<string, unknown>) => {
+  const id = typeof node["@id"] === "string" ? node["@id"] : undefined;
+  if (!id) {
+    anonymousNodes.push(node as GraphEntity);
+    return;
+  }
+
+  const existing = mergedNodes.get(id);
+  if (existing) {
+    mergedNodes.set(id, { ...existing, ...node });
+    return;
+  }
+
+  mergedNodes.set(id, node);
+};
+
+for (const node of baseGraph["@graph"] as Record<string, unknown>[]) {
+  upsertNode(node);
+}
+
+if (schema) {
+  const pageNodes =
+    "@graph" in schema && Array.isArray(schema["@graph"])
+      ? (schema["@graph"] as Record<string, unknown>[])
+      : [schema];
+
+  for (const pageNode of pageNodes) {
+    const { "@context": _context, ...node } = pageNode;
+    upsertNode(node);
+  }
+}
+
+const graph = {
+  "@context": "https://schema.org" as const,
+  "@graph": [
+    ...Array.from(mergedNodes.values()),
+    ...anonymousNodes,
+  ] as GraphEntity[],
+};
 ---
 
 <!DOCTYPE html>
@@ -63,6 +126,7 @@ const seoArticle = isArticle && articleMeta ? {
       titleTemplate="%s | vermi.cl"
       description={description}
       canonical={canonicalUrl}
+      noindex={noindex}
       ogType={ogType}
       ogImage={ogImageAbsolute}
       ogImageAlt={title}
@@ -72,11 +136,10 @@ const seoArticle = isArticle && articleMeta ? {
       locale="es_CL"
       twitter={{ card: 'summary_large_image' }}
       article={seoArticle}
-      graph={schema}
+      graph={graph}
       extraLinks={[
         { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
-        { rel: 'alternate', type: 'application/rss+xml', href: '/feed.xml', title: 'vermi.cl RSS' },
-        { rel: 'alternate', type: 'text/markdown', href: '/llms.txt', title: 'vermi.cl LLM Context' }
+        { rel: 'alternate', type: 'application/rss+xml', href: '/feed.xml', title: 'vermi.cl RSS' }
       ]}
     />
 
@@ -93,4 +156,3 @@ const seoArticle = isArticle && articleMeta ? {
     <Footer />
   </body>
 </html>
-

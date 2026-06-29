@@ -1,0 +1,16 @@
+# Local development URLs
+http://localhost:4321/.*
+
+# Rate-limited social hosts
+https://(www\.)?instagram\.(com|cl)/.*
+
+# Template placeholders in vendored or source code
+https://www\.googletagmanager\.com/ns\.html\?id=\$\{gtmContainerId\}
+
+# Preconnect and analytics hosts that are not meaningful navigable pages
+https://www\.googletagmanager\.com/
+https://static\.cloudflareinsights\.com/
+
+# Upstream docs that may fail intermittently in CI
+https://www\.npmjs\.com/package/@fortawesome/fontawesome-free
+https://docs\.fontawesome\.com/apis/javascript/get-started
