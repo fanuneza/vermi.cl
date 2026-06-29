@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FuzzyRedirect from "@jdevalk/astro-seo-graph/FuzzyRedirect.astro";
+import { buildSchemaGraph } from "../utils/schema";
+
+const pageSchema = buildSchemaGraph({
+  pageType: "page",
+  url: "https://vermi.cl/404",
+  title: "Página no encontrada",
+  description:
+    "La página que buscas no existe. Tal vez fue devorada por las lombrices.",
+});
+---
+
+<BaseLayout
+  title="Página no encontrada"
+  description="La página que buscas no existe o se ha movido. Tal vez se la comieron las lombrices."
+  schema={pageSchema}
+  mainClass="max-w-xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-24 flex-grow w-full box-border flex flex-col items-center justify-center text-center"
+>
+  <div class="bg-[#FFFBEA] border-4 border-on-surface p-8 md:p-12 shadow-hard transform rotate-[-1deg] organic-brutalism max-w-md w-full relative">
+    <!-- Decorative Tape -->
+    <div class="absolute -top-4 left-10 w-24 h-6 bg-secondary-fixed/80 border border-on-surface rotate-[-4deg]"></div>
+    
+    <div class="text-7xl mb-6">🐛❌</div>
+    <h1 class="font-headline text-4xl md:text-5xl font-black text-secondary uppercase m-0 leading-tight">¡Error 404!</h1>
+    <h2 class="font-headline text-2xl font-bold text-on-surface mt-4 mb-2 uppercase">Página no encontrada</h2>
+    <p class="font-body text-base text-on-surface-variant leading-relaxed mb-6">
+      La ruta que buscas no existe. Tal vez fue devorada por las lombrices californianas o se compostó por completo.
+    </p>
+
+    <!-- FuzzyRedirect container -->
+    <div class="bg-surface-container border-2 border-on-surface p-4 rounded-lg font-mono text-sm shadow-hard-sm mb-6 organic-brutalism-alt">
+      <FuzzyRedirect 
+        sitemapUrl="/sitemap.xml" 
+        suggestionText="¿Quisiste decir:" 
+        threshold={0.5} 
+        autoRedirectThreshold={0.8} 
+      />
+    </div>
+
+    <a href="/" class="inline-block bg-primary text-on-primary font-mono text-sm font-bold px-6 py-3 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 no-underline organic-brutalism">
+      Volver al Inicio
+    </a>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  /* Customize the FuzzyRedirect output text and link styling */
+  #fuzzy-redirect {
+    color: #002201;
+  }
+  #fuzzy-redirect a {
+    color: #0f5238;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  #fuzzy-redirect a:hover {
+    text-decoration: none;
+  }
+</style>

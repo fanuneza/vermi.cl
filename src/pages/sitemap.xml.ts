@@ -1,3 +1,4 @@
+import { gitLastmod } from "@jdevalk/astro-seo-graph";
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 
@@ -6,29 +7,43 @@ export const GET: APIRoute = async () => {
   const siteUrl = "https://vermi.cl";
 
   const staticPages = [
-    "",
-    "/blog",
-    "/nosotros",
-    "/contacto",
-    "/sustentabilidad",
-    "/privacidad",
+    { path: "", file: "src/pages/index.astro" },
+    { path: "/blog", file: "src/pages/blog/index.astro" },
+    { path: "/nosotros", file: "src/pages/nosotros.astro" },
+    { path: "/contacto", file: "src/pages/contacto.astro" },
+    { path: "/sustentabilidad", file: "src/pages/sustentabilidad.astro" },
+    { path: "/privacidad", file: "src/pages/privacidad.astro" },
   ];
 
   const urls = [
-    ...staticPages.map((page) => ({
-      loc: `${siteUrl}${page}`,
-      changefreq: page === "" || page === "/blog" ? "weekly" : "monthly",
-      priority: page === "" ? "1.0" : page === "/blog" ? "0.9" : "0.7",
-      lastmod: new Date().toISOString().split("T")[0],
-    })),
-    ...posts.map((post) => ({
-      loc: `${siteUrl}/blog/${post.id}`,
-      changefreq: "monthly",
-      priority: "0.8",
-      lastmod: post.data.pubDate
-        ? new Date(post.data.pubDate).toISOString().split("T")[0]
-        : new Date().toISOString().split("T")[0],
-    })),
+    ...staticPages.map((page) => {
+      const gitDate = gitLastmod(page.file);
+      const lastmod = gitDate
+        ? gitDate.toISOString().split("T")[0]
+        : new Date().toISOString().split("T")[0];
+      return {
+        loc: `${siteUrl}${page.path}`,
+        changefreq:
+          page.path === "" || page.path === "/blog" ? "weekly" : "monthly",
+        priority:
+          page.path === "" ? "1.0" : page.path === "/blog" ? "0.9" : "0.7",
+        lastmod,
+      };
+    }),
+    ...posts.map((post) => {
+      const gitDate = gitLastmod(`src/content/blog/${post.id}.md`);
+      const lastmod = gitDate
+        ? gitDate.toISOString().split("T")[0]
+        : post.data.pubDate
+          ? new Date(post.data.pubDate).toISOString().split("T")[0]
+          : new Date().toISOString().split("T")[0];
+      return {
+        loc: `${siteUrl}/blog/${post.id}`,
+        changefreq: "monthly",
+        priority: "0.8",
+        lastmod,
+      };
+    }),
   ];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>

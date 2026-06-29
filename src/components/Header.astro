@@ -26,8 +26,8 @@ const isNosotros = pathname.startsWith('/nosotros');
   <!-- Middle: Navigation Links (Desktop Only) -->
   <div class="hidden md:flex items-center gap-6">
     <a class={isHome ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/">Inicio</a>
-    <a class={isBlog ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/blog">Guías</a>
-    <a class={isNosotros ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/nosotros">Nosotros</a>
+    <a class={isBlog ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/blog/">Guías</a>
+    <a class={isNosotros ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/nosotros/">Nosotros</a>
   </div>
 
   <!-- Right Side: Actions (Desktop and Mobile) -->
@@ -81,7 +81,7 @@ const isNosotros = pathname.startsWith('/nosotros');
     </a>
     
     <!-- Guías Link -->
-    <a class="group relative block w-full no-underline" href="/blog">
+    <a class="group relative block w-full no-underline" href="/blog/">
       {isBlog ? (
         <div class="absolute inset-0 bg-[#002201] border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
         <div class="relative bg-[#bcf0ae] text-[#002201] border-2 border-on-surface px-4 py-3 rounded-lg flex items-center gap-3">
@@ -97,7 +97,7 @@ const isNosotros = pathname.startsWith('/nosotros');
     </a>
     
     <!-- Nosotros Link -->
-    <a class="group relative block w-full no-underline" href="/nosotros">
+    <a class="group relative block w-full no-underline" href="/nosotros/">
       {isNosotros ? (
         <div class="absolute inset-0 bg-[#002201] border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
         <div class="relative bg-[#bcf0ae] text-[#002201] border-2 border-on-surface px-4 py-3 rounded-lg flex items-center gap-3">

@@ -1,5 +1,5 @@
 ---
-title: "Cómo cosechar y harnear el humus de lombriz paso a paso"
+title: "Cómo cosechar y harnear el humus de lombriz"
 description: "El momento de cosechar el humus es uno de los más esperados en el vermicompostaje. Es la recompensa a meses de reciclar tus orgánicos."
 pubDate: 2024-10-12
 category: Cosecha

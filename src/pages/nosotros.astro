@@ -1,15 +1,24 @@
 ---
-// nosotros.astro - About Us Standalone Page
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import teamImage from '../assets/images/lombrices.jpeg';
+import { buildSchemaGraph } from '../utils/schema';
+
+const aboutSchema = buildSchemaGraph({
+  pageType: 'about',
+  url: 'https://vermi.cl/nosotros',
+  title: 'Nosotros',
+  description: 'Conoce al colectivo de amantes de la tierra detrás de vermi.cl y nuestro propósito de democratizar el vermicompostaje urbano en Chile.',
+});
 ---
 
 <BaseLayout 
-  title="Nosotros" 
+  title="Quiénes somos y nuestro propósito" 
   description="Conoce al colectivo de amantes de la tierra detrás de vermi.cl y nuestro propósito de democratizar el vermicompostaje urbano en Chile."
+  schema={aboutSchema}
   mainClass="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-16 flex-grow w-full box-border"
 >
+
   <!-- Hero Section -->
   <section class="mb-12 md:mb-16 p-8 bg-surface-container border-4 border-on-surface shadow-hard transform rotate-1 rounded-xl max-w-4xl mx-auto lg:mx-0">
     <h1 class="font-headline text-4xl md:text-5xl text-primary mb-4 m-0 uppercase leading-none">El Equipo Detrás de la Tierra</h1>

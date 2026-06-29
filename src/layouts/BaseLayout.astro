@@ -3,6 +3,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import defaultOgImage from '../assets/images/hero.jpg';
+import Seo from '@jdevalk/astro-seo-graph/Seo.astro';
 import '../styles/global.css';
 
 interface ArticleMeta {
@@ -29,17 +30,6 @@ const {
   articleMeta
 } = Astro.props;
 
-// Default JSON-LD WebSite Schema
-const defaultSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "vermi.cl",
-  "url": "https://vermi.cl",
-  "description": description
-};
-
-const finalSchema = schema || defaultSchema;
-
 // SEO Helper calculations
 const siteUrl = 'https://vermi.cl';
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
@@ -53,6 +43,13 @@ const makeAbsoluteUrl = (urlPath: string) => {
 const ogImageAbsolute = makeAbsoluteUrl(ogImage);
 const isArticle = Astro.url.pathname.startsWith('/blog/') && Astro.url.pathname !== '/blog';
 const ogType = isArticle ? 'article' : 'website';
+
+const seoArticle = isArticle && articleMeta ? {
+  publishedTime: articleMeta.publishedTime ? new Date(articleMeta.publishedTime) : undefined,
+  modifiedTime: articleMeta.modifiedTime ? new Date(articleMeta.modifiedTime) : undefined,
+  authors: articleMeta.author ? [`${siteUrl}/nosotros/`] : undefined,
+  section: 'Lombricultura'
+} : undefined;
 ---
 
 <!DOCTYPE html>
@@ -60,38 +57,28 @@ const ogType = isArticle ? 'article' : 'website';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
-    <title>{title} | vermi.cl</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonicalUrl} />
-    
-    <!-- Open Graph Metadata -->
-    <meta property="og:type" content={ogType} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonicalUrl} />
-    <meta property="og:image" content={ogImageAbsolute} />
-    <meta property="og:site_name" content="vermi.cl" />
-    
-    <!-- Optional Article Metadata -->
-    {isArticle && articleMeta && (
-      <>
-        {articleMeta.publishedTime && <meta property="article:published_time" content={articleMeta.publishedTime} />}
-        {articleMeta.modifiedTime && <meta property="article:modified_time" content={articleMeta.modifiedTime} />}
-        {articleMeta.author && <meta property="article:author" content={articleMeta.author} />}
-        <meta property="article:section" content="Lombricultura" />
-      </>
-    )}
-    
-    <!-- Twitter Metadata -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImageAbsolute} />
-
-    <!-- Schema.org JSON-LD structured data block -->
-    <script is:inline type="application/ld+json" set:html={JSON.stringify(finalSchema)} />
+    <Seo
+      title={title}
+      titleTemplate="%s | vermi.cl"
+      description={description}
+      canonical={canonicalUrl}
+      ogType={ogType}
+      ogImage={ogImageAbsolute}
+      ogImageAlt={title}
+      ogImageWidth={1200}
+      ogImageHeight={675}
+      siteName="vermi.cl"
+      locale="es_CL"
+      twitter={{ card: 'summary_large_image' }}
+      article={seoArticle}
+      graph={schema}
+      extraLinks={[
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'alternate', type: 'application/rss+xml', href: '/feed.xml', title: 'vermi.cl RSS' },
+        { rel: 'alternate', type: 'text/markdown', href: '/llms.txt', title: 'vermi.cl LLM Context' }
+      ]}
+    />
 
     <!-- Dynamic slot for page-specific preloads and metadata -->
     <slot name="head" />
@@ -106,3 +93,4 @@ const ogType = isArticle ? 'article' : 'website';
     <Footer />
   </body>
 </html>
+

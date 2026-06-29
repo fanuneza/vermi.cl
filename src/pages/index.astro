@@ -20,18 +20,15 @@ const bookOpenPaths = Array.isArray(faBookOpen.icon[4]) ? faBookOpen.icon[4] : [
 const appleWholePaths = Array.isArray(faAppleWhole.icon[4]) ? faAppleWhole.icon[4] : [faAppleWhole.icon[4]];
 const skullCrossbonesPaths = Array.isArray(faSkullCrossbones.icon[4]) ? faSkullCrossbones.icon[4] : [faSkullCrossbones.icon[4]];
 
-const homepageSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "vermi.cl",
-  "url": "https://vermi.cl",
-  "description": "Aprende vermicompostaje doméstico en Chile. Guías científicas y prácticas para reducir residuos orgánicos con lombrices californianas.",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://vermi.cl/api/alimentos.json?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
-};
+import { buildSchemaGraph } from '../utils/schema';
+
+const homepageSchema = buildSchemaGraph({
+  pageType: 'blogListing',
+  url: 'https://vermi.cl/',
+  title: 'Inicio',
+  description: 'Aprende vermicompostaje doméstico en Chile. Guías científicas y prácticas para reducir tus residuos orgánicos con lombrices californianas.',
+});
+
 
 // Optimize LCP hero image for responsive preloading
 const optimizedHero = await getImage({
@@ -47,7 +44,7 @@ const heroSrcSet = optimizedHero.srcSet.values
   .join(', ');
 ---
 
-<BaseLayout title="Inicio" description="Aprende vermicompostaje doméstico en Chile. Guías científicas y prácticas para reducir tus residuos orgánicos con lombrices californianas." schema={homepageSchema}>
+<BaseLayout title="Compostaje doméstico con lombrices californianas" description="Aprende vermicompostaje doméstico en Chile. Guías científicas y prácticas para reducir tus residuos orgánicos con lombrices californianas." schema={homepageSchema}>
   <link 
     rel="preload" 
     as="image" 
@@ -80,11 +77,11 @@ const heroSrcSet = optimizedHero.srcSet.values
       </p>
       
       <div class="flex flex-wrap gap-4 mt-4">
-        <a href="/blog" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center gap-2 no-underline">
+        <a href="/blog/" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center gap-2 no-underline">
           Quiero empezar
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
-        <a href="/blog?category=Problemas" class="bg-secondary-container text-on-secondary-container font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center gap-2 rotate-1 no-underline">
+        <a href="/blog/?category=Problemas" class="bg-secondary-container text-on-secondary-container font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center gap-2 rotate-1 no-underline">
           Tengo un problema 🐛
         </a>
       </div>
@@ -130,7 +127,7 @@ const heroSrcSet = optimizedHero.srcSet.values
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Card 1 -->
-      <a class="block bg-tertiary-fixed border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-2 rotate-1 no-underline" href="/blog?category=Manual">
+      <a class="block bg-tertiary-fixed border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-2 rotate-1 no-underline" href="/blog/?category=Manual">
         <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] -rotate-3 group-hover:rotate-0 transition-transform">
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faBookOpen.icon[0]} ${faBookOpen.icon[1]}`} fill="currentColor" class="text-primary">
             {bookOpenPaths.map((d) => <path d={d} />)}
@@ -144,7 +141,7 @@ const heroSrcSet = optimizedHero.srcSet.values
       </a>
       
       <!-- Card 2 -->
-      <a class="block bg-surface-container border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-1 -rotate-1 no-underline" href="/blog?category=Alimentación">
+      <a class="block bg-surface-container border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-1 -rotate-1 no-underline" href="/blog/?category=Alimentación">
         <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] rotate-2 group-hover:rotate-0 transition-transform">
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faAppleWhole.icon[0]} ${faAppleWhole.icon[1]}`} fill="currentColor" class="text-secondary">
             {appleWholePaths.map((d) => <path d={d} />)}
@@ -158,7 +155,7 @@ const heroSrcSet = optimizedHero.srcSet.values
       </a>
       
       <!-- Card 3 -->
-      <a class="block bg-inverse-primary border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-3 rotate-2 lg:col-span-1 md:col-span-2 no-underline" href="/blog?category=Problemas">
+      <a class="block bg-inverse-primary border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-3 rotate-2 lg:col-span-1 md:col-span-2 no-underline" href="/blog/?category=Problemas">
         <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] -rotate-2 group-hover:rotate-0 transition-transform">
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faSkullCrossbones.icon[0]} ${faSkullCrossbones.icon[1]}`} fill="currentColor" class="text-tertiary">
             {skullCrossbonesPaths.map((d) => <path d={d} />)}
@@ -180,7 +177,7 @@ const heroSrcSet = optimizedHero.srcSet.values
         Últimas guías publicadas
         <div class="absolute -bottom-2 left-0 w-full h-2 bg-secondary opacity-50 -rotate-1"></div>
       </h2>
-      <a href="/blog" class="bg-white text-on-background font-label-md text-label-md px-4 py-2 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 organic-brutalism no-underline">
+      <a href="/blog/" class="bg-white text-on-background font-label-md text-label-md px-4 py-2 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 organic-brutalism no-underline">
         Ver todas las guías
       </a>
     </div>

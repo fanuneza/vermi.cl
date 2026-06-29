@@ -1,5 +1,5 @@
 ---
-title: "Qué alimentos no debes dar a tus lombrices californianas"
+title: "Alimentos que no debes dar a tus lombrices"
 description: "Evita los errores más comunes de alimentación en tu vermicompostera que causan acidez, malos olores y fuga de lombrices."
 pubDate: 2024-09-28
 category: Alimentación

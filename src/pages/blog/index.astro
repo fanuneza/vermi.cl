@@ -12,16 +12,19 @@ const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDa
 
 const categories = ['Manual', 'Alimentación', 'Problemas', 'Cosecha'];
 
-const archiveSchema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Guías de vermicompostaje",
-  "description": "Explora nuestras guías clasificadas para principiantes, alimentación de lombrices, control de plagas y cosecha de humus."
-};
+import { buildSchemaGraph } from '../../utils/schema';
+
+const archiveSchema = buildSchemaGraph({
+  pageType: 'blogListing',
+  url: 'https://vermi.cl/blog',
+  title: 'Archivo de guías',
+  description: 'Explora nuestras guías y manuales educativos de vermicompostaje doméstico en Chile.',
+});
+
 ---
 
 <BaseLayout 
-  title="Archivo de guías" 
+  title="Archivo de guías de vermicompostaje" 
   description="Explora nuestras guías y manuales educativos de vermicompostaje doméstico en Chile." 
   schema={archiveSchema}
   mainClass="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap flex-grow w-full box-border"
@@ -39,14 +42,14 @@ const archiveSchema = {
       <h2 class="font-mono text-xs font-bold text-on-surface uppercase tracking-wider m-0">[ Filtrar por categoría ]</h2>
       <div id="filter-container" class="flex flex-wrap gap-3">
         <a 
-          href="/blog" 
+          href="/blog/" 
           class="font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none rounded-full no-underline"
         >
           Todos
         </a>
         {categories.map(cat => (
           <a 
-            href={`/blog?category=${cat}`} 
+            href={`/blog/?category=${cat}`} 
             class="font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-white text-on-surface shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline"
           >
             {cat}
@@ -81,7 +84,7 @@ const archiveSchema = {
     <div id="no-posts-message" style="display: none;" class="text-center p-12 max-w-xl mx-auto border-4 border-on-surface shadow-hard bg-white organic-brutalism w-full box-border">
       <h3 class="font-headline text-2xl font-black text-on-surface uppercase mb-3">No se encontraron guías</h3>
       <p class="font-body text-base text-on-surface-variant mb-6">Pronto publicaremos más artículos sobre esta temática. Mientras tanto, explora las demás categorías.</p>
-      <a href="/blog" id="reset-filter-btn" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center justify-center gap-2 max-w-xs mx-auto no-underline">
+      <a href="/blog/" id="reset-filter-btn" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center justify-center gap-2 max-w-xs mx-auto no-underline">
         Ver todas las guías
       </a>
     </div>

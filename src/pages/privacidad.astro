@@ -1,13 +1,22 @@
 ---
-// privacidad.astro - Privacy Policy Page
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { buildSchemaGraph } from '../utils/schema';
+
+const privacySchema = buildSchemaGraph({
+  pageType: 'page',
+  url: 'https://vermi.cl/privacidad',
+  title: 'Políticas de Privacidad',
+  description: 'Conoce el compromiso de vermi.cl con la privacidad de los usuarios. Al ser un sitio estático, no recopilamos ni procesamos información personal.',
+});
 ---
 
 <BaseLayout 
   title="Políticas de Privacidad" 
   description="Conoce el compromiso de vermi.cl con la privacidad de los usuarios. Al ser un sitio estático, no recopilamos ni procesamos información personal."
+  schema={privacySchema}
   mainClass="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-16 flex-grow w-full box-border"
 >
+
   <!-- Header Ripped Ticket -->
   <header class="bg-surface-container border-4 border-on-surface shadow-hard p-8 md:p-12 -rotate-1 relative overflow-hidden rounded-xl w-full box-border">
     <div class="absolute -top-6 -right-6 font-mono text-[120px] text-primary opacity-15 pointer-events-none select-none">🔒</div>

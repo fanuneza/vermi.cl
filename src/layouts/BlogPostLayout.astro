@@ -34,33 +34,19 @@ const categoryMeta = {
 const meta = categoryMeta[category] || categoryMeta.Manual;
 
 // JSON-LD BlogPosting Schema for SEO and AI Search engines
-const schemaImage = heroImage ? new URL(heroImage, 'https://vermi.cl').toString() : 'https://vermi.cl/favicon.svg';
+import { buildSchemaGraph } from '../utils/schema';
 
-const articleSchema = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": title,
-  "description": description,
-  "datePublished": pubDate.toISOString(),
-  "dateModified": pubDate.toISOString(),
-  "image": schemaImage,
-  "author": {
-    "@type": "Person",
-    "name": author
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "vermi.cl",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://vermi.cl/favicon.svg"
-    }
-  },
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": Astro.url.toString()
-  }
-};
+const articleSchema = buildSchemaGraph({
+  pageType: 'blogPost',
+  url: Astro.url.href,
+  title,
+  description,
+  publishDate: pubDate,
+  authorName: author,
+  featureImageUrl: heroImage,
+  category,
+});
+
 ---
 
 <BaseLayout 
@@ -198,7 +184,7 @@ const articleSchema = {
         <p class="font-body-md text-body-md mb-6 relative z-10 leading-relaxed">Únete a nuestro canal de la comunidad para resolver problemas de humedad y plagas en tiempo real.</p>
         <div class="flex flex-col gap-2 mt-2">
           <a href="#unirse" class="block w-full bg-secondary text-white font-mono text-sm font-bold text-center py-3 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 relative z-10 no-underline">Únete a la comunidad</a>
-          <a href="/contacto" class="block w-full bg-surface-container text-[#002201] font-mono text-sm font-bold text-center py-3 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 relative z-10 no-underline">Escríbenos</a>
+          <a href="/contacto/" class="block w-full bg-surface-container text-[#002201] font-mono text-sm font-bold text-center py-3 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 relative z-10 no-underline">Escríbenos</a>
         </div>
       </div>
 
@@ -206,7 +192,7 @@ const articleSchema = {
       <div class="bg-surface-container border-2 border-on-surface p-6 shadow-hard organic-brutalism rotate-[0.5deg]">
         <h2 class="font-headline-md text-headline-md mb-4 border-b-2 border-on-surface pb-2 uppercase">Te podría interesar</h2>
         <div class="space-y-4 flex flex-col gap-4">
-          <a class="block group no-underline" href="/blog/que-alimentos-no-dar">
+          <a class="block group no-underline" href="/blog/que-alimentos-no-dar/">
             <div class="flex gap-4 items-center">
               <div class="w-16 h-16 bg-surface-dim border-2 border-on-surface shrink-0 organic-brutalism overflow-hidden flex items-center justify-center font-headline text-lg text-primary">
                 NO
@@ -218,7 +204,7 @@ const articleSchema = {
             </div>
           </a>
           <div class="h-px w-full border-t-2 border-dashed border-on-surface"></div>
-          <a class="block group no-underline" href="/blog/vermi-en-departamento">
+          <a class="block group no-underline" href="/blog/vermi-en-departamento/">
             <div class="flex gap-4 items-center">
               <div class="w-16 h-16 bg-surface-dim border-2 border-on-surface shrink-0 organic-brutalism-alt overflow-hidden flex items-center justify-center font-headline text-lg text-secondary">
                 DEPA

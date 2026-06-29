@@ -1,13 +1,22 @@
 ---
-// sustentabilidad.astro - Sustainability Report Page
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { buildSchemaGraph } from '../utils/schema';
+
+const sustainabilitySchema = buildSchemaGraph({
+  pageType: 'page',
+  url: 'https://vermi.cl/sustentabilidad',
+  title: 'Reporte de Sostenibilidad',
+  description: 'Explora el impacto ambiental de nuestra comunidad y el volumen de residuos orgánicos recuperados mediante vermicompostaje en Chile.',
+});
 ---
 
 <BaseLayout 
   title="Reporte de Sostenibilidad" 
   description="Explora el impacto ambiental de nuestra comunidad y el volumen de residuos orgánicos recuperados mediante vermicompostaje en Chile."
+  schema={sustainabilitySchema}
   mainClass="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-16 flex-grow w-full box-border"
 >
+
   <!-- Header Ripped Ticket -->
   <header class="bg-surface-container border-4 border-on-surface shadow-hard p-8 md:p-12 -rotate-1 relative overflow-hidden rounded-xl w-full box-border">
     <div class="absolute -top-6 -right-6 font-mono text-[120px] text-primary opacity-15 pointer-events-none select-none">🌱</div>

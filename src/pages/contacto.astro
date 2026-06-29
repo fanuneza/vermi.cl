@@ -1,13 +1,22 @@
 ---
-// contacto.astro - Contact Form Page
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { buildSchemaGraph } from '../utils/schema';
+
+const contactSchema = buildSchemaGraph({
+  pageType: 'page',
+  url: 'https://vermi.cl/contacto',
+  title: 'Contacto',
+  description: '¿Tienes dudas sobre tus lombrices californianas o problemas con tu compostera? Escríbenos, estamos para ayudarte a reciclar en casa.',
+});
 ---
 
 <BaseLayout 
-  title="Contacto" 
+  title="Contacto y soporte de vermicompostaje" 
   description="¿Tienes dudas sobre tus lombrices californianas o problemas con tu compostera? Escríbenos, estamos para ayudarte a reciclar en casa."
+  schema={contactSchema}
   mainClass="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-16 flex-grow w-full box-border"
 >
+
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full">
     <!-- Header / Intro Section (Left Column) -->
     <div class="lg:col-span-5 flex flex-col gap-6 md:sticky md:top-32">
