@@ -1,5 +1,5 @@
 ---
-title: "Cómo evitar que las lombrices escapen de la vermicompostera"
+title: "Cómo evitar fugas de lombrices de tu vermicompostera"
 description: "Descubre por qué las lombrices intentan escapar de la vermicompostera, cuáles son las causas más comunes y cómo solucionar el problema paso a paso."
 pubDate: 2024-11-20
 category: Problemas

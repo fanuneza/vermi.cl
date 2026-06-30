@@ -37,7 +37,6 @@ export default defineConfig({
         host: "vermi.cl",
         siteUrl: "https://vermi.cl",
       },
-      markdownAlternate: true,
     }),
   ],
 });

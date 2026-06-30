@@ -61,6 +61,7 @@ const articleSchema = buildSchemaGraph({
   category,
 });
 
+const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
 ---
 
 <BaseLayout 
@@ -69,6 +70,7 @@ const articleSchema = buildSchemaGraph({
   ogImage={heroImage} 
   schema={articleSchema}
   mainClass="blog-post-main max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap flex-grow w-full box-border"
+  extraLinks={[{ rel: 'alternate', type: 'text/markdown', href: markdownAlternateHref }]}
   articleMeta={{
     publishedTime: pubDate.toISOString(),
     modifiedTime: pubDate.toISOString(),
