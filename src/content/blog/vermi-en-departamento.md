@@ -24,10 +24,10 @@ Sí. Las lombrices rojas californianas (_Eisenia fetida_) viven naturalmente en 
 
 Mientras dispongan de:
 
-- alimento suficiente;
-- humedad constante;
-- buena ventilación;
-- temperaturas moderadas;
+- Alimento suficiente
+- Humedad constante
+- Buena ventilación
+- Temperaturas moderadas
 
 podrán vivir y reproducirse durante años en un recipiente relativamente pequeño.
 
@@ -43,18 +43,18 @@ En Chile, especialmente en la zona central, lo ideal es instalarla en un lugar d
 
 Las mejores opciones son:
 
-- una logia ventilada;
-- un balcón protegido del sol directo;
-- un patio con sombra;
-- un quincho techado;
-- un lavadero con buena circulación de aire.
+- Una logia ventilada
+- Un balcón protegido del sol directo
+- Un patio con sombra
+- Un quincho techado
+- Un lavadero con buena circulación de aire
 
 Evita instalarla:
 
-- bajo el sol directo durante la tarde;
-- junto a estufas o calefactores;
-- sobre superficies que acumulen mucho calor;
-- completamente expuesta a lluvias intensas.
+- Bajo el sol directo durante la tarde.
+- Junto a estufas o calefactores.
+- Sobre superficies que acumulen mucho calor.
+- Completamente expuesta a lluvias intensas.
 
 Durante el verano, un balcón orientado al poniente puede superar fácilmente las temperaturas que las lombrices toleran cómodamente. En esos casos conviene mover la vermicompostera a un lugar más fresco o protegerla del sol con una cubierta.
 
@@ -66,20 +66,20 @@ No hace falta comprar equipos complejos.
 
 Para iniciar una vermicompostera doméstica solo necesitas:
 
-- una vermicompostera con buena ventilación;
-- lombrices rojas californianas;
-- material seco rico en carbono;
-- residuos orgánicos de cocina.
+- Una vermicompostera con buena ventilación
+- Lombrices rojas californianas
+- Material seco rico en carbono
+- Residuos orgánicos de cocina
 
 El material seco es tan importante como la comida de las lombrices. Ayuda a absorber humedad, mantener la aireación y evitar malos olores.
 
 Los materiales más recomendables son:
 
-- cartón corrugado sin tinta plastificada;
-- cajas de huevo de cartón;
-- papel café;
-- hojas secas;
-- fibra de coco hidratada.
+- Cartón corrugado sin tinta plastificada
+- Cajas de huevo de cartón
+- Papel café
+- Hojas secas
+- Fibra de coco hidratada
 
 <div id="sec4"></div>
 
@@ -109,9 +109,9 @@ Al congelarse, el agua presente dentro de las células vegetales forma cristales
 
 Cuando los residuos se descongelan:
 
-- los microorganismos los colonizan más rápidamente;
-- los tejidos se ablandan;
-- las lombrices pueden consumirlos antes.
+- Los microorganismos los colonizan más rápidamente.
+- Los tejidos se ablandan.
+- Las lombrices pueden consumirlos antes.
 
 Además, almacenar temporalmente los residuos en el congelador evita olores dentro de la cocina mientras reúnes suficiente material para alimentar la vermicompostera.
 
@@ -123,19 +123,19 @@ Una vermicompostera saludable tiene olor a tierra húmeda.
 
 Si aparecen olores fuertes normalmente ocurre alguna de estas situaciones:
 
-- exceso de comida;
-- demasiada humedad;
-- falta de oxígeno;
-- poca cantidad de material seco.
+- Exceso de comida
+- Demasiada humedad
+- Falta de oxígeno
+- Poca cantidad de material seco
 
 En lugar de agregar desodorantes o productos químicos, corrige la causa.
 
 Generalmente basta con:
 
-- reducir temporalmente la alimentación;
-- incorporar más cartón o papel;
-- mezclar suavemente la capa superior;
-- mejorar la ventilación del sistema.
+- Reducir temporalmente la alimentación.
+- Incorporar más cartón o papel.
+- Mezclar suavemente la capa superior.
+- Mejorar la ventilación del sistema.
 
 Los malos olores provienen de procesos anaeróbicos, no de las lombrices.
 
@@ -149,10 +149,10 @@ La buena noticia es que también es uno de los más fáciles de prevenir.
 
 Cada vez que alimentes la vermicompostera:
 
-- entierra los residuos bajo la superficie;
-- cúbrelos completamente con material seco;
-- evita dejar frutas expuestas;
-- no sobrealimentes el sistema.
+- Entierra los residuos bajo la superficie.
+- Cúbrelos completamente con material seco.
+- Evita dejar frutas expuestas.
+- No sobrealimentes el sistema.
 
 Si aparecen algunas moscas, normalmente desaparecerán una vez que elimines la fuente de alimento expuesta.
 
@@ -162,15 +162,15 @@ Si aparecen algunas moscas, normalmente desaparecerán una vez que elimines la f
 
 ### En verano
 
-- protege la vermicompostera del sol directo;
-- revisa la humedad con mayor frecuencia;
-- evita que el contenido se seque completamente.
+- Protege la vermicompostera del sol directo.
+- Revisa la humedad con mayor frecuencia.
+- Evita que el contenido se seque completamente.
 
 ### En invierno
 
-- protege el sistema de lluvias intensas;
-- disminuye ligeramente la cantidad de alimento si notas menor actividad;
-- evita que el contenido permanezca saturado de agua durante varios días.
+- Protege el sistema de lluvias intensas.
+- Disminuye ligeramente la cantidad de alimento si notas menor actividad.
+- Evita que el contenido permanezca saturado de agua durante varios días.
 
 En la mayor parte de Chile central las lombrices continúan trabajando durante todo el año, aunque su actividad suele disminuir cuando bajan las temperaturas.
 
