@@ -147,7 +147,3 @@ vite.config.ts.timestamp-*
 .wrangler/
 .antigravitycli/
 dist/
-
-# Project documentation ignores (keep only tone & voice)
-docs/*
-!docs/voice_and_tone.md

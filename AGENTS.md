@@ -85,14 +85,176 @@ All visual elements must conform to the **Organic-Brutalism Eco-Zine / Handcraft
 
 ---
 
-## 7. Voice, Tone, and Copywriting
+## 7. Editorial Knowledge Base
 
-- **Guidelines**: Refer to `docs/voice_and_tone.md` before generating or editing content.
-- **Chilean Spanish**: Content must use natural Chilean Spanish "tuteo" (e.g., "Aprende", "Tu vermi", "Comienza"). Use correct accents and grammar.
-- **Scientific Grounding**: Explain biological concepts (Eisenia fetida, metabolic lethargy, overfeeding, acidification) scientifically to resolve user anxiety and mitigate the "factor repulsivo".
-- **No Periods on Titles**: Heading elements (H1, H2, H3, H4) and page/article titles must never end in a period.
-- **Spanish Title Capitalization**: All heading elements (H1, H2, H3, H4) and page/article titles must follow Spanish title capitalization styling (sentence case). Only capitalize the first word and proper nouns (e.g. use "Manual de inicio" instead of "Manual de Inicio", "Solución de problemas" instead of "Solución de Problemas"). Do not use English title case.
-- **Encoding**: All files must be UTF-8. Never introduce mojibake or corrupted accent sequences.
+All editorial and copywriting work must follow the documents in the `docs/` directory. They define the editorial standards for vermi.cl and are considered authoritative.
+
+### Required reading
+
+Whenever your task involves writing, editing, reviewing, translating, summarizing, researching, or expanding content intended for publication, consult the following documents before beginning work.
+
+#### `docs/01-editorial-principles.md`
+
+Defines:
+
+- editorial philosophy
+- scientific standards
+- evidence policy
+- article structure
+- search intent philosophy
+- AI retrieval optimization
+- quality standards
+- definition of done
+
+This document governs **what** should be written.
+
+#### `docs/02-voice-and-tone.md`
+
+Defines:
+
+- writing style
+- voice
+- tone
+- Chilean Spanish usage
+- preferred vocabulary
+- formatting conventions
+- headings
+- terminology
+- readability
+
+This document governs **how** the content should sound.
+
+#### `docs/03-chile-localization.md`
+
+Defines:
+
+- Chilean climate
+- local gardening context
+- common household waste
+- seasons
+- measurements
+- local examples
+- localization rules
+
+This document governs **how recommendations are adapted to Chile**.
+
+Never copy recommendations from international sources without localizing them.
+
+#### `docs/04-content-workflow.md`
+
+Defines the editorial production workflow, including:
+
+- research
+- outlining
+- evidence synthesis
+- drafting
+- verification
+- readability improvements
+- SEO review
+- LLM optimization
+- editorial review
+
+Whenever creating or substantially updating an article, follow this workflow from beginning to end.
+
+Never skip verification or editorial review.
+
+### Priority
+
+If multiple documents appear to overlap, apply them in this order:
+
+1. `01-editorial-principles.md`
+2. `04-content-workflow.md`
+3. `03-chile-localization.md`
+4. `02-voice-and-tone.md`
+
+Editorial principles always take precedence over writing style.
+
+Scientific accuracy always takes precedence over fluency.
+
+Local relevance always takes precedence over generic international recommendations.
+
+### Research standards
+
+When producing educational content:
+
+- Prefer peer-reviewed scientific literature.
+- Prefer university extension publications over commercial blogs.
+- Distinguish established knowledge from expert opinion.
+- Explicitly acknowledge uncertainty when evidence is limited.
+- Never invent measurements, statistics, temperatures, nutrient values, or municipal information.
+- Synthesize multiple high-quality sources rather than summarizing a single source.
+
+### Content philosophy
+
+Every published page should aim to become the definitive Spanish-language reference for its topic.
+
+Content should be:
+
+- scientifically rigorous
+- practical
+- evergreen
+- immediately useful
+- optimized for human readers first
+- easy for search engines and language models to retrieve
+- worthy of being cited
+
+Never optimize for keywords at the expense of usefulness.
+
+Solve the reader's problem completely.
+
+### Canonical knowledge
+
+Treat vermi.cl as a knowledge base rather than a collection of isolated articles.
+
+Before creating new explanations for concepts such as *Eisenia fetida*, humus, lixiviado, pH, humidity, carbon, nitrogen, microorganisms, or compost biology, check whether a canonical explanation already exists and reuse its terminology.
+
+Maintain consistency across the entire site.
+
+### Applicability
+
+These documents should be consulted whenever working on:
+
+- blog articles
+- guides
+- tutorials
+- FAQ pages
+- food database entries
+- glossary pages
+- landing pages
+- metadata
+- structured data
+- author pages
+- newsletters
+- downloadable resources
+- any other user-facing educational content
+
+Purely technical code changes that do not affect published content do not require consulting these editorial documents.
+
+
+### Repository-wide editorial rules
+
+The editorial documents are **normative**.
+
+Do not override them unless the user explicitly instructs you to.
+
+If two editorial documents conflict, follow this priority:
+
+1. `docs/01-editorial-principles.md`
+2. `docs/04-content-workflow.md`
+3. `docs/03-chile-localization.md`
+4. `docs/02-voice-and-tone.md`
+
+When modifying code only, follow this `AGENTS.md`.
+
+When modifying published content, follow both this `AGENTS.md` and the editorial documents.
+
+When modifying both code and content, follow both instruction sets simultaneously.
+
+All user-facing content must use natural Chilean Spanish unless explicitly requested otherwise.
+
+All heading elements must use Spanish sentence case and must never end with a period.
+
+All text files in the repository must remain UTF-8 encoded. Never introduce mojibake or corrupted accent sequences.
 
 ---
 
