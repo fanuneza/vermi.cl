@@ -24,11 +24,11 @@ No existe una fecha exacta. El tiempo depende de la temperatura, la cantidad de 
 
 En general, el humus está listo cuando:
 
-- la mayor parte de los residuos ya no se distingue;
-- el material tiene aspecto uniforme;
-- huele a tierra húmeda;
-- la textura es suelta y granulada;
-- quedan muy pocos trozos grandes de cartón o alimentos.
+- La mayor parte de los residuos ya no se distingue.
+- El material tiene aspecto uniforme
+- Huele a tierra húmeda
+- La textura es suelta y granulada
+- Quedan muy pocos trozos grandes de cartón o alimentos.
 
 Si todavía reconoces fácilmente restos de verduras o frutas, conviene esperar algunas semanas más.
 
@@ -40,10 +40,10 @@ Antes de extraer el humus conviene facilitar el trabajo tanto para ti como para 
 
 Durante una o dos semanas:
 
-- deja de alimentar la zona que vas a cosechar;
-- si tu sistema lo permite, alimenta solo un extremo o una bandeja superior;
-- evita agregar grandes cantidades de agua;
-- mantén una humedad moderada.
+- Deja de alimentar la zona que vas a cosechar
+- Si tu sistema lo permite, alimenta solo un extremo o una bandeja superior.
+- Evita agregar grandes cantidades de agua
+- Mantén una humedad moderada
 
 Esto favorece que muchas lombrices migren naturalmente hacia la zona donde aún encuentran alimento fresco.
 
@@ -99,10 +99,10 @@ Tiene una textura homogénea y está listo para usar en macetas, huertos o jardi
 
 Sobre el harnero normalmente quedarán:
 
-- pequeños trozos de cartón;
-- ramas o hojas poco descompuestas;
-- algunos capullos;
-- lombrices juveniles y adultas.
+- Pequeños trozos de cartón
+- Ramas o hojas poco descompuestas
+- Algunos capullos
+- Lombrices juveniles y adultas
 
 Todo este material debe volver a la vermicompostera para continuar el proceso.
 
@@ -116,10 +116,10 @@ Si el humus será utilizado únicamente en el jardín o en el huerto, muchas per
 
 El tamizado resulta especialmente útil cuando:
 
-- quieres obtener un producto de textura uniforme;
-- vas a utilizarlo en almácigos;
-- prepararás mezclas para macetas;
-- deseas almacenar el humus durante más tiempo.
+- Quieres obtener un producto de textura uniforme
+- Vas a utilizarlo en almácigos
+- Prepararás mezclas para macetas
+- Deseas almacenar el humus durante más tiempo
 
 <div id="sec6"></div>
 
@@ -129,11 +129,11 @@ El humus contiene una comunidad muy diversa de microorganismos beneficiosos.
 
 Para conservar esa vida biológica:
 
-- guárdalo en un lugar fresco;
-- evita el sol directo;
-- no permitas que se seque completamente;
-- tampoco lo almacenes completamente saturado de agua;
-- utiliza recipientes o bolsas que permitan cierto intercambio de aire.
+- Guárdalo en un lugar fresco
+- Evita el sol directo
+- No permitas que se seque completamente
+- Tampoco lo almacenes completamente saturado de agua
+- Utiliza recipientes o bolsas que permitan cierto intercambio de aire.
 
 Si permanece ligeramente húmedo y protegido del calor, conservará mejor sus propiedades.
 

@@ -51,10 +51,10 @@ Las mejores opciones son:
 
 Evita instalarla:
 
-- Bajo el sol directo durante la tarde.
-- Junto a estufas o calefactores.
-- Sobre superficies que acumulen mucho calor.
-- Completamente expuesta a lluvias intensas.
+- Bajo el sol directo durante la tarde
+- Junto a estufas o calefactores
+- Sobre superficies que acumulen mucho calor
+- Completamente expuesta a lluvias intensas
 
 Durante el verano, un balcón orientado al poniente puede superar fácilmente las temperaturas que las lombrices toleran cómodamente. En esos casos conviene mover la vermicompostera a un lugar más fresco o protegerla del sol con una cubierta.
 
@@ -89,9 +89,9 @@ La clave no es alimentar mucho, sino alimentar de forma equilibrada.
 
 Cada vez que agregues residuos de cocina:
 
-1. Haz un pequeño espacio en el material existente.
-2. Deposita los residuos.
-3. Cúbrelos completamente con material seco.
+1. Haz un pequeño espacio en el material existente
+2. Deposita los residuos
+3. Cúbrelos completamente con material seco
 
 Esta última etapa suele ser la diferencia entre una vermicompostera sin problemas y otra llena de mosquitas.
 
@@ -109,9 +109,9 @@ Al congelarse, el agua presente dentro de las células vegetales forma cristales
 
 Cuando los residuos se descongelan:
 
-- Los microorganismos los colonizan más rápidamente.
-- Los tejidos se ablandan.
-- Las lombrices pueden consumirlos antes.
+- Los microorganismos los colonizan más rápidamente
+- Los tejidos se ablandan
+- Las lombrices pueden consumirlos antes
 
 Además, almacenar temporalmente los residuos en el congelador evita olores dentro de la cocina mientras reúnes suficiente material para alimentar la vermicompostera.
 
@@ -132,10 +132,10 @@ En lugar de agregar desodorantes o productos químicos, corrige la causa.
 
 Generalmente basta con:
 
-- Reducir temporalmente la alimentación.
-- Incorporar más cartón o papel.
-- Mezclar suavemente la capa superior.
-- Mejorar la ventilación del sistema.
+- Reducir temporalmente la alimentación
+- Incorporar más cartón o papel
+- Mezclar suavemente la capa superior
+- Mejorar la ventilación del sistema
 
 Los malos olores provienen de procesos anaeróbicos, no de las lombrices.
 
@@ -149,10 +149,10 @@ La buena noticia es que también es uno de los más fáciles de prevenir.
 
 Cada vez que alimentes la vermicompostera:
 
-- Entierra los residuos bajo la superficie.
-- Cúbrelos completamente con material seco.
-- Evita dejar frutas expuestas.
-- No sobrealimentes el sistema.
+- Entierra los residuos bajo la superficie
+- Cúbrelos completamente con material seco
+- Evita dejar frutas expuestas
+- No sobrealimentes el sistema
 
 Si aparecen algunas moscas, normalmente desaparecerán una vez que elimines la fuente de alimento expuesta.
 
@@ -162,13 +162,13 @@ Si aparecen algunas moscas, normalmente desaparecerán una vez que elimines la f
 
 ### En verano
 
-- Protege la vermicompostera del sol directo.
-- Revisa la humedad con mayor frecuencia.
-- Evita que el contenido se seque completamente.
+- Protege la vermicompostera del sol directo
+- Revisa la humedad con mayor frecuencia
+- Evita que el contenido se seque completamente
 
 ### En invierno
 
-- Protege el sistema de lluvias intensas.
+- Protege el sistema de lluvias intensas
 - Disminuye ligeramente la cantidad de alimento si notas menor actividad.
 - Evita que el contenido permanezca saturado de agua durante varios días.
 

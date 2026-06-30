@@ -28,12 +28,12 @@ Cuando alguna de esas condiciones cambia bruscamente, su respuesta natural es de
 
 Las causas más habituales son:
 
-- falta de oxígeno;
-- exceso de humedad;
-- exceso de temperatura;
-- alimentación excesiva;
-- incorporación de materiales irritantes;
-- cambios bruscos durante los primeros días después de instalar una nueva colonia.
+- Falta de oxígeno
+- Exceso de humedad
+- Exceso de temperatura
+- Alimentación excesiva
+- Incorporación de materiales irritantes
+- Cambios bruscos durante los primeros días después de instalar una nueva colonia.
 
 La mayoría de estos problemas puede corregirse rápidamente.
 
@@ -47,10 +47,10 @@ Agregar grandes cantidades de residuos de cocina provoca que los microorganismos
 
 Como consecuencia pueden aparecer:
 
-- aumento de temperatura;
-- disminución del oxígeno;
-- exceso de humedad;
-- malos olores.
+- Aumento de temperatura
+- Disminución del oxígeno
+- Exceso de humedad
+- Malos olores
 
 Antes de volver a alimentar, verifica que la mayor parte del alimento anterior ya haya sido procesado.
 
@@ -66,9 +66,9 @@ Esto favorece procesos anaeróbicos que producen compuestos desagradables para l
 
 Si notas que el material está apelmazado:
 
-- remueve suavemente la capa superior;
-- incorpora cartón o papel picado;
-- evita agregar grandes masas de residuos húmedos de una sola vez.
+- Remueve suavemente la capa superior
+- Incorpora cartón o papel picado
+- Evita agregar grandes masas de residuos húmedos de una sola vez.
 
 La vermicompostera debe mantenerse húmeda, pero nunca convertida en una pasta compacta.
 
@@ -82,11 +82,11 @@ Si al apretar un puñado de material escurre abundante agua, probablemente exist
 
 Puedes corregirlo agregando materiales ricos en carbono como:
 
-- cartón corrugado;
-- papel sin plastificar;
-- cajas de huevo;
-- hojas secas;
-- fibra de coco.
+- Cartón corrugado
+- Papel sin plastificar
+- Cajas de huevo
+- Hojas secas
+- Fibra de coco
 
 Estos materiales ayudan a absorber agua y mejorar la circulación de aire.
 
@@ -100,10 +100,10 @@ Durante el verano, especialmente en balcones orientados al poniente o espacios m
 
 Si notas que el recipiente está muy caliente:
 
-- muévelo a un lugar con sombra;
-- mejora la ventilación;
-- evita sobrealimentar;
-- revisa que el contenido no esté iniciando un precompostaje muy activo.
+- Muévelo a un lugar con sombra
+- Mejora la ventilación
+- Evita sobrealimentar
+- Revisa que el contenido no esté iniciando un precompostaje muy activo.
 
 Nunca intentes enfriar todo el sistema agregando grandes cantidades de hielo directamente sobre el sustrato. Los cambios bruscos también generan estrés.
 
@@ -115,11 +115,11 @@ Algunos residuos conviene incorporarlos con moderación.
 
 Por ejemplo:
 
-- grandes cantidades de cítricos;
-- mucha borra de café;
-- alimentos muy salados;
-- comidas condimentadas;
-- carnes y lácteos.
+- Grandes cantidades de cítricos
+- Mucha borra de café
+- Alimentos muy salados
+- Comidas condimentadas
+- Carnes y lácteos
 
 No significa que pequeñas cantidades siempre provoquen una fuga, pero un exceso puede alterar el equilibrio del sistema.
 
@@ -147,11 +147,11 @@ Como las lombrices evitan la luz, esto reduce la probabilidad de que abandonen e
 
 Si encuentras muchas lombrices fuera del sustrato:
 
-1. Devuélvelas cuidadosamente a la vermicompostera.
-2. Suspende la alimentación durante algunos días.
-3. Agrega material seco.
-4. Revisa la humedad.
-5. Mejora la aireación.
+1. Devuélvelas cuidadosamente a la vermicompostera
+2. Suspende la alimentación durante algunos días
+3. Agrega material seco
+4. Revisa la humedad
+5. Mejora la aireación
 6. Comprueba que la vermicompostera no esté recibiendo sol directo.
 
 En la mayoría de los casos la colonia vuelve a estabilizarse rápidamente una vez corregida la causa.
@@ -164,12 +164,12 @@ Mantener una vermicompostera estable es mucho más sencillo que corregir un sist
 
 Procura siempre:
 
-- alimentar poco y con frecuencia;
-- cubrir los residuos con material seco;
-- mantener una buena ventilación;
-- evitar temperaturas extremas;
-- proteger la vermicompostera del sol directo;
-- revisar periódicamente la humedad.
+- Alimentar poco y con frecuencia
+- Cubrir los residuos con material seco
+- Mantener una buena ventilación
+- Evitar temperaturas extremas
+- Proteger la vermicompostera del sol directo
+- Revisar periódicamente la humedad
 
 Cuando estas condiciones se mantienen, las lombrices rara vez intentan escapar.
 

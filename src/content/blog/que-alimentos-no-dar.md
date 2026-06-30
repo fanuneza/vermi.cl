@@ -64,10 +64,10 @@ En pequeñas cantidades no suelen generar problemas en una vermicompostera sana 
 
 Lo recomendable es:
 
-- incorporarlos ocasionalmente;
-- trocearlos en pedazos pequeños;
-- distribuirlos en distintas zonas;
-- evitar que representen una parte importante de la alimentación.
+- Incorporarlos ocasionalmente
+- Trocearlos en pedazos pequeños
+- Distribuirlos en distintas zonas
+- Evitar que representen una parte importante de la alimentación.
 
 ### Borra de café
 
@@ -93,16 +93,16 @@ La mayor parte de la alimentación debería provenir de residuos vegetales fresc
 
 Algunas buenas opciones son:
 
-- cáscaras de plátano;
-- papas;
-- zanahorias;
-- lechuga;
-- acelga;
-- espinaca;
-- zapallo;
-- restos de frutas;
-- té;
-- café usado en cantidades moderadas.
+- Cáscaras de plátano
+- Papas
+- Zanahorias
+- Lechuga
+- Acelga
+- Espinaca
+- Zapallo
+- Restos de frutas
+- Té
+- Café usado en cantidades moderadas
 
 Cuanto más variada sea la alimentación, más estable suele ser el funcionamiento de la vermicompostera.
 
@@ -114,18 +114,18 @@ Tan importante como la comida es el material rico en carbono.
 
 Cada vez que agregues residuos húmedos incorpora también alguno de estos materiales:
 
-- cartón corrugado;
-- cajas de huevo;
-- papel sin plastificar;
-- hojas secas;
-- fibra de coco.
+- Cartón corrugado
+- Cajas de huevo
+- Papel sin plastificar
+- Hojas secas
+- Fibra de coco
 
 Esto ayuda a:
 
-- absorber humedad;
-- mejorar la aireación;
-- reducir olores;
-- disminuir la aparición de mosquitas.
+- Absorber humedad
+- Mejorar la aireación
+- Reducir olores
+- Disminuir la aparición de mosquitas
 
 En la mayoría de los casos, los problemas atribuidos a un alimento en realidad se deben a la falta de material seco.
 
@@ -137,11 +137,11 @@ Más que elegir un alimento incorrecto, los problemas suelen aparecer por la for
 
 Evita estos errores:
 
-- agregar demasiada comida de una sola vez;
-- alimentar antes de que desaparezca la comida anterior;
-- incorporar solo residuos húmedos;
-- dejar frutas expuestas en la superficie;
-- no trocear residuos grandes.
+- Agregar demasiada comida de una sola vez
+- Alimentar antes de que desaparezca la comida anterior
+- Incorporar solo residuos húmedos
+- Dejar frutas expuestas en la superficie
+- No trocear residuos grandes
 
 Una alimentación gradual y equilibrada mantiene estable la población de lombrices y reduce significativamente los problemas.
 
