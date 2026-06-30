@@ -197,6 +197,13 @@ a {
   min-width: 0;
 }
 
+.blog-post-title {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+  letter-spacing: 0;
+}
+
 .blog-post-sidebar {
   min-width: 0;
 }
@@ -358,6 +365,11 @@ a {
 
   .blog-post-article {
     width: 100%;
+  }
+
+  .blog-post-title {
+    font-size: clamp(2rem, 11vw, 2.75rem);
+    line-height: 0.98;
   }
 
   .editorial-body {
