@@ -20,7 +20,7 @@ En esta guía aprenderás cómo instalar una vermicompostera en un departamento 
 
 ## 1. ¿Se puede tener una vermicompostera en un departamento?
 
-Sí. Las lombrices rojas californianas (*Eisenia fetida*) viven naturalmente en capas superficiales de materia orgánica en descomposición y no necesitan cavar galerías profundas como las lombrices de jardín. Esa adaptación las convierte en la especie ideal para vivir en una vermicompostera compacta.
+Sí. Las lombrices rojas californianas (_Eisenia fetida_) viven naturalmente en capas superficiales de materia orgánica en descomposición y no necesitan cavar galerías profundas como las lombrices de jardín. Esa adaptación las convierte en la especie ideal para vivir en una vermicompostera compacta.
 
 Mientras dispongan de:
 
@@ -180,13 +180,13 @@ En la mayor parte de Chile central las lombrices continúan trabajando durante t
 
 Los problemas más frecuentes tienen soluciones simples.
 
-| Error | Consecuencia |
-|---------|--------------|
-| Agregar demasiada comida | Malos olores |
-| No incorporar material seco | Exceso de humedad |
-| Exponer la compostera al sol | Estrés o muerte de las lombrices |
-| Alimentar siempre en el mismo lugar | Menor eficiencia |
-| Mantener residuos descubiertos | Aparición de mosquitas |
+| Error                               | Consecuencia                     |
+| ----------------------------------- | -------------------------------- |
+| Agregar demasiada comida            | Malos olores                     |
+| No incorporar material seco         | Exceso de humedad                |
+| Exponer la compostera al sol        | Estrés o muerte de las lombrices |
+| Alimentar siempre en el mismo lugar | Menor eficiencia                 |
+| Mantener residuos descubiertos      | Aparición de mosquitas           |
 
 <div id="sec10"></div>
 

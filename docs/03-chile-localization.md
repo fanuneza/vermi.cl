@@ -194,7 +194,7 @@ Then introduce scientific names.
 
 Example:
 
-Lombriz californiana (*Eisenia fetida*)
+Lombriz californiana (_Eisenia fetida_)
 
 Afterward, either may be used.
 

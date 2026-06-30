@@ -206,7 +206,7 @@ Solve the reader's problem completely.
 
 Treat vermi.cl as a knowledge base rather than a collection of isolated articles.
 
-Before creating new explanations for concepts such as *Eisenia fetida*, humus, lixiviado, pH, humidity, carbon, nitrogen, microorganisms, or compost biology, check whether a canonical explanation already exists and reuse its terminology.
+Before creating new explanations for concepts such as _Eisenia fetida_, humus, lixiviado, pH, humidity, carbon, nitrogen, microorganisms, or compost biology, check whether a canonical explanation already exists and reuse its terminology.
 
 Maintain consistency across the entire site.
 
@@ -229,7 +229,6 @@ These documents should be consulted whenever working on:
 - any other user-facing educational content
 
 Purely technical code changes that do not affect published content do not require consulting these editorial documents.
-
 
 ### Repository-wide editorial rules
 
