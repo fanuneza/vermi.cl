@@ -72,7 +72,7 @@ All visual elements must conform to the **Organic-Brutalism Eco-Zine / Handcraft
 - **Perfect 100 score**: Audit all changes to guarantee a perfect 100/100 Lighthouse score (Performance, Accessibility, Best Practices, SEO).
 - **Semantic HTML5**: Ensure proper landmark hierarchy (`<header>`, `<main>`, `<article>`, `<aside>`, `<footer>`) with a single `<h1>` per page.
 - **JSON-LD Schema**: Integrate correct structured Schema.org blocks (e.g. `BlogPosting` for guides, `WebSite` for homepage, and `ProfilePage` for authors). Shared entities must come from a typed graph builder rather than duplicate page strings.
-- **AI search engine compatibility**: Maintain `/feed.xml` RSS and keep `/llms.txt` and `/llms-full.txt` updated at the root public folder.
+- **AI search engine compatibility**: Maintain `/feed.xml` RSS. Since `/llms.txt` and `/llms-full.txt` are static files in the `public/` directory, they do **not** update automatically; they must be manually updated whenever new content or blog posts are published.
 - **Images**: Always specify dimensions (`width`/`height`) on `<img>` tags. The LCP hero image must not be lazy-loaded.
 
 ---
@@ -114,6 +114,7 @@ Document any skipped checks and explain the reasoning.
 Keep these routes and artifacts aligned whenever SEO infrastructure changes:
 
 - `src/utils/schema.ts`: typed Schema.org graph builder shared by layouts and endpoints.
+- `src/env.d.ts`: global JSX attributes type extension for WebMCP (`toolname`, `tooldescription`, `toolparamdescription`).
 - `src/pages/schema/post.json.ts`: consolidated JSON-LD corpus for blog content.
 - `src/pages/schemamap.xml.ts`: semantic discovery map.
 - `src/pages/.well-known/api-catalog.ts`: RFC 9727 linkset catalog for schema endpoints.
@@ -123,6 +124,7 @@ Keep these routes and artifacts aligned whenever SEO infrastructure changes:
 - `public/robots.txt`: keep it standards-compliant for validators like PSI. Advertise `Sitemap` only; expose semantic discovery through `/.well-known/api-catalog` and `/schemamap.xml` as normal routes instead of a custom robots directive.
 - `public/_headers`: must retain `No-Vary-Search` for campaign params.
 - `.lycheeignore` and `.github/workflows/lychee.yml`: link-checking exclusions and workflow scope.
+- **WebMCP Integration**: Tag `<form>` with `toolname` and `tooldescription`. Tag input fields with `toolparamdescription`. Ensure all form inputs have associated `<label for="...">` matching input `id` to maintain accessibility tree integrity.
 
 Base metadata is generated in `src/layouts/BaseLayout.astro`. Do not rely on individual pages to emit the only JSON-LD payload for a route; the layout must always produce a base graph and merge page-specific nodes when present.
 

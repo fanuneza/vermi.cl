@@ -154,7 +154,12 @@ const isNosotros = pathname.startsWith('/nosotros');
         <div class="h-px border-t-2 border-dashed border-on-surface my-2"></div>
         
         <!-- Newsletter signup -->
-        <form id="newsletter-form" class="space-y-4">
+        <form 
+          id="newsletter-form" 
+          class="space-y-4"
+          toolname="suscribir_newsletter"
+          tooldescription="Suscribe una dirección de correo electrónico al boletín informativo mensual de vermi.cl."
+        >
           <div class="flex flex-col gap-1.5">
             <label class="font-label-md text-[10px] uppercase text-[#154212] tracking-wider" for="modal-email">Newsletter Mensual</label>
             <input 
@@ -162,6 +167,7 @@ const isNosotros = pathname.startsWith('/nosotros');
               id="modal-email" 
               placeholder="tu-correo@lombriz.cl" 
               required 
+              toolparamdescription="Correo electrónico del suscriptor."
               class="w-full bg-white border-2 border-on-surface px-3 py-2 text-sm font-body text-on-surface placeholder-on-surface/40 rounded-sm focus:ring-0 focus:outline-none"
             />
           </div>

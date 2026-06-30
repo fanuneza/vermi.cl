@@ -5,7 +5,7 @@ Este archivo contiene el compendio educativo completo de vermi.cl para el consum
 ---
 
 ## 1. Cuándo y cómo cosechar tu humus... sin molestar a las lombrices
-URL de Referencia: [https://vermi.cl/blog/cosechar-humus](https://vermi.cl/blog/cosechar-humus)
+URL de Referencia: [https://vermi.cl/blog/cosechar-humus/](https://vermi.cl/blog/cosechar-humus/)
 
 El momento de cosechar el humus es uno de los más esperados en el vermicompostaje. Es la recompensa a meses de reciclar tus orgánicos. Pero, ¿cómo saber si está listo sin perturbar el ecosistema de tu vermicompostera?
 
@@ -30,7 +30,7 @@ En el clima de Santiago y el valle central, la baja humedad relativa del aire pu
 ---
 
 ## 2. Qué alimentos NO dar a tus lombrices y por qué
-URL de Referencia: [https://vermi.cl/blog/que-alimentos-no-dar](https://vermi.cl/blog/que-alimentos-no-dar)
+URL de Referencia: [https://vermi.cl/blog/que-alimentos-no-dar/](https://vermi.cl/blog/que-alimentos-no-dar/)
 
 El colapso de una vermicompostera doméstica se asocia comúnmente al fenómeno de sobrealimentación. Los principiantes suelen asumir que añadir grandes volúmenes de alimento fresco beneficia a la población de lombrices, pero la realidad biológica es distinta. Las lombrices californianas (Eisenia fetida) consumen el biofilm bacteriano y de microorganismos que prolifera sobre la materia orgánica en descomposición. Echar alimentos inadecuados rompe el equilibrio químico del sustrato.
 
@@ -50,7 +50,7 @@ El colapso de una vermicompostera doméstica se asocia comúnmente al fenómeno 
 ---
 
 ## 3. Vermi en departamento: cómo empezar sin olores ni plagas
-URL de Referencia: [https://vermi.cl/blog/vermi-en-departamento](https://vermi.cl/blog/vermi-en-departamento)
+URL de Referencia: [https://vermi.cl/blog/vermi-en-departamento/](https://vermi.cl/blog/vermi-en-departamento/)
 
 Comenzar a compostar con lombrices californianas en un departamento urbano en Santiago genera un gran dilema inicial: la preocupación por los malos olores y el miedo a una invasión de mosquitos en el balcón o la cocina. Un sistema de vermicompostaje doméstico bien equilibrado es completamente inodoro.
 
