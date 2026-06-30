@@ -66,7 +66,7 @@
 }
 
 :root {
-  --sticky-anchor-offset: 6rem;
+  --sticky-anchor-offset: 4rem;
 }
 
 html {
