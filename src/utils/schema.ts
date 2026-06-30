@@ -44,6 +44,7 @@ function createSiteWideEntities(): GraphEntity[] {
     {
       url: `${SITE_URL}/`,
       name: "vermi.cl",
+      alternateName: ["vermi.cl"],
       description:
         "Aprende vermicompostaje doméstico en Chile con guías científicas, prácticas y adaptadas a hogares urbanos.",
       publisher: { "@id": organizationId },
