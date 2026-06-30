@@ -12,7 +12,13 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+const tableOfContents = headings
+  .filter((heading) => heading.depth === 2)
+  .map((heading) => ({
+    slug: heading.slug,
+    text: heading.text.replace(/^\d+\.\s*/, ""),
+  }));
 ---
 
 <BlogPostLayout 
@@ -24,6 +30,7 @@ const { Content } = await render(post);
   readingTime={post.data.readingTime}
   author={post.data.author}
   heroImage={post.data.heroImage}
+  tableOfContents={tableOfContents}
 >
   <Content />
 </BlogPostLayout>

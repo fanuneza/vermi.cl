@@ -13,9 +13,23 @@ interface Props {
   readingTime?: string;
   author: string;
   heroImage?: string;
+  tableOfContents?: Array<{
+    slug: string;
+    text: string;
+  }>;
 }
 
-const { title, description, pubDate, category, difficulty = "Básico", readingTime = "5 min", author, heroImage } = Astro.props;
+const {
+  title,
+  description,
+  pubDate,
+  category,
+  difficulty = "Básico",
+  readingTime = "5 min",
+  author,
+  heroImage,
+  tableOfContents = [],
+} = Astro.props;
 
 // Format Date
 const formattedDate = pubDate.toLocaleDateString('es-CL', {
@@ -54,7 +68,7 @@ const articleSchema = buildSchemaGraph({
   description={description} 
   ogImage={heroImage} 
   schema={articleSchema}
-  mainClass="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap flex-grow w-full box-border"
+  mainClass="blog-post-main max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap flex-grow w-full box-border"
   articleMeta={{
     publishedTime: pubDate.toISOString(),
     modifiedTime: pubDate.toISOString(),
@@ -62,10 +76,10 @@ const articleSchema = buildSchemaGraph({
   }}
 >
   <!-- Main Grid -->
-  <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter lg:gap-12 w-full">
+  <div class="blog-post-grid grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full">
     
     <!-- Article Content (Main Column) -->
-    <article class="lg:col-span-8 space-y-8">
+    <article class="blog-post-article lg:col-span-8 space-y-8">
       <!-- Header -->
       <header class="space-y-6">
         <div class="flex flex-wrap gap-3">
@@ -119,25 +133,20 @@ const articleSchema = buildSchemaGraph({
         <div class="absolute -top-3 left-10 w-20 h-6 bg-secondary-fixed/80 border border-on-surface rotate-[-5deg]"></div>
         
         <!-- Table of Contents for Mobile -->
-        <div class="lg:hidden bg-tertiary-fixed border-3 border-on-surface p-6 mb-8 shadow-hard organic-brutalism rotate-[1deg]">
+        <div class="blog-toc lg:hidden bg-tertiary-fixed border-3 border-on-surface p-6 mb-8 shadow-hard organic-brutalism rotate-[1deg]">
           <h2 class="font-headline text-xl font-bold text-on-surface mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase">
             <!-- Inline SVG for Table of Contents -->
             <svg class="text-primary" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
             En esta guía
           </h2>
-          <ul class="space-y-4 font-mono text-sm pl-0 list-none m-0">
-            <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2">
-              <a href="#intro" class="text-on-surface font-bold no-underline">Introducción</a>
-            </li>
-            <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2">
-              <a href="#sec1" class="text-on-surface font-bold no-underline"><span class="text-primary">1.</span> Señales clave</a>
-            </li>
-            <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2">
-              <a href="#sec2" class="text-on-surface font-bold no-underline"><span class="text-primary">2.</span> Métodos de acción</a>
-            </li>
-            <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 pb-1">
-              <a href="#sec3" class="text-on-surface font-bold no-underline"><span class="text-primary">3.</span> Cuidado biorregional</a>
-            </li>
+          <ul class="space-y-3 font-mono text-sm pl-0 list-none m-0">
+            {tableOfContents.map((item, index) => (
+              <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2 last:border-b-0 last:pb-1">
+                <a href={`#${item.slug}`} class="text-on-surface font-bold no-underline">
+                  <span class="text-primary">{index + 1}.</span> {item.text}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
         
@@ -154,26 +163,21 @@ const articleSchema = buildSchemaGraph({
     </article>
 
     <!-- Sidebar (Secondary Column) -->
-    <aside class="lg:col-span-4 space-y-8 mt-8 lg:mt-0">
+    <aside class="blog-post-sidebar lg:col-span-4 space-y-8 mt-8 lg:mt-0">
       <!-- Table of Contents -->
-      <div class="hidden lg:block bg-tertiary-fixed border-3 border-on-surface p-6 shadow-hard organic-brutalism rotate-[1deg]">
+      <div class="blog-toc hidden lg:block bg-tertiary-fixed border-3 border-on-surface p-6 shadow-hard organic-brutalism rotate-[1deg]">
         <h2 class="font-headline-md text-headline-md text-on-tertiary-fixed mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
           En esta guía
         </h2>
-        <ul class="space-y-4 font-mono text-sm pl-0 list-none m-0">
-          <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2">
-            <a href="#intro" class="text-on-surface font-bold no-underline">Introducción</a>
-          </li>
-          <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2">
-            <a href="#sec1" class="text-on-surface font-bold no-underline"><span class="text-primary">1.</span> Señales clave</a>
-          </li>
-          <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2">
-            <a href="#sec2" class="text-on-surface font-bold no-underline"><span class="text-primary">2.</span> Métodos de acción</a>
-          </li>
-          <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 pb-1">
-            <a href="#sec3" class="text-on-surface font-bold no-underline"><span class="text-primary">3.</span> Cuidado biorregional</a>
-          </li>
+        <ul class="space-y-3 font-mono text-sm pl-0 list-none m-0">
+          {tableOfContents.map((item, index) => (
+            <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2 last:border-b-0 last:pb-1">
+              <a href={`#${item.slug}`} class="text-on-surface font-bold no-underline">
+                <span class="text-primary">{index + 1}.</span> {item.text}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 
