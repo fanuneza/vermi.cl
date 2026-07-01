@@ -37,7 +37,8 @@ const optimizedHero = await getImage({
   width: 600,
   height: 450,
   format: 'webp',
-  widths: [320, 480, 600]
+  widths: [320, 480, 600],
+  quality: 'mid'
 });
 
 const heroSrcSet = optimizedHero.srcSet.values
@@ -100,6 +101,7 @@ const heroSrcSet = optimizedHero.srcSet.values
           sizes="(max-width: 480px) 320px, (max-width: 1024px) 480px, 600px"
           loading="eager" 
           fetchpriority="high" 
+          quality="mid"
         />
         <!-- Decorative Floating Elements -->
         <div class="absolute -bottom-2 -right-2 bg-surface-dim p-4 border-4 border-on-surface organic-shape-2 shadow-[4px_4px_0px_0px_#002201] rotate-[15deg]">
