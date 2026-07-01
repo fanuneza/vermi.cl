@@ -2,6 +2,7 @@ import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
 import { BLOG_TAG_SLUGS } from "./utils/blog-tags";
+import { BLOG_CATEGORIES } from "./utils/blog-presentation";
 
 // Blog Content Collection
 const blog = defineCollection({
@@ -12,7 +13,7 @@ const blog = defineCollection({
       description: z.string(),
       pubDate: z.coerce.date(),
       author: z.string().default("Camila Verdejo"),
-      category: z.enum(["Manual", "Alimentación", "Problemas", "Cosecha"]),
+      category: z.enum(BLOG_CATEGORIES),
       difficulty: z
         .enum(["Principiante", "Intermedio", "Avanzado"])
         .default("Principiante"),

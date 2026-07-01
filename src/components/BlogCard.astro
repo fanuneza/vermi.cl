@@ -1,13 +1,17 @@
 ---
-// BlogCard.astro - Reusable Stitch-style Post Card
 import { getBlogTagLabel, type BlogTagSlug } from '../utils/blog-tags';
+import {
+  blogCardCategoryMeta,
+  formatBlogDate,
+  type BlogCategory,
+} from '../utils/blog-presentation';
 
 interface Props {
   title: string;
   description: string;
   slug: string;
   pubDate: Date;
-  category: 'Manual' | 'Alimentación' | 'Problemas' | 'Cosecha';
+  category: BlogCategory;
   difficulty?: string;
   readingTime?: string;
   tags?: readonly BlogTagSlug[];
@@ -16,42 +20,8 @@ interface Props {
 
 const { title, description, slug, pubDate, category, difficulty = "Básico", readingTime, tags = [], rotation = "rotate-0" } = Astro.props;
 
-// Date formatter
-const formattedDate = pubDate.toLocaleDateString('es-CL', {
-  day: 'numeric',
-  month: 'short',
-  year: 'numeric'
-}).toUpperCase();
-
-// Category styles mapping matching Stitch
-const categoryMeta = {
-  Manual: {
-    bg: 'bg-[#FFFDF0]', // Warm Cream
-    tagBg: 'bg-primary',
-    tagText: 'text-white',
-    label: 'MANUAL DE INICIO',
-  },
-  Alimentación: {
-    bg: 'bg-secondary-fixed', // Terracotta Light (#ffdbd0)
-    tagBg: 'bg-secondary',
-    tagText: 'text-white',
-    label: 'ALIMENTACIÓN',
-  },
-  Problemas: {
-    bg: 'bg-mustard', // Warning Yellow (#e9d7c8)
-    tagBg: 'bg-error',
-    tagText: 'text-white',
-    label: 'SOLUCIÓN DE PROBLEMAS',
-  },
-  Cosecha: {
-    bg: 'bg-primary-fixed', // Lighter Green (#b1f0ce)
-    tagBg: 'bg-primary',
-    tagText: 'text-white',
-    label: 'COSECHA Y HUMUS',
-  }
-};
-
-const meta = categoryMeta[category] || categoryMeta.Manual;
+const formattedDate = formatBlogDate(pubDate);
+const meta = blogCardCategoryMeta[category];
 ---
 
 <div class={`transition-transform duration-200 hover:scale-[1.02] ${rotation}`}>

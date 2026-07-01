@@ -18,10 +18,10 @@ tags:
 import { Image } from "astro:assets";
 import composteraUbicacion from "./vermi-en-departamento/compostera-departamento-ubicacion.jpeg";
 import composteraInterior from "./vermi-en-departamento/compostera-departamento-interior.jpeg";
-
-export const articleImageWidths = [360, 640, 768, 960];
-export const articleImageSizes =
-  "(max-width: 480px) 100vw, (max-width: 1024px) 768px, 960px";
+import {
+  articleImageSizes,
+  articleImageWidths,
+} from "../../utils/blog-presentation";
 
 <div id="intro"></div>
 
