@@ -312,6 +312,16 @@ Blog posts use a controlled tag taxonomy for static topic pages and agent discov
   - `lixiviado-y-te-de-humus` — Lixiviado y té de humus
   - `lombrices-californianas` — Lombrices californianas
 
+## 8.3 Blog Post Images
+
+All blog post images (both cover/hero images and any inline images used within articles) must reside in the `src/assets/blog/` directory.
+
+- **Location Restriction**: No blog post images should be placed in any other directory (such as `src/assets/images/` or nested within `src/content/blog/`).
+- **Referencing in Articles**:
+  - For markdown frontmatter (e.g. `heroImage`), reference the image relative to the markdown file using `../../assets/blog/filename.ext`.
+  - For inline image imports (e.g., `import img from "../../assets/blog/filename.ext"`), always import from `../../assets/blog/`.
+- **Naming Convention**: Use descriptive, lowercase names with hyphens (e.g., `como-hacer-vermicompost.jpg`).
+
 ---
 
 ## 9. Food Search Database ("¿Las lombrices pueden comer esto?")
