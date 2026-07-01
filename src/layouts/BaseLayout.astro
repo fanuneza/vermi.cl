@@ -5,6 +5,10 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import defaultOgImage from "../assets/images/hero.jpg";
 import "../styles/global.css";
+import bricolageFont from "@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2";
+import firaSans400Font from "@fontsource/fira-sans/files/fira-sans-latin-400-normal.woff2";
+import merriweather400Font from "@fontsource/merriweather/files/merriweather-latin-400-normal.woff2";
+import spaceMono400Font from "@fontsource/space-mono/files/space-mono-latin-400-normal.woff2";
 import { buildSchemaGraph, SITE_URL } from "../utils/schema";
 import { SITE_NAME } from "../utils/site-metadata";
 import type { GraphEntity } from "@jdevalk/seo-graph-core";
@@ -123,6 +127,12 @@ const graph = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Preload critical fonts to avoid critical request chains -->
+    <link rel="preload" href={bricolageFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={firaSans400Font} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={merriweather400Font} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={spaceMono400Font} as="font" type="font/woff2" crossorigin />
     
     <Seo
       title={title}

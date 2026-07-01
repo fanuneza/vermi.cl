@@ -136,6 +136,7 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
             sizes={heroImageSizes}
             loading="eager"
             fetchpriority="high"
+            quality="mid"
           />
         ) : (
           <div class="w-full h-full object-cover bg-tertiary-fixed flex items-center justify-center p-8 box-border">
