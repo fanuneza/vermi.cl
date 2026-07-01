@@ -1,7 +1,7 @@
 ---
 // BlogPostLayout.astro - Zine-style Article Detail Page Layout
 import BaseLayout from './BaseLayout.astro';
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import avatarImage from '../assets/images/avatar.jpg';
 import { getBlogTagLabel, type BlogTagSlug } from '../utils/blog-tags';
@@ -71,6 +71,16 @@ const articleSchema = buildSchemaGraph({
 });
 
 const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
+
+const optimizedHero = heroImage ? await getImage({
+  src: heroImage,
+  widths: [360, 480, 768],
+  quality: 'low'
+}) : null;
+
+const heroSrcSet = optimizedHero ? optimizedHero.srcSet.values
+  .map(item => `${item.url} ${item.descriptor}`)
+  .join(', ') : '';
 ---
 
 <BaseLayout 
@@ -88,6 +98,17 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
 >
   <link rel="preload" href={merriweather400Font} as="font" type="font/woff2" crossorigin slot="head" />
   <link rel="preload" href={spaceMono400Font} as="font" type="font/woff2" crossorigin slot="head" />
+  {optimizedHero && (
+    <link 
+      rel="preload" 
+      as="image" 
+      href={optimizedHero.src} 
+      imagesrcset={heroSrcSet} 
+      imagesizes="(max-width: 768px) 100vw, 768px"
+      fetchpriority="high" 
+      slot="head"
+    />
+  )}
   <!-- Main Grid -->
   <div class="blog-post-grid grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full">
     
