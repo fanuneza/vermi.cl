@@ -173,7 +173,7 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
 
       <!-- Tags -->
       <div class="flex flex-wrap items-center justify-between gap-4 mt-8 pt-8 border-t-4 border-on-surface border-dashed">
-        <div class="flex gap-2">
+        <div class="flex flex-wrap gap-2">
           {tags.map((tag, index) => (
             <a
               href={`/blog/tags/${tag}/`}
