@@ -5,7 +5,7 @@ import { BLOG_TAG_SLUGS } from "./utils/blog-tags";
 
 // Blog Content Collection
 const blog = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/blog" }),
   schema: ({ image }) =>
     z.object({
       title: z.string(),

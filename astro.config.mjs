@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import seoGraph from "@jdevalk/astro-seo-graph/integration";
+import mdx from "@astrojs/mdx";
 
 export default defineConfig({
   site: "https://vermi.cl",
@@ -12,9 +13,6 @@ export default defineConfig({
   build: {
     inlineStylesheets: "always",
   },
-  image: {
-    layout: "constrained",
-  },
   vite: {
     plugins: [tailwindcss()],
     build: {
@@ -22,6 +20,7 @@ export default defineConfig({
     },
   },
   integrations: [
+    mdx(),
     seoGraph({
       validateH1: true,
       validateUniqueMetadata: true,

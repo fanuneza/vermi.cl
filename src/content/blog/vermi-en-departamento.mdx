@@ -15,6 +15,14 @@ tags:
   - temperatura-y-clima
 ---
 
+import { Image } from "astro:assets";
+import composteraUbicacion from "./vermi-en-departamento/compostera-departamento-ubicacion.jpeg";
+import composteraInterior from "./vermi-en-departamento/compostera-departamento-interior.jpeg";
+
+export const articleImageWidths = [360, 640, 768, 960];
+export const articleImageSizes =
+  "(max-width: 480px) 100vw, (max-width: 1024px) 768px, 960px";
+
 <div id="intro"></div>
 
 Hacer vermicompostaje en un departamento no solo es posible, sino que suele ser más sencillo de lo que muchas personas imaginan. Una vermicompostera bien manejada ocupa poco espacio, no produce malos olores y permite transformar gran parte de los residuos orgánicos de la cocina en humus de lombriz de alta calidad.
@@ -65,7 +73,12 @@ Evita instalarla:
 
 Durante el verano, un balcón orientado al poniente puede superar fácilmente las temperaturas que las lombrices toleran cómodamente. En esos casos conviene mover la vermicompostera a un lugar más fresco o protegerla del sol con una cubierta.
 
-![Vermicompostera compacta en un balcón protegido, con cartón húmedo y material orgánico visible a través del recipiente.](./vermi-en-departamento/compostera-departamento-ubicacion.jpeg)
+<Image
+  src={composteraUbicacion}
+  alt="Vermicompostera compacta en un balcón protegido, con cartón húmedo y material orgánico visible a través del recipiente."
+  widths={articleImageWidths}
+  sizes={articleImageSizes}
+/>
 
 <div id="sec3"></div>
 
@@ -90,7 +103,12 @@ Los materiales más recomendables son:
 - Hojas secas
 - Fibra de coco hidratada
 
-![Lombriz californiana sobre un guante, junto a material orgánico húmedo y trozos de cartón dentro de la vermicompostera.](./vermi-en-departamento/compostera-departamento-interior.jpeg)
+<Image
+  src={composteraInterior}
+  alt="Lombriz californiana sobre un guante, junto a material orgánico húmedo y trozos de cartón dentro de la vermicompostera."
+  widths={articleImageWidths}
+  sizes={articleImageSizes}
+/>
 
 <div id="sec4"></div>
 
