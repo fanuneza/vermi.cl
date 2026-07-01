@@ -7,6 +7,9 @@ import { getCollection } from 'astro:content';
 import { faWorm, faCarrot, faBookOpen, faAppleWhole, faSkullCrossbones } from '@fortawesome/free-solid-svg-icons';
 import { Image, getImage } from 'astro:assets';
 import heroImage from '../assets/images/hero.jpg';
+import firaSans700Font from "@fontsource/fira-sans/files/fira-sans-latin-700-normal.woff2";
+import spaceMono400Font from "@fontsource/space-mono/files/space-mono-latin-400-normal.woff2";
+import spaceMono700Font from "@fontsource/space-mono/files/space-mono-latin-700-normal.woff2";
 
 // Retrieve all posts and sort them by date (descending)
 const posts = await getCollection('blog');
@@ -56,6 +59,9 @@ const heroSrcSet = optimizedHero.srcSet.values
     fetchpriority="high" 
     slot="head"
   />
+  <link rel="preload" href={firaSans700Font} as="font" type="font/woff2" crossorigin slot="head" />
+  <link rel="preload" href={spaceMono400Font} as="font" type="font/woff2" crossorigin slot="head" />
+  <link rel="preload" href={spaceMono700Font} as="font" type="font/woff2" crossorigin slot="head" />
   <!-- Hero Section -->
   <section class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
     <!-- Decorative Background Element -->
