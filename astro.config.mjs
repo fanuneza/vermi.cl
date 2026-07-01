@@ -12,6 +12,9 @@ export default defineConfig({
   build: {
     inlineStylesheets: "always",
   },
+  image: {
+    layout: "constrained",
+  },
   vite: {
     plugins: [tailwindcss()],
     build: {

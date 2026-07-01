@@ -6,6 +6,7 @@ category: Manual
 difficulty: Principiante
 readingTime: "10 min"
 author: "Fabián Núñez"
+heroImage: "./vermi-en-departamento/compostera-departamento-featured.jpeg"
 tags:
   - vermicompostaje-en-departamento
   - lombrices-californianas
@@ -64,6 +65,8 @@ Evita instalarla:
 
 Durante el verano, un balcón orientado al poniente puede superar fácilmente las temperaturas que las lombrices toleran cómodamente. En esos casos conviene mover la vermicompostera a un lugar más fresco o protegerla del sol con una cubierta.
 
+![Vermicompostera compacta en un balcón protegido, con cartón húmedo y material orgánico visible a través del recipiente.](./vermi-en-departamento/compostera-departamento-ubicacion.jpeg)
+
 <div id="sec3"></div>
 
 ## 3. Qué necesitas para comenzar
@@ -86,6 +89,8 @@ Los materiales más recomendables son:
 - Papel café
 - Hojas secas
 - Fibra de coco hidratada
+
+![Lombriz californiana sobre un guante, junto a material orgánico húmedo y trozos de cartón dentro de la vermicompostera.](./vermi-en-departamento/compostera-departamento-interior.jpeg)
 
 <div id="sec4"></div>
 

@@ -6,19 +6,20 @@ import { BLOG_TAG_SLUGS } from "./utils/blog-tags";
 // Blog Content Collection
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    pubDate: z.coerce.date(),
-    author: z.string().default("Camila Verdejo"),
-    category: z.enum(["Manual", "Alimentación", "Problemas", "Cosecha"]),
-    difficulty: z
-      .enum(["Principiante", "Intermedio", "Avanzado"])
-      .default("Principiante"),
-    readingTime: z.string().optional(),
-    heroImage: z.string().optional(),
-    tags: z.array(z.enum(BLOG_TAG_SLUGS)).min(2).max(5),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      pubDate: z.coerce.date(),
+      author: z.string().default("Camila Verdejo"),
+      category: z.enum(["Manual", "Alimentación", "Problemas", "Cosecha"]),
+      difficulty: z
+        .enum(["Principiante", "Intermedio", "Avanzado"])
+        .default("Principiante"),
+      readingTime: z.string().optional(),
+      heroImage: image().optional(),
+      tags: z.array(z.enum(BLOG_TAG_SLUGS)).min(2).max(5),
+    }),
 });
 
 // Alimentos (compostable lookup) Data Collection
