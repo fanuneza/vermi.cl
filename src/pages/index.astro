@@ -21,12 +21,13 @@ const appleWholePaths = Array.isArray(faAppleWhole.icon[4]) ? faAppleWhole.icon[
 const skullCrossbonesPaths = Array.isArray(faSkullCrossbones.icon[4]) ? faSkullCrossbones.icon[4] : [faSkullCrossbones.icon[4]];
 
 import { buildSchemaGraph } from '../utils/schema';
+import { HOME_METADATA } from '../utils/site-metadata';
 
 const homepageSchema = buildSchemaGraph({
   pageType: 'website',
   url: 'https://vermi.cl/',
   title: 'Inicio',
-  description: 'Aprende vermicompostaje doméstico en Chile. Guías científicas y prácticas para reducir tus residuos orgánicos con lombrices californianas.',
+  description: HOME_METADATA.description,
 });
 
 
@@ -44,7 +45,7 @@ const heroSrcSet = optimizedHero.srcSet.values
   .join(', ');
 ---
 
-<BaseLayout title="Compostaje doméstico con lombrices californianas" description="Aprende vermicompostaje doméstico en Chile. Guías científicas y prácticas para reducir tus residuos orgánicos con lombrices californianas." schema={homepageSchema}>
+<BaseLayout title={HOME_METADATA.title} description={HOME_METADATA.description} schema={homepageSchema}>
   <link 
     rel="preload" 
     as="image" 

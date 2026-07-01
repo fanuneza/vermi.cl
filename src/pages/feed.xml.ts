@@ -1,45 +1,29 @@
 import { getCollection } from "astro:content";
+import rss from "@astrojs/rss";
 import { getBlogTagLabel } from "../utils/blog-tags";
+import { HOME_METADATA, formatPageTitle } from "../utils/site-metadata";
+import type { APIContext } from "astro";
 
-export async function GET() {
+export async function GET(context: APIContext) {
   const posts = await getCollection("blog");
   const sortedPosts = posts.sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
   );
 
-  const rssItems = sortedPosts
-    .map(
-      (post) => `
-    <item>
-      <title><![CDATA[${post.data.title}]]></title>
-      <description><![CDATA[${post.data.description}]]></description>
-      <link>https://vermi.cl/blog/${post.id}</link>
-      <pubDate>${post.data.pubDate.toUTCString()}</pubDate>
-      <guid>https://vermi.cl/blog/${post.id}</guid>
-      <category><![CDATA[${post.data.category}]]></category>
-      ${post.data.tags.map((tag) => `<category><![CDATA[${getBlogTagLabel(tag)}]]></category>`).join("\n      ")}
-    </item>
-  `,
-    )
-    .join("");
-
-  const rssFeed = `<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>vermi.cl - Lombricultura en Chile</title>
-    <description>Aprende vermicompostaje doméstico, reducción de residuos orgánicos y biología del suelo chileno.</description>
-    <link>https://vermi.cl</link>
-    <atom:link href="https://vermi.cl/feed.xml" rel="self" type="application/rss+xml"/>
-    <language>es-cl</language>
-    ${rssItems}
-  </channel>
-</rss>`;
-
-  return new Response(rssFeed, {
-    status: 200,
-    headers: {
-      "Content-Type": "application/xml; charset=utf-8",
-      "Cache-Control": "public, max-age=86400, must-revalidate",
-    },
+  return rss({
+    title: formatPageTitle(HOME_METADATA.title),
+    description: HOME_METADATA.description,
+    site: context.site ?? "https://vermi.cl",
+    items: sortedPosts.map((post) => ({
+      title: post.data.title,
+      description: post.data.description,
+      link: `/blog/${post.id}/`,
+      pubDate: post.data.pubDate,
+      categories: [
+        post.data.category,
+        ...post.data.tags.map((tag) => getBlogTagLabel(tag)),
+      ],
+    })),
+    customData: "<language>es-cl</language>",
   });
 }

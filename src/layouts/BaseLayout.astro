@@ -6,6 +6,7 @@ import Header from "../components/Header.astro";
 import defaultOgImage from "../assets/images/hero.jpg";
 import "../styles/global.css";
 import { buildSchemaGraph, SITE_URL } from "../utils/schema";
+import { SITE_NAME } from "../utils/site-metadata";
 import type { GraphEntity } from "@jdevalk/seo-graph-core";
 
 interface ArticleMeta {
@@ -125,7 +126,7 @@ const graph = {
     
     <Seo
       title={title}
-      titleTemplate="%s | vermi.cl"
+      titleTemplate={`%s | ${SITE_NAME}`}
       description={description}
       canonical={canonicalUrl}
       noindex={noindex}
@@ -134,7 +135,7 @@ const graph = {
       ogImageAlt={title}
       ogImageWidth={1200}
       ogImageHeight={675}
-      siteName="vermi.cl"
+      siteName={SITE_NAME}
       locale="es_CL"
       twitter={{ card: 'summary_large_image' }}
       article={seoArticle}
