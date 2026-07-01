@@ -51,167 +51,160 @@
   </div>
 </div>
 
-<script>
-  interface FoodEntry {
-    name: string;
-    category: string;
-    status: "safe" | "warning" | "danger" | "seguro" | "moderacion" | "peligro";
-    instructions: string;
-    nutrition?: string;
-    keywords?: string;
-  }
+<script is:inline>
+  (function() {
+    let searchIndex = [];
+    let isIndexLoaded = false;
+    let indexPromise = null;
 
-  let searchIndex: FoodEntry[] = [];
-  let isIndexLoaded = false;
-  let indexPromise: Promise<void> | null = null;
+    const lookupInput = document.getElementById('food-lookup-input');
+    const statusDisplay = document.getElementById('status-display-card');
+    const fallbackMessage = document.getElementById('search-fallback-message');
+    const badgeIndicator = document.getElementById('badge-indicator');
+    const matchedFoodName = document.getElementById('matched-food-name');
+    const matchedNutritionContainer = document.getElementById('matched-nutrition-container');
+    const matchedNutrition = document.getElementById('matched-nutrition');
+    const matchedInstructions = document.getElementById('matched-instructions');
+    const suggestionButtons = document.querySelectorAll('.btn-suggestion');
 
-  const lookupInput = document.getElementById('food-lookup-input') as HTMLInputElement;
-  const statusDisplay = document.getElementById('status-display-card') as HTMLDivElement;
-  const fallbackMessage = document.getElementById('search-fallback-message') as HTMLDivElement;
-  const badgeIndicator = document.getElementById('badge-indicator') as HTMLSpanElement;
-  const matchedFoodName = document.getElementById('matched-food-name') as HTMLHeadingElement;
-  const matchedNutritionContainer = document.getElementById('matched-nutrition-container') as HTMLDivElement;
-  const matchedNutrition = document.getElementById('matched-nutrition') as HTMLParagraphElement;
-  const matchedInstructions = document.getElementById('matched-instructions') as HTMLParagraphElement;
-  const suggestionButtons = document.querySelectorAll('.btn-suggestion');
+    // Eager load / lazy fallback index loader
+    const loadSearchIndex = () => {
+      if (indexPromise) return indexPromise;
+      indexPromise = fetch('/api/alimentos.json')
+        .then(res => {
+          if (!res.ok) throw new Error('Error al descargar el índice de alimentos.');
+          return res.json();
+        })
+        .then(data => {
+          searchIndex = data;
+          isIndexLoaded = true;
+        })
+        .catch(err => {
+          console.error('Error de inicialización del buscador local:', err);
+          indexPromise = null; // Reset promise to allow retry
+        });
+      return indexPromise;
+    };
 
-  // Eager load / lazy fallback index loader
-  const loadSearchIndex = (): Promise<void> => {
-    if (indexPromise) return indexPromise;
-    indexPromise = fetch('/api/alimentos.json')
-      .then(res => {
-        if (!res.ok) throw new Error('Error al descargar el índice de alimentos.');
-        return res.json();
-      })
-      .then(data => {
-        searchIndex = data as FoodEntry[];
-        isIndexLoaded = true;
-      })
-      .catch(err => {
-        console.error('Error de inicialización del buscador local:', err);
-        indexPromise = null; // Reset promise to allow retry
-      });
-    return indexPromise;
-  };
+    // We removed the eager global loadSearchIndex() call to optimize Lighthouse scores.
 
-  // We removed the eager global loadSearchIndex() call to optimize Lighthouse scores.
+    const normalizeString = (str) => 
+      str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-  const normalizeString = (str: string) => 
-    str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    const escapeHTML = (str) => 
+      str
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
-  const escapeHTML = (str: string) => 
-    str
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+    const renderMarkdownItalics = (str) => 
+      escapeHTML(str).replace(/\*(.*?)\*/g, "<i>$1</i>");
 
-  const renderMarkdownItalics = (str: string) => 
-    escapeHTML(str).replace(/\*(.*?)\*/g, "<i>$1</i>");
-
-  const syncQueryParam = (rawQuery: string) => {
-    const url = new URL(window.location.href);
-    if (rawQuery.length >= 2) {
-      url.searchParams.set('q', rawQuery);
-    } else {
-      url.searchParams.delete('q');
-    }
-    window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
-  };
-
-  const handleSearchEvent = async () => {
-    const rawQuery = lookupInput.value.trim();
-    const query = normalizeString(rawQuery);
-    syncQueryParam(rawQuery);
-    
-    if (query.length < 2) {
-      statusDisplay.classList.add('hidden');
-      fallbackMessage.classList.remove('hidden');
-      fallbackMessage.textContent = 'Escribe al menos dos letras para iniciar la consulta microbiológica del residuo.';
-      return;
-    }
-
-    await loadSearchIndex();
-    if (!isIndexLoaded) return;
-
-    // Tiered search matching to prioritize names over keywords
-    let filteredItem = searchIndex.find((item) => normalizeString(item.name) === query);
-    
-    if (!filteredItem) {
-      filteredItem = searchIndex.find((item) => normalizeString(item.name).includes(query));
-    }
-    
-    if (!filteredItem) {
-      filteredItem = searchIndex.find((item) => normalizeString(item.category).includes(query));
-    }
-    
-    if (!filteredItem) {
-      filteredItem = searchIndex.find((item) => item.keywords && normalizeString(item.keywords).includes(query));
-    }
-
-    if (filteredItem) {
-      fallbackMessage.classList.add('hidden');
-      statusDisplay.classList.remove('hidden');
-
-      // Safe DOM manipulation
-      matchedFoodName.textContent = filteredItem.name;
-
-      if (filteredItem.nutrition) {
-        matchedNutritionContainer.classList.remove('hidden');
-        matchedNutrition.textContent = `🌱 Perfil Nutricional: ${filteredItem.nutrition}`;
+    const syncQueryParam = (rawQuery) => {
+      const url = new URL(window.location.href);
+      if (rawQuery.length >= 2) {
+        url.searchParams.set('q', rawQuery);
       } else {
-        matchedNutritionContainer.classList.add('hidden');
+        url.searchParams.delete('q');
+      }
+      window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
+    };
+
+    const handleSearchEvent = async () => {
+      const rawQuery = lookupInput.value.trim();
+      const query = normalizeString(rawQuery);
+      syncQueryParam(rawQuery);
+      
+      if (query.length < 2) {
+        statusDisplay.classList.add('hidden');
+        fallbackMessage.classList.remove('hidden');
+        fallbackMessage.textContent = 'Escribe al menos dos letras para iniciar la consulta microbiológica del residuo.';
+        return;
       }
 
-      matchedInstructions.innerHTML = renderMarkdownItalics(filteredItem.instructions);
-
-      if (filteredItem.status === 'safe' || filteredItem.status === 'seguro') {
-        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-[#E8F8EE] mt-6 box-border';
-        badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-safe-badge text-on-background';
-        badgeIndicator.textContent = 'SEGURO';
-      } else if (filteredItem.status === 'warning' || filteredItem.status === 'moderacion') {
-        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-[#FFFBEA] mt-6 box-border';
-        badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-warning-badge text-on-background';
-        badgeIndicator.textContent = 'MODERACIÓN';
-      } else if (filteredItem.status === 'danger' || filteredItem.status === 'peligro') {
-        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-[#FFF0F0] mt-6 box-border';
-        badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-danger-badge text-white';
-        badgeIndicator.textContent = 'PELIGRO';
-      }
-    } else {
-      statusDisplay.classList.add('hidden');
-      fallbackMessage.classList.remove('hidden');
-      fallbackMessage.textContent = `No se registran datos sobre "${lookupInput.value}". Intenta con palabras clave como café, cítricos, cartón, cebolla o carne.`;
-    }
-  };
-
-  // Bind event listeners
-  lookupInput.addEventListener('focus', () => loadSearchIndex());
-  lookupInput.addEventListener('input', handleSearchEvent);
-
-  // Prefetch index on mouse hover or touch start to speed up response
-  lookupInput.addEventListener('pointerover', () => loadSearchIndex(), { once: true });
-  lookupInput.addEventListener('touchstart', () => loadSearchIndex(), { once: true });
-
-  const initialQuery = new URLSearchParams(window.location.search).get('q');
-  if (initialQuery) {
-    lookupInput.value = initialQuery;
-    loadSearchIndex().then(() => {
-      handleSearchEvent();
-    });
-  }
-
-  // Suggestion buttons click handler
-  suggestionButtons.forEach(btn => {
-    btn.addEventListener('click', async (e) => {
-      const food = (e.currentTarget as HTMLButtonElement).getAttribute('data-food') || '';
-      lookupInput.value = food;
       await loadSearchIndex();
-      handleSearchEvent();
+      if (!isIndexLoaded) return;
+
+      // Tiered search matching to prioritize names over keywords
+      let filteredItem = searchIndex.find((item) => normalizeString(item.name) === query);
+      
+      if (!filteredItem) {
+        filteredItem = searchIndex.find((item) => normalizeString(item.name).includes(query));
+      }
+      
+      if (!filteredItem) {
+        filteredItem = searchIndex.find((item) => normalizeString(item.category).includes(query));
+      }
+      
+      if (!filteredItem) {
+        filteredItem = searchIndex.find((item) => item.keywords && normalizeString(item.keywords).includes(query));
+      }
+
+      if (filteredItem) {
+        fallbackMessage.classList.add('hidden');
+        statusDisplay.classList.remove('hidden');
+
+        // Safe DOM manipulation
+        matchedFoodName.textContent = filteredItem.name;
+
+        if (filteredItem.nutrition) {
+          matchedNutritionContainer.classList.remove('hidden');
+          matchedNutrition.textContent = `🌱 Perfil Nutricional: ${filteredItem.nutrition}`;
+        } else {
+          matchedNutritionContainer.classList.add('hidden');
+        }
+
+        matchedInstructions.innerHTML = renderMarkdownItalics(filteredItem.instructions);
+
+        if (filteredItem.status === 'safe' || filteredItem.status === 'seguro') {
+          statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-[#E8F8EE] mt-6 box-border';
+          badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-safe-badge text-on-background';
+          badgeIndicator.textContent = 'SEGURO';
+        } else if (filteredItem.status === 'warning' || filteredItem.status === 'moderacion') {
+          statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-[#FFFBEA] mt-6 box-border';
+          badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-warning-badge text-on-background';
+          badgeIndicator.textContent = 'MODERACIÓN';
+        } else if (filteredItem.status === 'danger' || filteredItem.status === 'peligro') {
+          statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-[#FFF0F0] mt-6 box-border';
+          badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-danger-badge text-white';
+          badgeIndicator.textContent = 'PELIGRO';
+        }
+      } else {
+        statusDisplay.classList.add('hidden');
+        fallbackMessage.classList.remove('hidden');
+        fallbackMessage.textContent = `No se registran datos sobre "${lookupInput.value}". Intenta con palabras clave como café, cítricos, cartón, cebolla o carne.`;
+      }
+    };
+
+    // Bind event listeners
+    lookupInput.addEventListener('focus', () => loadSearchIndex());
+    lookupInput.addEventListener('input', handleSearchEvent);
+
+    // Prefetch index on mouse hover or touch start to speed up response
+    lookupInput.addEventListener('pointerover', () => loadSearchIndex(), { once: true });
+    lookupInput.addEventListener('touchstart', () => loadSearchIndex(), { once: true });
+
+    const initialQuery = new URLSearchParams(window.location.search).get('q');
+    if (initialQuery) {
+      lookupInput.value = initialQuery;
+      loadSearchIndex().then(() => {
+        handleSearchEvent();
+      });
+    }
+
+    // Suggestion buttons click handler
+    suggestionButtons.forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        const food = e.currentTarget.getAttribute('data-food') || '';
+        lookupInput.value = food;
+        await loadSearchIndex();
+        handleSearchEvent();
+      });
+      // Prefetch index on suggestion button hover/touch
+      btn.addEventListener('pointerover', () => loadSearchIndex(), { once: true });
+      btn.addEventListener('touchstart', () => loadSearchIndex(), { once: true });
     });
-    // Prefetch index on suggestion button hover/touch
-    btn.addEventListener('pointerover', () => loadSearchIndex(), { once: true });
-    btn.addEventListener('touchstart', () => loadSearchIndex(), { once: true });
-  });
+  })();
 </script>

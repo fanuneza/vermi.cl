@@ -50,8 +50,8 @@ const categoryMeta = {
   Cosecha: { tagBg: 'bg-primary-fixed', tagText: 'text-on-background', label: 'COSECHA' }
 };
 const meta = categoryMeta[category] || categoryMeta.Manual;
-const heroImageWidths = [360, 480, 768];
-const heroImageSizes = "(max-width: 768px) 100vw, 768px";
+const heroImageWidths = [380, 500, 760];
+const heroImageSizes = "(max-width: 1024px) calc(100vw - 2rem), 760px";
 
 // JSON-LD BlogPosting Schema for SEO and AI Search engines
 import { buildSchemaGraph } from '../utils/schema';
@@ -117,7 +117,7 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
             <button id="share-btn" class="w-10 h-10 bg-surface-container-high border-2 border-on-surface flex items-center justify-center hover:scale-110 hover:bg-primary-container hover:text-on-primary-container transition-all shadow-hard-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] organic-brutalism cursor-pointer" aria-label="Compartir">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
             </button>
-            <button id="like-btn" class="flex items-center gap-2 bg-surface-container-high border-2 border-on-surface px-3 py-2 hover:scale-110 hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-hard-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] organic-brutalism-alt cursor-pointer" aria-label="Me gusta">
+            <button id="like-btn" class="flex items-center gap-2 bg-surface-container-high border-2 border-on-surface px-3 py-2 hover:scale-110 hover:bg-secondary-container hover:text-on-secondary-container transition-all shadow-hard-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] organic-brutalism-alt cursor-pointer" aria-label="Me gusta: 14">
               <svg id="like-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
               <span id="like-count" class="font-mono text-xs font-bold text-on-surface">14</span>
             </button>
@@ -248,91 +248,95 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
     </aside>
   </div>
 
-  <script>
-    const shareBtn = document.getElementById('share-btn');
-    const likeBtn = document.getElementById('like-btn');
-    const likeIcon = document.getElementById('like-icon');
+  <script is:inline>
+    (function() {
+      const shareBtn = document.getElementById('share-btn');
+      const likeBtn = document.getElementById('like-btn');
+      const likeIcon = document.getElementById('like-icon');
 
-    // Get current post slug from pathname for local storage key
-    const postSlug = window.location.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '-');
-    const likeStorageKey = `vermi-liked-${postSlug}`;
+      // Get current post slug from pathname for local storage key
+      const postSlug = window.location.pathname.replace(/^\/|\/$/g, '').replace(/\//g, '-');
+      const likeStorageKey = 'vermi-liked-' + postSlug;
 
-    // Share logic: native share if available, fallback to clipboard copy
-    if (shareBtn) {
-      shareBtn.addEventListener('click', async () => {
-        const shareData = {
-          title: document.title,
-          text: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
-          url: window.location.href
-        };
+      // Share logic: native share if available, fallback to clipboard copy
+      if (shareBtn) {
+        shareBtn.addEventListener('click', async () => {
+          const shareData = {
+            title: document.title,
+            text: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+            url: window.location.href
+          };
 
-        if (navigator.share) {
-          try {
-            await navigator.share(shareData);
-          } catch (err) {
-            console.log('Share sheet dismissed or failed:', err);
+          if (navigator.share) {
+            try {
+              await navigator.share(shareData);
+            } catch (err) {
+              console.log('Share sheet dismissed or failed:', err);
+            }
+          } else {
+            // Fallback to copy clipboard
+            try {
+              await navigator.clipboard.writeText(window.location.href);
+              
+              // Visual feedback: briefly modify button background
+              const originalBg = shareBtn.className;
+              shareBtn.className = originalBg + ' bg-primary-container text-on-primary-container';
+              const originalTitle = shareBtn.getAttribute('aria-label');
+              shareBtn.setAttribute('aria-label', '¡Copiado!');
+              
+              // Create a temporary floating bubble or toast for feedback
+              const toast = document.createElement('div');
+              toast.className = 'fixed bottom-8 right-8 bg-[#002201] text-[#ecffe2] border-2 border-[#002201] px-4 py-2 font-mono text-xs font-bold rounded-lg shadow-hard z-[100] animate-bounce';
+              toast.textContent = '🐛 ¡Enlace copiado al portapapeles!';
+              document.body.appendChild(toast);
+              
+              setTimeout(() => {
+                shareBtn.className = originalBg;
+                shareBtn.setAttribute('aria-label', originalTitle || 'Compartir');
+                toast.remove();
+              }, 2500);
+            } catch (err) {
+              console.error('Failed to copy link:', err);
+            }
           }
-        } else {
-          // Fallback to copy clipboard
-          try {
-            await navigator.clipboard.writeText(window.location.href);
-            
-            // Visual feedback: briefly modify button background
-            const originalBg = shareBtn.className;
-            shareBtn.classList.add('bg-primary-container', 'text-on-primary-container');
-            const originalTitle = shareBtn.getAttribute('aria-label');
-            shareBtn.setAttribute('aria-label', '¡Copiado!');
-            
-            // Create a temporary floating bubble or toast for feedback
-            const toast = document.createElement('div');
-            toast.className = 'fixed bottom-8 right-8 bg-[#002201] text-[#ecffe2] border-2 border-[#002201] px-4 py-2 font-mono text-xs font-bold rounded-lg shadow-hard z-[100] animate-bounce';
-            toast.textContent = '🐛 ¡Enlace copiado al portapapeles!';
-            document.body.appendChild(toast);
-            
-            setTimeout(() => {
-              shareBtn.className = originalBg;
-              shareBtn.setAttribute('aria-label', originalTitle || 'Compartir');
-              toast.remove();
-            }, 2500);
-          } catch (err) {
-            console.error('Failed to copy link:', err);
-          }
-        }
-      });
-    }
-
-    // Like logic: local storage state toggle
-    if (likeBtn && likeIcon) {
-      const likeCountEl = document.getElementById('like-count');
-      const isLiked = localStorage.getItem(likeStorageKey) === 'true';
-      
-      let count = 14;
-      if (isLiked) {
-        likeIcon.setAttribute('fill', '#E05353');
-        likeIcon.setAttribute('stroke', '#E05353');
-        count = 15;
-      }
-      if (likeCountEl) {
-        likeCountEl.textContent = count.toString();
+        });
       }
 
-      likeBtn.addEventListener('click', () => {
-        const currentlyLiked = localStorage.getItem(likeStorageKey) === 'true';
-        if (currentlyLiked) {
-          localStorage.setItem(likeStorageKey, 'false');
-          likeIcon.setAttribute('fill', 'none');
-          likeIcon.setAttribute('stroke', 'currentColor');
-          count--;
-        } else {
-          localStorage.setItem(likeStorageKey, 'true');
+      // Like logic: local storage state toggle
+      if (likeBtn && likeIcon) {
+        const likeCountEl = document.getElementById('like-count');
+        const isLiked = localStorage.getItem(likeStorageKey) === 'true';
+        
+        let count = 14;
+        if (isLiked) {
           likeIcon.setAttribute('fill', '#E05353');
           likeIcon.setAttribute('stroke', '#E05353');
-          count++;
+          count = 15;
         }
         if (likeCountEl) {
           likeCountEl.textContent = count.toString();
+          likeBtn.setAttribute('aria-label', 'Me gusta: ' + count);
         }
-      });
-    }
+
+        likeBtn.addEventListener('click', () => {
+          const currentlyLiked = localStorage.getItem(likeStorageKey) === 'true';
+          if (currentlyLiked) {
+            localStorage.setItem(likeStorageKey, 'false');
+            likeIcon.setAttribute('fill', 'none');
+            likeIcon.setAttribute('stroke', 'currentColor');
+            count--;
+          } else {
+            localStorage.setItem(likeStorageKey, 'true');
+            likeIcon.setAttribute('fill', '#E05353');
+            likeIcon.setAttribute('stroke', '#E05353');
+            count++;
+          }
+          if (likeCountEl) {
+            likeCountEl.textContent = count.toString();
+            likeBtn.setAttribute('aria-label', 'Me gusta: ' + count);
+          }
+        });
+      }
+    })();
   </script>
 </BaseLayout>
