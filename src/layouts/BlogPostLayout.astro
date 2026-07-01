@@ -50,7 +50,7 @@ const categoryMeta = {
   Cosecha: { tagBg: 'bg-primary-fixed', tagText: 'text-on-background', label: 'COSECHA' }
 };
 const meta = categoryMeta[category] || categoryMeta.Manual;
-const heroImageWidths = [480, 768, 1200];
+const heroImageWidths = [360, 480, 768];
 const heroImageSizes = "(max-width: 768px) 100vw, 768px";
 
 // JSON-LD BlogPosting Schema for SEO and AI Search engines
@@ -136,7 +136,7 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
             sizes={heroImageSizes}
             loading="eager"
             fetchpriority="high"
-            quality="mid"
+            quality="low"
           />
         ) : (
           <div class="w-full h-full object-cover bg-tertiary-fixed flex items-center justify-center p-8 box-border">
