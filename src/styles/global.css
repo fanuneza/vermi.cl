@@ -310,6 +310,18 @@ a {
   border-radius: 12px 4px 20px 8px;
 }
 
+/* Markdown images */
+.editorial-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-inline: auto;
+  margin-block: 2.5rem;
+  border: 2px solid var(--color-on-surface);
+  box-shadow: 4px 4px 0 0 var(--color-on-surface);
+  border-radius: 12px 4px 20px 8px;
+}
+
 /* Markdown tables */
 .editorial-body table {
   display: table;
