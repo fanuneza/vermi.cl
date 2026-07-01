@@ -6,6 +6,11 @@ category: Cosecha
 difficulty: Intermedio
 readingTime: "8 min"
 author: "Fabián Núñez"
+tags:
+  - cosecha-de-humus
+  - humus-de-lombriz
+  - lixiviado-y-te-de-humus
+  - lombrices-californianas
 ---
 
 <div id="intro"></div>

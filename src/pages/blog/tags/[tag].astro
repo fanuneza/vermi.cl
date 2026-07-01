@@ -1,0 +1,77 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BlogCard from '../../../components/BlogCard.astro';
+import { buildSchemaGraph } from '../../../utils/schema';
+import { getBlogTag, getUsedBlogTags } from '../../../utils/blog-tags';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return getUsedBlogTags(posts).map(tag => ({
+    params: { tag: tag.slug },
+    props: {
+      tag,
+      posts: posts
+        .filter(post => post.data.tags.includes(tag.slug))
+        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+    },
+  }));
+}
+
+const { tag, posts } = Astro.props;
+const tagMeta = getBlogTag(tag.slug) ?? tag;
+const pageUrl = `https://vermi.cl/blog/tags/${tagMeta.slug}/`;
+const title = `Guías sobre ${tagMeta.label.toLowerCase()}`;
+const description = tagMeta.description;
+
+const tagSchema = buildSchemaGraph({
+  pageType: 'blogListing',
+  url: pageUrl,
+  title,
+  description,
+});
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={pageUrl}
+  schema={tagSchema}
+  mainClass="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap flex-grow w-full box-border"
+>
+  <section class="w-full relative z-10 flex flex-col items-start gap-6">
+    <a href="/blog/" class="font-mono text-sm font-bold text-primary no-underline border-b-2 border-primary">
+      Todas las guías
+    </a>
+
+    <div class="space-y-3 max-w-3xl">
+      <p class="font-mono text-xs font-bold uppercase tracking-wider text-secondary m-0">Etiqueta</p>
+      <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl text-on-surface font-black leading-tight tracking-tighter uppercase m-0">
+        #{tagMeta.label}
+      </h1>
+      <p class="font-body text-lg text-on-surface-variant leading-relaxed m-0">
+        {description}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+      {posts.map((post, idx) => {
+        const rotations = ["rotate-[-1.5deg]", "rotate-[1deg]", "rotate-[-0.5deg]", "rotate-[0.5deg]"];
+        const rot = rotations[idx % rotations.length];
+        return (
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            slug={post.id}
+            pubDate={post.data.pubDate}
+            category={post.data.category}
+            difficulty={post.data.difficulty}
+            readingTime={post.data.readingTime}
+            tags={post.data.tags}
+            rotation={rot}
+          />
+        );
+      })}
+    </div>
+  </section>
+</BaseLayout>

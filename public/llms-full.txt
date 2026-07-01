@@ -4,6 +4,25 @@ Este archivo contiene el compendio educativo completo de vermi.cl para el consum
 
 ---
 
+## Etiquetas de contenido
+
+Estas rutas agrupan el contenido por temas canónicos:
+
+- Alimentación de lombrices: https://vermi.cl/blog/tags/alimentacion-de-lombrices/
+- Residuos de cocina: https://vermi.cl/blog/tags/residuos-de-cocina/
+- Material seco: https://vermi.cl/blog/tags/material-seco/
+- Humedad y aireación: https://vermi.cl/blog/tags/humedad-y-aireacion/
+- Temperatura y clima: https://vermi.cl/blog/tags/temperatura-y-clima/
+- Problemas y olores: https://vermi.cl/blog/tags/problemas-y-olores/
+- Fugas de lombrices: https://vermi.cl/blog/tags/fugas-de-lombrices/
+- Vermicompostaje en departamento: https://vermi.cl/blog/tags/vermicompostaje-en-departamento/
+- Cosecha de humus: https://vermi.cl/blog/tags/cosecha-de-humus/
+- Humus de lombriz: https://vermi.cl/blog/tags/humus-de-lombriz/
+- Lixiviado y té de humus: https://vermi.cl/blog/tags/lixiviado-y-te-de-humus/
+- Lombrices californianas: https://vermi.cl/blog/tags/lombrices-californianas/
+
+---
+
 ## 1. Cuándo y cómo cosechar tu humus... sin molestar a las lombrices
 URL de Referencia: [https://vermi.cl/blog/cosechar-humus/](https://vermi.cl/blog/cosechar-humus/)
 
@@ -49,7 +68,26 @@ El colapso de una vermicompostera doméstica se asocia comúnmente al fenómeno 
 
 ---
 
-## 3. Vermi en departamento: cómo empezar sin olores ni plagas
+## 3. Cómo evitar fugas de lombrices de tu vermicompostera
+URL de Referencia: [https://vermi.cl/blog/evitar-fuga-lombrices/](https://vermi.cl/blog/evitar-fuga-lombrices/)
+
+Las lombrices californianas no intentan escapar sin motivo. Cuando suben por las paredes de la vermicompostera o aparecen fuera del recipiente, normalmente están respondiendo a falta de oxígeno, exceso de humedad, calor, sobrealimentación o materiales irritantes.
+
+### Causas frecuentes
+*   **Exceso de comida**: La descomposición microbiana intensa puede elevar la temperatura, consumir oxígeno y producir malos olores.
+*   **Falta de aireación**: El material compactado favorece procesos anaeróbicos que incomodan a las lombrices.
+*   **Humedad excesiva**: Un sustrato saturado desplaza el aire disponible y puede provocar migración.
+*   **Temperaturas altas**: En balcones expuestos al poniente, el recipiente puede calentarse más de lo tolerable para la colonia.
+
+### Solución inicial
+1.  Devuelve cuidadosamente las lombrices al sistema.
+2.  Suspende la alimentación por algunos días.
+3.  Agrega cartón, papel sin plastificar u hojas secas.
+4.  Mejora la ventilación y protege la vermicompostera del sol directo.
+
+---
+
+## 4. Vermi en departamento: cómo empezar sin olores ni plagas
 URL de Referencia: [https://vermi.cl/blog/vermi-en-departamento/](https://vermi.cl/blog/vermi-en-departamento/)
 
 Comenzar a compostar con lombrices californianas en un departamento urbano en Santiago genera un gran dilema inicial: la preocupación por los malos olores y el miedo a una invasión de mosquitos en el balcón o la cocina. Un sistema de vermicompostaje doméstico bien equilibrado es completamente inodoro.

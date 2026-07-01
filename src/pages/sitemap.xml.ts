@@ -1,9 +1,11 @@
 import { gitLastmod } from "@jdevalk/astro-seo-graph";
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
+import { getUsedBlogTags } from "../utils/blog-tags";
 
 export const GET: APIRoute = async () => {
   const posts = await getCollection("blog");
+  const usedTags = getUsedBlogTags(posts);
   const siteUrl = "https://vermi.cl";
 
   const staticPages = [
@@ -41,6 +43,24 @@ export const GET: APIRoute = async () => {
         loc: `${siteUrl}/blog/${post.id}/`,
         changefreq: "monthly",
         priority: "0.8",
+        lastmod,
+      };
+    }),
+    ...usedTags.map((tag) => {
+      const taggedPosts = posts.filter((post) =>
+        post.data.tags.includes(tag.slug),
+      );
+      const latestPostDate = taggedPosts
+        .map((post) => post.data.pubDate.valueOf())
+        .sort((a, b) => b - a)[0];
+      const gitDate = gitLastmod("src/pages/blog/tags/[tag].astro");
+      const lastmod = gitDate
+        ? gitDate.toISOString().split("T")[0]
+        : new Date(latestPostDate || Date.now()).toISOString().split("T")[0];
+      return {
+        loc: `${siteUrl}/blog/tags/${tag.slug}/`,
+        changefreq: "monthly",
+        priority: "0.6",
         lastmod,
       };
     }),

@@ -11,6 +11,15 @@
 - [Cosecha de humus](https://vermi.cl/blog/cosechar-humus/)
 - [Alimentos prohibidos](https://vermi.cl/blog/que-alimentos-no-dar/)
 - [Vermicompostaje en departamento](https://vermi.cl/blog/vermi-en-departamento/)
+- [Fugas de lombrices](https://vermi.cl/blog/evitar-fuga-lombrices/)
+
+## Etiquetas principales
+- [Alimentación de lombrices](https://vermi.cl/blog/tags/alimentacion-de-lombrices/)
+- [Material seco](https://vermi.cl/blog/tags/material-seco/)
+- [Humedad y aireación](https://vermi.cl/blog/tags/humedad-y-aireacion/)
+- [Temperatura y clima](https://vermi.cl/blog/tags/temperatura-y-clima/)
+- [Problemas y olores](https://vermi.cl/blog/tags/problemas-y-olores/)
+- [Humus de lombriz](https://vermi.cl/blog/tags/humus-de-lombriz/)
 
 ## Optional
 - [Manual completo para LLMs](https://vermi.cl/llms-full.txt) - Versión completa e indexable de todos los contenidos.

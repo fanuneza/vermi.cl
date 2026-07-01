@@ -12,6 +12,7 @@ import {
   type WebSiteInput,
 } from "@jdevalk/seo-graph-core";
 import type { Blog, Organization, Person, ProfilePage } from "schema-dts";
+import { getBlogTagLabel } from "./blog-tags";
 
 export const SITE_URL = "https://vermi.cl";
 
@@ -37,6 +38,7 @@ interface SchemaOptions {
   authorName?: string;
   featureImageUrl?: string;
   category?: string;
+  tags?: readonly string[];
 }
 
 function createSiteWideEntities(): GraphEntity[] {
@@ -200,6 +202,7 @@ export function buildSchemaGraph(options: SchemaOptions) {
   pieces.push(buildWebPage(webPageInput, ids) as GraphEntity);
 
   if (options.pageType === "blogPost") {
+    const tags = (options.tags ?? []).map((tag) => getBlogTagLabel(tag));
     const articleInput: ArticleInput = {
       url,
       isPartOf: { "@id": ids.webPage(url) },
@@ -218,8 +221,21 @@ export function buildSchemaGraph(options: SchemaOptions) {
       articleInput.image = { "@id": ids.primaryImage(url) };
     }
 
+    const article = buildArticle(
+      articleInput,
+      ids,
+      "BlogPosting",
+    ) as GraphEntity;
+    if (tags.length > 0) {
+      (article as Record<string, unknown>).keywords = tags;
+      (article as Record<string, unknown>).about = tags.map((tag) => ({
+        "@type": "Thing",
+        name: tag,
+      }));
+    }
+
     pieces.push(
-      buildArticle(articleInput, ids, "BlogPosting") as GraphEntity,
+      article,
       buildBreadcrumbList(
         {
           url,

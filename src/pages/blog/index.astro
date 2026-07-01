@@ -3,11 +3,13 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
+import { getUsedBlogTags } from '../../utils/blog-tags';
 
 const posts = await getCollection('blog');
 const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
 const categories = ['Manual', 'Alimentación', 'Problemas', 'Cosecha'];
+const usedTags = getUsedBlogTags(sortedPosts);
 
 import { buildSchemaGraph } from '../../utils/schema';
 
@@ -55,6 +57,20 @@ const archiveSchema = buildSchemaGraph({
       </div>
     </div>
 
+    <div class="flex flex-col gap-3 mb-8 items-start w-full">
+      <h2 class="font-mono text-xs font-bold text-on-surface uppercase tracking-wider m-0">[ Filtrar por etiqueta ]</h2>
+      <div class="flex flex-wrap gap-3">
+        {usedTags.map(tag => (
+          <a
+            href={`/blog/tags/${tag.slug}/`}
+            class="font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-surface-container text-on-surface shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline"
+          >
+            #{tag.label}
+          </a>
+        ))}
+      </div>
+    </div>
+
     <!-- Articles Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
       {sortedPosts.map((post, idx) => {
@@ -70,6 +86,7 @@ const archiveSchema = buildSchemaGraph({
               category={post.data.category}
               difficulty={post.data.difficulty}
               readingTime={post.data.readingTime}
+              tags={post.data.tags}
               rotation={rot}
             />
           </div>

@@ -6,6 +6,11 @@ category: Alimentación
 difficulty: Principiante
 readingTime: "9 min"
 author: "Fabián Núñez"
+tags:
+  - alimentacion-de-lombrices
+  - residuos-de-cocina
+  - material-seco
+  - problemas-y-olores
 ---
 
 <div id="intro"></div>

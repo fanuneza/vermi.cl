@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { BLOG_TAG_SLUGS } from "./utils/blog-tags";
 
 // Blog Content Collection
 const blog = defineCollection({
@@ -16,6 +17,7 @@ const blog = defineCollection({
       .default("Principiante"),
     readingTime: z.string().optional(),
     heroImage: z.string().optional(),
+    tags: z.array(z.enum(BLOG_TAG_SLUGS)).min(2).max(5),
   }),
 });
 

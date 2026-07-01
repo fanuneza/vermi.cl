@@ -1,4 +1,5 @@
 import { getCollection } from "astro:content";
+import { getBlogTagLabel } from "../utils/blog-tags";
 
 export async function GET() {
   const posts = await getCollection("blog");
@@ -15,6 +16,8 @@ export async function GET() {
       <link>https://vermi.cl/blog/${post.id}</link>
       <pubDate>${post.data.pubDate.toUTCString()}</pubDate>
       <guid>https://vermi.cl/blog/${post.id}</guid>
+      <category><![CDATA[${post.data.category}]]></category>
+      ${post.data.tags.map((tag) => `<category><![CDATA[${getBlogTagLabel(tag)}]]></category>`).join("\n      ")}
     </item>
   `,
     )

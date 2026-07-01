@@ -6,6 +6,12 @@ category: Manual
 difficulty: Principiante
 readingTime: "10 min"
 author: "Fabián Núñez"
+tags:
+  - vermicompostaje-en-departamento
+  - lombrices-californianas
+  - humedad-y-aireacion
+  - material-seco
+  - temperatura-y-clima
 ---
 
 <div id="intro"></div>

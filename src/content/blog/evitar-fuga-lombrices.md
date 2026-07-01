@@ -6,6 +6,12 @@ category: Problemas
 difficulty: Principiante
 readingTime: "8 min"
 author: "Fabián Núñez"
+tags:
+  - fugas-de-lombrices
+  - problemas-y-olores
+  - humedad-y-aireacion
+  - temperatura-y-clima
+  - alimentacion-de-lombrices
 ---
 
 <div id="intro"></div>

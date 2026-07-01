@@ -289,6 +289,29 @@ Keep these routes and artifacts aligned whenever SEO infrastructure changes:
 
 Base metadata is generated in `src/layouts/BaseLayout.astro`. Do not rely on individual pages to emit the only JSON-LD payload for a route; the layout must always produce a base graph and merge page-specific nodes when present.
 
+## 8.2 Blog tags and topical navigation
+
+Blog posts use a controlled tag taxonomy for static topic pages and agent discovery.
+
+- **Registry**: Tag definitions live in `src/utils/blog-tags.ts`.
+- **Schema**: Blog frontmatter must include `tags`, with 2 to 5 slugs from the registry.
+- **URLs**: Tags resolve to `/blog/tags/{slug}/`. Use these static URLs for tag chips and internal links.
+- **Taxonomy rule**: Prefer canonical, reusable concept tags over one-off keyword tags. Add a new tag only when it can support multiple present or likely future articles.
+- **Update rule**: When adding or renaming a tag, update `src/utils/blog-tags.ts`, affected blog frontmatter, `/llms.txt`, `/llms-full.txt`, and this section together.
+- **Current tags**:
+  - `alimentacion-de-lombrices` — Alimentación de lombrices
+  - `residuos-de-cocina` — Residuos de cocina
+  - `material-seco` — Material seco
+  - `humedad-y-aireacion` — Humedad y aireación
+  - `temperatura-y-clima` — Temperatura y clima
+  - `problemas-y-olores` — Problemas y olores
+  - `fugas-de-lombrices` — Fugas de lombrices
+  - `vermicompostaje-en-departamento` — Vermicompostaje en departamento
+  - `cosecha-de-humus` — Cosecha de humus
+  - `humus-de-lombriz` — Humus de lombriz
+  - `lixiviado-y-te-de-humus` — Lixiviado y té de humus
+  - `lombrices-californianas` — Lombrices californianas
+
 ---
 
 ## 9. Food Search Database ("¿Las lombrices pueden comer esto?")

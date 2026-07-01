@@ -15,6 +15,7 @@ export const GET = createSchemaEndpoint({
       authorName: post.data.author,
       featureImageUrl: post.data.heroImage,
       category: post.data.category,
+      tags: post.data.tags,
     });
     return graph["@graph"];
   },

@@ -19,6 +19,7 @@ export const GET = createMarkdownEndpoint({
             author: post.data.author,
             description: post.data.description,
             category: post.data.category,
+            tags: post.data.tags,
           },
           body: post.body ?? "",
         },
