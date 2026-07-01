@@ -183,79 +183,77 @@ const isNosotros = pathname.startsWith('/nosotros');
   </div>
 </div>
 
-<script is:inline>
-  (function() {
-    const trigger = document.getElementById('menu-trigger');
-    const close = document.getElementById('close-drawer');
-    const drawer = document.getElementById('nav-drawer');
-    const overlay = document.getElementById('drawer-overlay');
+<script>
+  const trigger = document.getElementById('menu-trigger');
+  const close = document.getElementById('close-drawer');
+  const drawer = document.getElementById('nav-drawer');
+  const overlay = document.getElementById('drawer-overlay');
 
-    const modal = document.getElementById('join-modal');
-    const closeModal = document.getElementById('close-modal');
-    const desktopJoin = document.getElementById('join-trigger-desktop');
-    const mobileJoin = document.getElementById('join-trigger-mobile');
-    const newsletterForm = document.getElementById('newsletter-form');
+  const modal = document.getElementById('join-modal');
+  const closeModal = document.getElementById('close-modal');
+  const desktopJoin = document.getElementById('join-trigger-desktop');
+  const mobileJoin = document.getElementById('join-trigger-mobile');
+  const newsletterForm = document.getElementById('newsletter-form') as HTMLFormElement | null;
 
-    if (trigger && close && drawer && overlay) {
-      const openDrawer = () => {
-        drawer.classList.remove('-translate-x-full');
-        overlay.classList.remove('opacity-0', 'pointer-events-none');
-        overlay.classList.add('opacity-100', 'pointer-events-auto');
-        document.body.style.overflow = 'hidden';
-      };
+  if (trigger && close && drawer && overlay) {
+    const openDrawer = () => {
+      drawer.classList.remove('-translate-x-full');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      overlay.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.style.overflow = 'hidden';
+    };
 
-      const closeDrawer = () => {
-        drawer.classList.add('-translate-x-full');
-        overlay.classList.remove('opacity-100', 'pointer-events-auto');
-        overlay.classList.add('opacity-0', 'pointer-events-none');
-        document.body.style.overflow = '';
-      };
+    const closeDrawer = () => {
+      drawer.classList.add('-translate-x-full');
+      overlay.classList.remove('opacity-100', 'pointer-events-auto');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    };
 
-      const openModal = () => {
-        closeDrawer(); // Close mobile drawer if open
-        if (modal) {
-          modal.classList.remove('pointer-events-none', 'opacity-0');
-          modal.classList.add('opacity-100');
-        }
-      };
-
-      const hideModal = () => {
-        if (modal) {
-          modal.classList.remove('opacity-100');
-          modal.classList.add('pointer-events-none', 'opacity-0');
-        }
-      };
-
-      trigger.addEventListener('click', openDrawer);
-      close.addEventListener('click', closeDrawer);
-      overlay.addEventListener('click', closeDrawer);
-
-      if (desktopJoin) desktopJoin.addEventListener('click', openModal);
-      if (mobileJoin) mobileJoin.addEventListener('click', openModal);
-      if (closeModal) closeModal.addEventListener('click', hideModal);
+    const openModal = () => {
+      closeDrawer(); // Close mobile drawer if open
       if (modal) {
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) hideModal();
-        });
+        modal.classList.remove('pointer-events-none', 'opacity-0');
+        modal.classList.add('opacity-100');
       }
+    };
 
-      if (newsletterForm) {
-        newsletterForm.addEventListener('submit', (e) => {
-          e.preventDefault();
-          alert('¡Gracias por unirte! Revisa tu correo pronto.');
-          newsletterForm.reset();
-          hideModal();
-        });
+    const hideModal = () => {
+      if (modal) {
+        modal.classList.remove('opacity-100');
+        modal.classList.add('pointer-events-none', 'opacity-0');
       }
+    };
 
-      // Also support any global link pointing to #unirse
-      document.addEventListener('click', (e) => {
-        const target = e.target;
-        if (target && target.closest('[href="#unirse"]')) {
-          e.preventDefault();
-          openModal();
-        }
+    trigger.addEventListener('click', openDrawer);
+    close.addEventListener('click', closeDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    if (desktopJoin) desktopJoin.addEventListener('click', openModal);
+    if (mobileJoin) mobileJoin.addEventListener('click', openModal);
+    if (closeModal) closeModal.addEventListener('click', hideModal);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) hideModal();
       });
     }
-  })();
+
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('¡Gracias por unirte! Revisa tu correo pronto.');
+        newsletterForm.reset();
+        hideModal();
+      });
+    }
+
+    // Also support any global link pointing to #unirse
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+      if (target && target.closest('[href="#unirse"]')) {
+        e.preventDefault();
+        openModal();
+      }
+    });
+  }
 </script>
