@@ -27,9 +27,10 @@ const titleClass = variant === "mobile"
   </h2>
   <ul class="space-y-3 font-mono text-sm pl-0 list-none m-0">
     {tableOfContents.map((item, index) => (
-      <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2 last:border-b-0 last:pb-1">
-        <a href={`#${item.slug}`} class="text-on-surface font-bold no-underline">
-          <span class="text-primary">{index + 1}.</span> {item.text}
+      <li class="group hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2 last:border-b-0 last:pb-1">
+        <span class="text-primary font-bold shrink-0">{index + 1}.</span>
+        <a href={`#${item.slug}`} class="text-on-surface group-hover:text-primary font-bold no-underline flex-grow">
+          {item.text}
         </a>
       </li>
     ))}

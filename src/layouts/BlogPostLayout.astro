@@ -244,5 +244,75 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
         }
       });
     }
+
+    // Sticky sidebar scroll behavior to handle tall sidebars gracefully
+    const sidebar = document.querySelector('.blog-post-sidebar');
+    const sidebarParent = sidebar ? sidebar.parentElement : null;
+    if (sidebar instanceof HTMLElement && sidebarParent instanceof HTMLElement) {
+      let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
+      let isStuckToTop = true;
+      let isStuckToBottom = false;
+      
+      // Ensure positioning context on the parent grid
+      sidebarParent.style.position = 'relative';
+
+      const handleStickyScroll = () => {
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const viewportHeight = window.innerHeight;
+        const sidebarHeight = sidebar.offsetHeight;
+        const scrollDelta = scrollTop - lastScrollTop;
+        
+        // S = sidebarHeight, H = viewportHeight. Top offset is 6rem (96px). Bottom margin 32px.
+        // If it fits in the viewport, let it behave like standard sticky.
+        if (sidebarHeight < viewportHeight - 128) {
+          sidebar.style.position = 'sticky';
+          sidebar.style.top = '6rem';
+          isStuckToTop = true;
+          isStuckToBottom = false;
+          lastScrollTop = scrollTop;
+          return;
+        }
+        
+        const rect = sidebar.getBoundingClientRect();
+        const parentRect = sidebarParent.getBoundingClientRect();
+        
+        if (scrollDelta > 0) {
+          // Scrolling down: stick to bottom once bottom is reached
+          if (isStuckToTop) {
+            isStuckToTop = false;
+            const currentOffset = rect.top - parentRect.top;
+            sidebar.style.position = 'relative';
+            sidebar.style.top = `${currentOffset}px`;
+          }
+          
+          const targetTop = viewportHeight - sidebarHeight - 32;
+          if (rect.bottom <= viewportHeight - 32) {
+            sidebar.style.position = 'sticky';
+            sidebar.style.top = `${targetTop}px`;
+            isStuckToBottom = true;
+          }
+        } else if (scrollDelta < 0) {
+          // Scrolling up: stick to top once top is reached
+          if (isStuckToBottom) {
+            isStuckToBottom = false;
+            const currentOffset = rect.top - parentRect.top;
+            sidebar.style.position = 'relative';
+            sidebar.style.top = `${currentOffset}px`;
+          }
+          
+          if (rect.top >= 96) {
+            sidebar.style.position = 'sticky';
+            sidebar.style.top = '96px';
+            isStuckToTop = true;
+          }
+        }
+        
+        lastScrollTop = scrollTop;
+      };
+
+      window.addEventListener('scroll', handleStickyScroll, { passive: true });
+      window.addEventListener('resize', handleStickyScroll, { passive: true });
+      handleStickyScroll();
+    }
   </script>
 </BaseLayout>
