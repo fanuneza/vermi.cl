@@ -1,5 +1,5 @@
 ---
-import { getBlogTagLabel, type BlogTagSlug } from '../utils/blog-tags';
+import type { BlogTagSlug } from '../utils/blog-tags';
 import {
   blogCardCategoryMeta,
   formatBlogDate,
@@ -18,7 +18,7 @@ interface Props {
   rotation?: string; // e.g. "rotate-1" or "rotate-[-1.5deg]"
 }
 
-const { title, description, slug, pubDate, category, difficulty = "Básico", readingTime, tags = [], rotation = "rotate-0" } = Astro.props;
+const { title, description, slug, pubDate, category, difficulty = "Básico", readingTime, rotation = "rotate-0" } = Astro.props;
 
 const formattedDate = formatBlogDate(pubDate);
 const meta = blogCardCategoryMeta[category];
@@ -42,18 +42,6 @@ const meta = blogCardCategoryMeta[category];
       </p>
     </a>
 
-    {tags.length > 0 && (
-      <div class="flex flex-wrap gap-2 mb-4" aria-label="Etiquetas de la guía">
-        {tags.map((tag) => (
-          <a
-            href={`/blog/tags/${tag}/`}
-            class="font-mono text-[10px] font-bold border-2 border-on-background px-2 py-0.5 bg-background text-on-background no-underline shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201]"
-          >
-            #{getBlogTagLabel(tag)}
-          </a>
-        ))}
-      </div>
-    )}
 
       <div class="flex justify-between items-center border-t-2 border-dashed border-on-background pt-3 mt-auto">
         {readingTime && <span class="font-mono text-xs text-on-background/80">{readingTime}</span>}

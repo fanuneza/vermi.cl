@@ -4,7 +4,7 @@ import BaseLayout from './BaseLayout.astro';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import avatarImage from '../assets/images/avatar.jpg';
-import { getBlogTagLabel, type BlogTagSlug } from '../utils/blog-tags';
+import type { BlogTagSlug } from '../utils/blog-tags';
 import {
   blogFeatureImageSizes,
   blogFeatureImageWidths,
@@ -162,19 +162,6 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
         <slot />
       </div>
 
-      <!-- Tags -->
-      <div class="flex flex-wrap items-center justify-between gap-4 mt-8 pt-8 border-t-4 border-on-surface border-dashed">
-        <div class="flex flex-wrap gap-2">
-          {tags.map((tag, index) => (
-            <a
-              href={`/blog/tags/${tag}/`}
-              class={`px-3 py-1 bg-surface-container-high border-2 border-on-surface text-label-md font-label-md no-underline text-on-surface ${index % 2 === 0 ? 'rotate-[2deg]' : 'rotate-[-1deg]'}`}
-            >
-              #{getBlogTagLabel(tag)}
-            </a>
-          ))}
-        </div>
-      </div>
     </article>
 
     <!-- Sidebar (Secondary Column) -->
