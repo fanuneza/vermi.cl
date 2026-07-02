@@ -104,7 +104,7 @@ const isNosotros = pathname.startsWith("/nosotros");
   </nav>
 
   <div class="p-5 flex justify-center items-center border-t-4 border-on-surface/20 border-dashed mt-auto bg-surface-container-low">
-    <p class="font-mono text-xs text-on-surface-variant m-0 uppercase rotate-[2deg]">Hecho a mano 🐛</p>
+    <p class="font-mono text-xs text-on-surface-variant m-0 uppercase rotate-[2deg]">Hecho a mano 🪱</p>
   </div>
 </aside>
 
@@ -120,12 +120,12 @@ const isNosotros = pathname.startsWith("/nosotros");
 
     <div class="flex flex-col gap-4 mt-2">
       <span class="inline-block bg-primary text-on-primary border-2 border-on-surface px-3 py-1 font-label-md text-label-md w-max rotate-[1deg] uppercase tracking-wider">Comunidad</span>
-      <h2 class="font-headline text-2xl md:text-3xl font-black text-on-surface uppercase m-0 leading-none">Únete a la colonia 🐛</h2>
+      <h2 class="font-headline text-2xl md:text-3xl font-black text-on-surface uppercase m-0 leading-none">Únete a la colonia 🪱</h2>
       <p class="font-body text-sm text-on-surface-variant leading-relaxed m-0">
         Sé parte del mayor grupo de vermicompostadores de Chile. Recibe alertas biológicas estacionales y comparte tus experiencias con el humus.
       </p>
 
-      <div class="flex flex-col gap-3 mt-4 w-full">
+      <div class="ml-subscribe-form ml-subscribe-form-43289892 flex flex-col gap-3 mt-4 w-full">
         <a
           href="https://chat.whatsapp.com"
           target="_blank"
@@ -137,43 +137,60 @@ const isNosotros = pathname.startsWith("/nosotros");
 
         <div class="h-px border-t-2 border-dashed border-on-surface my-2"></div>
 
-        <form
-          id="newsletter-form"
-          action={NEWSLETTER_FORM_CONFIG.action || undefined}
-          method="post"
-          target={NEWSLETTER_FORM_CONFIG.target}
-          class="space-y-4"
-          toolname="suscribir_newsletter"
-          tooldescription="Suscribe una dirección de correo electrónico al boletín informativo mensual de vermi.cl."
-        >
-          <div class="flex flex-col gap-1.5">
-            <label class="font-label-md text-[10px] uppercase text-[#154212] tracking-wider" for="modal-email">Newsletter mensual</label>
-            <input
-              type="email"
-              id="modal-email"
-              name={NEWSLETTER_FORM_CONFIG.emailFieldName}
-              placeholder="tu-correo@lombriz.cl"
-              required
-              toolparamdescription="Correo electrónico del suscriptor."
-              class="w-full bg-white border-2 border-on-surface px-3 py-2 text-sm font-body text-on-surface placeholder-on-surface/40 rounded-sm focus:ring-0 focus:outline-none"
-            />
-          </div>
-          {NEWSLETTER_FORM_CONFIG.hiddenFields.map((field: HiddenField) => (
-            <input type="hidden" name={field.name} value={field.value} />
-          ))}
-          <button
-            type="submit"
-            disabled={!isNewsletterFormConfigured}
-            class="w-full bg-secondary text-white border-2 border-on-surface py-2.5 px-4 font-mono text-xs font-bold shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all rounded-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
+        <div class="row-form">
+          <form
+            id="newsletter-form"
+            action={NEWSLETTER_FORM_CONFIG.action || undefined}
+            method="post"
+            class="space-y-4"
+            data-code=""
+            toolname="suscribir_newsletter"
+            tooldescription="Suscribe una dirección de correo electrónico al boletín informativo mensual de vermi.cl."
           >
-            Suscribirse ✉
-          </button>
-          {!isNewsletterFormConfigured && (
-            <p class="m-0 font-body text-xs text-on-surface-variant">
-              Falta pegar los datos públicos del formulario de MailerLite en <code>src/utils/newsletter-form.ts</code>.
-            </p>
-          )}
-        </form>
+            <div class="flex flex-col gap-1.5">
+              <label class="font-label-md text-[10px] uppercase text-[#154212] tracking-wider" for="modal-email">Newsletter mensual</label>
+              <input
+                type="email"
+                id="modal-email"
+                name={NEWSLETTER_FORM_CONFIG.emailFieldName}
+                placeholder="tu-correo@lombriz.cl"
+                required
+                toolparamdescription="Correo electrónico del suscriptor."
+                class="w-full bg-white border-2 border-on-surface px-3 py-2 text-sm font-body text-on-surface placeholder-on-surface/40 rounded-sm focus:ring-0 focus:outline-none"
+              />
+            </div>
+            {NEWSLETTER_FORM_CONFIG.hiddenFields.map((field: HiddenField) => (
+              <input type="hidden" name={field.name} value={field.value} />
+            ))}
+            <button
+              type="submit"
+              disabled={!isNewsletterFormConfigured}
+              class="newsletter-submit w-full bg-secondary text-white border-2 border-on-surface py-2.5 px-4 font-mono text-xs font-bold shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all rounded-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              <span class="newsletter-submit-label">Suscribirse ✉</span>
+            </button>
+            {!isNewsletterFormConfigured && (
+              <p class="m-0 font-body text-xs text-on-surface-variant">
+                Falta pegar los datos públicos del formulario de MailerLite en <code>src/utils/newsletter-form.ts</code>.
+              </p>
+            )}
+          </form>
+        </div>
+
+        <div
+          class="row-success hidden border-2 border-on-surface bg-[#E8F8EE] p-4 shadow-hard-sm organic-brutalism-alt"
+          aria-live="polite"
+        >
+          <p class="m-0 font-label-md text-[10px] uppercase tracking-[0.22em] text-primary">
+            Confirmado
+          </p>
+          <h3 class="m-0 mt-2 font-headline text-xl font-black uppercase text-on-surface">
+            Revisa tu correo
+          </h3>
+          <p class="m-0 mt-2 font-body text-sm leading-relaxed text-on-surface-variant">
+            Te mandamos un mensaje para confirmar tu suscripción. Apenas la actives, recibirás nuestras alertas estacionales y novedades de vermi.cl sin salir de esta página.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -189,6 +206,47 @@ const isNosotros = pathname.startsWith("/nosotros");
   const closeModal = document.getElementById("close-modal");
   const desktopJoin = document.getElementById("join-trigger-desktop");
   const mobileJoin = document.getElementById("join-trigger-mobile");
+  const newsletterForm = document.getElementById(
+    "newsletter-form",
+  ) as HTMLFormElement | null;
+  const newsletterSubmit = newsletterForm?.querySelector(
+    ".newsletter-submit",
+  ) as HTMLButtonElement | null;
+  const newsletterSubmitLabel = newsletterSubmit?.querySelector(
+    ".newsletter-submit-label",
+  ) as HTMLSpanElement | null;
+  const newsletterContainer = document.querySelector(
+    ".ml-subscribe-form-43289892",
+  ) as HTMLElement | null;
+  const newsletterFormRow = newsletterContainer?.querySelector(
+    ".row-form",
+  ) as HTMLElement | null;
+  const newsletterSuccessRow = newsletterContainer?.querySelector(
+    ".row-success",
+  ) as HTMLElement | null;
+  const mailerLiteWindow = window as Window & {
+    ml_webform_success_43289892?: () => void;
+  };
+
+  const setNewsletterLoading = (isLoading: boolean) => {
+    if (!newsletterSubmit || !newsletterSubmitLabel) return;
+    newsletterSubmit.disabled = isLoading || !newsletterForm;
+    newsletterSubmit.setAttribute("aria-busy", isLoading ? "true" : "false");
+    newsletterSubmitLabel.textContent = isLoading
+      ? "Enviando..."
+      : "Suscribirse ✉";
+  };
+
+  mailerLiteWindow.ml_webform_success_43289892 = () => {
+    newsletterFormRow?.classList.add("hidden");
+    newsletterSuccessRow?.classList.remove("hidden");
+    setNewsletterLoading(false);
+    newsletterForm?.reset();
+  };
+
+  newsletterForm?.addEventListener("submit", () => {
+    setNewsletterLoading(true);
+  });
 
   if (trigger && close && drawer && overlay) {
     const openDrawer = () => {
@@ -218,6 +276,7 @@ const isNosotros = pathname.startsWith("/nosotros");
         modal.classList.remove("opacity-100");
         modal.classList.add("pointer-events-none", "opacity-0");
       }
+      setNewsletterLoading(false);
     };
 
     trigger.addEventListener("click", openDrawer);
@@ -242,3 +301,9 @@ const isNosotros = pathname.startsWith("/nosotros");
     });
   }
 </script>
+{isNewsletterFormConfigured && (
+  <script
+    is:inline
+    src="https://groot.mailerlite.com/js/w/webforms.min.js"
+  ></script>
+)}
