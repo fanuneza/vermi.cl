@@ -1,70 +1,62 @@
 ---
 // Header.astro - Reusable Stitch-style Navigation Bar
+import {
+  type HiddenField,
+  NEWSLETTER_FORM_CONFIG,
+  isNewsletterFormConfigured,
+} from "../utils/newsletter-form";
+
 const { pathname } = Astro.url;
 
-const isHome = pathname === '/' || pathname === '/index.html';
-const isBlog = pathname.startsWith('/blog');
-const isNosotros = pathname.startsWith('/nosotros');
+const isHome = pathname === "/" || pathname === "/index.html";
+const isBlog = pathname.startsWith("/blog");
+const isNosotros = pathname.startsWith("/nosotros");
 ---
 <nav class="bg-surface dark:bg-surface-container w-full sticky top-0 z-50 border-b-4 border-on-surface shadow-[6px_6px_0px_0px_#002201] flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-full">
-  
-  <!-- Left Side: Hamburger Trigger (Mobile Only) -->
   <button id="menu-trigger" aria-label="Abrir menú" class="md:hidden text-primary hover:scale-105 active:scale-95 transition-transform flex items-center justify-center p-2 cursor-pointer">
-    <!-- Inline SVG for FontAwesome faBars -->
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 448 512" fill="currentColor">
       <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/>
     </svg>
   </button>
 
-  <!-- Logo (Centered on mobile, left-aligned on desktop) -->
   <a href="/" class="logo-link no-underline absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
     <div class="font-headline text-headline-md font-black text-secondary border-2 border-on-surface px-2 py-1 rotate-[-2deg] bg-surface-container-low shadow-[4px_4px_0px_0px_#002201] transition-transform hover:rotate-0">
       vermi.cl
     </div>
   </a>
 
-  <!-- Middle: Navigation Links (Desktop Only) -->
   <div class="hidden md:flex items-center gap-6">
     <a class={isHome ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/">Inicio</a>
     <a class={isBlog ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/blog/">Guías</a>
     <a class={isNosotros ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/nosotros/">Nosotros</a>
   </div>
 
-  <!-- Right Side: Actions (Desktop and Mobile) -->
   <div class="flex items-center gap-4">
-    <!-- Desktop Join Button -->
     <button id="join-trigger-desktop" class="hidden md:block bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 organic-brutalism rotate-[1deg] cursor-pointer">
       Unirse
     </button>
 
-    <!-- Mobile Join Button -->
     <button id="join-trigger-mobile" class="md:hidden text-primary font-headline-md font-bold hover:scale-105 active:scale-95 transition-transform cursor-pointer">
       Unirse
     </button>
   </div>
 </nav>
 
-<!-- Mobile Navigation Drawer Overlay -->
 <div id="drawer-overlay" class="fixed inset-0 bg-[#002201]/50 z-[100] transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
-<!-- Mobile Navigation Drawer (Aside) -->
 <aside id="nav-drawer" class="fixed top-0 left-0 h-full w-[280px] max-w-full bg-[#ecffe2] z-[101] transform -translate-x-full transition-transform duration-300 ease-in-out border-r-4 border-on-surface shadow-[6px_6px_0px_0px_#002201] flex flex-col pointer-events-auto">
-  <!-- Drawer Header -->
   <div class="p-5 flex justify-between items-start border-b-4 border-on-surface/20 border-dashed bg-surface-container">
     <div class="font-headline text-2xl font-black text-secondary rotate-[-3deg] border-2 border-on-surface bg-surface-container-highest px-3 py-1 shadow-hard-sm inline-block">
       vermi.cl
     </div>
     <button id="close-drawer" aria-label="Cerrar menú" class="text-on-surface hover:text-secondary transition-colors p-2 rotate-[5deg] hover:rotate-[15deg] bg-surface-container-low border-2 border-on-surface rounded-full shadow-hard-sm active:translate-y-[2px] active:translate-x-[2px] active:shadow-none cursor-pointer flex items-center justify-center">
-      <!-- Inline SVG for FontAwesome faXmark -->
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 384 512" fill="currentColor">
         <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 47.5c-11.3-13.6-31.5-15.4-45.1-4.1s-15.4 31.5-4.1 45.1L142.9 256 7.5 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 464.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L241.1 256 376.6 84.5z"/>
       </svg>
     </button>
   </div>
 
-  <!-- Drawer Links -->
   <nav class="flex-1 overflow-y-auto p-5 flex flex-col gap-4 font-headline text-lg font-bold">
-    <!-- Inicio Link -->
     <a class="group relative block w-full no-underline" href="/">
       {isHome ? (
         <div class="absolute inset-0 bg-[#002201] border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
@@ -79,8 +71,7 @@ const isNosotros = pathname.startsWith('/nosotros');
         </div>
       )}
     </a>
-    
-    <!-- Guías Link -->
+
     <a class="group relative block w-full no-underline" href="/blog/">
       {isBlog ? (
         <div class="absolute inset-0 bg-[#002201] border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
@@ -95,8 +86,7 @@ const isNosotros = pathname.startsWith('/nosotros');
         </div>
       )}
     </a>
-    
-    <!-- Nosotros Link -->
+
     <a class="group relative block w-full no-underline" href="/nosotros/">
       {isNosotros ? (
         <div class="absolute inset-0 bg-[#002201] border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
@@ -113,70 +103,75 @@ const isNosotros = pathname.startsWith('/nosotros');
     </a>
   </nav>
 
-  <!-- Drawer Footer -->
   <div class="p-5 flex justify-center items-center border-t-4 border-on-surface/20 border-dashed mt-auto bg-surface-container-low">
     <p class="font-mono text-xs text-on-surface-variant m-0 uppercase rotate-[2deg]">Hecho a mano 🐛</p>
   </div>
 </aside>
 
-<!-- Join Modal Overlay -->
 <div id="join-modal" class="fixed inset-0 bg-[#002201]/70 z-[200] transition-opacity duration-300 opacity-0 pointer-events-none flex items-center justify-center p-4">
   <div class="bg-[#FFFBEA] border-4 border-on-surface p-6 sm:p-8 max-w-md w-full max-h-[90vh] overflow-y-auto shadow-hard relative transform rotate-[-0.5deg] organic-brutalism box-border">
-    <!-- Decorative Tape -->
     <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-28 h-7 bg-secondary-container/90 border-2 border-on-surface -rotate-2 z-10"></div>
-    
-    <!-- Close Button -->
+
     <button id="close-modal" aria-label="Cerrar modal" class="absolute -top-3 -right-3 text-on-surface hover:text-secondary transition-colors p-2 rotate-[5deg] hover:rotate-[15deg] bg-surface-container border-2 border-on-surface rounded-full shadow-hard-sm active:translate-y-[2px] active:translate-x-[2px] active:shadow-none cursor-pointer flex items-center justify-center z-20">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 384 512" fill="currentColor">
         <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 47.5c-11.3-13.6-31.5-15.4-45.1-4.1s-15.4 31.5-4.1 45.1L142.9 256 7.5 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 464.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L241.1 256 376.6 84.5z"/>
       </svg>
     </button>
-    
+
     <div class="flex flex-col gap-4 mt-2">
       <span class="inline-block bg-primary text-on-primary border-2 border-on-surface px-3 py-1 font-label-md text-label-md w-max rotate-[1deg] uppercase tracking-wider">Comunidad</span>
-      <h2 class="font-headline text-2xl md:text-3xl font-black text-on-surface uppercase m-0 leading-none">Únete a la Colonia 🐛</h2>
+      <h2 class="font-headline text-2xl md:text-3xl font-black text-on-surface uppercase m-0 leading-none">Únete a la colonia 🐛</h2>
       <p class="font-body text-sm text-on-surface-variant leading-relaxed m-0">
         Sé parte del mayor grupo de vermicompostadores de Chile. Recibe alertas biológicas estacionales y comparte tus experiencias con el humus.
       </p>
-      
-      <!-- Action buttons inside modal -->
+
       <div class="flex flex-col gap-3 mt-4 w-full">
-        <!-- WhatsApp group invite placeholder -->
-        <a 
-          href="https://chat.whatsapp.com" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://chat.whatsapp.com"
+          target="_blank"
+          rel="noopener noreferrer"
           class="bg-[#25D366] text-white border-2 border-on-surface py-3 px-4 font-mono text-xs font-bold text-center shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all rounded-sm no-underline flex items-center justify-center gap-2"
         >
           <span>Grupo de WhatsApp 💬</span>
         </a>
-        
+
         <div class="h-px border-t-2 border-dashed border-on-surface my-2"></div>
-        
-        <!-- Newsletter signup -->
-        <form 
-          id="newsletter-form" 
+
+        <form
+          id="newsletter-form"
+          action={NEWSLETTER_FORM_CONFIG.action || undefined}
+          method="post"
           class="space-y-4"
           toolname="suscribir_newsletter"
           tooldescription="Suscribe una dirección de correo electrónico al boletín informativo mensual de vermi.cl."
         >
           <div class="flex flex-col gap-1.5">
-            <label class="font-label-md text-[10px] uppercase text-[#154212] tracking-wider" for="modal-email">Newsletter Mensual</label>
-            <input 
-              type="email" 
-              id="modal-email" 
-              placeholder="tu-correo@lombriz.cl" 
-              required 
+            <label class="font-label-md text-[10px] uppercase text-[#154212] tracking-wider" for="modal-email">Newsletter mensual</label>
+            <input
+              type="email"
+              id="modal-email"
+              name={NEWSLETTER_FORM_CONFIG.emailFieldName}
+              placeholder="tu-correo@lombriz.cl"
+              required
               toolparamdescription="Correo electrónico del suscriptor."
               class="w-full bg-white border-2 border-on-surface px-3 py-2 text-sm font-body text-on-surface placeholder-on-surface/40 rounded-sm focus:ring-0 focus:outline-none"
             />
           </div>
-          <button 
-            type="submit" 
-            class="w-full bg-secondary text-white border-2 border-on-surface py-2.5 px-4 font-mono text-xs font-bold shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all rounded-sm cursor-pointer"
+          {NEWSLETTER_FORM_CONFIG.hiddenFields.map((field: HiddenField) => (
+            <input type="hidden" name={field.name} value={field.value} />
+          ))}
+          <button
+            type="submit"
+            disabled={!isNewsletterFormConfigured}
+            class="w-full bg-secondary text-white border-2 border-on-surface py-2.5 px-4 font-mono text-xs font-bold shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all rounded-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
           >
             Suscribirse ✉
           </button>
+          {!isNewsletterFormConfigured && (
+            <p class="m-0 font-body text-xs text-on-surface-variant">
+              Falta pegar los datos públicos del formulario de MailerLite en <code>src/utils/newsletter-form.ts</code>.
+            </p>
+          )}
         </form>
       </div>
     </div>
@@ -184,71 +179,60 @@ const isNosotros = pathname.startsWith('/nosotros');
 </div>
 
 <script>
-  const trigger = document.getElementById('menu-trigger');
-  const close = document.getElementById('close-drawer');
-  const drawer = document.getElementById('nav-drawer');
-  const overlay = document.getElementById('drawer-overlay');
+  const trigger = document.getElementById("menu-trigger");
+  const close = document.getElementById("close-drawer");
+  const drawer = document.getElementById("nav-drawer");
+  const overlay = document.getElementById("drawer-overlay");
 
-  const modal = document.getElementById('join-modal');
-  const closeModal = document.getElementById('close-modal');
-  const desktopJoin = document.getElementById('join-trigger-desktop');
-  const mobileJoin = document.getElementById('join-trigger-mobile');
-  const newsletterForm = document.getElementById('newsletter-form') as HTMLFormElement | null;
+  const modal = document.getElementById("join-modal");
+  const closeModal = document.getElementById("close-modal");
+  const desktopJoin = document.getElementById("join-trigger-desktop");
+  const mobileJoin = document.getElementById("join-trigger-mobile");
 
   if (trigger && close && drawer && overlay) {
     const openDrawer = () => {
-      drawer.classList.remove('-translate-x-full');
-      overlay.classList.remove('opacity-0', 'pointer-events-none');
-      overlay.classList.add('opacity-100', 'pointer-events-auto');
-      document.body.style.overflow = 'hidden';
+      drawer.classList.remove("-translate-x-full");
+      overlay.classList.remove("opacity-0", "pointer-events-none");
+      overlay.classList.add("opacity-100", "pointer-events-auto");
+      document.body.style.overflow = "hidden";
     };
 
     const closeDrawer = () => {
-      drawer.classList.add('-translate-x-full');
-      overlay.classList.remove('opacity-100', 'pointer-events-auto');
-      overlay.classList.add('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = '';
+      drawer.classList.add("-translate-x-full");
+      overlay.classList.remove("opacity-100", "pointer-events-auto");
+      overlay.classList.add("opacity-0", "pointer-events-none");
+      document.body.style.overflow = "";
     };
 
     const openModal = () => {
-      closeDrawer(); // Close mobile drawer if open
+      closeDrawer();
       if (modal) {
-        modal.classList.remove('pointer-events-none', 'opacity-0');
-        modal.classList.add('opacity-100');
+        modal.classList.remove("pointer-events-none", "opacity-0");
+        modal.classList.add("opacity-100");
       }
     };
 
     const hideModal = () => {
       if (modal) {
-        modal.classList.remove('opacity-100');
-        modal.classList.add('pointer-events-none', 'opacity-0');
+        modal.classList.remove("opacity-100");
+        modal.classList.add("pointer-events-none", "opacity-0");
       }
     };
 
-    trigger.addEventListener('click', openDrawer);
-    close.addEventListener('click', closeDrawer);
-    overlay.addEventListener('click', closeDrawer);
+    trigger.addEventListener("click", openDrawer);
+    close.addEventListener("click", closeDrawer);
+    overlay.addEventListener("click", closeDrawer);
 
-    if (desktopJoin) desktopJoin.addEventListener('click', openModal);
-    if (mobileJoin) mobileJoin.addEventListener('click', openModal);
-    if (closeModal) closeModal.addEventListener('click', hideModal);
+    if (desktopJoin) desktopJoin.addEventListener("click", openModal);
+    if (mobileJoin) mobileJoin.addEventListener("click", openModal);
+    if (closeModal) closeModal.addEventListener("click", hideModal);
     if (modal) {
-      modal.addEventListener('click', (e) => {
+      modal.addEventListener("click", (e) => {
         if (e.target === modal) hideModal();
       });
     }
 
-    if (newsletterForm) {
-      newsletterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('¡Gracias por unirte! Revisa tu correo pronto.');
-        newsletterForm.reset();
-        hideModal();
-      });
-    }
-
-    // Also support any global link pointing to #unirse
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", (e) => {
       const target = e.target as HTMLElement | null;
       if (target && target.closest('[href="#unirse"]')) {
         e.preventDefault();

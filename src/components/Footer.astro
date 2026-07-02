@@ -2,22 +2,58 @@
 // Footer.astro - Chunky Handcrafted Zine Footer
 const currentYear = new Date().getFullYear();
 ---
-<footer class="w-[calc(100%-2rem)] mt-16 bg-tertiary-fixed border-4 border-on-surface shadow-[8px_8px_0px_0px_#002201] mx-4 mb-8 rounded-xl self-center box-border">
+
+<footer
+  class="w-[calc(100%-2rem)] mt-16 bg-tertiary-fixed border-4 border-on-surface shadow-[8px_8px_0px_0px_#002201] mx-4 mb-8 rounded-xl self-center box-border"
+>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 md:p-12">
     <div class="flex flex-col gap-4">
-      <span class="font-headline text-3xl text-secondary font-black rotate-[-2deg] inline-block w-max">vermi.cl</span>
+      <span
+        class="font-headline text-3xl text-secondary font-black rotate-[-2deg] inline-block w-max"
+        >vermi.cl</span
+      >
       <p class="font-mono text-sm text-ink opacity-80 m-0">
         © {currentYear} vermi.cl - Hecho con tierra y cariño 🐛
       </p>
     </div>
-    <div class="md:col-span-2 flex flex-wrap gap-x-8 gap-y-4 md:justify-end items-center">
-      <a class="font-mono text-sm text-ink hover:text-primary hover:-translate-y-1 transition-all inline-block" href="/privacidad/">Privacidad</a>
-      <a class="font-mono text-sm text-ink hover:text-primary hover:-translate-y-1 transition-all inline-block" href="/contacto/">Contacto</a>
-      <a class="font-mono text-sm text-ink hover:text-primary hover:-translate-y-1 transition-all inline-block" href="/sustentabilidad/">Sustentabilidad</a>
-      <a class="font-mono text-sm text-ink hover:text-primary hover:-translate-y-1 transition-all inline-flex items-center gap-1" href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+    <div
+      class="md:col-span-2 flex flex-wrap gap-x-8 gap-y-4 md:justify-end items-center"
+    >
+      <a
+        class="font-mono text-sm text-ink hover:text-primary hover:-translate-y-1 transition-all inline-block"
+        href="/privacidad/">Privacidad</a
+      >
+      <a
+        class="font-mono text-sm text-ink hover:text-primary hover:-translate-y-1 transition-all inline-block"
+        href="/contacto/">Contacto</a
+      >
+
+      <a
+        class="font-mono text-sm text-ink hover:text-primary hover:-translate-y-1 transition-all inline-flex items-center gap-1"
+        href="https://instagram.com/vermi.cl "
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Instagram
         <!-- inline SVG for Instagram arrow -->
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+          ><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+          ></path><polyline points="15 3 21 3 21 9"></polyline><line
+            x1="10"
+            y1="14"
+            x2="21"
+            y2="3"></line></svg
+        >
       </a>
     </div>
   </div>

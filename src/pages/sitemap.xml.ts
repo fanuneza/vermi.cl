@@ -13,7 +13,6 @@ export const GET: APIRoute = async () => {
     { path: "/blog/", file: "src/pages/blog/index.astro" },
     { path: "/nosotros/", file: "src/pages/nosotros.astro" },
     { path: "/contacto/", file: "src/pages/contacto.astro" },
-    { path: "/sustentabilidad/", file: "src/pages/sustentabilidad.astro" },
     { path: "/privacidad/", file: "src/pages/privacidad.astro" },
   ];
 

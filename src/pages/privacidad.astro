@@ -1,65 +1,69 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { buildSchemaGraph } from '../utils/schema';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { buildSchemaGraph } from "../utils/schema";
 
 const privacySchema = buildSchemaGraph({
-  pageType: 'page',
-  url: 'https://vermi.cl/privacidad',
-  title: 'Políticas de Privacidad',
-  description: 'Conoce el compromiso de vermi.cl con la privacidad de los usuarios. Al ser un sitio estático, no recopilamos ni procesamos información personal.',
+  pageType: "page",
+  url: "https://vermi.cl/privacidad",
+  title: "Políticas de privacidad",
+  description:
+    "Conoce el compromiso de vermi.cl con la privacidad de los usuarios y cómo se procesa el correo electrónico del newsletter a través de MailerLite.",
 });
 ---
 
-<BaseLayout 
-  title="Políticas de Privacidad" 
-  description="Conoce el compromiso de vermi.cl con la privacidad de los usuarios. Al ser un sitio estático, no recopilamos ni procesamos información personal."
+<BaseLayout
+  title="Políticas de privacidad"
+  description="Conoce el compromiso de vermi.cl con la privacidad de los usuarios y cómo se procesa el correo electrónico del newsletter a través de MailerLite."
   noindex={true}
   schema={privacySchema}
   mainClass="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-16 flex-grow w-full box-border"
 >
-
-  <!-- Header Ripped Ticket -->
   <header class="bg-surface-container border-4 border-on-surface shadow-hard p-8 md:p-12 -rotate-1 relative overflow-hidden rounded-xl w-full box-border">
     <div class="absolute -top-6 -right-6 font-mono text-[120px] text-primary opacity-15 pointer-events-none select-none">🔒</div>
     <div class="relative z-10 flex flex-col gap-4">
       <span class="inline-block bg-tertiary text-on-tertiary border-2 border-on-surface px-3 py-1 font-label-md text-label-md w-max rotate-[2deg]">Privacidad</span>
-      <h1 class="font-headline text-4xl md:text-5xl font-black text-primary m-0 uppercase leading-none">Políticas de Privacidad</h1>
+      <h1 class="font-headline text-4xl md:text-5xl font-black text-primary m-0 uppercase leading-none">Políticas de privacidad</h1>
       <p class="font-body text-lg text-on-surface-variant mt-2 max-w-[600px] leading-relaxed m-0">
         Transparentes y directos. En vermi.cl respetamos tu privacidad por diseño y por defecto.
       </p>
     </div>
   </header>
 
-  <!-- Editorial Content Block -->
   <article class="flex flex-col gap-8 bg-surface-container-lowest p-6 md:p-10 border-4 border-on-surface rotate-1 rounded-xl shadow-hard w-full box-border mt-8">
     <section class="space-y-4">
       <h2 class="font-headline text-2xl md:text-3xl text-secondary m-0 uppercase">
-        1. Recopilación de Datos
+        1. Recopilación de datos
       </h2>
       <p class="font-body text-base text-on-surface leading-relaxed m-0">
-        vermi.cl es un portal educativo **100% estático**. No contamos con bases de datos de usuarios, registros de cuentas ni sistemas de rastreo invasivos. La herramienta de búsqueda de alimentos se ejecuta de manera local y privada en tu propio navegador web, sin enviar tus consultas a ningún servidor externo.
+        vermi.cl es un portal educativo estático. No mantenemos cuentas de usuario ni una base de datos propia para el buscador de alimentos. Esa herramienta funciona de manera local en tu navegador, sin enviar tus consultas a un servidor externo controlado por vermi.cl.
+      </p>
+      <p class="font-body text-base text-on-surface leading-relaxed m-0">
+        Si decides suscribirte al newsletter desde el botón <strong>Unirse</strong>, tu dirección de correo se envía directamente a MailerLite, que actúa como proveedor externo de email marketing y gestiona el alta, almacenamiento y eventuales mensajes de confirmación de esa suscripción.
       </p>
     </section>
-    
-    <hr class="border-t-4 border-on-surface border-dotted my-4"/>
-    
+
+    <hr class="border-t-4 border-on-surface border-dotted my-4" />
+
     <section class="space-y-4">
       <h2 class="font-headline text-2xl md:text-3xl text-primary m-0 uppercase">
-        2. Cookies y Analíticas
+        2. Cookies y analíticas
       </h2>
       <p class="font-body text-base text-on-surface leading-relaxed m-0">
-        No cargamos cookies de rastreo de terceros (como redes sociales o firmas de publicidad comportamental). Si en el futuro integramos analíticas básicas para contar visitas únicas, utilizaremos soluciones de privacidad certificada (privacy-first) sin recopilar direcciones IP ni datos de perfilado comercial.
+        No cargamos cookies de rastreo publicitario ni herramientas de perfilado comercial. Si en el futuro incorporamos analíticas básicas para medir visitas, priorizaremos soluciones centradas en privacidad y lo reflejaremos aquí antes de ampliar el tratamiento de datos.
       </p>
     </section>
-    
-    <hr class="border-t-4 border-on-surface border-dotted my-4"/>
-    
+
+    <hr class="border-t-4 border-on-surface border-dotted my-4" />
+
     <section class="space-y-4">
       <h2 class="font-headline text-2xl md:text-3xl text-primary m-0 uppercase">
-        3. Enlaces a Terceros
+        3. Proveedores y enlaces de terceros
       </h2>
       <p class="font-body text-base text-on-surface leading-relaxed m-0">
-        Nuestras guías y artículos de blog pueden enlazar a sitios web externos (como repositorios científicos o perfiles de redes sociales de la comunidad). vermi.cl no se hace responsable por las políticas de privacidad o el uso de cookies en dichos portales externos. Te sugerimos revisar las políticas de esos sitios al visitarlos.
+        MailerLite procesa los datos del newsletter según sus propias condiciones y política de privacidad. Antes de suscribirte, revisa esa documentación si necesitas conocer sus plazos de almacenamiento, mecanismos de baja o ubicación del tratamiento.
+      </p>
+      <p class="font-body text-base text-on-surface leading-relaxed m-0">
+        Además, nuestras guías pueden enlazar a sitios externos, como publicaciones científicas o comunidades. vermi.cl no controla las políticas de privacidad ni el uso de cookies de esos portales.
       </p>
     </section>
   </article>
