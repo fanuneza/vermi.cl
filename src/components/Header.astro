@@ -108,88 +108,81 @@ const isNosotros = pathname.startsWith("/nosotros");
   </div>
 </aside>
 
-<div id="join-modal" class="fixed inset-0 bg-[#002201]/70 z-[200] transition-opacity duration-300 opacity-0 pointer-events-none flex items-center justify-center p-4">
-  <div class="bg-[#FFFBEA] border-4 border-on-surface p-6 sm:p-8 max-w-md w-full max-h-[90vh] overflow-y-auto shadow-hard relative transform rotate-[-0.5deg] organic-brutalism box-border">
-    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-28 h-7 bg-secondary-container/90 border-2 border-on-surface -rotate-2 z-10"></div>
+<div id="join-modal" class="fixed inset-0 bg-[#002201]/70 z-[200] transition-opacity duration-300 opacity-0 pointer-events-none flex items-center justify-center p-3 sm:p-4 md:p-6">
+  <div class="relative w-full max-w-[42rem] overflow-visible px-1 sm:px-2">
+    <div class="absolute -top-4 left-1/2 z-10 h-7 w-24 -translate-x-1/2 -rotate-2 border-2 border-on-surface bg-secondary-container/90 sm:w-28"></div>
 
-    <button id="close-modal" aria-label="Cerrar modal" class="absolute -top-3 -right-3 text-on-surface hover:text-secondary transition-colors p-2 rotate-[5deg] hover:rotate-[15deg] bg-surface-container border-2 border-on-surface rounded-full shadow-hard-sm active:translate-y-[2px] active:translate-x-[2px] active:shadow-none cursor-pointer flex items-center justify-center z-20">
+    <button id="close-modal" aria-label="Cerrar modal" class="absolute -top-3 right-5 z-20 flex items-center justify-center rounded-full border-2 border-on-surface bg-surface-container p-2 text-on-surface shadow-hard-sm transition-colors rotate-[5deg] hover:rotate-[15deg] hover:text-secondary active:translate-x-[2px] active:translate-y-[2px] active:shadow-none sm:-right-3">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 384 512" fill="currentColor">
         <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 47.5c-11.3-13.6-31.5-15.4-45.1-4.1s-15.4 31.5-4.1 45.1L142.9 256 7.5 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 464.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L241.1 256 376.6 84.5z"/>
       </svg>
     </button>
 
-    <div class="flex flex-col gap-4 mt-2">
-      <span class="inline-block bg-primary text-on-primary border-2 border-on-surface px-3 py-1 font-label-md text-label-md w-max rotate-[1deg] uppercase tracking-wider">Comunidad</span>
-      <h2 class="font-headline text-2xl md:text-3xl font-black text-on-surface uppercase m-0 leading-none">Únete a la colonia 🪱</h2>
-      <p class="font-body text-sm text-on-surface-variant leading-relaxed m-0">
-        Sé parte del mayor grupo de vermicompostadores de Chile. Recibe alertas biológicas estacionales y comparte tus experiencias con el humus.
-      </p>
+    <div class="overflow-visible border-4 border-on-surface bg-[#FFFBEA] shadow-hard organic-brutalism">
+      <div class="max-h-[calc(100vh-2rem)] overflow-y-auto overflow-x-hidden px-5 pb-5 pt-10 sm:max-h-[calc(100vh-3rem)] sm:px-7 sm:pb-7 sm:pt-12 md:px-8 md:pb-8">
+        <div class="flex flex-col gap-4">
+          <span class="inline-block w-max rotate-[1deg] border-2 border-on-surface bg-primary px-3 py-1 font-label-md text-label-md uppercase tracking-wider text-on-primary">Newsletter</span>
+          <h2 class="m-0 font-headline text-2xl leading-none font-black text-on-surface uppercase md:text-3xl">Únete a la colonia 🪱</h2>
+          <p class="m-0 font-body text-sm leading-relaxed text-on-surface-variant">
+            Recibe alertas biológicas estacionales, novedades de vermi.cl y consejos prácticos para acompañar tu vermicompostera durante todo el año.
+          </p>
 
-      <div class="ml-subscribe-form ml-subscribe-form-43289892 flex flex-col gap-3 mt-4 w-full">
-        <a
-          href="https://chat.whatsapp.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="bg-[#25D366] text-white border-2 border-on-surface py-3 px-4 font-mono text-xs font-bold text-center shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all rounded-sm no-underline flex items-center justify-center gap-2"
-        >
-          <span>Grupo de WhatsApp 💬</span>
-        </a>
-
-        <div class="h-px border-t-2 border-dashed border-on-surface my-2"></div>
-
-        <div class="row-form">
-          <form
-            id="newsletter-form"
-            action={NEWSLETTER_FORM_CONFIG.action || undefined}
-            method="post"
-            class="space-y-4"
-            data-code=""
-            toolname="suscribir_newsletter"
-            tooldescription="Suscribe una dirección de correo electrónico al boletín informativo mensual de vermi.cl."
-          >
-            <div class="flex flex-col gap-1.5">
-              <label class="font-label-md text-[10px] uppercase text-[#154212] tracking-wider" for="modal-email">Newsletter mensual</label>
-              <input
-                type="email"
-                id="modal-email"
-                name={NEWSLETTER_FORM_CONFIG.emailFieldName}
-                placeholder="tu-correo@lombriz.cl"
-                required
-                toolparamdescription="Correo electrónico del suscriptor."
-                class="w-full bg-white border-2 border-on-surface px-3 py-2 text-sm font-body text-on-surface placeholder-on-surface/40 rounded-sm focus:ring-0 focus:outline-none"
-              />
+          <div class="ml-subscribe-form ml-subscribe-form-43289892 mt-1 flex w-full flex-col gap-3">
+            <div class="row-form">
+              <form
+                id="newsletter-form"
+                action={NEWSLETTER_FORM_CONFIG.action || undefined}
+                method="post"
+                class="space-y-4"
+                data-code=""
+                toolname="suscribir_newsletter"
+                tooldescription="Suscribe una dirección de correo electrónico al boletín informativo mensual de vermi.cl."
+              >
+                <div class="flex flex-col gap-1.5">
+                  <label class="font-label-md text-[10px] uppercase tracking-wider text-[#154212]" for="modal-email">Newsletter mensual</label>
+                  <input
+                    type="email"
+                    id="modal-email"
+                    name={NEWSLETTER_FORM_CONFIG.emailFieldName}
+                    placeholder="tu-correo@lombriz.cl"
+                    required
+                    toolparamdescription="Correo electrónico del suscriptor."
+                    class="w-full rounded-sm border-2 border-on-surface bg-white px-3 py-2 text-sm font-body text-on-surface placeholder-on-surface/40 focus:outline-none focus:ring-0"
+                  />
+                </div>
+                {NEWSLETTER_FORM_CONFIG.hiddenFields.map((field: HiddenField) => (
+                  <input type="hidden" name={field.name} value={field.value} />
+                ))}
+                <button
+                  type="submit"
+                  disabled={!isNewsletterFormConfigured}
+                  class="newsletter-submit w-full rounded-sm border-2 border-on-surface bg-secondary px-4 py-2.5 font-mono text-xs font-bold text-white shadow-hard-sm transition-all hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  <span class="newsletter-submit-label">Suscribirse ✉</span>
+                </button>
+                {!isNewsletterFormConfigured && (
+                  <p class="m-0 font-body text-xs text-on-surface-variant">
+                    Falta pegar los datos públicos del formulario de MailerLite en <code>src/utils/newsletter-form.ts</code>.
+                  </p>
+                )}
+              </form>
             </div>
-            {NEWSLETTER_FORM_CONFIG.hiddenFields.map((field: HiddenField) => (
-              <input type="hidden" name={field.name} value={field.value} />
-            ))}
-            <button
-              type="submit"
-              disabled={!isNewsletterFormConfigured}
-              class="newsletter-submit w-full bg-secondary text-white border-2 border-on-surface py-2.5 px-4 font-mono text-xs font-bold shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all rounded-sm cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              <span class="newsletter-submit-label">Suscribirse ✉</span>
-            </button>
-            {!isNewsletterFormConfigured && (
-              <p class="m-0 font-body text-xs text-on-surface-variant">
-                Falta pegar los datos públicos del formulario de MailerLite en <code>src/utils/newsletter-form.ts</code>.
-              </p>
-            )}
-          </form>
-        </div>
 
-        <div
-          class="row-success hidden border-2 border-on-surface bg-[#E8F8EE] p-4 shadow-hard-sm organic-brutalism-alt"
-          aria-live="polite"
-        >
-          <p class="m-0 font-label-md text-[10px] uppercase tracking-[0.22em] text-primary">
-            Confirmado
-          </p>
-          <h3 class="m-0 mt-2 font-headline text-xl font-black uppercase text-on-surface">
-            Revisa tu correo
-          </h3>
-          <p class="m-0 mt-2 font-body text-sm leading-relaxed text-on-surface-variant">
-            Te mandamos un mensaje para confirmar tu suscripción. Apenas la actives, recibirás nuestras alertas estacionales y novedades de vermi.cl sin salir de esta página.
-          </p>
+            <div
+              class="row-success hidden border-2 border-on-surface bg-[#E8F8EE] p-4 shadow-hard-sm organic-brutalism-alt"
+              aria-live="polite"
+            >
+              <p class="m-0 font-label-md text-[10px] uppercase tracking-[0.22em] text-primary">
+                Confirmado
+              </p>
+              <h3 class="m-0 mt-2 font-headline text-xl font-black uppercase text-on-surface">
+                Revisa tu correo
+              </h3>
+              <p class="m-0 mt-2 font-body text-sm leading-relaxed text-on-surface-variant">
+                Te mandamos un mensaje para confirmar tu suscripción. Apenas la actives, recibirás nuestras alertas estacionales y novedades de vermi.cl sin salir de esta página.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -237,6 +230,12 @@ const isNosotros = pathname.startsWith("/nosotros");
       : "Suscribirse ✉";
   };
 
+  const resetNewsletterState = () => {
+    newsletterSuccessRow?.classList.add("hidden");
+    newsletterFormRow?.classList.remove("hidden");
+    setNewsletterLoading(false);
+  };
+
   mailerLiteWindow.ml_webform_success_43289892 = () => {
     newsletterFormRow?.classList.add("hidden");
     newsletterSuccessRow?.classList.remove("hidden");
@@ -266,8 +265,10 @@ const isNosotros = pathname.startsWith("/nosotros");
     const openModal = () => {
       closeDrawer();
       if (modal) {
+        resetNewsletterState();
         modal.classList.remove("pointer-events-none", "opacity-0");
         modal.classList.add("opacity-100");
+        document.body.style.overflow = "hidden";
       }
     };
 
@@ -276,6 +277,7 @@ const isNosotros = pathname.startsWith("/nosotros");
         modal.classList.remove("opacity-100");
         modal.classList.add("pointer-events-none", "opacity-0");
       }
+      document.body.style.overflow = "";
       setNewsletterLoading(false);
     };
 
