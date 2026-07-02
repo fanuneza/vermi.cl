@@ -8,10 +8,22 @@
 - [Canal RSS](https://vermi.cl/feed.xml)
 
 ## Guías del repositorio
-- [Cosecha de humus](https://vermi.cl/blog/cosechar-humus/)
-- [Alimentos prohibidos](https://vermi.cl/blog/que-alimentos-no-dar/)
-- [Vermicompostaje en departamento](https://vermi.cl/blog/vermi-en-departamento/)
-- [Fugas de lombrices](https://vermi.cl/blog/evitar-fuga-lombrices/)
+- [Cómo cosechar y harnear el humus de lombriz](https://vermi.cl/blog/cosechar-humus/)
+- [Cuántas lombrices necesito para empezar](https://vermi.cl/blog/cuantas-lombrices-necesito/)
+- [Cuánto demora el vermicompostaje](https://vermi.cl/blog/cuanto-demora-vermicompostaje/)
+- [Cómo elegir una vermicompostera](https://vermi.cl/blog/elegir-vermicompostera/)
+- [Cómo evitar fugas de lombrices de tu vermicompostera](https://vermi.cl/blog/evitar-fuga-lombrices/)
+- [Qué hacer si aparecen hormigas en la vermicompostera](https://vermi.cl/blog/hormigas-vermicompostera/)
+- [Humedad ideal en una vermicompostera](https://vermi.cl/blog/humedad-vermicompostera/)
+- [Qué hacer si el humus de lombriz tiene plásticos u otros residuos](https://vermi.cl/blog/humus-con-plasticos/)
+- [Cómo multiplicar tus lombrices](https://vermi.cl/blog/multiplicar-lombrices/)
+- [Cómo preparar el sustrato de una vermicompostera](https://vermi.cl/blog/preparar-cama-vermicompostera/)
+- [Qué alimentos no debes dar a tus lombrices](https://vermi.cl/blog/que-alimentos-no-dar/)
+- [Qué no usar como sustrato en una vermicompostera](https://vermi.cl/blog/que-no-usar-cama-vermicompostera/)
+- [Temperatura ideal para las lombrices](https://vermi.cl/blog/temperatura-lombrices/)
+- [Cómo usar el humus de lombriz en maceteros](https://vermi.cl/blog/usar-humus-maceteros/)
+- [Guía completa de vermicompostaje en departamento](https://vermi.cl/blog/vermi-en-departamento/)
+- [Vermicompostaje en invierno](https://vermi.cl/blog/vermicompostaje-invierno/)
 
 ## Etiquetas principales
 - [Alimentación de lombrices](https://vermi.cl/blog/tags/alimentacion-de-lombrices/)

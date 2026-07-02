@@ -23,84 +23,226 @@ Estas rutas agrupan el contenido por temas canónicos:
 
 ---
 
-## 1. Cuándo y cómo cosechar tu humus... sin molestar a las lombrices
+## 1. Cómo cosechar y harnear el humus de lombriz
 URL de Referencia: [https://vermi.cl/blog/cosechar-humus/](https://vermi.cl/blog/cosechar-humus/)
 
-El momento de cosechar el humus es uno de los más esperados en el vermicompostaje. Es la recompensa a meses de reciclar tus orgánicos. Pero, ¿cómo saber si está listo sin perturbar el ecosistema de tu vermicompostera?
+Aprende cuándo cosechar el humus de lombriz, cómo separar las lombrices sin dañarlas y cómo harnear el material para obtener un vermicompost de alta calidad.
 
-El "oro negro" de la jardinería no se hace de la noche a la mañana. Las lombrices californianas (Eisenia fetida) trabajan a su propio ritmo, transformando cáscaras, restos de café y cartón en un abono rico en nutrientes y microorganismos benéficos.
-
-### Señales clave de que el humus está listo
-*   **Color y textura**: Debe ser de un color café oscuro, casi negro, y tener una textura suelta y granulada, similar a la borra del café usado.
-*   **Olor**: Debe oler a tierra húmeda de bosque, nunca a descomposición o amoníaco. Un mal olor indica fermentación anaeróbica residual.
-*   **Reconocimiento de materiales**: Ya no deberías poder identificar los restos originales de vegetales ni el cartón (salvo alguna cáscara de huevo terca).
-
-### Métodos de cosecha amigables (migración vertical)
-1.  **Dejar de alimentar la bandeja inferior**: Cuando la bandeja inferior parezca lista, deja de añadir comida fresca en ella.
-2.  **Preparar el nivel superior**: Coloca comida altamente atractiva (como cáscaras de plátano congeladas y trituradas) en la bandeja inmediatamente superior junto con abundante cartón húmedo.
-3.  **Aprovechar la migración**: Las lombrices subirán por los orificios del fondo de la nueva bandeja en un plazo de 10 a 14 días.
-4.  **Retirar la bandeja inferior**: La bandeja inferior contendrá humus prácticamente libre de lombrices, listo para tamizar o harnear.
-
-### Cuidado biorregional en el Valle Central
-En el clima de Santiago y el valle central, la baja humedad relativa del aire puede secar el humus demasiado rápido una vez cosechado, matando la microbiota benéfica. 
-*   **Secado controlado**: Esparce el humus cosechado a la sombra sobre una lona por no más de 24 horas. Evita la exposición solar directa.
-*   **Almacenamiento**: Guárdalo en sacos de arpillera o contenedores con micro-perforaciones que mantengan la humedad interna entre un 40% y 50%.
+### Estructura y puntos de control
+*   ¿Cómo saber cuándo el humus está listo?
+*   Cómo preparar la cosecha
+*   Método de la luz: una forma simple de separar las lombrices
+*   Cómo harnear el humus
+*   ¿Es necesario harnear siempre?
 
 ---
 
-## 2. Qué alimentos NO dar a tus lombrices y por qué
-URL de Referencia: [https://vermi.cl/blog/que-alimentos-no-dar/](https://vermi.cl/blog/que-alimentos-no-dar/)
+## 2. Cuántas lombrices necesito para empezar
+URL de Referencia: [https://vermi.cl/blog/cuantas-lombrices-necesito/](https://vermi.cl/blog/cuantas-lombrices-necesito/)
 
-El colapso de una vermicompostera doméstica se asocia comúnmente al fenómeno de sobrealimentación. Los principiantes suelen asumir que añadir grandes volúmenes de alimento fresco beneficia a la población de lombrices, pero la realidad biológica es distinta. Las lombrices californianas (Eisenia fetida) consumen el biofilm bacteriano y de microorganismos que prolifera sobre la materia orgánica en descomposición. Echar alimentos inadecuados rompe el equilibrio químico del sustrato.
+Aprende cuántas lombrices rojas californianas necesitas para iniciar una vermicompostera según tu espacio, residuos y ritmo de alimentación.
 
-### Alimentos prohibidos (peligro absoluto)
-*   **Carnes, grasas y lácteos**: Provocan putrefacción anaeróbica, malos olores intensos y atraen moscas de la carne y roedores.
-*   **Alimentos cocinados, con sal o aceite**: La sal deshidrata la piel permeable de las lombrices de forma inmediata, provocándoles la muerte. Los aceites bloquean sus poros respiratorios.
-*   **Heces de mascotas carnívoras (perros/gatos)**: Contienen patógenos y parásitos peligrosos que sobreviven al vermicompostaje doméstico.
-
-### Alimentos con los que moderar el pH (uso restringido)
-*   **Cítricos y cebollas**: Contienen aceites irritantes y acidifican fuertemente el pH. Un sustrato muy ácido desencadena una fermentación ácida que provoca la fuga nocturna de las lombrices. 
-*   **Neutralización**: Equilibra siempre los alimentos ácidos agregando cáscara de huevo molida (carbonato de calcio), que actúa como un amortiguador de pH natural.
-
-### Prevención de la plaga de mosquitos en departamento
-1.  **La regla de la cubierta seca**: Cada vez que agregues materia orgánica húmeda (verde), cúbrela con una capa gruesa (2-4 cm) de cartón o papel de diario picado sin adhesivos químicos.
-2.  **Trocear e incorporar**: Entierra ligeramente la comida bajo el sustrato activo en lugar de dejarla expuesta en la superficie.
+### Estructura y puntos de control
+*   La respuesta corta
+*   Peso de lombrices vs número de lombrices
+*   Cuánta comida pueden procesar
+*   Por qué no conviene alimentar al máximo desde el primer día
+*   Qué pasa si empiezas con pocas lombrices
 
 ---
 
-## 3. Cómo evitar fugas de lombrices de tu vermicompostera
+## 3. Cuánto demora el vermicompostaje
+URL de Referencia: [https://vermi.cl/blog/cuanto-demora-vermicompostaje/](https://vermi.cl/blog/cuanto-demora-vermicompostaje/)
+
+Aprende cuánto tarda una vermicompostera en producir humus de lombriz, qué factores aceleran o retrasan el proceso y cómo saber cuándo está listo.
+
+### Estructura y puntos de control
+*   La respuesta corta
+*   Por qué la primera cosecha demora más
+*   Qué factores aceleran el proceso
+*   Qué factores lo vuelven más lento
+*   Cómo saber si el proceso va bien
+
+---
+
+## 4. Cómo elegir una vermicompostera
+URL de Referencia: [https://vermi.cl/blog/elegir-vermicompostera/](https://vermi.cl/blog/elegir-vermicompostera/)
+
+Aprende qué tipo de vermicompostera conviene según tu espacio, clima, cantidad de residuos y nivel de experiencia.
+
+### Estructura y puntos de control
+*   Qué debe tener una buena vermicompostera
+*   Tipos de vermicompostera
+*   Qué tamaño elegir
+*   Plástico, madera o material reciclado
+*   Ventilación y drenaje
+
+---
+
+## 5. Cómo evitar fugas de lombrices de tu vermicompostera
 URL de Referencia: [https://vermi.cl/blog/evitar-fuga-lombrices/](https://vermi.cl/blog/evitar-fuga-lombrices/)
 
-Las lombrices californianas no intentan escapar sin motivo. Cuando suben por las paredes de la vermicompostera o aparecen fuera del recipiente, normalmente están respondiendo a falta de oxígeno, exceso de humedad, calor, sobrealimentación o materiales irritantes.
+Descubre por qué las lombrices intentan escapar de la vermicompostera, cuáles son las causas más comunes y cómo solucionar el problema paso a paso.
 
-### Causas frecuentes
-*   **Exceso de comida**: La descomposición microbiana intensa puede elevar la temperatura, consumir oxígeno y producir malos olores.
-*   **Falta de aireación**: El material compactado favorece procesos anaeróbicos que incomodan a las lombrices.
-*   **Humedad excesiva**: Un sustrato saturado desplaza el aire disponible y puede provocar migración.
-*   **Temperaturas altas**: En balcones expuestos al poniente, el recipiente puede calentarse más de lo tolerable para la colonia.
-
-### Solución inicial
-1.  Devuelve cuidadosamente las lombrices al sistema.
-2.  Suspende la alimentación por algunos días.
-3.  Agrega cartón, papel sin plastificar u hojas secas.
-4.  Mejora la ventilación y protege la vermicompostera del sol directo.
+### Estructura y puntos de control
+*   ¿Por qué las lombrices intentan escapar?
+*   La causa más frecuente: exceso de comida
+*   Falta de aireación
+*   Exceso de humedad
+*   Temperaturas demasiado altas
 
 ---
 
-## 4. Vermi en departamento: cómo empezar sin olores ni plagas
+## 6. Qué hacer si aparecen hormigas en la vermicompostera
+URL de Referencia: [https://vermi.cl/blog/hormigas-vermicompostera/](https://vermi.cl/blog/hormigas-vermicompostera/)
+
+Aprende por qué llegan hormigas a una vermicompostera, cuándo son un problema y cómo eliminarlas sin dañar a las lombrices.
+
+### Estructura y puntos de control
+*   Por qué llegan hormigas a la vermicompostera
+*   Cuándo son un problema
+*   Revisa primero la humedad
+*   Retira alimento expuesto
+*   Suspende alimentos muy dulces por algunos días
+
+---
+
+## 7. Humedad ideal en una vermicompostera
+URL de Referencia: [https://vermi.cl/blog/humedad-vermicompostera/](https://vermi.cl/blog/humedad-vermicompostera/)
+
+Aprende cuánta humedad necesitan las lombrices, cómo hacer la prueba del puño y cómo corregir una vermicompostera demasiado seca o demasiado mojada.
+
+### Estructura y puntos de control
+*   Por qué la humedad importa tanto
+*   La prueba del puño
+*   Señales de falta de humedad
+*   Cómo corregir una vermicompostera seca
+*   Señales de exceso de humedad
+
+---
+
+## 8. Qué hacer si el humus de lombriz tiene plásticos u otros residuos
+URL de Referencia: [https://vermi.cl/blog/humus-con-plasticos/](https://vermi.cl/blog/humus-con-plasticos/)
+
+Aprende qué hacer si tu humus de lombriz tiene plásticos, etiquetas, vidrio, metales u otros materiales que no se descomponen en la vermicompostera.
+
+### Estructura y puntos de control
+*   Primero identifica qué tipo de contaminación hay
+*   Qué hacer si ves plásticos grandes
+*   Harnear ayuda, pero no resuelve todo
+*   Qué hacer con el material retenido en el harnero
+*   Qué hacer si el plástico está muy fragmentado
+
+---
+
+## 9. Cómo multiplicar tus lombrices
+URL de Referencia: [https://vermi.cl/blog/multiplicar-lombrices/](https://vermi.cl/blog/multiplicar-lombrices/)
+
+Aprende cómo favorecer la reproducción de las lombrices rojas californianas, cuándo dividir una colonia y qué errores reducen su población.
+
+### Estructura y puntos de control
+*   Cómo se reproducen las lombrices
+*   Cómo reconocer los capullos
+*   Qué condiciones favorecen la reproducción
+*   Alimentación para una colonia en crecimiento
+*   Por qué el material seco también importa
+
+---
+
+## 10. Cómo preparar el sustrato de una vermicompostera
+URL de Referencia: [https://vermi.cl/blog/preparar-cama-vermicompostera/](https://vermi.cl/blog/preparar-cama-vermicompostera/)
+
+Aprende qué es el sustrato de una vermicompostera, qué materiales usar, cómo humedecerlo y cómo instalar tus lombrices sin estresar la colonia.
+
+### Estructura y puntos de control
+*   Qué es el sustrato de una vermicompostera
+*   Materiales recomendados
+*   Materiales que conviene evitar
+*   Cómo preparar la mezcla inicial
+*   Cómo humedecer el sustrato
+
+---
+
+## 11. Qué alimentos no debes dar a tus lombrices
+URL de Referencia: [https://vermi.cl/blog/que-alimentos-no-dar/](https://vermi.cl/blog/que-alimentos-no-dar/)
+
+Descubre qué residuos conviene evitar en una vermicompostera, cuáles pueden usarse con moderación y por qué algunas recomendaciones populares son demasiado estrictas.
+
+### Estructura y puntos de control
+*   Alimentos que sí debes evitar
+*   Alimentos que pueden usarse, pero con moderación
+*   Qué alimentos son ideales
+*   La importancia del material seco
+*   Errores comunes al alimentar una vermicompostera
+
+---
+
+## 12. Qué no usar como sustrato en una vermicompostera
+URL de Referencia: [https://vermi.cl/blog/que-no-usar-cama-vermicompostera/](https://vermi.cl/blog/que-no-usar-cama-vermicompostera/)
+
+Aprende qué materiales evitar como sustrato para lombrices, por qué el cartón plastificado, papeles brillantes y plásticos contaminan el humus, y qué alternativas seguras usar.
+
+### Estructura y puntos de control
+*   Qué función cumple el sustrato
+*   Materiales que no debes usar
+*   Cartón brillante y cartón plastificado
+*   Plásticos y microplásticos
+*   Papeles que conviene evitar
+
+---
+
+## 13. Temperatura ideal para las lombrices
+URL de Referencia: [https://vermi.cl/blog/temperatura-lombrices/](https://vermi.cl/blog/temperatura-lombrices/)
+
+Aprende qué temperatura necesita una vermicompostera, qué pasa con el frío y el calor, y cómo proteger tus lombrices durante el verano e invierno en Chile.
+
+### Estructura y puntos de control
+*   La temperatura ideal
+*   Qué pasa cuando hace frío
+*   Qué pasa cuando hace calor
+*   Cómo medir la temperatura
+*   Cómo proteger la vermicompostera en verano
+
+---
+
+## 14. Cómo usar el humus de lombriz en maceteros
+URL de Referencia: [https://vermi.cl/blog/usar-humus-maceteros/](https://vermi.cl/blog/usar-humus-maceteros/)
+
+Aprende cuánto humus de lombriz usar en maceteros, cómo mezclarlo con sustrato y qué errores evitar para no afectar tus plantas.
+
+### Estructura y puntos de control
+*   Qué aporta el humus de lombriz
+*   Cuánto humus usar en una macetero
+*   Cómo mezclar humus con sustrato
+*   Aplicación superficial
+*   Uso en plantas de interior
+
+---
+
+## 15. Guía completa de vermicompostaje en departamento
 URL de Referencia: [https://vermi.cl/blog/vermi-en-departamento/](https://vermi.cl/blog/vermi-en-departamento/)
 
-Comenzar a compostar con lombrices californianas en un departamento urbano en Santiago genera un gran dilema inicial: la preocupación por los malos olores y el miedo a una invasión de mosquitos en el balcón o la cocina. Un sistema de vermicompostaje doméstico bien equilibrado es completamente inodoro.
+Aprende cómo hacer vermicompostaje en un departamento sin malos olores ni moscas. Guía paso a paso para comenzar incluso si solo tienes un balcón o una logia.
 
-### El sustrato inicial perfecto sin insumos importados
-*   **Cartón corrugado picado**: Reúne cajas de cartón café de embalaje. Córtalo en pedazos pequeños y remójalo en agua limpia. Estruja con fuerza hasta que no gotee.
-*   **Papel de diario picado**: Aporta celulosa y actúa como un excelente aislante térmico.
-*   **Bandejas de huevo trituradas**: Aportan porosidad estructural que evita el apelmazamiento del sustrato y facilita la oxigenación bacteriana.
+### Estructura y puntos de control
+*   ¿Se puede tener una vermicompostera en un departamento?
+*   ¿Dónde instalar la vermicompostera?
+*   Qué necesitas para comenzar
+*   Cómo alimentar la vermicompostera
+*   Un truco simple para acelerar el proceso
 
-### El clima de Santiago: mitigación térmica en balcones
-*   **En Verano (Olas de calor >30°C)**: Sitúa tu compostera a la sombra absoluta en el balcón. Pulveriza agua fina sobre la cubierta superior para lograr enfriamiento evaporativo y entierra una botella plástica pequeña llena de agua congelada en una esquina del contenedor como escape térmico.
-*   **En Invierno (Mañanas frías 0°C - 4°C)**: Adosa tu vermicompostera a un muro de hormigón orientado al norte o al este para aprovechar su inercia térmica. Agrega mantas interiores de arpillera húmeda sobre el sustrato.
+---
 
-### Apoyo municipal y dónde conseguir lombrices en RM
-*   **Programas Municipales**: Comunas como Peñalolén, Ñuñoa y Providencia imparten capacitaciones y entregan vermicomposteras modulares de forma gratuita a sus vecinos registrados.
-*   **Proveedores Éticos**: Lombrices Californianas Chile (Puente Alto) o De Raiz Chile (Lo Barnechea) son excelentes proveedores certificados.
+## 16. Vermicompostaje en invierno
+URL de Referencia: [https://vermi.cl/blog/vermicompostaje-invierno/](https://vermi.cl/blog/vermicompostaje-invierno/)
+
+Aprende cómo cuidar una vermicompostera durante el invierno, ajustar la alimentación, controlar la humedad y proteger las lombrices del frío y la lluvia.
+
+### Estructura y puntos de control
+*   Qué cambia en una vermicompostera durante el invierno
+*   Temperatura y actividad de las lombrices
+*   Cómo ajustar la alimentación
+*   Control de humedad
+*   Protección contra la lluvia
+
+---
