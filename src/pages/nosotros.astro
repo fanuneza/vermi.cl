@@ -36,6 +36,8 @@ const aboutSchema = buildSchemaGraph({
           src={teamImage}
           alt="Fotografía detallada de lombrices californianas en compostaje activo"
           class="w-full h-auto object-cover border-2 border-on-surface rounded-sm"
+          loading="eager"
+          fetchpriority="high"
         />
         <div class="mt-6 text-center">
           <span class="font-label-md text-label-md text-on-surface tracking-widest uppercase">Lombrices rojas californianas (*Eisenia fetida*) activas</span>

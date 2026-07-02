@@ -125,6 +125,8 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
             widths={[...blogFeatureImageWidths]}
             sizes={blogFeatureImageSizes}
             quality="mid"
+            loading="eager"
+            fetchpriority="high"
           />
         ) : (
           <div class="w-full h-full object-cover bg-tertiary-fixed flex items-center justify-center p-8 box-border">
