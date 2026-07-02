@@ -7,65 +7,68 @@ import { buildSchemaGraph } from '../utils/schema';
 const aboutSchema = buildSchemaGraph({
   pageType: 'about',
   url: 'https://vermi.cl/nosotros',
-  title: 'Nosotros',
-  description: 'Conoce al colectivo de amantes de la tierra detrás de vermi.cl y nuestro propósito de democratizar el vermicompostaje urbano en Chile.',
+  title: 'Sobre nosotros',
+  description: 'Conoce la historia detrás de vermi.cl, un portal creado por Fabián Núñez para compartir conocimiento práctico sobre vermicompostaje doméstico en departamentos y hogares de Chile.',
 });
 ---
 
-<BaseLayout 
-  title="Quiénes somos y nuestro propósito" 
-  description="Conoce al colectivo de amantes de la tierra detrás de vermi.cl y nuestro propósito de democratizar el vermicompostaje urbano en Chile."
+<BaseLayout
+  title="Sobre mí y el propósito de vermi.cl"
+  description="Conoce la historia detrás de vermi.cl, un portal creado por Fabián Núñez para compartir conocimiento práctico sobre vermicompostaje doméstico en departamentos y hogares de Chile."
   schema={aboutSchema}
   mainClass="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-16 flex-grow w-full box-border"
 >
 
   <!-- Hero Section -->
   <section class="mb-12 md:mb-16 p-8 bg-surface-container border-4 border-on-surface shadow-hard transform rotate-1 rounded-xl max-w-4xl mx-auto lg:mx-0">
-    <h1 class="font-headline text-4xl md:text-5xl text-primary mb-4 m-0 uppercase leading-none">El Equipo Detrás de la Tierra</h1>
+    <h1 class="font-headline text-4xl md:text-5xl text-primary mb-4 m-0 uppercase leading-none">Sobre mí y el propósito de vermi.cl</h1>
     <p class="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl mt-4 mb-0 leading-relaxed">
-      Transformando restos en recursos. Somos un colectivo de amantes de la tierra dedicados a democratizar el vermicompostaje urbano.
+      Aprender a compostar con lombrices californianas en un departamento urbano tiene sus propios desafíos. Este espacio existe para compartir soluciones prácticas, reales y con base científica para lograrlo en Chile.
     </p>
   </section>
 
   <!-- Main Content Area - Bento Grid -->
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full">
-    <!-- Team Polaroid -->
+    <!-- Polaroid -->
     <div class="lg:col-span-7 transform -rotate-1 hover:rotate-0 transition-transform duration-200">
       <div class="bg-surface-container-lowest p-6 pb-12 border-4 border-on-surface shadow-hard rounded-xl organic-brutalism">
-        <Image 
-          src={teamImage} 
-          alt="Fotografía detallada de lombrices californianas en compostaje activo" 
+        <Image
+          src={teamImage}
+          alt="Fotografía detallada de lombrices californianas en compostaje activo"
           class="w-full h-auto object-cover border-2 border-on-surface rounded-sm"
         />
         <div class="mt-6 text-center">
-          <span class="font-label-md text-label-md text-on-surface tracking-widest uppercase">El equipo vermi.cl, 2024</span>
+          <span class="font-label-md text-label-md text-on-surface tracking-widest uppercase">Lombrices rojas californianas (*Eisenia fetida*) activas</span>
         </div>
       </div>
     </div>
-    
+
     <!-- Side Scraps -->
     <div class="lg:col-span-5 flex flex-col gap-8">
-      <!-- Mission Scrap -->
+      <!-- Story Scrap -->
       <div class="bg-[#e9d7c8] p-6 border-4 border-on-surface shadow-hard transform rotate-1 rounded-xl organic-brutalism-alt">
         <h2 class="font-headline text-2xl font-black text-on-surface mb-3 flex items-center gap-2 uppercase">
-          🌱 Nuestra Misión
+          🌱 El origen del proyecto
         </h2>
+        <p class="font-body text-base text-on-surface-variant leading-relaxed m-0 mb-4">
+          Este sitio fue iniciado por <strong>Fabián Núñez</strong>, un entusiasta de la lombricultura que vive en un departamento en Santiago.
+        </p>
         <p class="font-body text-base text-on-surface-variant leading-relaxed m-0">
-          Creemos que el futuro de nuestras ciudades depende de cómo tratamos la tierra hoy. Nuestro objetivo es simple: convertir cada hogar en un pequeño ecosistema productor de <strong class="text-primary">oro negro</strong>.
+          Encontrar información adaptada a las condiciones locales (como la baja humedad relativa del Valle Central o las altas temperaturas del verano santiaguino en un balcón expuesto) no era fácil. Tras experimentar, cometer errores y perfeccionar el manejo de su vermicompostera en un espacio reducido, Fabián decidió documentar el proceso con un enfoque claro: rigor científico, relevancia chilena y aplicación inmediata.
         </p>
       </div>
-      
-      <!-- Values Scrap -->
+
+      <!-- Who is this for Scrap -->
       <div class="bg-surface p-6 border-4 border-on-surface shadow-hard transform -rotate-1 rounded-xl organic-brutalism">
-        <h3 class="font-headline text-2xl font-black text-primary mb-4 uppercase">¿Por qué lo hacemos?</h3>
+        <h3 class="font-headline text-2xl font-black text-primary mb-4 uppercase">¿Para quién es este espacio?</h3>
         <ul class="space-y-4 list-none pl-0 m-0">
           <li class="flex items-start gap-3">
             <div class="mt-1 w-6 h-6 border-2 border-on-surface bg-secondary-container rounded-sm flex items-center justify-center shrink-0">
               <span class="font-mono text-sm font-bold text-on-surface">✓</span>
             </div>
             <div>
-              <strong class="font-label-md text-label-md block mb-1">Reducir Residuos</strong>
-              <span class="text-sm text-on-surface-variant">Menos basura en los vertederos, más nutrientes para las plantas.</span>
+              <strong class="font-label-md text-label-md block mb-1">Para quienes empiezan</strong>
+              <span class="text-sm text-on-surface-variant">Guías paso a paso para armar el primer sustrato, evitar fugas de lombrices y no cometer el error de sobrealimentar el sistema.</span>
             </div>
           </li>
           <li class="flex items-start gap-3">
@@ -73,11 +76,22 @@ const aboutSchema = buildSchemaGraph({
               <span class="font-mono text-sm font-bold text-on-surface">✓</span>
             </div>
             <div>
-              <strong class="font-label-md text-label-md block mb-1">Comunidad</strong>
-              <span class="text-sm text-on-surface-variant">Compartir conocimientos y conectar con la naturaleza urbana.</span>
+              <strong class="font-label-md text-label-md block mb-1">Para vermicompostadores activos</strong>
+              <span class="text-sm text-on-surface-variant">Análisis detallados sobre la microbiota del suelo, control de plagas típicas (como las hormigas), el uso correcto de humus en maceteros y la preparación de té de humus.</span>
             </div>
           </li>
         </ul>
+      </div>
+
+      <!-- Principles Scrap -->
+      <div class="bg-[#ecffe2] p-6 border-4 border-on-surface shadow-hard transform rotate-1 rounded-xl organic-brutalism">
+        <h3 class="font-headline text-2xl font-black text-on-surface mb-3 uppercase">Nuestros valores educativos</h3>
+        <p class="font-body text-base text-on-surface-variant leading-relaxed m-0 mb-3">
+          No vendemos insumos ni lombrices. El único propósito de este sitio es ofrecer <strong>educación honesta y de confianza</strong>.
+        </p>
+        <p class="font-body text-base text-on-surface-variant leading-relaxed m-0">
+          Toda la información se apoya en literatura científica revisada por pares y en publicaciones de extensión universitaria, traduciendo la biología del suelo a consejos cotidianos que resuelven problemas prácticos reales.
+        </p>
       </div>
     </div>
   </div>
