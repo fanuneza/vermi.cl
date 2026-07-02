@@ -3,6 +3,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import IsItCompostable from '../components/IsItCompostable.astro';
 import BlogCard from '../components/BlogCard.astro';
+import CategoryCard from '../components/CategoryCard.astro';
 import { getCollection } from 'astro:content';
 import { faWorm, faCarrot, faBookOpen, faAppleWhole, faSkullCrossbones } from '@fortawesome/free-solid-svg-icons';
 import { Image, getImage } from 'astro:assets';
@@ -130,46 +131,59 @@ const heroSrcSet = optimizedHero.srcSet.values
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Card 1 -->
-      <a class="block bg-tertiary-fixed border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-2 rotate-1 no-underline" href="/blog/?category=Manual">
-        <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] -rotate-3 group-hover:rotate-0 transition-transform">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faBookOpen.icon[0]} ${faBookOpen.icon[1]}`} fill="currentColor" class="text-primary">
-            {bookOpenPaths.map((d) => <path d={d} />)}
-          </svg>
-        </div>
-        <h3 class="font-headline text-2xl font-bold text-on-surface mb-2 group-hover:text-primary transition-colors uppercase">Manual de inicio</h3>
-        <p class="font-body text-base text-on-surface-variant line-clamp-3">Aprende a configurar la vermicompostera ideal para tu núcleo de cría utilizando desecho local y adáptala a la inercia térmica de tu balcón.</p>
-        <div class="mt-4 flex justify-end">
-          <span class="font-label-md text-label-md text-on-surface bg-surface-dim px-2 py-1 border-2 border-on-surface sticker-badge text-xs">BASICO</span>
-        </div>
-      </a>
+      <CategoryCard
+        href="/blog/?category=Manual"
+        title="Manual de inicio"
+        description="Aprende a configurar la vermicompostera ideal para tu núcleo de cría utilizando desecho local y adáptala a la inercia térmica de tu balcón."
+        badgeText="BASICO"
+        badgeBgClass="bg-surface-dim"
+        cardBgClass="bg-tertiary-fixed"
+        organicShapeClass="organic-shape-2"
+        rotationClass="rotate-1"
+        iconBoxRotationClass="-rotate-3"
+        textColorHoverClass="group-hover:text-primary"
+      >
+        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faBookOpen.icon[0]} ${faBookOpen.icon[1]}`} fill="currentColor" class="text-primary">
+          {bookOpenPaths.map((d) => <path d={d} />)}
+        </svg>
+      </CategoryCard>
       
       <!-- Card 2 -->
-      <a class="block bg-surface-container border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-1 -rotate-1 no-underline" href="/blog/?category=Alimentación">
-        <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] rotate-2 group-hover:rotate-0 transition-transform">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faAppleWhole.icon[0]} ${faAppleWhole.icon[1]}`} fill="currentColor" class="text-secondary">
-            {appleWholePaths.map((d) => <path d={d} />)}
-          </svg>
-        </div>
-        <h3 class="font-headline text-2xl font-bold text-on-surface mb-2 group-hover:text-secondary transition-colors uppercase">Alimentación</h3>
-        <p class="font-body text-base text-on-surface-variant line-clamp-3">El menú ideal para tus lombrices. Descubre el balance óptimo de nitrógeno y carbono y el truco de la congelación celular.</p>
-        <div class="mt-4 flex justify-end">
-          <span class="font-label-md text-label-md text-on-surface bg-secondary-fixed-dim px-2 py-1 border-2 border-on-surface sticker-badge text-xs">DIARIO</span>
-        </div>
-      </a>
+      <CategoryCard
+        href="/blog/?category=Alimentación"
+        title="Alimentación"
+        description="El menú ideal para tus lombrices. Descubre el balance óptimo de nitrógeno y carbono y el truco de la congelación celular."
+        badgeText="DIARIO"
+        badgeBgClass="bg-secondary-fixed-dim"
+        cardBgClass="bg-surface-container"
+        organicShapeClass="organic-shape-1"
+        rotationClass="-rotate-1"
+        iconBoxRotationClass="rotate-2"
+        textColorHoverClass="group-hover:text-secondary"
+      >
+        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faAppleWhole.icon[0]} ${faAppleWhole.icon[1]}`} fill="currentColor" class="text-secondary">
+          {appleWholePaths.map((d) => <path d={d} />)}
+        </svg>
+      </CategoryCard>
       
       <!-- Card 3 -->
-      <a class="block bg-inverse-primary border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group organic-shape-3 rotate-2 lg:col-span-1 md:col-span-2 no-underline" href="/blog/?category=Problemas">
-        <div class="bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] -rotate-2 group-hover:rotate-0 transition-transform">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faSkullCrossbones.icon[0]} ${faSkullCrossbones.icon[1]}`} fill="currentColor" class="text-tertiary">
-            {skullCrossbonesPaths.map((d) => <path d={d} />)}
-          </svg>
-        </div>
-        <h3 class="font-headline text-2xl font-bold text-on-surface mb-2 group-hover:text-tertiary transition-colors uppercase">Solución de problemas</h3>
-        <p class="font-body text-base text-on-surface-variant line-clamp-3">¿Mosquitos, acidez o putrefacción anaeróbica? Evita la fuga nocturna de tu compostera y mantén el ecosistema estable y sin olor.</p>
-        <div class="mt-4 flex justify-end">
-          <span class="font-label-md text-label-md text-on-surface bg-error-container px-2 py-1 border-2 border-on-surface sticker-badge text-xs">URGENTE</span>
-        </div>
-      </a>
+      <CategoryCard
+        href="/blog/?category=Problemas"
+        title="Solución de problemas"
+        description="¿Mosquitos, acidez o putrefacción anaeróbica? Evita la fuga nocturna de tu compostera y mantén el ecosistema estable y sin olor."
+        badgeText="URGENTE"
+        badgeBgClass="bg-error-container"
+        cardBgClass="bg-inverse-primary"
+        organicShapeClass="organic-shape-3"
+        rotationClass="rotate-2"
+        iconBoxRotationClass="-rotate-2"
+        textColorHoverClass="group-hover:text-tertiary"
+        extraClasses="lg:col-span-1 md:col-span-2"
+      >
+        <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faSkullCrossbones.icon[0]} ${faSkullCrossbones.icon[1]}`} fill="currentColor" class="text-tertiary">
+          {skullCrossbonesPaths.map((d) => <path d={d} />)}
+        </svg>
+      </CategoryCard>
     </div>
   </section>
 

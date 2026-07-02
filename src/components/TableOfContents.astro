@@ -1,0 +1,37 @@
+---
+// TableOfContents.astro
+interface Props {
+  tableOfContents: Array<{
+    slug: string;
+    text: string;
+  }>;
+  variant?: "mobile" | "desktop";
+}
+
+const { tableOfContents = [], variant = "desktop" } = Astro.props;
+
+const wrapperClass = variant === "mobile" 
+  ? "blog-toc lg:hidden bg-tertiary-fixed border-3 border-on-surface p-6 mb-8 shadow-hard organic-brutalism rotate-[1deg]"
+  : "blog-toc hidden lg:block bg-tertiary-fixed border-3 border-on-surface p-6 shadow-hard organic-brutalism rotate-[1deg]";
+
+const titleClass = variant === "mobile"
+  ? "font-headline text-xl font-bold text-on-surface mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase"
+  : "font-headline-md text-headline-md text-on-tertiary-fixed mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase";
+---
+
+<div class={wrapperClass}>
+  <h2 class={titleClass}>
+    <!-- Inline SVG for Table of Contents -->
+    <svg class="text-primary" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+    En esta guía
+  </h2>
+  <ul class="space-y-3 font-mono text-sm pl-0 list-none m-0">
+    {tableOfContents.map((item, index) => (
+      <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2 last:border-b-0 last:pb-1">
+        <a href={`#${item.slug}`} class="text-on-surface font-bold no-underline">
+          <span class="text-primary">{index + 1}.</span> {item.text}
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>

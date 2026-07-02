@@ -1,6 +1,7 @@
 ---
 // BlogPostLayout.astro - Zine-style Article Detail Page Layout
 import BaseLayout from './BaseLayout.astro';
+import TableOfContents from '../components/TableOfContents.astro';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import avatarImage from '../assets/images/avatar.jpg';
@@ -138,22 +139,9 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
         <div class="absolute -top-3 left-10 w-20 h-6 bg-secondary-fixed/80 border border-on-surface rotate-[-5deg]"></div>
         
         <!-- Table of Contents for Mobile -->
-        <div class="blog-toc lg:hidden bg-tertiary-fixed border-3 border-on-surface p-6 mb-8 shadow-hard organic-brutalism rotate-[1deg]">
-          <h2 class="font-headline text-xl font-bold text-on-surface mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase">
-            <!-- Inline SVG for Table of Contents -->
-            <svg class="text-primary" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-            En esta guía
-          </h2>
-          <ul class="space-y-3 font-mono text-sm pl-0 list-none m-0">
-            {tableOfContents.map((item, index) => (
-              <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2 last:border-b-0 last:pb-1">
-                <a href={`#${item.slug}`} class="text-on-surface font-bold no-underline">
-                  <span class="text-primary">{index + 1}.</span> {item.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {tableOfContents.length > 0 && (
+          <TableOfContents tableOfContents={tableOfContents} variant="mobile" />
+        )}
         
         <slot />
       </div>
@@ -163,21 +151,9 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
     <!-- Sidebar (Secondary Column) -->
     <aside class="blog-post-sidebar lg:col-span-4 space-y-8 mt-8 lg:mt-0">
       <!-- Table of Contents -->
-      <div class="blog-toc hidden lg:block bg-tertiary-fixed border-3 border-on-surface p-6 shadow-hard organic-brutalism rotate-[1deg]">
-        <h2 class="font-headline-md text-headline-md text-on-tertiary-fixed mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-          En esta guía
-        </h2>
-        <ul class="space-y-3 font-mono text-sm pl-0 list-none m-0">
-          {tableOfContents.map((item, index) => (
-            <li class="hover:text-primary transition-colors hover:translate-x-1 cursor-pointer flex gap-2 border-b border-dashed border-on-surface/20 pb-2 last:border-b-0 last:pb-1">
-              <a href={`#${item.slug}`} class="text-on-surface font-bold no-underline">
-                <span class="text-primary">{index + 1}.</span> {item.text}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {tableOfContents.length > 0 && (
+        <TableOfContents tableOfContents={tableOfContents} variant="desktop" />
+      )}
 
       <!-- CTA Sticker -->
       <div class="bg-primary-container text-on-primary-container border-4 border-on-surface p-6 shadow-hard organic-brutalism-alt rotate-[-2deg] relative overflow-hidden group">

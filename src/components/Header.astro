@@ -11,6 +11,33 @@ const { pathname } = Astro.url;
 const isHome = pathname === "/" || pathname === "/index.html";
 const isBlog = pathname.startsWith("/blog");
 const isNosotros = pathname.startsWith("/nosotros");
+
+const drawerLinks = [
+  {
+    href: "/",
+    label: "Inicio",
+    isActive: isHome,
+    iconClass: "text-primary",
+    iconPath: "M575.8 255.5c0 18-15 32.1-34 32.1h-32v176c0 26.5-21.5 48-48 48H384c-13.3 0-24-10.7-24-24V368c0-17.7-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32v119.9c0 13.3-10.7 24-24 24H112c-26.5 0-48-21.5-48-48V287.6H32c-19 0-34-14.1-34-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 1 22 8L565.8 231.5c7 7 10 15 10 24z",
+    viewBox: "0 0 576 512"
+  },
+  {
+    href: "/blog/",
+    label: "Guías",
+    isActive: isBlog,
+    iconClass: "text-primary",
+    iconPath: "M249.6 47.1C231.4 34.6 209.1 29.5 187.1 33L37.1 58C15.9 61.6 0 80 0 101.5V416c0 22.4 15.7 41.7 37.7 46.2l160.2 32.8c11.9 2.4 24.1 2.4 36 0l160.2-32.8c22-4.5 37.7-23.8 37.7-46.2V101.5c0-21.5-15.9-39.8-37.1-43.5L249.6 47.1zM96 160h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm224-192h64c8.8 0 16 7.2 16 16s-7.2 16-16 16h-64c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16h-64c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16h-64c-8.8 0-16-7.2-16-16s7.2-16 16-16z",
+    viewBox: "0 0 576 512"
+  },
+  {
+    href: "/nosotros/",
+    label: "Nosotros",
+    isActive: isNosotros,
+    iconClass: "text-secondary",
+    iconPath: "M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h74.7c58.9 0 106.7 47.8 106.7 106.7v53.3c0 17.7-14.3 32-32 32h-213.3c-17.7 0-32-14.3-32-32v-53.3zM640 298.7c0-58.9-47.8-106.7-106.7-106.7h-74.7c-58.9 0-106.7 47.8-106.7 106.7v53.3c0 17.7 14.3 32 32 32h213.3c17.7 0 32-14.3 32-32v-53.3zM416 96a64 64 0 1 1 -128 0 64 64 0 1 1 128 0zM192 480c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V448c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32zm384 0c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32V448c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32z",
+    viewBox: "0 0 640 512"
+  }
+];
 ---
 <nav class="bg-surface dark:bg-surface-container w-full sticky top-0 z-50 border-b-4 border-on-surface shadow-[6px_6px_0px_0px_#002201] flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-full">
   <button id="menu-trigger" aria-label="Abrir menú" class="md:hidden text-primary hover:scale-105 active:scale-95 transition-transform flex items-center justify-center p-2 cursor-pointer">
@@ -57,50 +84,28 @@ const isNosotros = pathname.startsWith("/nosotros");
   </div>
 
   <nav class="flex-1 overflow-y-auto p-5 flex flex-col gap-4 font-headline text-lg font-bold">
-    <a class="group relative block w-full no-underline" href="/">
-      {isHome ? (
-        <div class="absolute inset-0 bg-[#002201] border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
-        <div class="relative bg-[#bcf0ae] text-[#002201] border-2 border-on-surface px-4 py-3 rounded-lg flex items-center gap-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 576 512" fill="currentColor"><path d="M575.8 255.5c0 18-15 32.1-34 32.1h-32v176c0 26.5-21.5 48-48 48H384c-13.3 0-24-10.7-24-24V368c0-17.7-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32v119.9c0 13.3-10.7 24-24 24H112c-26.5 0-48-21.5-48-48V287.6H32c-19 0-34-14.1-34-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 1 22 8L565.8 231.5c7 7 10 15 10 24z"/></svg>
-          Inicio
-        </div>
-      ) : (
-        <div class="relative bg-transparent hover:bg-surface-container px-4 py-2 border-b-4 border-transparent hover:border-on-surface transition-all rounded-sm flex items-center gap-3 text-on-surface">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 576 512" fill="currentColor" class="text-primary"><path d="M575.8 255.5c0 18-15 32.1-34 32.1h-32v176c0 26.5-21.5 48-48 48H384c-13.3 0-24-10.7-24-24V368c0-17.7-14.3-32-32-32h-64c-17.7 0-32 14.3-32 32v119.9c0 13.3-10.7 24-24 24H112c-26.5 0-48-21.5-48-48V287.6H32c-19 0-34-14.1-34-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 1 22 8L565.8 231.5c7 7 10 15 10 24z"/></svg>
-          Inicio
-        </div>
-      )}
-    </a>
-
-    <a class="group relative block w-full no-underline" href="/blog/">
-      {isBlog ? (
-        <div class="absolute inset-0 bg-[#002201] border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
-        <div class="relative bg-[#bcf0ae] text-[#002201] border-2 border-on-surface px-4 py-3 rounded-lg flex items-center gap-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 576 512" fill="currentColor"><path d="M249.6 47.1C231.4 34.6 209.1 29.5 187.1 33L37.1 58C15.9 61.6 0 80 0 101.5V416c0 22.4 15.7 41.7 37.7 46.2l160.2 32.8c11.9 2.4 24.1 2.4 36 0l160.2-32.8c22-4.5 37.7-23.8 37.7-46.2V101.5c0-21.5-15.9-39.8-37.1-43.5L249.6 47.1zM96 160h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm224-192h64c8.8 0 16 7.2 16 16s-7.2 16-16 16h-64c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16h-64c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16h-64c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
-          Guías
-        </div>
-      ) : (
-        <div class="relative bg-transparent hover:bg-surface-container px-4 py-2 border-b-4 border-transparent hover:border-on-surface transition-all rounded-sm flex items-center gap-3 text-on-surface">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 576 512" fill="currentColor" class="text-primary"><path d="M249.6 47.1C231.4 34.6 209.1 29.5 187.1 33L37.1 58C15.9 61.6 0 80 0 101.5V416c0 22.4 15.7 41.7 37.7 46.2l160.2 32.8c11.9 2.4 24.1 2.4 36 0l160.2-32.8c22-4.5 37.7-23.8 37.7-46.2V101.5c0-21.5-15.9-39.8-37.1-43.5L249.6 47.1zM96 160h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16H96c-8.8 0-16-7.2-16-16s7.2-16 16-16zm224-192h64c8.8 0 16 7.2 16 16s-7.2 16-16 16h-64c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16h-64c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 96h64c8.8 0 16 7.2 16 16s-7.2 16-16 16h-64c-8.8 0-16-7.2-16-16s7.2-16 16-16z"/></svg>
-          Guías
-        </div>
-      )}
-    </a>
-
-    <a class="group relative block w-full no-underline" href="/nosotros/">
-      {isNosotros ? (
-        <div class="absolute inset-0 bg-[#002201] border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
-        <div class="relative bg-[#bcf0ae] text-[#002201] border-2 border-on-surface px-4 py-3 rounded-lg flex items-center gap-3">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 640 512" fill="currentColor"><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h74.7c58.9 0 106.7 47.8 106.7 106.7v53.3c0 17.7-14.3 32-32 32h-213.3c-17.7 0-32-14.3-32-32v-53.3zM640 298.7c0-58.9-47.8-106.7-106.7-106.7h-74.7c-58.9 0-106.7 47.8-106.7 106.7v53.3c0 17.7 14.3 32 32 32h213.3c17.7 0 32-14.3 32-32v-53.3zM416 96a64 64 0 1 1 -128 0 64 64 0 1 1 128 0zM192 480c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V448c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32zm384 0c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32V448c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32z"/></svg>
-          Nosotros
-        </div>
-      ) : (
-        <div class="relative bg-transparent hover:bg-surface-container px-4 py-2 border-b-4 border-transparent hover:border-on-surface transition-all rounded-sm flex items-center gap-3 text-on-surface">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 640 512" fill="currentColor" class="text-secondary"><path d="M144 0a80 80 0 1 1 0 160A80 80 0 1 1 144 0zM512 0a80 80 0 1 1 0 160A80 80 0 1 1 512 0zM0 298.7C0 239.8 47.8 192 106.7 192h74.7c58.9 0 106.7 47.8 106.7 106.7v53.3c0 17.7-14.3 32-32 32h-213.3c-17.7 0-32-14.3-32-32v-53.3zM640 298.7c0-58.9-47.8-106.7-106.7-106.7h-74.7c-58.9 0-106.7 47.8-106.7 106.7v53.3c0 17.7 14.3 32 32 32h213.3c17.7 0 32-14.3 32-32v-53.3zM416 96a64 64 0 1 1 -128 0 64 64 0 1 1 128 0zM192 480c0 17.7-14.3 32-32 32H64c-17.7 0-32-14.3-32-32V448c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32zm384 0c0 17.7-14.3 32-32 32H480c-17.7 0-32-14.3-32-32V448c0-35.3 28.7-64 64-64h64c35.3 0 64 28.7 64 64v32z"/></svg>
-          Nosotros
-        </div>
-      )}
-    </a>
+    {drawerLinks.map((link) => (
+      <a class="group relative block w-full no-underline" href={link.href}>
+        {link.isActive ? (
+          <>
+            <div class="absolute inset-0 bg-[#002201] border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
+            <div class="relative bg-[#bcf0ae] text-[#002201] border-2 border-on-surface px-4 py-3 rounded-lg flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox={link.viewBox} fill="currentColor">
+                <path d={link.iconPath}/>
+              </svg>
+              {link.label}
+            </div>
+          </>
+        ) : (
+          <div class="relative bg-transparent hover:bg-surface-container px-4 py-2 border-b-4 border-transparent hover:border-on-surface transition-all rounded-sm flex items-center gap-3 text-on-surface">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox={link.viewBox} fill="currentColor" class={link.iconClass}>
+              <path d={link.iconPath}/>
+            </svg>
+            {link.label}
+          </div>
+        )}
+      </a>
+    ))}
   </nav>
 
   <div class="p-5 flex justify-center items-center border-t-4 border-on-surface/20 border-dashed mt-auto bg-surface-container-low">

@@ -1,0 +1,40 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description: string;
+  badgeText: string;
+  badgeBgClass: string;
+  cardBgClass: string;
+  organicShapeClass: string;
+  rotationClass: string;
+  iconBoxRotationClass: string;
+  textColorHoverClass: string;
+  extraClasses?: string;
+}
+
+const {
+  href,
+  title,
+  description,
+  badgeText,
+  badgeBgClass,
+  cardBgClass,
+  organicShapeClass,
+  rotationClass,
+  iconBoxRotationClass,
+  textColorHoverClass,
+  extraClasses = "",
+} = Astro.props;
+---
+
+<a class={`block ${cardBgClass} border-4 border-on-surface p-6 shadow-[6px_6px_0px_0px_#002201] hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group ${organicShapeClass} ${rotationClass} no-underline ${extraClasses}`} href={href}>
+  <div class={`bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] ${iconBoxRotationClass} group-hover:rotate-0 transition-transform`}>
+    <slot name="icon" />
+  </div>
+  <h3 class={`font-headline text-2xl font-bold text-on-surface mb-2 ${textColorHoverClass} transition-colors uppercase`}>{title}</h3>
+  <p class="font-body text-base text-on-surface-variant line-clamp-3">{description}</p>
+  <div class="mt-4 flex justify-end">
+    <span class={`font-label-md text-label-md text-on-surface ${badgeBgClass} px-2 py-1 border-2 border-on-surface sticker-badge text-xs`}>{badgeText}</span>
+  </div>
+</a>
