@@ -228,7 +228,7 @@ async function run() {
   console.log("Starting processing of articles...");
 
   // 1. Copy local/download images that don't exist in project
-  for (const [filename, config] of Object.entries(articlesImageConfig)) {
+  for (const config of Object.values(articlesImageConfig)) {
     for (const img of config.images) {
       if (img.exists) {
         console.log(
