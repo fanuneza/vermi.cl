@@ -46,8 +46,9 @@ export async function onRequestPost(context: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "vermi.cl <no-reply@vermi.cl>", // Must be a verified domain in Resend
+        from: "Contacto vermi.cl <contacto@correo.vermi.cl>", // Must be a verified domain in Resend
         to: ["hola@vermi.cl"],
+        reply_to: email.toString(),
         subject: `Nuevo mensaje de contacto de ${name}`,
         html: `
           <h2>Nueva consulta recibida en vermi.cl</h2>
