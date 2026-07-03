@@ -74,6 +74,11 @@ All visual elements must conform to the **Organic-Brutalism Eco-Zine / Handcraft
 - **JSON-LD Schema**: Integrate correct structured Schema.org blocks (e.g. `BlogPosting` for guides, `WebSite` for homepage, and `ProfilePage` for authors). Shared entities must come from a typed graph builder rather than duplicate page strings.
 - **AI search engine compatibility**: Maintain `/feed.xml` RSS. Since `/llms.txt` and `/llms-full.txt` are static files in the `public/` directory, they do **not** update automatically; they must be manually updated whenever new content or blog posts are published.
 - **Images**: Always specify dimensions (`width`/`height`) on `<img>` tags. The LCP hero image must not be lazy-loaded.
+- **External Links Policy**:
+  - All external links must open in a new tab (`target="_blank"`), define security headers (`rel="noopener noreferrer"`), and include a screen-reader only label `(abre en una nueva pestaña)` to maintain accessibility tree standards.
+  - To preserve PageRank and avoid penalty filters, general external links must append `nofollow` to `rel` (i.e. `rel="noopener noreferrer nofollow"`).
+  - Do **not** use `nofollow` for outbound links to trusted, authoritative resources—specifically educational (`.edu`), governmental (`.gov`, `.gob`), and scientific publications (`doi.org`, `researchgate.net`, `scielo.org`, `wikipedia.org`). Linking to highly relevant scholarly citations reinforces topical SEO.
+  - **Automation**: For Markdown (`.md` and `.mdx`) articles, this formatting is handled automatically during compile-time by [rehype-external-links.mjs](file:///media/windows/Users/fanun/Code/vermi.cl/src/utils/rehype-external-links.mjs). For `.astro` components, layouts, or static pages, always manually hardcode these attributes.
 
 ---
 

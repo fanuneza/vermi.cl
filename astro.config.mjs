@@ -7,11 +7,13 @@ import { unified } from "@astrojs/markdown-remark";
 import remarkDirective from "remark-directive";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
 import { remarkAdmonitions } from "./src/utils/remark-admonitions.mjs";
+import { rehypeExternalLinks } from "./src/utils/rehype-external-links.mjs";
 
 export default defineConfig({
   markdown: {
     processor: unified({
       remarkPlugins: [remarkDirective, remarkAdmonitions, remarkReadingTime],
+      rehypePlugins: [rehypeExternalLinks],
     }),
   },
   site: "https://vermi.cl",
