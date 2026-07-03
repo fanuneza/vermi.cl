@@ -1,14 +1,11 @@
-import { getCollection } from "astro:content";
+import { getBlogPosts } from "../utils/blog";
 import rss from "@astrojs/rss";
 import { getBlogTagLabel } from "../utils/blog-tags";
 import { HOME_METADATA, formatPageTitle } from "../utils/site-metadata";
 import type { APIContext } from "astro";
 
 export async function GET(context: APIContext) {
-  const posts = await getCollection("blog");
-  const sortedPosts = posts.sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-  );
+  const sortedPosts = await getBlogPosts();
 
   return rss({
     title: formatPageTitle(HOME_METADATA.title),

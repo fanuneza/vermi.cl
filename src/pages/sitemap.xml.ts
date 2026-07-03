@@ -1,10 +1,10 @@
 import { gitLastmod } from "@jdevalk/astro-seo-graph";
 import type { APIRoute } from "astro";
-import { getCollection } from "astro:content";
+import { getBlogPosts } from "../utils/blog";
 import { getUsedBlogTags } from "../utils/blog-tags";
 
 export const GET: APIRoute = async () => {
-  const posts = await getCollection("blog");
+  const posts = await getBlogPosts();
   const usedTags = getUsedBlogTags(posts);
   const siteUrl = "https://vermi.cl";
 

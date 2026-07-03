@@ -1,13 +1,13 @@
-import { getCollection } from "astro:content";
 import { createMarkdownEndpoint } from "@jdevalk/astro-seo-graph";
+import { getBlogPosts } from "../../utils/blog";
 
 export const getStaticPaths = async () => {
-  const posts = await getCollection("blog");
+  const posts = await getBlogPosts();
   return posts.map((p) => ({ params: { slug: p.id } }));
 };
 
 export const GET = createMarkdownEndpoint({
-  entries: () => getCollection("blog"),
+  entries: () => getBlogPosts(),
   mapper: (post, slug) =>
     post.id !== slug
       ? null

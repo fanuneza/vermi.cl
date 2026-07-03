@@ -2,10 +2,9 @@
 // index.astro - Guides archive page with category filtering
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
-import { getCollection } from 'astro:content';
+import { getBlogPosts } from '../../utils/blog';
 
-const posts = await getCollection('blog');
-const sortedPosts = posts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const sortedPosts = await getBlogPosts();
 
 const categories = ['Manual', 'Alimentación', 'Problemas', 'Cosecha'];
 
@@ -69,7 +68,7 @@ const archiveSchema = buildSchemaGraph({
               pubDate={post.data.pubDate}
               category={post.data.category}
               difficulty={post.data.difficulty}
-              readingTime={post.data.readingTime}
+              readingTime={post.readingTime}
               tags={post.data.tags}
               rotation={rot}
             />

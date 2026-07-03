@@ -1,10 +1,11 @@
 ---
 // [slug].astro - Dynamic guide renderer page
-import { getCollection, render } from 'astro:content';
+import { render } from 'astro:content';
 import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import { getBlogPosts } from '../../utils/blog';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getBlogPosts();
   return posts.map(post => ({
     params: { slug: post.id },
     props: { post },
@@ -27,7 +28,7 @@ const tableOfContents = headings
   pubDate={post.data.pubDate}
   category={post.data.category}
   difficulty={post.data.difficulty}
-  readingTime={post.data.readingTime}
+  readingTime={post.readingTime}
   author={post.data.author}
   heroImage={post.data.heroImage}
   tags={post.data.tags}

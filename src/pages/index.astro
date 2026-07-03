@@ -4,16 +4,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import IsItCompostable from '../components/IsItCompostable.astro';
 import BlogCard from '../components/BlogCard.astro';
 import CategoryCard from '../components/CategoryCard.astro';
-import { getCollection } from 'astro:content';
+import { getLatestPosts } from '../utils/blog';
 import { faWorm, faCarrot, faBookOpen, faAppleWhole, faSkullCrossbones } from '@fortawesome/free-solid-svg-icons';
 import { Image, getImage } from 'astro:assets';
 import heroImage from '../assets/images/hero.jpg';
 
-// Retrieve all posts and sort them by date (descending)
-const posts = await getCollection('blog');
-const sortedPosts = posts
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
-  .slice(0, 3); // Get latest 3 posts for the home feed
+// Retrieve latest 3 posts for the home feed
+const sortedPosts = await getLatestPosts(3);
 
 const wormPaths = Array.isArray(faWorm.icon[4]) ? faWorm.icon[4] : [faWorm.icon[4]];
 const carrotPaths = Array.isArray(faCarrot.icon[4]) ? faCarrot.icon[4] : [faCarrot.icon[4]];
@@ -212,7 +209,7 @@ const heroSrcSet = optimizedHero.srcSet.values
             pubDate={post.data.pubDate}
             category={post.data.category}
             difficulty={post.data.difficulty}
-            readingTime={post.data.readingTime}
+            readingTime={post.readingTime}
             tags={post.data.tags}
             rotation={rot}
           />

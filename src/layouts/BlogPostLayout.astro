@@ -13,6 +13,8 @@ import {
   formatBlogDate,
   type BlogCategory,
 } from '../utils/blog-presentation';
+import { getBlogPosts, getRelatedPosts } from '../utils/blog';
+import BlogCard from '../components/BlogCard.astro';
 
 interface Props {
   title: string;
@@ -63,6 +65,9 @@ const articleSchema = buildSchemaGraph({
 
 const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
 
+const allPosts = await getBlogPosts();
+const currentPost = allPosts.find(p => p.id === Astro.params.slug);
+const relatedPosts = currentPost ? getRelatedPosts(currentPost, allPosts, 3) : [];
 ---
 
 <BaseLayout 
@@ -199,6 +204,34 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
       </div>
     </aside>
   </div>
+
+  {relatedPosts.length > 0 && (
+    <section class="mt-16 pt-12 border-t-4 border-on-background w-full box-border">
+      <h2 class="font-headline text-3xl md:text-4xl font-black text-on-surface mb-8 relative inline-block uppercase m-0">
+        Guías relacionadas
+        <div class="absolute -bottom-2 left-0 w-full h-2 bg-secondary opacity-50 -rotate-1"></div>
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {relatedPosts.map((post, idx) => {
+          const rotations = ["rotate-[-1.5deg]", "rotate-[1deg]", "rotate-[-0.5deg]"];
+          const rot = rotations[idx % rotations.length];
+          return (
+            <BlogCard
+              title={post.data.title}
+              description={post.data.description}
+              slug={post.id}
+              pubDate={post.data.pubDate}
+              category={post.data.category}
+              difficulty={post.data.difficulty}
+              readingTime={post.readingTime}
+              tags={post.data.tags}
+              rotation={rot}
+            />
+          );
+        })}
+      </div>
+    </section>
+  )}
 
   <script>
     const shareBtn = document.getElementById('share-btn');

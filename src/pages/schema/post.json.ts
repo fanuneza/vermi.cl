@@ -1,9 +1,9 @@
-import { getCollection } from "astro:content";
 import { createSchemaEndpoint } from "@jdevalk/astro-seo-graph";
 import { buildSchemaGraph } from "../../utils/schema";
+import { getBlogPosts } from "../../utils/blog";
 
 export const GET = createSchemaEndpoint({
-  entries: () => getCollection("blog"),
+  entries: () => getBlogPosts(),
   mapper: (post) => {
     const url = `https://vermi.cl/blog/${post.id}/`;
     const graph = buildSchemaGraph({

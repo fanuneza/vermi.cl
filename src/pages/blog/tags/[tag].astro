@@ -1,19 +1,17 @@
 ---
-import { getCollection } from 'astro:content';
+import { getBlogPosts } from '../../../utils/blog';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import BlogCard from '../../../components/BlogCard.astro';
 import { buildSchemaGraph, SITE_URL } from '../../../utils/schema';
 import { getBlogTag, getUsedBlogTags } from '../../../utils/blog-tags';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getBlogPosts();
   return getUsedBlogTags(posts).map(tag => ({
     params: { tag: tag.slug },
     props: {
       tag,
-      posts: posts
-        .filter(post => post.data.tags.includes(tag.slug))
-        .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()),
+      posts: posts.filter(post => post.data.tags.includes(tag.slug)),
     },
   }));
 }
@@ -66,7 +64,7 @@ const tagSchema = buildSchemaGraph({
             pubDate={post.data.pubDate}
             category={post.data.category}
             difficulty={post.data.difficulty}
-            readingTime={post.data.readingTime}
+            readingTime={post.readingTime}
             tags={post.data.tags}
             rotation={rot}
           />
