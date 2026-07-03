@@ -78,7 +78,7 @@ All visual elements must conform to the **Organic-Brutalism Eco-Zine / Handcraft
   - All external links must open in a new tab (`target="_blank"`), define security headers (`rel="noopener noreferrer"`), and include a screen-reader only label `(abre en una nueva pestaña)` to maintain accessibility tree standards.
   - To preserve PageRank and avoid penalty filters, general external links must append `nofollow` to `rel` (i.e. `rel="noopener noreferrer nofollow"`).
   - Do **not** use `nofollow` for outbound links to trusted, authoritative resources—specifically educational (`.edu`), governmental (`.gov`, `.gob`), and scientific publications (`doi.org`, `researchgate.net`, `scielo.org`, `wikipedia.org`). Linking to highly relevant scholarly citations reinforces topical SEO.
-  - **Automation**: For Markdown (`.md` and `.mdx`) articles, this formatting is handled automatically during compile-time by [rehype-external-links.mjs](file:///media/windows/Users/fanun/Code/vermi.cl/src/utils/rehype-external-links.mjs). For `.astro` components, layouts, or static pages, always manually hardcode these attributes.
+  - **Automation**: For Markdown (`.md` and `.mdx`) articles, this formatting is handled automatically during compile-time by [rehype-external-links.mjs](src/utils/rehype-external-links.mjs). For `.astro` components, layouts, or static pages, always manually hardcode these attributes.
 
 ---
 
@@ -391,3 +391,10 @@ To maintain design-system integrity, improve SEO/accessibility, and simplify aut
 
 - **Mechanism**: The sidebar ("Te podría interesar") and bottom section ("Guías relacionadas") in `src/layouts/BlogPostLayout.astro` are fully dynamic. They retrieve related posts using `getRelatedPosts()` from `src/utils/blog.ts`, scoring posts by category/tag matches, and falling back to latest posts if count is insufficient.
 - **Images**: Sidebar posts now render their `heroImage` if available, wrapped in custom organic-brutalism shapes.
+
+### 10.7 Contact Form Edge Function (`functions/api/contacto.ts`)
+
+- **Route**: Mounted automatically by Cloudflare Pages at `/api/contacto`.
+- **Backend Function**: Processes incoming POST requests containing form data, validates the inputs, and makes a lightweight HTTP fetch to the Resend API to deliver emails.
+- **Configuration**: Requires `RESEND_API_KEY` to be defined as an environment variable in the Cloudflare Pages deployment settings.
+- **Frontend Submission**: Handled asynchronously in [contacto.astro](src/pages/contacto.astro) with load state indicators, input validation error handling, and form resets upon success.
