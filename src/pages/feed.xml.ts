@@ -14,6 +14,7 @@ export async function GET(context: APIContext) {
     title: formatPageTitle(HOME_METADATA.title),
     description: HOME_METADATA.description,
     site: context.site ?? "https://vermi.cl",
+    xmlns: { atom: "http://www.w3.org/2005/Atom" },
     items: sortedPosts.map((post) => ({
       title: post.data.title,
       description: post.data.description,
@@ -24,6 +25,9 @@ export async function GET(context: APIContext) {
         ...post.data.tags.map((tag) => getBlogTagLabel(tag)),
       ],
     })),
-    customData: "<language>es-cl</language>",
+    customData: [
+      `<language>es-cl</language>`,
+      `<atom:link href="${new URL("feed.xml", context.site ?? "https://vermi.cl").href}" rel="self" type="application/rss+xml"/>`,
+    ].join(""),
   });
 }
