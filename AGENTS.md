@@ -345,3 +345,44 @@ The interactive food search on the homepage uses a client-side search index gene
 3.  **Local Context Integration**: The copy must use natural Chilean Spanish ("tuteo") and naturally weave in the Chilean domestic context (e.g., waste from asados, pebre, orange peel tea, palta abundancy) inside the `instructions` paragraph.
 4.  **Scientific Name Formatting**: Wrap scientific names in single asterisks (e.g. `*Eisenia fetida*`). The frontend component escapes HTML and parses these specifically into `<i>` tags. Do not write raw HTML.
 5.  **Capitalization & Punctuation**: Food names should follow Spanish sentence case (only capitalize the first letter and proper nouns, e.g. "Borra de café"). Instructions and nutrition copy must be complete sentences ending in periods, but titles/names must not.
+
+---
+
+## 10. New Custom Components & Markdown Utilities
+
+To maintain design-system integrity, improve SEO/accessibility, and simplify authoring, the codebase includes the following custom integrations:
+
+### 10.1 Tailwind Class Merge (`src/utils/cn.ts`)
+
+- **Usage**: Import `cn` from `@/utils/cn` (or `../../utils/cn`) to merge Tailwind classes cleanly without conflicts.
+- **Example**: `class={cn("bg-primary text-white font-bold", className)}` where `className` is passed from a parent component and can safely override defaults.
+
+### 10.2 Markdown Admonitions / Callouts (`remarkAdmonitions`)
+
+- **Usage**: Use standard container directives in Markdown (`.md` or `.mdx`) files.
+  ```markdown
+  :::tip[Consejo Opcional]
+  Puedes congelar las cáscaras de plátano para romper sus paredes celulares antes de dárselas a las lombrices.
+  :::
+  ```
+- **Supported types**: `tip` (💡), `note` (📝), `important` (📌), `warning` (⚠️), `danger` (❌), `safe` (✅).
+- **Styling**: Rendered as `<aside>` elements styled with organic brutalism shapes and custom badge/border colors.
+
+### 10.3 Dynamic Breadcrumbs Component (`src/components/Breadcrumbs.astro`)
+
+- **Usage**: Rendered automatically at the top of the `<main>` wrapper inside `BaseLayout.astro` for all routes except the home page and 404 pages.
+- **A11y/SEO**: Complies with standard Breadcrumbs accessibility patterns and auto-translates common routing terms to Spanish while humanizing slugs.
+
+### 10.4 Skip to Content Link (`src/components/SkipLink.astro`)
+
+- **Usage**: Injected at the top of `BaseLayout.astro`. Remains invisible until keyboard focus (`Tab`) hits the page.
+- **Purpose**: Essential keyboard/screen-reader navigation shortcut that jumps directly to the main content container (`#main-content`), ensuring perfect Lighthouse Accessibility score.
+
+### 10.5 DX Breakpoint Indicator (`src/components/TwSizeIndicator.astro`)
+
+- **Usage**: Rendered in the bottom-left corner of the viewport **only** during development (`import.meta.env.DEV`). Displays the active Tailwind size breakpoint (`XS`, `SM`, `MD`, `LG`, `XL`, `2XL`).
+
+### 10.6 Dynamic Sidebar & Related Posts
+
+- **Mechanism**: The sidebar ("Te podría interesar") and bottom section ("Guías relacionadas") in `src/layouts/BlogPostLayout.astro` are fully dynamic. They retrieve related posts using `getRelatedPosts()` from `src/utils/blog.ts`, scoring posts by category/tag matches, and falling back to latest posts if count is insufficient.
+- **Images**: Sidebar posts now render their `heroImage` if available, wrapped in custom organic-brutalism shapes.

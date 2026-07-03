@@ -4,12 +4,14 @@ import seoGraph from "@jdevalk/astro-seo-graph/integration";
 import mdx from "@astrojs/mdx";
 import compress from "astro-compress";
 import { unified } from "@astrojs/markdown-remark";
+import remarkDirective from "remark-directive";
 import { remarkReadingTime } from "./src/utils/remark-reading-time.mjs";
+import { remarkAdmonitions } from "./src/utils/remark-admonitions.mjs";
 
 export default defineConfig({
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkReadingTime],
+      remarkPlugins: [remarkDirective, remarkAdmonitions, remarkReadingTime],
     }),
   },
   site: "https://vermi.cl",

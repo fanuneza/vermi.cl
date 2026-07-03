@@ -3,6 +3,9 @@
 import Seo from "@jdevalk/astro-seo-graph/Seo.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import SkipLink from "../components/SkipLink.astro";
+import TwSizeIndicator from "../components/TwSizeIndicator.astro";
 import defaultOgImage from "../assets/images/hero.jpg";
 import "../styles/global.css";
 import bricolageFont from "@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2";
@@ -69,6 +72,8 @@ const seoArticle =
     : undefined;
 
 const isHome = Astro.url.pathname === "/" || Astro.url.pathname === "";
+const is404 = Astro.url.pathname.startsWith("/404");
+const showBreadcrumbs = !isHome && !is404;
 const baseGraph = buildSchemaGraph({
   pageType: isHome ? "website" : "webpage",
   url: canonicalUrl,
@@ -157,12 +162,15 @@ const graph = {
     <slot name="head" />
   </head>
   <body class="bg-background text-on-background font-body-md min-h-screen flex flex-col relative overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+    <SkipLink />
     <Header />
     
-    <main class={mainClass}>
+    <main id="main-content" class={mainClass}>
+      {showBreadcrumbs && <Breadcrumbs className="w-full max-w-7xl mb-6" />}
       <slot />
     </main>
     
     <Footer />
+    <TwSizeIndicator />
   </body>
 </html>

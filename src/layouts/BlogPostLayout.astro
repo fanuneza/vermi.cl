@@ -67,7 +67,41 @@ const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
 
 const allPosts = await getBlogPosts();
 const currentPost = allPosts.find(p => p.id === Astro.params.slug);
-const relatedPosts = currentPost ? getRelatedPosts(currentPost, allPosts, 3) : [];
+const allRelated = currentPost ? getRelatedPosts(currentPost, allPosts, 5) : [];
+
+// Split related posts: 2 for sidebar, up to 3 for bottom
+let sidebarRelatedPosts = allRelated.slice(0, 2);
+let bottomRelatedPosts = allRelated.slice(2, 5);
+
+// Pad sidebar and bottom posts with latest posts if they are short of target counts
+const maxSidebar = 2;
+const maxBottom = 3;
+
+if (sidebarRelatedPosts.length < maxSidebar) {
+  const existingIds = new Set([
+    ...(currentPost ? [currentPost.id] : []),
+    ...sidebarRelatedPosts.map(p => p.id),
+    ...bottomRelatedPosts.map(p => p.id)
+  ]);
+  const fallbacks = allPosts.filter(p => !existingIds.has(p.id));
+  sidebarRelatedPosts = [
+    ...sidebarRelatedPosts,
+    ...fallbacks.slice(0, maxSidebar - sidebarRelatedPosts.length)
+  ];
+}
+
+if (bottomRelatedPosts.length < maxBottom) {
+  const existingIds = new Set([
+    ...(currentPost ? [currentPost.id] : []),
+    ...sidebarRelatedPosts.map(p => p.id),
+    ...bottomRelatedPosts.map(p => p.id)
+  ]);
+  const fallbacks = allPosts.filter(p => !existingIds.has(p.id));
+  bottomRelatedPosts = [
+    ...bottomRelatedPosts,
+    ...fallbacks.slice(0, maxBottom - bottomRelatedPosts.length)
+  ];
+}
 ---
 
 <BaseLayout 
@@ -177,42 +211,57 @@ const relatedPosts = currentPost ? getRelatedPosts(currentPost, allPosts, 3) : [
       <div class="bg-surface-container border-2 border-on-surface p-6 shadow-hard organic-brutalism rotate-[0.5deg]">
         <h2 class="font-headline-md text-headline-md mb-4 border-b-2 border-on-surface pb-2 uppercase">Te podría interesar</h2>
         <div class="space-y-4 flex flex-col gap-4">
-          <a class="block group no-underline" href="/blog/que-alimentos-no-dar/">
-            <div class="flex gap-4 items-center">
-              <div class="w-16 h-16 bg-surface-dim border-2 border-on-surface shrink-0 organic-brutalism overflow-hidden flex items-center justify-center font-headline text-lg text-primary">
-                NO
-              </div>
-              <div>
-                <h3 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors line-clamp-2 uppercase m-0 leading-tight">Qué alimentos NO dar a tus lombrices</h3>
-                <span class="text-[10px] font-mono text-on-surface-variant font-bold">ALIMENTACIÓN</span>
-              </div>
-            </div>
-          </a>
-          <div class="h-px w-full border-t-2 border-dashed border-on-surface"></div>
-          <a class="block group no-underline" href="/blog/vermi-en-departamento/">
-            <div class="flex gap-4 items-center">
-              <div class="w-16 h-16 bg-surface-dim border-2 border-on-surface shrink-0 organic-brutalism-alt overflow-hidden flex items-center justify-center font-headline text-lg text-secondary">
-                DEPA
-              </div>
-              <div>
-                <h3 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors line-clamp-2 uppercase m-0 leading-tight">Vermi en departamento: cómo empezar</h3>
-                <span class="text-[10px] font-mono text-on-surface-variant font-bold">MANUAL</span>
-              </div>
-            </div>
-          </a>
+          {sidebarRelatedPosts.map((post, idx) => {
+            const isAlt = idx % 2 === 1;
+            const shapeClass = isAlt ? "organic-brutalism-alt" : "organic-brutalism";
+            const textAccent = isAlt ? "text-secondary" : "text-primary";
+            const categoryLabel = blogPostCategoryMeta[post.data.category]?.label || post.data.category;
+            
+            return (
+              <>
+                {idx > 0 && <div class="h-px w-full border-t-2 border-dashed border-on-surface"></div>}
+                <a class="block group no-underline" href={`/blog/${post.id}/`}>
+                  <div class="flex gap-4 items-center">
+                    {post.data.heroImage ? (
+                      <div class={`w-16 h-16 border-2 border-on-surface shrink-0 ${shapeClass} overflow-hidden`}>
+                        <Image 
+                          src={post.data.heroImage} 
+                          alt={post.data.title} 
+                          class="w-full h-full object-cover" 
+                          width={64} 
+                          height={64} 
+                          quality="low"
+                        />
+                      </div>
+                    ) : (
+                      <div class={`w-16 h-16 bg-surface-dim border-2 border-on-surface shrink-0 ${shapeClass} overflow-hidden flex items-center justify-center font-headline text-lg ${textAccent}`}>
+                        {post.data.title.slice(0, 3).toUpperCase()}
+                      </div>
+                    )}
+                    <div>
+                      <h3 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors line-clamp-2 uppercase m-0 leading-tight">
+                        {post.data.title}
+                      </h3>
+                      <span class="text-[10px] font-mono text-on-surface-variant font-bold">{categoryLabel}</span>
+                    </div>
+                  </div>
+                </a>
+              </>
+            );
+          })}
         </div>
       </div>
     </aside>
   </div>
 
-  {relatedPosts.length > 0 && (
+  {bottomRelatedPosts.length > 0 && (
     <section class="mt-16 pt-12 border-t-4 border-on-background w-full box-border">
       <h2 class="font-headline text-3xl md:text-4xl font-black text-on-surface mb-8 relative inline-block uppercase m-0">
         Guías relacionadas
         <div class="absolute -bottom-2 left-0 w-full h-2 bg-secondary opacity-50 -rotate-1"></div>
       </h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {relatedPosts.map((post, idx) => {
+        {bottomRelatedPosts.map((post, idx) => {
           const rotations = ["rotate-[-1.5deg]", "rotate-[1deg]", "rotate-[-0.5deg]"];
           const rot = rotations[idx % rotations.length];
           return (

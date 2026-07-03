@@ -1,0 +1,20 @@
+---
+// TwSizeIndicator.astro - Dev-only Tailwind Breakpoint Indicator
+const isDev = import.meta.env.DEV;
+---
+
+{
+  isDev && (
+    <div 
+      class="fixed bottom-4 left-4 z-[9999] flex items-center justify-center bg-[#002201] text-[#ecffe2] border-2 border-[#002201] shadow-hard-sm px-2 py-1 font-mono text-[10px] font-bold rounded"
+      title="Indicador de Breakpoint de Tailwind (Solo Desarrollo)"
+    >
+      <span class="block sm:hidden">XS (&lt;640px)</span>
+      <span class="hidden sm:block md:hidden">SM (&ge;640px)</span>
+      <span class="hidden md:block lg:hidden">MD (&ge;768px)</span>
+      <span class="hidden lg:block xl:hidden">LG (&ge;1024px)</span>
+      <span class="hidden xl:block 2xl:hidden">XL (&ge;1280px)</span>
+      <span class="hidden 2xl:block">2XL (&ge;1536px)</span>
+    </div>
+  )
+}

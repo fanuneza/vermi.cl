@@ -1,0 +1,73 @@
+---
+// Breadcrumbs.astro - Organic Brutalist breadcrumb navigation
+const { className = "" } = Astro.props;
+
+const url = Astro.url;
+const pathname = url.pathname;
+const segments = pathname.split("/").filter(Boolean);
+
+// Define translation mapping for segments
+const translations: Record<string, string> = {
+  blog: "Blog",
+  tags: "Temas",
+  contacto: "Contacto",
+  alimentos: "Alimentos",
+};
+
+const items = [
+  {
+    label: "Inicio",
+    href: "/",
+    isLast: segments.length === 0,
+  },
+];
+
+let accumulatedPath = "";
+segments.forEach((segment, index) => {
+  accumulatedPath += `/${segment}`;
+  const isLast = index === segments.length - 1;
+  
+  // Format the label
+  let label = translations[segment] || segment;
+  
+  // If it's a known slug or tag, we can humanize it
+  if (!translations[segment]) {
+    label = segment
+      .replace(/-/g, " ")
+      .replace(/^[a-z]/, (m) => m.toUpperCase());
+  }
+
+  // Avoid adding '/page' or similar pagination segments to breadcrumbs if they exist
+  if (segment !== "page") {
+    items.push({
+      label,
+      href: accumulatedPath + "/",
+      isLast,
+    });
+  }
+});
+---
+
+{items.length > 1 && (
+  <nav aria-label="Ruta de navegación" class={`breadcrumbs font-mono text-xs font-bold ${className}`}>
+    <ol class="flex flex-wrap items-center gap-2 p-0 m-0 list-none text-on-surface" role="list">
+      {items.map((item, idx) => (
+        <li class="flex items-center gap-2" role="listitem">
+          {idx > 0 && <span class="text-secondary select-none">/</span>}
+          {item.isLast ? (
+            <span class="text-on-surface-variant line-clamp-1 bg-surface-container px-2 py-0.5 border border-on-surface organic-brutalism" aria-current="page">
+              {item.label}
+            </span>
+          ) : (
+            <a 
+              href={item.href} 
+              class="text-primary hover:text-secondary underline decoration-2 underline-offset-2 transition-colors hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-0 active:translate-y-0 inline-block"
+            >
+              {item.label}
+            </a>
+          )}
+        </li>
+      ))}
+    </ol>
+  </nav>
+)}
