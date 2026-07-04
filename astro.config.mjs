@@ -18,10 +18,6 @@ export default defineConfig({
   },
   site: "https://vermi.cl",
   output: "static",
-  prefetch: {
-    prefetchAll: true,
-    defaultStrategy: "hover",
-  },
   build: {
     inlineStylesheets: "always",
   },
