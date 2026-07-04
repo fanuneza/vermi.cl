@@ -76,6 +76,10 @@ export const blogFeatureImageWidths = [320, 480, 640, 768] as const;
 export const blogFeatureImageSizes =
   "(max-width: 768px) calc(100vw - 2rem), 768px";
 
+export const blogCardImageWidths = [240, 320, 400, 480, 640] as const;
+export const blogCardImageSizes =
+  "(max-width: 768px) calc(100vw - 3rem), (max-width: 1024px) calc(50vw - 3rem), 360px";
+
 export const articleImageWidths = [360, 640, 768, 960] as const;
 export const articleImageSizes =
   "(max-width: 480px) 100vw, (max-width: 1024px) 768px, 960px";

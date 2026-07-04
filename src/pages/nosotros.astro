@@ -4,6 +4,10 @@ import { Image } from 'astro:assets';
 import teamImage from '../assets/images/lombrices.jpeg';
 import { buildSchemaGraph } from '../utils/schema';
 
+const aboutImageWidths = [320, 480, 640, 768, 960] as const;
+const aboutImageSizes =
+  "(max-width: 1024px) calc(100vw - 4rem), 58vw";
+
 const aboutSchema = buildSchemaGraph({
   pageType: 'about',
   url: 'https://vermi.cl/nosotros',
@@ -36,6 +40,9 @@ const aboutSchema = buildSchemaGraph({
           src={teamImage}
           alt="Fotografía detallada de lombrices californianas en compostaje activo"
           class="w-full h-auto object-cover border-2 border-on-surface rounded-sm"
+          widths={[...aboutImageWidths]}
+          sizes={aboutImageSizes}
+          quality="low"
           loading="eager"
           fetchpriority="high"
         />
@@ -53,7 +60,7 @@ const aboutSchema = buildSchemaGraph({
           🌱 El origen del proyecto
         </h2>
         <p class="font-body text-base text-on-surface-variant leading-relaxed m-0 mb-4">
-          Este sitio fue iniciado por <a href="https://fnunez.cl/?utm_source=vermi.cl&utm_medium=referral&utm_campaign=about_page" target="_blank" rel="noopener noreferrer" class="underline hover:text-primary transition-colors"><strong>Fabián Núñez</strong><span class="sr-only"> (abre en una nueva pestaña)</span></a>, un entusiasta de la lombricultura que vive en un departamento en Santiago.
+          Este sitio fue iniciado por <a href="https://fnunez.cl/?utm_source=vermi.cl&utm_medium=referral&utm_campaign=about_page" target="_blank" rel="noopener noreferrer nofollow" class="underline hover:text-primary transition-colors"><strong>Fabián Núñez</strong><span class="sr-only"> (abre en una nueva pestaña)</span></a>, un entusiasta de la lombricultura que vive en un departamento en Santiago.
         </p>
         <p class="font-body text-base text-on-surface-variant leading-relaxed m-0">
           Encontrar información adaptada a las condiciones locales (como la baja humedad relativa del Valle Central o las altas temperaturas del verano santiaguino en un balcón expuesto) no era fácil. Tras experimentar, cometer errores y perfeccionar el manejo de su vermicompostera en un espacio reducido, Fabián decidió documentar el proceso con un enfoque claro: rigor científico, relevancia chilena y aplicación inmediata.

@@ -34,7 +34,9 @@ const contactSchema = buildSchemaGraph({
         
         <div class="flex items-center gap-3 mt-8">
           <span class="font-mono text-xl text-primary">✉</span>
-          <span class="font-label-md text-label-md text-on-surface">hola@vermi.cl</span>
+          <span class="font-label-md text-label-md text-on-surface" aria-label="Correo electrónico hola arroba vermi punto cl">
+            <span>hola</span><span aria-hidden="true">@</span><span>vermi</span><span aria-hidden="true">.</span><span>cl</span>
+          </span>
         </div>
         <div class="flex items-center gap-3">
           <span class="font-mono text-xl text-primary">📍</span>

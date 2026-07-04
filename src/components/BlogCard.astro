@@ -2,6 +2,8 @@
 import { Image } from 'astro:assets';
 import type { BlogTagSlug } from '../utils/blog-tags';
 import {
+  blogCardImageSizes,
+  blogCardImageWidths,
   blogCardCategoryMeta,
   formatBlogDate,
   type BlogCategory,
@@ -18,9 +20,23 @@ interface Props {
   tags?: readonly BlogTagSlug[];
   rotation?: string; // e.g. "rotate-1" or "rotate-[-1.5deg]"
   heroImage?: any;
+  loading?: "eager" | "lazy";
+  fetchpriority?: "high" | "auto" | "low";
 }
 
-const { title, description, slug, pubDate, category, difficulty = "Básico", readingTime, rotation = "rotate-0", heroImage } = Astro.props;
+const {
+  title,
+  description,
+  slug,
+  pubDate,
+  category,
+  difficulty = "Básico",
+  readingTime,
+  rotation = "rotate-0",
+  heroImage,
+  loading = "lazy",
+  fetchpriority = "auto",
+} = Astro.props;
 
 const formattedDate = formatBlogDate(pubDate);
 const meta = blogCardCategoryMeta[category];
@@ -35,9 +51,11 @@ const meta = blogCardCategoryMeta[category];
             src={heroImage}
             alt={`Portada de ${title}`}
             class="w-full h-full object-cover"
-            width={400}
-            height={225}
-            quality="mid"
+            widths={[...blogCardImageWidths]}
+            sizes={blogCardImageSizes}
+            quality="low"
+            loading={loading}
+            fetchpriority={fetchpriority}
           />
         </div>
       )}

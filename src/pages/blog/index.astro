@@ -72,6 +72,8 @@ const archiveSchema = buildSchemaGraph({
               tags={post.data.tags}
               rotation={rot}
               heroImage={post.data.heroImage}
+              loading={idx === 0 ? "eager" : "lazy"}
+              fetchpriority={idx === 0 ? "high" : "auto"}
             />
           </div>
         );

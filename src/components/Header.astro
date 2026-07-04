@@ -237,9 +237,6 @@ const drawerLinks = [
   const newsletterSuccessRow = newsletterContainer?.querySelector(
     ".row-success",
   ) as HTMLElement | null;
-  const mailerLiteWindow = window as Window & {
-    ml_webform_success_43289892?: () => void;
-  };
 
   const setNewsletterLoading = (isLoading: boolean) => {
     if (!newsletterSubmit || !newsletterSubmitLabel) return;
@@ -270,10 +267,6 @@ const drawerLinks = [
     newsletterErrorRow?.classList.remove("hidden");
     newsletterFormRow?.classList.remove("hidden");
     setNewsletterLoading(false);
-  };
-
-  mailerLiteWindow.ml_webform_success_43289892 = () => {
-    showNewsletterSuccess();
   };
 
   newsletterForm?.addEventListener("submit", async (event) => {
@@ -371,10 +364,3 @@ const drawerLinks = [
     });
   }
 </script>
-{isNewsletterFormConfigured && (
-  <script
-    is:inline
-    defer
-    src="https://groot.mailerlite.com/js/w/webforms.min.js"
-  ></script>
-)}
