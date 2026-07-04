@@ -6,7 +6,7 @@ import { buildSchemaGraph } from '../utils/schema';
 
 const aboutImageWidths = [320, 480, 640, 768, 960] as const;
 const aboutImageSizes =
-  "(max-width: 1024px) calc(100vw - 4rem), 58vw";
+  "(max-width: 1024px) calc(100vw - 4rem), 36rem";
 
 const aboutSchema = buildSchemaGraph({
   pageType: 'about',
@@ -35,14 +35,13 @@ const aboutSchema = buildSchemaGraph({
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full">
     <!-- Polaroid -->
     <div class="lg:col-span-7 transform -rotate-1 hover:rotate-0 transition-transform duration-200">
-      <div class="bg-surface-container-lowest p-6 pb-12 border-4 border-on-surface shadow-hard rounded-xl organic-brutalism">
+      <div class="bg-surface-container-lowest p-6 pb-12 border-4 border-on-surface shadow-hard rounded-xl organic-brutalism w-full max-w-[36rem]">
         <Image
           src={teamImage}
           alt="Fotografía detallada de lombrices californianas en compostaje activo"
           class="w-full h-auto object-cover border-2 border-on-surface rounded-sm"
           widths={[...aboutImageWidths]}
           sizes={aboutImageSizes}
-          quality="low"
           loading="eager"
           fetchpriority="high"
         />
