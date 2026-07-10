@@ -22,31 +22,31 @@
 
     <!-- Suggestion Tags -->
     <div class="flex flex-wrap justify-center gap-3 mt-4">
-      <button class="bg-primary-container text-on-primary-container font-mono text-xs font-bold px-4 py-2 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-1 btn-suggestion" data-food="plátano">Plátano 🍌</button>
-      <button class="bg-[#59C985]/20 text-on-background font-mono text-xs font-bold px-4 py-2 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-[-1deg] btn-suggestion" data-food="palta">Palta 🥑</button>
-      <button class="bg-[#e9d7c8] text-on-background font-mono text-xs font-bold px-4 py-2 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-2 btn-suggestion" data-food="café">Borra de café ☕</button>
-      <button class="bg-warning-badge text-on-background font-mono text-xs font-bold px-4 py-2 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-[-2deg] btn-suggestion" data-food="cítricos">Cítricos 🍋</button>
-      <button class="bg-[#E05353]/10 text-on-background font-mono text-xs font-bold px-4 py-2 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-1 btn-suggestion" data-food="cebolla">Cebolla 🧅</button>
-      <button class="bg-secondary-container text-on-secondary-container font-mono text-xs font-bold px-4 py-2 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-[-1deg] btn-suggestion" data-food="papa">Papa 🥔</button>
+      <button class="min-h-11 bg-primary-container text-on-primary-container font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-1 btn-suggestion" data-food="plátano">Plátano 🍌</button>
+      <button class="min-h-11 bg-safe-badge/20 text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-[-1deg] btn-suggestion" data-food="palta">Palta 🥑</button>
+      <button class="min-h-11 bg-mustard text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-2 btn-suggestion" data-food="café">Borra de café ☕</button>
+      <button class="min-h-11 bg-warning-badge text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-[-2deg] btn-suggestion" data-food="cítricos">Cítricos 🍋</button>
+      <button class="min-h-11 bg-danger-badge/10 text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-1 btn-suggestion" data-food="cebolla">Cebolla 🧅</button>
+      <button class="min-h-11 bg-secondary-container text-on-secondary-container font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-[2px_2px_0px_0px_#002201] hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] transition-all rounded-sm rotate-[-1deg] btn-suggestion" data-food="papa">Papa 🥔</button>
     </div>
   </div>
 
   <!-- Results Displays -->
-  <div id="status-display-card" class="hidden w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-[#E8F8EE] mt-6 box-border">
+  <div id="status-display-card" class="hidden w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-success-tint mt-6 box-border" aria-live="polite" aria-atomic="true">
     <div class="flex justify-between items-center border-b-2 border-on-background pb-3 mb-4">
       <span class="font-mono text-xs font-bold text-on-background tracking-wider">[ ANÁLISIS MICROBIOLÓGICO ]</span>
       <span id="badge-indicator" class="font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-safe-badge text-on-background">SEGURO</span>
     </div>
     <h3 id="matched-food-name" class="font-headline text-2xl md:text-3xl font-black text-on-background mb-3 uppercase">Cáscara de plátano</h3>
-    
-    <div id="matched-nutrition-container" class="border-l-4 border-secondary pl-3 mb-4 bg-black/5 py-1">
+
+    <div id="matched-nutrition-container" class="border-2 border-on-background px-3 py-2 mb-4 bg-surface-container-lowest/60 organic-brutalism-alt">
       <p id="matched-nutrition" class="font-mono text-sm text-on-background m-0"></p>
     </div>
-    
+
     <p id="matched-instructions" class="font-body text-base text-on-background leading-relaxed m-0"></p>
   </div>
 
-  <div id="search-fallback-message" class="font-mono text-sm text-ink border-3 border-dashed border-on-background p-6 text-center bg-white/20 mt-6 rounded-lg box-border">
+  <div id="search-fallback-message" class="font-mono text-sm text-ink border-3 border-dashed border-on-background p-6 text-center bg-white/20 mt-6 rounded-lg box-border" aria-live="polite" aria-atomic="true">
     Escribe al menos dos letras para iniciar la consulta microbiológica del residuo.
   </div>
 </div>
@@ -167,15 +167,15 @@
       matchedInstructions.innerHTML = renderMarkdownItalics(filteredItem.instructions);
 
       if (filteredItem.status === 'safe' || filteredItem.status === 'seguro') {
-        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-[#E8F8EE] mt-6 box-border';
+        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-success-tint mt-6 box-border';
         badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-safe-badge text-on-background';
         badgeIndicator.textContent = 'SEGURO';
       } else if (filteredItem.status === 'warning' || filteredItem.status === 'moderacion') {
-        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-[#FFFBEA] mt-6 box-border';
+        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-warning-tint mt-6 box-border';
         badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-warning-badge text-on-background';
         badgeIndicator.textContent = 'MODERACIÓN';
       } else if (filteredItem.status === 'danger' || filteredItem.status === 'peligro') {
-        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-[#FFF0F0] mt-6 box-border';
+        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-danger-tint mt-6 box-border';
         badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-danger-badge text-white';
         badgeIndicator.textContent = 'PELIGRO';
       }

@@ -4,52 +4,257 @@
   "title": "Design System: vermi.cl",
   "extensions": {
     "colorMeta": {
-      "background": { "role": "neutral", "displayName": "Spring Green Mist", "canonical": "#ecffe2", "tonalRamp": ["#0a1a06", "#12300f", "#1c4a1a", "#2c6a28", "#4d8c48", "#79b56f", "#b4dda8", "#ecffe2"] },
-      "ink": { "role": "neutral", "displayName": "Deep Forest Ink", "canonical": "#002201", "tonalRamp": ["#000d00", "#001a00", "#002201", "#0a3a0a", "#1f521f", "#3d6e3d", "#6a936a", "#a3bfa3"] },
-      "primary": { "role": "primary", "displayName": "Forest Green", "canonical": "#0f5238", "tonalRamp": ["#031a11", "#0a3524", "#0f5238", "#1c704f", "#2d6a4f", "#4f9273", "#8ec5a9", "#d4ecdf"] },
-      "primary-container": { "role": "primary", "displayName": "Moss Green", "canonical": "#2d6a4f" },
-      "on-primary-container": { "role": "primary", "displayName": "Mint Foam", "canonical": "#a8e7c5" },
-      "primary-fixed": { "role": "primary", "displayName": "Mint Fixed", "canonical": "#b1f0ce" },
-      "secondary": { "role": "secondary", "displayName": "Terracotta", "canonical": "#a0401f", "tonalRamp": ["#2a0f06", "#4a1c0c", "#732001", "#a0401f", "#c25a36", "#dd7f5c", "#f0ac8f", "#fbdbcc"] },
-      "secondary-container": { "role": "secondary", "displayName": "Coral Clay", "canonical": "#fe8760" },
-      "on-secondary-container": { "role": "secondary", "displayName": "Burnt Terracotta", "canonical": "#732001" },
-      "secondary-fixed": { "role": "secondary", "displayName": "Peach Fixed", "canonical": "#ffdbd0" },
-      "tertiary": { "role": "tertiary", "displayName": "Earth Brown", "canonical": "#52453a", "tonalRamp": ["#170f0b", "#2c221c", "#52453a", "#6a5d51", "#8a7c6e", "#ab9d8d", "#cbbeae", "#f2dfd0"] },
-      "tertiary-container": { "role": "tertiary", "displayName": "Umber", "canonical": "#6a5d51" },
-      "tertiary-fixed": { "role": "tertiary", "displayName": "Sand Paper", "canonical": "#f2dfd0" },
-      "surface-dim": { "role": "neutral", "displayName": "Sage Dim", "canonical": "#b4e8a6" },
-      "surface-variant": { "role": "neutral", "displayName": "Leaf Variant", "canonical": "#bcf0ae" },
-      "surface-container-low": { "role": "neutral", "displayName": "Surface Low", "canonical": "#d6ffc9" },
-      "surface-container": { "role": "neutral", "displayName": "Surface Mid", "canonical": "#c7fcb8" },
-      "surface-container-high": { "role": "neutral", "displayName": "Surface High", "canonical": "#c1f6b3" },
-      "surface-container-highest": { "role": "neutral", "displayName": "Surface Highest", "canonical": "#bcf0ae" },
-      "surface-container-lowest": { "role": "neutral", "displayName": "Paper White", "canonical": "#ffffff" },
-      "on-surface-variant": { "role": "neutral", "displayName": "Slate Moss", "canonical": "#404943" },
-      "warning-badge": { "role": "semantic", "displayName": "Mustard Yellow", "canonical": "#f0c842" },
-      "safe-badge": { "role": "semantic", "displayName": "Leaf Safe", "canonical": "#59c985" },
-      "danger-badge": { "role": "semantic", "displayName": "Danger Red", "canonical": "#e05353" },
-      "error": { "role": "semantic", "displayName": "Error Red", "canonical": "#ba1a1a" },
-      "error-container": { "role": "semantic", "displayName": "Error Container", "canonical": "#ffdad6" },
-      "on-error-container": { "role": "semantic", "displayName": "On Error Container", "canonical": "#93000a" },
-      "mustard": { "role": "tertiary", "displayName": "Warm Tan", "canonical": "#e9d7c8" }
+      "background": {
+        "role": "neutral",
+        "displayName": "Spring Green Mist",
+        "canonical": "#ecffe2",
+        "tonalRamp": [
+          "#0a1a06",
+          "#12300f",
+          "#1c4a1a",
+          "#2c6a28",
+          "#4d8c48",
+          "#79b56f",
+          "#b4dda8",
+          "#ecffe2"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Deep Forest Ink",
+        "canonical": "#002201",
+        "tonalRamp": [
+          "#000d00",
+          "#001a00",
+          "#002201",
+          "#0a3a0a",
+          "#1f521f",
+          "#3d6e3d",
+          "#6a936a",
+          "#a3bfa3"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Forest Green",
+        "canonical": "#0f5238",
+        "tonalRamp": [
+          "#031a11",
+          "#0a3524",
+          "#0f5238",
+          "#1c704f",
+          "#2d6a4f",
+          "#4f9273",
+          "#8ec5a9",
+          "#d4ecdf"
+        ]
+      },
+      "primary-container": {
+        "role": "primary",
+        "displayName": "Moss Green",
+        "canonical": "#2d6a4f"
+      },
+      "on-primary-container": {
+        "role": "primary",
+        "displayName": "Mint Foam",
+        "canonical": "#a8e7c5"
+      },
+      "primary-fixed": {
+        "role": "primary",
+        "displayName": "Mint Fixed",
+        "canonical": "#b1f0ce"
+      },
+      "secondary": {
+        "role": "secondary",
+        "displayName": "Terracotta",
+        "canonical": "#a0401f",
+        "tonalRamp": [
+          "#2a0f06",
+          "#4a1c0c",
+          "#732001",
+          "#a0401f",
+          "#c25a36",
+          "#dd7f5c",
+          "#f0ac8f",
+          "#fbdbcc"
+        ]
+      },
+      "secondary-container": {
+        "role": "secondary",
+        "displayName": "Coral Clay",
+        "canonical": "#fe8760"
+      },
+      "on-secondary-container": {
+        "role": "secondary",
+        "displayName": "Burnt Terracotta",
+        "canonical": "#732001"
+      },
+      "secondary-fixed": {
+        "role": "secondary",
+        "displayName": "Peach Fixed",
+        "canonical": "#ffdbd0"
+      },
+      "tertiary": {
+        "role": "tertiary",
+        "displayName": "Earth Brown",
+        "canonical": "#52453a",
+        "tonalRamp": [
+          "#170f0b",
+          "#2c221c",
+          "#52453a",
+          "#6a5d51",
+          "#8a7c6e",
+          "#ab9d8d",
+          "#cbbeae",
+          "#f2dfd0"
+        ]
+      },
+      "tertiary-container": {
+        "role": "tertiary",
+        "displayName": "Umber",
+        "canonical": "#6a5d51"
+      },
+      "tertiary-fixed": {
+        "role": "tertiary",
+        "displayName": "Sand Paper",
+        "canonical": "#f2dfd0"
+      },
+      "surface-dim": {
+        "role": "neutral",
+        "displayName": "Sage Dim",
+        "canonical": "#b4e8a6"
+      },
+      "surface-variant": {
+        "role": "neutral",
+        "displayName": "Leaf Variant",
+        "canonical": "#bcf0ae"
+      },
+      "surface-container-low": {
+        "role": "neutral",
+        "displayName": "Surface Low",
+        "canonical": "#d6ffc9"
+      },
+      "surface-container": {
+        "role": "neutral",
+        "displayName": "Surface Mid",
+        "canonical": "#c7fcb8"
+      },
+      "surface-container-high": {
+        "role": "neutral",
+        "displayName": "Surface High",
+        "canonical": "#c1f6b3"
+      },
+      "surface-container-highest": {
+        "role": "neutral",
+        "displayName": "Surface Highest",
+        "canonical": "#bcf0ae"
+      },
+      "surface-container-lowest": {
+        "role": "neutral",
+        "displayName": "Paper White",
+        "canonical": "#ffffff"
+      },
+      "on-surface-variant": {
+        "role": "neutral",
+        "displayName": "Slate Moss",
+        "canonical": "#404943"
+      },
+      "warning-badge": {
+        "role": "semantic",
+        "displayName": "Mustard Yellow",
+        "canonical": "#f0c842"
+      },
+      "safe-badge": {
+        "role": "semantic",
+        "displayName": "Leaf Safe",
+        "canonical": "#59c985"
+      },
+      "danger-badge": {
+        "role": "semantic",
+        "displayName": "Danger Red",
+        "canonical": "#e05353"
+      },
+      "error": {
+        "role": "semantic",
+        "displayName": "Error Red",
+        "canonical": "#ba1a1a"
+      },
+      "error-container": {
+        "role": "semantic",
+        "displayName": "Error Container",
+        "canonical": "#ffdad6"
+      },
+      "on-error-container": {
+        "role": "semantic",
+        "displayName": "On Error Container",
+        "canonical": "#93000a"
+      },
+      "mustard": {
+        "role": "tertiary",
+        "displayName": "Warm Tan",
+        "canonical": "#e9d7c8"
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Hero headline only, always uppercase black-weight." },
-      "headline": { "displayName": "Headline", "purpose": "Section titles, card titles, modal headings, uppercase." },
-      "body": { "displayName": "Body", "purpose": "UI copy, descriptions, button labels, sentence case." },
-      "serif-body": { "displayName": "Article Body", "purpose": "Long-form blog article prose only." },
-      "label": { "displayName": "Label", "purpose": "Badges, stickers, metadata, form labels, mono uppercase." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero headline only, always uppercase black-weight."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles, card titles, modal headings, uppercase."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "UI copy, descriptions, button labels, sentence case."
+      },
+      "serif-body": {
+        "displayName": "Article Body",
+        "purpose": "Long-form blog article prose only."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Badges, stickers, metadata, form labels, mono uppercase."
+      }
     },
     "shadows": [
-      { "name": "hard", "value": "6px 6px 0px 0px #002201", "purpose": "Default resting elevation for cards, modals, header/footer." },
-      { "name": "hard-sm", "value": "4px 4px 0px 0px #002201", "purpose": "Buttons, badges, icon boxes, drawer items." },
-      { "name": "hard-hover", "value": "8px 8px 0px 0px #002201", "purpose": "Card hover state, paired with translate-y(-2px)." },
-      { "name": "hard-press", "value": "0px 0px 0px 0px #002201", "purpose": "Active/press state, paired with translate(4px, 4px)." }
+      {
+        "name": "hard",
+        "value": "6px 6px 0px 0px #002201",
+        "purpose": "Default resting elevation for cards, modals, header/footer."
+      },
+      {
+        "name": "hard-sm",
+        "value": "4px 4px 0px 0px #002201",
+        "purpose": "Buttons, badges, icon boxes, drawer items."
+      },
+      {
+        "name": "hard-hover",
+        "value": "8px 8px 0px 0px #002201",
+        "purpose": "Card hover state, paired with translate-y(-2px)."
+      },
+      {
+        "name": "hard-press",
+        "value": "0px 0px 0px 0px #002201",
+        "purpose": "Active/press state, paired with translate(4px, 4px)."
+      }
     ],
     "motion": [
-      { "name": "ease-standard", "value": "ease", "purpose": "Default fast (0.1-0.2s) transition for hover/press shadow and transform changes." },
-      { "name": "duration-fast", "value": "0.1s", "purpose": "Button and link hover/press transitions." },
-      { "name": "duration-base", "value": "0.2s-0.3s", "purpose": "Card hover lift, drawer/modal open-close transitions." }
+      {
+        "name": "ease-standard",
+        "value": "ease",
+        "purpose": "Default fast (0.1-0.2s) transition for hover/press shadow and transform changes."
+      },
+      {
+        "name": "duration-fast",
+        "value": "0.1s",
+        "purpose": "Button and link hover/press transitions."
+      },
+      {
+        "name": "duration-base",
+        "value": "0.2s-0.3s",
+        "purpose": "Card hover lift, drawer/modal open-close transitions."
+      }
     ],
     "breakpoints": [
       { "name": "md", "value": "768px" },
@@ -109,9 +314,21 @@
       "Uppercase, black-weight display type for headlines; monospace for labels, badges, and metadata"
     ],
     "rules": [
-      { "name": "The One-Ink Rule", "body": "Every border, hard shadow, and outline in the system is #002201 (Deep Forest Ink) — never a lighter gray or the brand green. This single consistent ink color is what makes disparate colored surfaces read as one cohesive scrapbook.", "section": "colors" },
-      { "name": "The Shout-Then-Explain Rule", "body": "Headlines are always uppercase and black-weight; body text is always sentence case and regular weight. Never mix the two — a headline in sentence case or body text in caps breaks the zine's cover-vs-caption logic.", "section": "typography" },
-      { "name": "The Flatten-On-Press Rule", "body": "Every interactive hard-shadow element must animate its shadow toward 0 0 0 0 and translate by the exact shadow offset on :active. A button that only changes color on press, without flattening its shadow, breaks the paper-cutout illusion.", "section": "elevation" }
+      {
+        "name": "The One-Ink Rule",
+        "body": "Every border, hard shadow, and outline in the system is #002201 (Deep Forest Ink) — never a lighter gray or the brand green. This single consistent ink color is what makes disparate colored surfaces read as one cohesive scrapbook.",
+        "section": "colors"
+      },
+      {
+        "name": "The Shout-Then-Explain Rule",
+        "body": "Headlines are always uppercase and black-weight; body text is always sentence case and regular weight. Never mix the two — a headline in sentence case or body text in caps breaks the zine's cover-vs-caption logic.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flatten-On-Press Rule",
+        "body": "Every interactive hard-shadow element must animate its shadow toward 0 0 0 0 and translate by the exact shadow offset on :active. A button that only changes color on press, without flattening its shadow, breaks the paper-cutout illusion.",
+        "section": "elevation"
+      }
     ],
     "dos": [
       "Do use Deep Forest Ink (#002201) for every hard border and hard shadow — never substitute a lighter gray or a brand color.",

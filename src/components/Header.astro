@@ -39,8 +39,8 @@ const drawerLinks = [
   }
 ];
 ---
-<nav class="bg-surface dark:bg-surface-container w-full sticky top-0 z-50 border-b-4 border-on-surface shadow-hard flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-full">
-  <button id="menu-trigger" aria-label="Abrir menú" class="md:hidden text-primary hover:scale-105 active:scale-95 transition-transform flex items-center justify-center p-2 cursor-pointer">
+<nav class="bg-surface dark:bg-surface-container w-full sticky top-0 z-sticky border-b-4 border-on-surface shadow-hard flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-full">
+  <button id="menu-trigger" aria-label="Abrir menú" aria-haspopup="dialog" aria-expanded="false" aria-controls="nav-drawer" class="min-h-11 min-w-11 md:hidden text-primary hover:scale-105 active:scale-95 transition-transform flex items-center justify-center p-2 cursor-pointer">
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 448 512" fill="currentColor">
       <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/>
     </svg>
@@ -59,24 +59,24 @@ const drawerLinks = [
   </div>
 
   <div class="flex items-center gap-4">
-    <button id="join-trigger-desktop" class="hidden md:block bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 organic-brutalism rotate-[1deg] cursor-pointer">
+    <button id="join-trigger-desktop" class="hidden md:flex min-h-11 items-center bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 organic-brutalism rotate-[1deg] cursor-pointer">
       Unirse
     </button>
 
-    <button id="join-trigger-mobile" class="md:hidden text-primary font-headline-md font-bold hover:scale-105 active:scale-95 transition-transform cursor-pointer">
+    <button id="join-trigger-mobile" class="min-h-11 px-2 md:hidden text-primary font-headline-md font-bold hover:scale-105 active:scale-95 transition-transform cursor-pointer">
       Unirse
     </button>
   </div>
 </nav>
 
-<div id="drawer-overlay" class="fixed inset-0 bg-[#002201]/50 z-[100] transition-opacity duration-300 opacity-0 pointer-events-none"></div>
+<div id="drawer-overlay" class="fixed inset-0 bg-on-surface/50 z-drawer-overlay transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
-<aside id="nav-drawer" class="fixed top-0 left-0 h-full w-[280px] max-w-full bg-[#ecffe2] z-[101] transform -translate-x-full transition-transform duration-300 ease-in-out border-r-4 border-on-surface shadow-hard flex flex-col pointer-events-auto">
+<aside id="nav-drawer" role="dialog" aria-modal="true" aria-label="Menú de navegación" class="fixed top-0 left-0 h-full w-[280px] max-w-full bg-background z-drawer transform -translate-x-full transition-transform duration-300 ease-in-out border-r-4 border-on-surface shadow-hard flex flex-col pointer-events-auto">
   <div class="p-5 flex justify-between items-start border-b-4 border-on-surface/20 border-dashed bg-surface-container">
     <div class="font-headline text-2xl font-black text-secondary rotate-[-3deg] border-2 border-on-surface bg-surface-container-highest px-3 py-1 shadow-hard-sm inline-block">
       vermi.cl
     </div>
-    <button id="close-drawer" aria-label="Cerrar menú" class="text-on-surface hover:text-secondary transition-colors p-2 rotate-[5deg] hover:rotate-[15deg] bg-surface-container-low border-2 border-on-surface rounded-full shadow-hard-sm active:translate-y-[2px] active:translate-x-[2px] active:shadow-none cursor-pointer flex items-center justify-center">
+    <button id="close-drawer" aria-label="Cerrar menú" class="min-h-11 min-w-11 text-on-surface hover:text-secondary transition-colors p-2 rotate-[5deg] hover:rotate-[15deg] bg-surface-container-low border-2 border-on-surface rounded-full shadow-hard-sm active:translate-y-[2px] active:translate-x-[2px] active:shadow-none cursor-pointer flex items-center justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 384 512" fill="currentColor">
         <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 47.5c-11.3-13.6-31.5-15.4-45.1-4.1s-15.4 31.5-4.1 45.1L142.9 256 7.5 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 464.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L241.1 256 376.6 84.5z"/>
       </svg>
@@ -88,8 +88,8 @@ const drawerLinks = [
       <a class="group relative block w-full no-underline" href={link.href}>
         {link.isActive ? (
           <>
-            <div class="absolute inset-0 bg-[#002201] border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
-            <div class="relative bg-[#bcf0ae] text-[#002201] border-2 border-on-surface px-4 py-3 rounded-lg flex items-center gap-3">
+            <div class="absolute inset-0 bg-on-surface border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
+            <div class="relative bg-surface-container-highest text-on-surface border-2 border-on-surface px-4 py-3 rounded-lg flex items-center gap-3">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox={link.viewBox} fill="currentColor">
                 <path d={link.iconPath}/>
               </svg>
@@ -113,21 +113,21 @@ const drawerLinks = [
   </div>
 </aside>
 
-<div id="join-modal" class="fixed inset-0 bg-[#002201]/70 z-[200] transition-opacity duration-300 opacity-0 pointer-events-none flex items-center justify-center p-3 sm:p-4 md:p-6">
+<div id="join-modal" role="dialog" aria-modal="true" aria-labelledby="join-modal-heading" class="fixed inset-0 bg-on-surface/70 z-modal transition-opacity duration-300 opacity-0 pointer-events-none flex items-center justify-center p-3 sm:p-4 md:p-6">
   <div class="relative w-full max-w-[42rem] overflow-visible px-1 sm:px-2">
     <div class="absolute -top-4 left-1/2 z-10 h-7 w-24 -translate-x-1/2 -rotate-2 border-2 border-on-surface bg-secondary-container/90 sm:w-28"></div>
 
-    <button id="close-modal" aria-label="Cerrar modal" class="absolute -top-3 right-5 z-20 flex items-center justify-center rounded-full border-2 border-on-surface bg-surface-container p-2 text-on-surface shadow-hard-sm transition-colors rotate-[5deg] hover:rotate-[15deg] hover:text-secondary active:translate-x-[2px] active:translate-y-[2px] active:shadow-none sm:-right-3">
+    <button id="close-modal" aria-label="Cerrar modal" class="min-h-11 min-w-11 absolute -top-3 right-5 z-20 flex items-center justify-center rounded-full border-2 border-on-surface bg-surface-container p-2 text-on-surface shadow-hard-sm transition-colors rotate-[5deg] hover:rotate-[15deg] hover:text-secondary active:translate-x-[2px] active:translate-y-[2px] active:shadow-none sm:-right-3">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 384 512" fill="currentColor">
         <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 47.5c-11.3-13.6-31.5-15.4-45.1-4.1s-15.4 31.5-4.1 45.1L142.9 256 7.5 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 464.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L241.1 256 376.6 84.5z"/>
       </svg>
     </button>
 
-    <div class="overflow-visible border-4 border-on-surface bg-[#FFFBEA] shadow-hard organic-brutalism">
+    <div class="overflow-visible border-4 border-on-surface bg-warning-tint shadow-hard organic-brutalism">
       <div class="max-h-[calc(100vh-2rem)] overflow-y-auto overflow-x-hidden px-5 pb-5 pt-10 sm:max-h-[calc(100vh-3rem)] sm:px-7 sm:pb-7 sm:pt-12 md:px-8 md:pb-8">
         <div class="flex flex-col gap-4">
           <span class="inline-block w-max rotate-[1deg] border-2 border-on-surface bg-primary px-3 py-1 font-label-md text-label-md uppercase tracking-wider text-on-primary-container">Newsletter</span>
-          <h2 class="m-0 font-headline text-2xl leading-none font-black text-on-surface uppercase md:text-3xl">Únete a la colonia 🪱</h2>
+          <h2 id="join-modal-heading" class="m-0 font-headline text-2xl leading-none font-black text-on-surface uppercase md:text-3xl">Únete a la colonia 🪱</h2>
           <p class="m-0 font-body text-sm leading-relaxed text-on-surface-variant">
             Recibe alertas biológicas estacionales, novedades de vermi.cl y consejos prácticos para acompañar tu vermicompostera durante todo el año.
           </p>
@@ -144,7 +144,7 @@ const drawerLinks = [
                 tooldescription="Suscribe una dirección de correo electrónico al boletín informativo mensual de vermi.cl."
               >
                 <div class="flex flex-col gap-1.5">
-                  <label class="font-label-md text-[10px] uppercase tracking-wider text-[#154212]" for="modal-email">Newsletter mensual</label>
+                  <label class="font-label-md text-[10px] uppercase tracking-wider text-primary-deep" for="modal-email">Newsletter mensual</label>
                   <input
                     type="email"
                     id="modal-email"
@@ -152,7 +152,7 @@ const drawerLinks = [
                     placeholder="tu-correo@lombriz.cl"
                     required
                     toolparamdescription="Correo electrónico del suscriptor."
-                    class="w-full rounded-sm border-2 border-on-surface bg-white px-3 py-2 text-sm font-body text-on-surface placeholder-on-surface/40 focus:outline-none focus:ring-0"
+                    class="w-full rounded-sm border-2 border-on-surface bg-white px-3 py-2 text-sm font-body text-on-surface placeholder-on-surface/40 focus:outline-none focus:ring-2 focus:ring-primary-container focus:border-primary"
                   />
                 </div>
                 {NEWSLETTER_FORM_CONFIG.hiddenFields.map((field: HiddenField) => (
@@ -174,7 +174,7 @@ const drawerLinks = [
             </div>
 
             <div
-              class="row-error hidden border-2 border-on-surface bg-[#FFF1E8] p-4 shadow-hard-sm organic-brutalism-alt"
+              class="row-error hidden border-2 border-on-surface bg-error-tint p-4 shadow-hard-sm organic-brutalism-alt"
               aria-live="polite"
             >
               <p class="m-0 font-label-md text-[10px] uppercase tracking-[0.22em] text-secondary">
@@ -186,7 +186,7 @@ const drawerLinks = [
             </div>
 
             <div
-              class="row-success hidden border-2 border-on-surface bg-[#E8F8EE] p-4 shadow-hard-sm organic-brutalism-alt"
+              class="row-success hidden border-2 border-on-surface bg-success-tint p-4 shadow-hard-sm organic-brutalism-alt"
               aria-live="polite"
             >
               <p class="m-0 font-label-md text-[10px] uppercase tracking-[0.22em] text-primary">
@@ -224,12 +224,37 @@ const drawerLinks = [
   const desktopJoin = document.getElementById("join-trigger-desktop");
   const mobileJoin = document.getElementById("join-trigger-mobile");
 
+  const FOCUSABLE_SELECTOR =
+    'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+  const trapFocus = (panel: HTMLElement, event: KeyboardEvent) => {
+    if (event.key !== "Tab") return;
+    const focusable = Array.from(
+      panel.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR)
+    ).filter((el) => el.offsetParent !== null);
+    if (focusable.length === 0) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  };
+
+  let lastFocusedElement: HTMLElement | null = null;
+
   if (trigger && close && drawer && overlay) {
     const openDrawer = () => {
+      lastFocusedElement = document.activeElement as HTMLElement;
       drawer.classList.remove("-translate-x-full");
       overlay.classList.remove("opacity-0", "pointer-events-none");
       overlay.classList.add("opacity-100", "pointer-events-auto");
       document.body.style.overflow = "hidden";
+      trigger.setAttribute("aria-expanded", "true");
+      close.focus();
     };
 
     const closeDrawer = () => {
@@ -237,17 +262,26 @@ const drawerLinks = [
       overlay.classList.remove("opacity-100", "pointer-events-auto");
       overlay.classList.add("opacity-0", "pointer-events-none");
       document.body.style.overflow = "";
+      trigger.setAttribute("aria-expanded", "false");
+      (lastFocusedElement ?? trigger).focus();
     };
+
+    const isDrawerOpen = () => !drawer.classList.contains("-translate-x-full");
 
     const openModal = () => {
       closeDrawer();
       if (modal) {
+        lastFocusedElement = document.activeElement as HTMLElement;
         resetNewsletterState();
         modal.classList.remove("pointer-events-none", "opacity-0");
         modal.classList.add("opacity-100");
         document.body.style.overflow = "hidden";
+        const emailField = modal.querySelector<HTMLElement>("#modal-email");
+        (emailField ?? closeModal ?? modal).focus();
       }
     };
+
+    const isModalOpen = () => !!modal && modal.classList.contains("opacity-100");
 
     const hideModal = () => {
       if (modal) {
@@ -256,6 +290,7 @@ const drawerLinks = [
       }
       document.body.style.overflow = "";
       setNewsletterLoading(false);
+      (lastFocusedElement ?? mobileJoin ?? desktopJoin)?.focus();
     };
 
     trigger.addEventListener("click", openDrawer);
@@ -269,7 +304,16 @@ const drawerLinks = [
       modal.addEventListener("click", (e) => {
         if (e.target === modal) hideModal();
       });
+      modal.addEventListener("keydown", (e) => trapFocus(modal, e));
     }
+
+    drawer.addEventListener("keydown", (e) => trapFocus(drawer, e));
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (isModalOpen()) hideModal();
+      else if (isDrawerOpen()) closeDrawer();
+    });
 
     document.addEventListener("click", (e) => {
       const target = e.target as HTMLElement | null;

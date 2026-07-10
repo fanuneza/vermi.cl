@@ -52,6 +52,18 @@
   --color-inverse-primary: #95d4b3;
   --color-mustard: #e9d7c8;
 
+  /* Muted UI-chrome tone (placeholders, disabled hints) - distinct from on-surface-variant */
+  --color-outline: #4b5c4e;
+
+  /* Deep-green label ink, used where a slightly richer tone than primary is needed */
+  --color-primary-deep: #154212;
+
+  /* Named tint backgrounds for status/feedback panels */
+  --color-success-tint: #e8f8ee;
+  --color-warning-tint: #fffbea;
+  --color-danger-tint: #fff0f0;
+  --color-error-tint: #fff1e8;
+
   /* Spacing overrides for utility mapping */
   --spacing-margin-mobile: 20px;
   --spacing-margin-desktop: 64px;
@@ -63,6 +75,15 @@
   --font-body: "Fira Sans", sans-serif;
   --font-mono: "Space Mono", monospace;
   --font-serif: "Merriweather", serif;
+
+  /* Semantic z-index scale - never reach for an arbitrary literal below */
+  --z-index-sticky: 50;
+  --z-index-drawer-overlay: 100;
+  --z-index-drawer: 101;
+  --z-index-modal: 200;
+  --z-index-toast: 250;
+  --z-index-dev-overlay: 300;
+  --z-index-skip-link: 400;
 }
 
 :root {
@@ -198,6 +219,33 @@ html {
 a {
   transition: all 0.1s ease;
   text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Toast entrance: ease-out, no bounce/elastic */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.toast-enter {
+  animation: toast-in 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Blog article prose */

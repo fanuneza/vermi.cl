@@ -10,7 +10,7 @@ web
 
 ## Users
 
-The primary visitor is a curious beginner in Chile — someone in a home or apartment who wants to start composting kitchen scraps with red worms (*Eisenia fetida*) for the first time. They arrive uncertain and a little intimidated by the idea of live worms indoors, and need simple, reassuring, locally-relevant guidance rather than a generic global composting manual.
+The primary visitor is a curious beginner in Chile — someone in a home or apartment who wants to start composting kitchen scraps with red worms (_Eisenia fetida_) for the first time. They arrive uncertain and a little intimidated by the idea of live worms indoors, and need simple, reassuring, locally-relevant guidance rather than a generic global composting manual.
 
 ## Product Purpose
 

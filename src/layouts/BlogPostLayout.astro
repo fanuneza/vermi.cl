@@ -203,7 +203,7 @@ if (bottomRelatedPosts.length < maxBottom) {
         <p class="font-body-md text-body-md mb-6 relative z-10 leading-relaxed">Únete a nuestro canal de la comunidad para resolver problemas de humedad y plagas en tiempo real.</p>
         <div class="flex flex-col gap-2 mt-2">
           <a href="#unirse" class="block w-full bg-secondary text-white font-mono text-sm font-bold text-center py-3 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 relative z-10 no-underline">Únete a la comunidad</a>
-          <a href="/contacto/" class="block w-full bg-surface-container text-[#002201] font-mono text-sm font-bold text-center py-3 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 relative z-10 no-underline">Escríbenos</a>
+          <a href="/contacto/" class="block w-full bg-surface-container text-on-surface font-mono text-sm font-bold text-center py-3 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 relative z-10 no-underline">Escríbenos</a>
         </div>
       </div>
 
@@ -314,7 +314,9 @@ if (bottomRelatedPosts.length < maxBottom) {
             
             // Create a temporary floating bubble or toast for feedback
             const toast = document.createElement('div');
-            toast.className = 'fixed bottom-8 right-8 bg-[#002201] text-[#ecffe2] border-2 border-[#002201] px-4 py-2 font-mono text-xs font-bold rounded-lg shadow-hard z-[100] animate-bounce';
+            toast.className = 'toast-enter fixed bottom-8 right-8 bg-on-surface text-background border-2 border-on-surface px-4 py-2 font-mono text-xs font-bold rounded-lg shadow-hard z-toast';
+            toast.setAttribute('role', 'status');
+            toast.setAttribute('aria-live', 'polite');
             toast.textContent = '🪱 ¡Enlace copiado al portapapeles!';
             document.body.appendChild(toast);
             
