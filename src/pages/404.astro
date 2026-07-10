@@ -18,7 +18,7 @@ const pageSchema = buildSchemaGraph({
   schema={pageSchema}
   mainClass="max-w-xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-24 flex-grow w-full box-border flex flex-col items-center justify-center text-center"
 >
-  <div class="bg-[#FFFBEA] border-4 border-on-surface p-8 md:p-12 shadow-hard transform rotate-[-1deg] organic-brutalism max-w-md w-full relative">
+  <div class="bg-warning-tint border-4 border-on-surface p-8 md:p-12 shadow-hard transform rotate-[-1deg] organic-brutalism max-w-md w-full relative">
     <!-- Decorative Tape -->
     <div class="absolute -top-4 left-10 w-24 h-6 bg-secondary-fixed/80 border border-on-surface rotate-[-4deg]"></div>
     
@@ -48,10 +48,10 @@ const pageSchema = buildSchemaGraph({
 <style is:global>
   /* Customize the FuzzyRedirect output text and link styling */
   #fuzzy-redirect {
-    color: #002201;
+    color: var(--color-ink);
   }
   #fuzzy-redirect a {
-    color: #0f5238;
+    color: var(--color-primary);
     font-weight: bold;
     text-decoration: underline;
   }

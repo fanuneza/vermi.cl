@@ -77,6 +77,7 @@
   --font-serif: "Merriweather", serif;
 
   /* Semantic z-index scale - never reach for an arbitrary literal below */
+  --z-index-behind: -1;
   --z-index-sticky: 50;
   --z-index-drawer-overlay: 100;
   --z-index-drawer: 101;
@@ -84,6 +85,13 @@
   --z-index-toast: 250;
   --z-index-dev-overlay: 300;
   --z-index-skip-link: 400;
+
+  /* Hard-shadow scale - the sticker-and-paper elevation system. Never reach for shadow-[...] */
+  --shadow-hard-xxs: 1px 1px 0px 0px #002201;
+  --shadow-hard-xs: 2px 2px 0px 0px #002201;
+  --shadow-hard-sm: 4px 4px 0px 0px #002201;
+  --shadow-hard: 6px 6px 0px 0px #002201;
+  --shadow-hard-lg: 8px 8px 0px 0px #002201;
 }
 
 :root {
@@ -113,14 +121,6 @@ html {
 }
 .organic-brutalism-alt {
   border-radius: 12px 4px 20px 8px;
-}
-
-/* Hard shadows */
-.shadow-hard {
-  box-shadow: 6px 6px 0px 0px #002201;
-}
-.shadow-hard-sm {
-  box-shadow: 4px 4px 0px 0px #002201;
 }
 
 /* Sticker Badges */

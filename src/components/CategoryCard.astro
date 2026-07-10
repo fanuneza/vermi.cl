@@ -28,8 +28,8 @@ const {
 } = Astro.props;
 ---
 
-<a class={`block ${cardBgClass} border-4 border-on-surface p-6 shadow-hard hover:-translate-y-2 hover:shadow-[8px_8px_0px_0px_#002201] transition-all duration-200 group ${organicShapeClass} ${rotationClass} no-underline ${extraClasses}`} href={href}>
-  <div class={`bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-[2px_2px_0px_0px_#002201] ${iconBoxRotationClass} group-hover:rotate-0 transition-transform`}>
+<a class={`block ${cardBgClass} border-4 border-on-surface p-6 shadow-hard hover:-translate-y-2 hover:shadow-hard-lg transition-all duration-200 group ${organicShapeClass} ${rotationClass} no-underline ${extraClasses}`} href={href}>
+  <div class={`bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-hard-xs ${iconBoxRotationClass} group-hover:rotate-0 transition-transform`}>
     <slot name="icon" />
   </div>
   <h3 class={`font-headline text-2xl font-bold text-on-surface mb-2 ${textColorHoverClass} transition-colors uppercase`}>{title}</h3>

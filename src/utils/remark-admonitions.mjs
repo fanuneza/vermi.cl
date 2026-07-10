@@ -83,11 +83,10 @@ export function remarkAdmonitions() {
         wrapperClasses += "bg-danger-badge/10 organic-brutalism-alt";
         titleClasses += "text-secondary";
       } else if (type === "warning") {
-        wrapperClasses += "bg-[#F0C842]/10 organic-brutalism";
-        titleClasses += "text-[#a0401f]";
+        wrapperClasses += "bg-warning-badge/10 organic-brutalism";
+        titleClasses += "text-secondary";
       } else if (type === "tip") {
-        wrapperClasses +=
-          "bg-[#ecffe2] organic-brutalism-alt shadow-[4px_4px_0px_0px_#0f5238]";
+        wrapperClasses += "bg-background organic-brutalism-alt shadow-hard-sm";
         titleClasses += "text-primary";
       } else {
         // default note / important

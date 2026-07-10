@@ -38,16 +38,16 @@ const archiveSchema = buildSchemaGraph({
     <div class="flex flex-col gap-3 mb-8 items-start w-full">
       <h2 class="font-mono text-xs font-bold text-on-surface uppercase tracking-wider m-0">[ Filtrar por categoría ]</h2>
       <div id="filter-container" class="flex flex-wrap gap-3">
-        <a 
-          href="/blog/" 
-          class="font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none rounded-full no-underline"
+        <a
+          href="/blog/"
+          class="min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none rounded-full no-underline"
         >
           Todos
         </a>
         {categories.map(cat => (
-          <a 
-            href={`/blog/?category=${cat}`} 
-            class="font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-white text-on-surface shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline"
+          <a
+            href={`/blog/?category=${cat}`}
+            class="min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-white text-on-surface shadow-hard-xs transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs rounded-full no-underline"
           >
             {cat}
           </a>
@@ -122,9 +122,9 @@ const archiveSchema = buildSchemaGraph({
         const linkCat = href.includes('category=') ? decodeURIComponent(href.split('category=')[1]) : null;
         
         if (linkCat === category) {
-          link.className = 'font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none rounded-full no-underline';
+          link.className = 'min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none rounded-full no-underline';
         } else {
-          link.className = 'font-mono text-sm font-bold border-2 border-on-surface px-4 py-1.5 bg-white text-on-surface shadow-[2px_2px_0px_0px_#002201] transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-[1px_1px_0px_0px_#002201] rounded-full no-underline';
+          link.className = 'min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-white text-on-surface shadow-hard-xs transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs rounded-full no-underline';
         }
       });
     }

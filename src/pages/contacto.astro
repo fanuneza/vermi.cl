@@ -22,7 +22,7 @@ const contactSchema = buildSchemaGraph({
     <div class="lg:col-span-5 flex flex-col gap-6 md:sticky md:top-32">
       <!-- Sticker Badge Header -->
       <div class="inline-block transform -rotate-1 origin-bottom-left self-start">
-        <div class="bg-surface-container-highest text-[#154212] px-6 py-3 border-4 border-[#002201] shadow-hard">
+        <div class="bg-surface-container-highest text-primary-deep px-6 py-3 border-4 border-on-surface shadow-hard">
           <h1 class="font-headline text-4xl md:text-5xl font-black uppercase m-0">Hablemos</h1>
         </div>
       </div>
@@ -45,16 +45,16 @@ const contactSchema = buildSchemaGraph({
       </div>
       
       <!-- Decorative Box -->
-      <div class="mt-8 transform rotate-2 border-4 border-[#002201] shadow-hard overflow-hidden rounded bg-[#e9d7c8] p-6 max-w-[280px] hidden lg:block">
+      <div class="mt-8 transform rotate-2 border-4 border-on-surface shadow-hard overflow-hidden rounded bg-mustard p-6 max-w-[280px] hidden lg:block">
         <p class="font-mono text-xs font-bold text-on-surface-variant m-0 uppercase tracking-widest">[ Tierra y cariño ]</p>
         <p class="font-body text-sm text-on-surface-variant mt-2 mb-0 leading-relaxed">Cada residuo recuperado es un grano más de vida para nuestro suelo.</p>
       </div>
     </div>
 
     <!-- Contact Form (Right Column) -->
-    <div class="lg:col-span-7 bg-[#F4E1D2] border-4 border-[#002201] p-8 md:p-12 shadow-hard relative transform rotate-[0.5deg]">
+    <div class="lg:col-span-7 bg-tertiary-fixed border-4 border-on-surface p-8 md:p-12 shadow-hard relative transform rotate-[0.5deg]">
       <!-- Decorative Tape -->
-      <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-8 bg-surface-variant/80 border-2 border-[#002201] -rotate-3 z-10"></div>
+      <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-8 bg-surface-variant/80 border-2 border-on-surface -rotate-3 z-10"></div>
       
       <form 
         id="contact-form" 
@@ -64,9 +64,9 @@ const contactSchema = buildSchemaGraph({
       >
         <!-- Name Field -->
         <div class="flex flex-col gap-2">
-          <label class="font-label-md text-label-md text-[#154212] uppercase tracking-wider" for="name">Tu Nombre</label>
+          <label class="font-label-md text-label-md text-primary-deep uppercase tracking-wider" for="name">Tu Nombre</label>
           <input 
-            class="bg-transparent border-0 border-b-4 border-[#002201] px-0 py-2 focus:ring-0 focus:border-primary font-headline text-lg text-on-surface placeholder-[#002201]/40 transition-colors rounded-none outline-none" 
+            class="bg-transparent border-0 border-b-4 border-on-surface px-0 py-2 focus:ring-0 focus:border-primary font-headline text-lg text-on-surface placeholder-on-surface/40 transition-colors rounded-none outline-none" 
             id="name" 
             name="name" 
             placeholder="Juanito Lombriz" 
@@ -79,9 +79,9 @@ const contactSchema = buildSchemaGraph({
         
         <!-- Email Field -->
         <div class="flex flex-col gap-2">
-          <label class="font-label-md text-label-md text-[#154212] uppercase tracking-wider" for="email">Correo Electrónico</label>
+          <label class="font-label-md text-label-md text-primary-deep uppercase tracking-wider" for="email">Correo Electrónico</label>
           <input 
-            class="bg-transparent border-0 border-b-4 border-[#002201] px-0 py-2 focus:ring-0 focus:border-primary font-headline text-lg text-on-surface placeholder-[#002201]/40 transition-colors rounded-none outline-none" 
+            class="bg-transparent border-0 border-b-4 border-on-surface px-0 py-2 focus:ring-0 focus:border-primary font-headline text-lg text-on-surface placeholder-on-surface/40 transition-colors rounded-none outline-none" 
             id="email" 
             name="email" 
             placeholder="juanito@tierra.cl" 
@@ -94,9 +94,9 @@ const contactSchema = buildSchemaGraph({
         
         <!-- Message Field -->
         <div class="flex flex-col gap-2 relative">
-          <label class="font-label-md text-label-md text-[#154212] uppercase tracking-wider" for="message">Tu Mensaje</label>
+          <label class="font-label-md text-label-md text-primary-deep uppercase tracking-wider" for="message">Tu Mensaje</label>
           <textarea 
-            class="bg-transparent border-4 border-[#002201] p-4 focus:ring-0 focus:border-primary font-body text-base text-on-surface placeholder-[#002201]/40 transition-colors resize-none leading-[32px] rounded" 
+            class="bg-transparent border-4 border-on-surface p-4 focus:ring-0 focus:border-primary font-body text-base text-on-surface placeholder-on-surface/40 transition-colors resize-none leading-[32px] rounded" 
             id="message" 
             name="message" 
             placeholder="Cuéntanos qué pasa con tu compostera..." 
@@ -108,11 +108,33 @@ const contactSchema = buildSchemaGraph({
         
         <!-- Submit Button -->
         <button 
-          class="w-full bg-surface-container-highest text-[#002201] border-4 border-[#002201] py-4 px-6 font-headline text-xl uppercase tracking-wider shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex justify-center items-center gap-2 mt-4 rounded-sm cursor-pointer" 
+          class="w-full bg-surface-container-highest text-on-surface border-4 border-on-surface py-4 px-6 font-headline text-xl uppercase tracking-wider shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex justify-center items-center gap-2 mt-4 rounded-sm cursor-pointer" 
           type="submit"
         >
           <span>Enviar Mensaje 🪱</span>
         </button>
+
+        <div
+          id="contact-success"
+          class="hidden border-2 border-on-surface bg-success-tint p-4 shadow-hard-sm organic-brutalism-alt"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <p class="m-0 font-label-md text-[10px] uppercase tracking-[0.22em] text-primary">Confirmado</p>
+          <p class="m-0 mt-2 font-body text-sm leading-relaxed text-on-surface-variant">
+            ¡Mensaje enviado con éxito! Nos contactaremos contigo pronto.
+          </p>
+        </div>
+
+        <div
+          id="contact-error"
+          class="hidden border-2 border-on-surface bg-error-tint p-4 shadow-hard-sm organic-brutalism-alt"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <p class="m-0 font-label-md text-[10px] uppercase tracking-[0.22em] text-secondary">Algo falló</p>
+          <p id="contact-error-message" class="m-0 mt-2 font-body text-sm leading-relaxed text-on-surface-variant"></p>
+        </div>
       </form>
     </div>
   </div>
@@ -120,9 +142,29 @@ const contactSchema = buildSchemaGraph({
 
 <script>
   const contactForm = document.getElementById('contact-form') as HTMLFormElement | null;
+  const successPanel = document.getElementById('contact-success') as HTMLDivElement | null;
+  const errorPanel = document.getElementById('contact-error') as HTMLDivElement | null;
+  const errorMessage = document.getElementById('contact-error-message') as HTMLParagraphElement | null;
+
+  const showSuccess = () => {
+    errorPanel?.classList.add('hidden');
+    successPanel?.classList.remove('hidden');
+    successPanel?.scrollIntoView({ block: 'nearest' });
+  };
+
+  const showError = (message: string) => {
+    successPanel?.classList.add('hidden');
+    if (errorMessage) errorMessage.textContent = message;
+    errorPanel?.classList.remove('hidden');
+    errorPanel?.scrollIntoView({ block: 'nearest' });
+  };
+
   if (contactForm) {
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      successPanel?.classList.add('hidden');
+      errorPanel?.classList.add('hidden');
 
       const submitBtn = contactForm.querySelector('button[type="submit"]') as HTMLButtonElement | null;
       const originalText = submitBtn ? submitBtn.innerHTML : 'Enviar Mensaje 🪱';
@@ -142,15 +184,15 @@ const contactSchema = buildSchemaGraph({
         });
 
         if (response.ok) {
-          alert('¡Mensaje enviado con éxito! Nos contactaremos contigo pronto.');
+          showSuccess();
           contactForm.reset();
         } else {
           const data = await response.json().catch(() => ({}));
           const detailsMsg = data.details?.message || (data.details ? JSON.stringify(data.details) : '');
-          alert(`Error al enviar el mensaje: ${data.error || 'Por favor, inténtalo más tarde.'}${detailsMsg ? '\nDetalles: ' + detailsMsg : ''}`);
+          showError(`${data.error || 'Por favor, inténtalo más tarde.'}${detailsMsg ? ' Detalles: ' + detailsMsg : ''}`);
         }
       } catch (err) {
-        alert('Ocurrió un error al enviar el mensaje. Revisa tu conexión a internet.');
+        showError('Ocurrió un error al enviar el mensaje. Revisa tu conexión a internet.');
       } finally {
         if (submitBtn) {
           submitBtn.disabled = false;
