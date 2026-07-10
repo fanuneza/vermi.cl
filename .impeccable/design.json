@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-10T22:39:02Z",
+  "title": "Design System: vermi.cl",
+  "extensions": {
+    "colorMeta": {
+      "background": { "role": "neutral", "displayName": "Spring Green Mist", "canonical": "#ecffe2", "tonalRamp": ["#0a1a06", "#12300f", "#1c4a1a", "#2c6a28", "#4d8c48", "#79b56f", "#b4dda8", "#ecffe2"] },
+      "ink": { "role": "neutral", "displayName": "Deep Forest Ink", "canonical": "#002201", "tonalRamp": ["#000d00", "#001a00", "#002201", "#0a3a0a", "#1f521f", "#3d6e3d", "#6a936a", "#a3bfa3"] },
+      "primary": { "role": "primary", "displayName": "Forest Green", "canonical": "#0f5238", "tonalRamp": ["#031a11", "#0a3524", "#0f5238", "#1c704f", "#2d6a4f", "#4f9273", "#8ec5a9", "#d4ecdf"] },
+      "primary-container": { "role": "primary", "displayName": "Moss Green", "canonical": "#2d6a4f" },
+      "on-primary-container": { "role": "primary", "displayName": "Mint Foam", "canonical": "#a8e7c5" },
+      "primary-fixed": { "role": "primary", "displayName": "Mint Fixed", "canonical": "#b1f0ce" },
+      "secondary": { "role": "secondary", "displayName": "Terracotta", "canonical": "#a0401f", "tonalRamp": ["#2a0f06", "#4a1c0c", "#732001", "#a0401f", "#c25a36", "#dd7f5c", "#f0ac8f", "#fbdbcc"] },
+      "secondary-container": { "role": "secondary", "displayName": "Coral Clay", "canonical": "#fe8760" },
+      "on-secondary-container": { "role": "secondary", "displayName": "Burnt Terracotta", "canonical": "#732001" },
+      "secondary-fixed": { "role": "secondary", "displayName": "Peach Fixed", "canonical": "#ffdbd0" },
+      "tertiary": { "role": "tertiary", "displayName": "Earth Brown", "canonical": "#52453a", "tonalRamp": ["#170f0b", "#2c221c", "#52453a", "#6a5d51", "#8a7c6e", "#ab9d8d", "#cbbeae", "#f2dfd0"] },
+      "tertiary-container": { "role": "tertiary", "displayName": "Umber", "canonical": "#6a5d51" },
+      "tertiary-fixed": { "role": "tertiary", "displayName": "Sand Paper", "canonical": "#f2dfd0" },
+      "surface-dim": { "role": "neutral", "displayName": "Sage Dim", "canonical": "#b4e8a6" },
+      "surface-variant": { "role": "neutral", "displayName": "Leaf Variant", "canonical": "#bcf0ae" },
+      "surface-container-low": { "role": "neutral", "displayName": "Surface Low", "canonical": "#d6ffc9" },
+      "surface-container": { "role": "neutral", "displayName": "Surface Mid", "canonical": "#c7fcb8" },
+      "surface-container-high": { "role": "neutral", "displayName": "Surface High", "canonical": "#c1f6b3" },
+      "surface-container-highest": { "role": "neutral", "displayName": "Surface Highest", "canonical": "#bcf0ae" },
+      "surface-container-lowest": { "role": "neutral", "displayName": "Paper White", "canonical": "#ffffff" },
+      "on-surface-variant": { "role": "neutral", "displayName": "Slate Moss", "canonical": "#404943" },
+      "warning-badge": { "role": "semantic", "displayName": "Mustard Yellow", "canonical": "#f0c842" },
+      "safe-badge": { "role": "semantic", "displayName": "Leaf Safe", "canonical": "#59c985" },
+      "danger-badge": { "role": "semantic", "displayName": "Danger Red", "canonical": "#e05353" },
+      "error": { "role": "semantic", "displayName": "Error Red", "canonical": "#ba1a1a" },
+      "error-container": { "role": "semantic", "displayName": "Error Container", "canonical": "#ffdad6" },
+      "on-error-container": { "role": "semantic", "displayName": "On Error Container", "canonical": "#93000a" },
+      "mustard": { "role": "tertiary", "displayName": "Warm Tan", "canonical": "#e9d7c8" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headline only, always uppercase black-weight." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles, card titles, modal headings, uppercase." },
+      "body": { "displayName": "Body", "purpose": "UI copy, descriptions, button labels, sentence case." },
+      "serif-body": { "displayName": "Article Body", "purpose": "Long-form blog article prose only." },
+      "label": { "displayName": "Label", "purpose": "Badges, stickers, metadata, form labels, mono uppercase." }
+    },
+    "shadows": [
+      { "name": "hard", "value": "6px 6px 0px 0px #002201", "purpose": "Default resting elevation for cards, modals, header/footer." },
+      { "name": "hard-sm", "value": "4px 4px 0px 0px #002201", "purpose": "Buttons, badges, icon boxes, drawer items." },
+      { "name": "hard-hover", "value": "8px 8px 0px 0px #002201", "purpose": "Card hover state, paired with translate-y(-2px)." },
+      { "name": "hard-press", "value": "0px 0px 0px 0px #002201", "purpose": "Active/press state, paired with translate(4px, 4px)." }
+    ],
+    "motion": [
+      { "name": "ease-standard", "value": "ease", "purpose": "Default fast (0.1-0.2s) transition for hover/press shadow and transform changes." },
+      { "name": "duration-fast", "value": "0.1s", "purpose": "Button and link hover/press transitions." },
+      { "name": "duration-base", "value": "0.2s-0.3s", "purpose": "Card hover lift, drawer/modal open-close transitions." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main CTA button, e.g. \"Explora nuestro blog\".",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Explora nuestro blog</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border: 2px solid #002201; border-radius: 8px; box-shadow: 4px 4px 0px 0px #002201; font-family: 'Bricolage Grotesque Variable', sans-serif; font-weight: 900; text-transform: uppercase; background-color: #0f5238; color: #ffffff; text-decoration: none; transition: transform 0.1s ease, box-shadow 0.1s ease; } .ds-btn-primary:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0px 0px #002201; } .ds-btn-primary:active { transform: translate(4px, 4px); box-shadow: 0px 0px 0px 0px #002201; } .ds-btn-primary:focus-visible { outline: 3px solid #2d6a4f; outline-offset: 2px; }"
+    },
+    {
+      "name": "Sticker Badge",
+      "kind": "chip",
+      "refersTo": "badge-sticker",
+      "description": "Die-cut sticker label used for tags, categories, and status callouts.",
+      "html": "<span class=\"ds-badge-sticker\">Aprende hoy</span>",
+      "css": ".ds-badge-sticker { display: inline-block; font-family: 'Space Mono', monospace; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; border: 3px solid #002201; border-radius: 0; box-shadow: 4px 4px 0px 0px #002201; padding: 0.25rem 0.75rem; background-color: #ffffff; color: #002201; }"
+    },
+    {
+      "name": "Category Card",
+      "kind": "card",
+      "refersTo": "category-card",
+      "description": "Homepage category tile with icon, title, description, and sticker badge footer.",
+      "html": "<a class=\"ds-category-card\" href=\"#\"><div class=\"ds-category-card__icon\">🦠</div><h3 class=\"ds-category-card__title\">Manual de inicio</h3><p class=\"ds-category-card__desc\">Aprende a configurar tu vermicompostera ideal.</p><span class=\"ds-badge-sticker\">BASICO</span></a>",
+      "css": ".ds-category-card { display: block; background: #f2dfd0; border: 4px solid #002201; border-radius: 30px 50px 20px 40px; padding: 1.5rem; box-shadow: 6px 6px 0px 0px #002201; text-decoration: none; color: #002201; transition: transform 0.2s ease, box-shadow 0.2s ease; transform: rotate(1deg); } .ds-category-card:hover { transform: translateY(-8px) rotate(1deg); box-shadow: 8px 8px 0px 0px #002201; } .ds-category-card__icon { display: inline-block; background: #ecffe2; border: 2px solid #002201; padding: 0.75rem; margin-bottom: 1rem; box-shadow: 2px 2px 0px 0px #002201; } .ds-category-card__title { font-family: 'Bricolage Grotesque Variable', sans-serif; font-weight: 900; font-size: 1.5rem; text-transform: uppercase; margin: 0 0 0.5rem; } .ds-category-card__desc { font-family: 'Fira Sans', sans-serif; font-size: 1rem; color: #404943; margin: 0 0 1rem; }"
+    },
+    {
+      "name": "Blog Card",
+      "kind": "card",
+      "refersTo": "blog-card",
+      "description": "Blog post preview card with category tag, date, title, description, and difficulty footer.",
+      "html": "<article class=\"ds-blog-card\"><div class=\"ds-blog-card__meta\"><span class=\"ds-blog-card__tag\">MANUAL</span><span class=\"ds-blog-card__date\">10 jul 2026</span></div><h3 class=\"ds-blog-card__title\">Comienza a vermicompostar en casa</h3><p class=\"ds-blog-card__desc\">Aprende a reciclar tus residuos de cocina con lombrices californianas.</p><div class=\"ds-blog-card__footer\"><span>5 min</span><span class=\"ds-blog-card__difficulty\">Básico</span></div></article>",
+      "css": ".ds-blog-card { border: 4px solid #002201; border-radius: 4px 16px 8px 24px; box-shadow: 6px 6px 0px 0px #002201; padding: 1.5rem; background: #ecffe2; transition: box-shadow 0.2s ease, transform 0.2s ease; } .ds-blog-card:hover { transform: scale(1.02); box-shadow: 8px 8px 0px 0px #002201; } .ds-blog-card__meta { display: flex; justify-content: space-between; margin-bottom: 1rem; font-family: 'Space Mono', monospace; font-size: 10px; font-weight: bold; } .ds-blog-card__tag { border: 2px solid #002201; padding: 0.125rem 0.5rem; box-shadow: 2px 2px 0px 0px #002201; } .ds-blog-card__title { font-family: 'Bricolage Grotesque Variable', sans-serif; font-weight: 900; font-size: 1.25rem; text-transform: uppercase; margin: 0 0 0.5rem; } .ds-blog-card__desc { font-family: 'Fira Sans', sans-serif; font-size: 0.875rem; color: rgba(0,34,1,0.9); margin: 0 0 1rem; } .ds-blog-card__footer { display: flex; justify-content: space-between; border-top: 2px dashed #002201; padding-top: 0.75rem; font-family: 'Space Mono', monospace; font-size: 0.75rem; }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "search-input",
+      "description": "Pill-shaped search field for the compostable-food lookup widget.",
+      "html": "<div class=\"ds-search-input\"><svg class=\"ds-search-input__icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#002201\" stroke-width=\"2.5\"><circle cx=\"11\" cy=\"11\" r=\"8\"></circle><line x1=\"21\" y1=\"21\" x2=\"16.65\" y2=\"16.65\"></line></svg><input class=\"ds-search-input__field\" type=\"text\" placeholder=\"¿Qué quieres darle a tus lombrices?\" /></div>",
+      "css": ".ds-search-input { position: relative; display: flex; align-items: center; border: 4px solid #002201; border-radius: 9999px; background: #ecffe2; overflow: hidden; } .ds-search-input__icon { position: absolute; left: 1rem; width: 24px; height: 24px; } .ds-search-input__field { width: 100%; border: none; background: transparent; padding: 1rem 1rem 1rem 3.5rem; font-family: 'Bricolage Grotesque Variable', sans-serif; font-size: 1.25rem; color: #002201; } .ds-search-input__field:focus { outline: none; } .ds-search-input:focus-within { box-shadow: 0 0 0 4px #2d6a4f; border-color: #0f5238; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Organic-Brutalism Eco-Zine",
+    "overview": "vermi.cl looks like a handcrafted scrapbook a knowledgeable friend put together on their kitchen table: chunky ink-black borders, hard sticker-paper shadows, and asymmetric organic corners, all slightly off-kilter, like a page taped in at a jaunty angle. It pairs a loud, no-blur brutalist construction (thick borders, offset hard shadows, uppercase black display type) with a soft, spring-green nature palette and rounded, uneven corners — brutalism's confidence without brutalism's coldness. Every surface reads as cut from paper and stuck down by hand, never as a glowing, floating SaaS panel.\n\nThis system explicitly rejects the sterile corporate eco-brand look (muted sage-and-cream palettes, stock nature photography, soft ambient shadows), the academic/scientific-journal look (dense, dry, personality-free layouts), and the generic AI-template landing page (gradient text, tiny tracked eyebrows on every section, hero-metric blocks). Where those systems soften and recede, vermi.cl commits: hard black outlines, saturated spring green, and playful rotation on nearly every card and badge.",
+    "keyCharacteristics": [
+      "Thick, uniform black ink borders (#002201) around nearly every contained element",
+      "Hard offset shadows with zero blur, evoking a paper cutout stuck slightly proud of the page",
+      "Asymmetric, organic border-radius values instead of uniform rounded corners",
+      "Small rotation (rotate-1 to rotate-[-3deg]) applied to cards, badges, and stickers for a hand-placed feel",
+      "Uppercase, black-weight display type for headlines; monospace for labels, badges, and metadata"
+    ],
+    "rules": [
+      { "name": "The One-Ink Rule", "body": "Every border, hard shadow, and outline in the system is #002201 (Deep Forest Ink) — never a lighter gray or the brand green. This single consistent ink color is what makes disparate colored surfaces read as one cohesive scrapbook.", "section": "colors" },
+      { "name": "The Shout-Then-Explain Rule", "body": "Headlines are always uppercase and black-weight; body text is always sentence case and regular weight. Never mix the two — a headline in sentence case or body text in caps breaks the zine's cover-vs-caption logic.", "section": "typography" },
+      { "name": "The Flatten-On-Press Rule", "body": "Every interactive hard-shadow element must animate its shadow toward 0 0 0 0 and translate by the exact shadow offset on :active. A button that only changes color on press, without flattening its shadow, breaks the paper-cutout illusion.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use Deep Forest Ink (#002201) for every hard border and hard shadow — never substitute a lighter gray or a brand color.",
+      "Do apply small, varied rotation (rotate-1 to rotate-[-3deg]) to cards, badges, and stickers so the layout reads as hand-placed, not grid-perfect.",
+      "Do use asymmetric organic border-radius values instead of a single uniform corner radius.",
+      "Do flatten an element's shadow to 0 0 0 0 and translate it by the shadow's offset on :active, so presses feel physically real.",
+      "Do keep headlines uppercase/black-weight and body copy sentence-case/regular — the contrast is the hierarchy.",
+      "Do use the spring-green (#ecffe2) surface as a committed, saturated background choice, not a muted neutral."
+    ],
+    "donts": [
+      "Don't build a corporate or clinical eco-brand look: no muted sage-and-cream palette, no stock nature photography, no soft ambient drop-shadows standing in for the hard-shadow system.",
+      "Don't produce an academic/scientific-journal layout: no dense, dry, personality-free type blocks with no rotation, stickers, or organic shape.",
+      "Don't reach for generic AI-template landing-page patterns: no gradient text, no tiny tracked uppercase eyebrows above every section, no hero-metric/stat-tile blocks.",
+      "Don't use a soft blurred box-shadow anywhere; every shadow in this system is a hard, zero-blur offset.",
+      "Don't use a uniform border-radius on a primary card, button, or badge — always reach for one of the organic/brutalism radius values first.",
+      "Don't leave a hard-shadow element static on hover/press; a card or button that never lifts or flattens looks broken, not restrained."
+    ]
+  }
+}
