@@ -93,3 +93,15 @@ export function formatBlogDate(date: Date) {
     })
     .toUpperCase();
 }
+
+// Staggered rotation classes used for the scrapbook look across card grids.
+export const BLOG_CARD_ROTATIONS = [
+  "rotate-[-1.5deg]",
+  "rotate-[1deg]",
+  "rotate-[-0.5deg]",
+  "rotate-[0.5deg]",
+] as const;
+
+export function getBlogCardRotation(index: number): string {
+  return BLOG_CARD_ROTATIONS[index % BLOG_CARD_ROTATIONS.length];
+}

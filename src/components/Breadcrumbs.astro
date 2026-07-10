@@ -14,7 +14,13 @@ const translations: Record<string, string> = {
   alimentos: "Alimentos",
 };
 
-const items = [
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+  isLast: boolean;
+}
+
+const items: BreadcrumbItem[] = [
   {
     label: "Inicio",
     href: "/",
@@ -22,14 +28,16 @@ const items = [
   },
 ];
 
+const nonLinkSegments = new Set(["page", "tags"]);
+
 let accumulatedPath = "";
 segments.forEach((segment, index) => {
   accumulatedPath += `/${segment}`;
   const isLast = index === segments.length - 1;
-  
+
   // Format the label
   let label = translations[segment] || segment;
-  
+
   // If it's a known slug or tag, we can humanize it
   if (!translations[segment]) {
     label = segment
@@ -37,11 +45,17 @@ segments.forEach((segment, index) => {
       .replace(/^[a-z]/, (m) => m.toUpperCase());
   }
 
-  // Avoid adding '/page' or similar pagination segments to breadcrumbs if they exist
-  if (segment !== "page") {
+  // Skip purely structural segments (e.g. pagination), and render segments
+  // without an index page (e.g. /blog/tags/) as plain text.
+  if (!nonLinkSegments.has(segment)) {
     items.push({
       label,
       href: accumulatedPath + "/",
+      isLast,
+    });
+  } else if (segment === "tags") {
+    items.push({
+      label,
       isLast,
     });
   }
@@ -54,13 +68,13 @@ segments.forEach((segment, index) => {
       {items.map((item, idx) => (
         <li class="flex items-center gap-2" role="listitem">
           {idx > 0 && <span class="text-secondary select-none">/</span>}
-          {item.isLast ? (
-            <span class="text-on-surface-variant line-clamp-1 bg-surface-container px-2 py-0.5 border border-on-surface organic-brutalism" aria-current="page">
+          {item.isLast || !item.href ? (
+            <span class={item.isLast ? "text-on-surface-variant line-clamp-1 bg-surface-container px-2 py-0.5 border border-on-surface organic-brutalism" : "text-on-surface-variant line-clamp-1"} aria-current={item.isLast ? "page" : undefined}>
               {item.label}
             </span>
           ) : (
-            <a 
-              href={item.href} 
+            <a
+              href={item.href}
               class="text-primary hover:text-secondary underline decoration-2 underline-offset-2 transition-colors hover:translate-x-[-1px] hover:translate-y-[-1px] active:translate-x-0 active:translate-y-0 inline-block"
             >
               {item.label}

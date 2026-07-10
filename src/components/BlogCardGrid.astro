@@ -1,0 +1,32 @@
+---
+// BlogCardGrid.astro - Reusable scrapbook-style grid of blog cards
+import BlogCard from "./BlogCard.astro";
+import type { BlogPost } from "../utils/blog";
+import { getBlogCardRotation } from "../utils/blog-presentation";
+
+interface Props {
+  posts: BlogPost[];
+  prioritizeFirst?: boolean;
+}
+
+const { posts, prioritizeFirst = false } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  {posts.map((post, idx) => (
+    <BlogCard
+      title={post.data.title}
+      description={post.data.description}
+      slug={post.id}
+      pubDate={post.data.pubDate}
+      category={post.data.category}
+      difficulty={post.data.difficulty}
+      readingTime={post.readingTime}
+      tags={post.data.tags}
+      rotation={getBlogCardRotation(idx)}
+      heroImage={post.data.heroImage}
+      loading={prioritizeFirst && idx === 0 ? "eager" : "lazy"}
+      fetchpriority={prioritizeFirst && idx === 0 ? "high" : "auto"}
+    />
+  ))}
+</div>

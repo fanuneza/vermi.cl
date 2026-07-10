@@ -2,7 +2,7 @@
 // index.astro - vermi.cl Homepage
 import BaseLayout from '../layouts/BaseLayout.astro';
 import IsItCompostable from '../components/IsItCompostable.astro';
-import BlogCard from '../components/BlogCard.astro';
+import BlogCardGrid from '../components/BlogCardGrid.astro';
 import CategoryCard from '../components/CategoryCard.astro';
 import { getLatestPosts } from '../utils/blog';
 import { faWorm, faCarrot, faBookOpen, faAppleWhole, faSkullCrossbones } from '@fortawesome/free-solid-svg-icons';
@@ -61,7 +61,7 @@ const heroSrcSet = optimizedHero.srcSet.values
     
     <div class="lg:col-span-6 flex flex-col items-start gap-6 relative z-10">
       <!-- Badge -->
-      <div class="bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md px-3 py-1 border-3 border-on-surface shadow-[4px_4px_0px_0px_#002201] rotate-[-3deg] uppercase tracking-wider sticker-badge inline-block">
+      <div class="bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md px-3 py-1 border-3 border-on-surface shadow-hard-sm rotate-[-3deg] uppercase tracking-wider badge--sticker inline-block">
         Aprende hoy
       </div>
       
@@ -77,11 +77,11 @@ const heroSrcSet = optimizedHero.srcSet.values
       </p>
       
       <div class="flex flex-wrap gap-4 mt-4">
-        <a href="/blog/" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center gap-2 no-underline">
+        <a href="/blog/" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn--brutal flex items-center gap-2 no-underline">
           Explora nuestro blog
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
-        <a href="#buscador-alimentos" class="bg-secondary-container text-on-secondary-container font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center gap-2 rotate-1 no-underline">
+        <a href="#buscador-alimentos" class="bg-secondary-container text-on-secondary-container font-headline text-lg px-6 py-3 rounded-lg btn--brutal flex items-center gap-2 rotate-1 no-underline">
           ¿Qué pueden comer? 🪱
         </a>
       </div>
@@ -102,7 +102,7 @@ const heroSrcSet = optimizedHero.srcSet.values
           quality="mid"
         />
         <!-- Decorative Floating Elements -->
-        <div class="absolute -bottom-2 -right-2 bg-surface-dim p-4 border-4 border-on-surface organic-shape-2 shadow-[4px_4px_0px_0px_#002201] rotate-[15deg]">
+        <div class="absolute -bottom-2 -right-2 bg-surface-dim p-4 border-4 border-on-surface organic-shape-2 shadow-hard-sm rotate-[15deg]">
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faCarrot.icon[0]} ${faCarrot.icon[1]}`} fill="currentColor" class="text-primary">
             {carrotPaths.map((d) => <path d={d} />)}
           </svg>
@@ -196,26 +196,6 @@ const heroSrcSet = optimizedHero.srcSet.values
       </a>
     </div>
     
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {sortedPosts.map((post, idx) => {
-        // Stagger rotations for scrapbook look
-        const rotations = ["rotate-[-1.5deg]", "rotate-[1deg]", "rotate-[-0.5deg]"];
-        const rot = rotations[idx % rotations.length];
-        return (
-          <BlogCard
-            title={post.data.title}
-            description={post.data.description}
-            slug={post.id}
-            pubDate={post.data.pubDate}
-            category={post.data.category}
-            difficulty={post.data.difficulty}
-            readingTime={post.readingTime}
-            tags={post.data.tags}
-            rotation={rot}
-            heroImage={post.data.heroImage}
-          />
-        );
-      })}
-    </div>
+    <BlogCardGrid posts={sortedPosts} />
   </section>
 </BaseLayout>

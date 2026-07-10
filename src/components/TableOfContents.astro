@@ -11,8 +11,8 @@ interface Props {
 const { tableOfContents = [], variant = "desktop" } = Astro.props;
 
 const wrapperClass = variant === "mobile" 
-  ? "blog-toc lg:hidden bg-tertiary-fixed border-3 border-on-surface p-6 mb-8 shadow-hard organic-brutalism rotate-[1deg]"
-  : "blog-toc hidden lg:block bg-tertiary-fixed border-3 border-on-surface p-6 shadow-hard organic-brutalism rotate-[1deg]";
+  ? "toc lg:hidden bg-tertiary-fixed border-3 border-on-surface p-6 mb-8 shadow-hard organic-brutalism rotate-[1deg]"
+  : "toc hidden lg:block bg-tertiary-fixed border-3 border-on-surface p-6 shadow-hard organic-brutalism rotate-[1deg]";
 
 const titleClass = variant === "mobile"
   ? "font-headline text-xl font-bold text-on-surface mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase"

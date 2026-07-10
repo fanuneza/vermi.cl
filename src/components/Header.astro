@@ -39,7 +39,7 @@ const drawerLinks = [
   }
 ];
 ---
-<nav class="bg-surface dark:bg-surface-container w-full sticky top-0 z-50 border-b-4 border-on-surface shadow-[6px_6px_0px_0px_#002201] flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-full">
+<nav class="bg-surface dark:bg-surface-container w-full sticky top-0 z-50 border-b-4 border-on-surface shadow-hard flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-full">
   <button id="menu-trigger" aria-label="Abrir menú" class="md:hidden text-primary hover:scale-105 active:scale-95 transition-transform flex items-center justify-center p-2 cursor-pointer">
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 448 512" fill="currentColor">
       <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/>
@@ -47,7 +47,7 @@ const drawerLinks = [
   </button>
 
   <a href="/" class="logo-link no-underline absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-    <div class="font-headline text-headline-md font-black text-secondary border-2 border-on-surface px-2 py-1 rotate-[-2deg] bg-surface-container-low shadow-[4px_4px_0px_0px_#002201] transition-transform hover:rotate-0">
+    <div class="font-headline text-headline-md font-black text-secondary border-2 border-on-surface px-2 py-1 rotate-[-2deg] bg-surface-container-low shadow-hard-sm transition-transform hover:rotate-0">
       vermi.cl
     </div>
   </a>
@@ -71,7 +71,7 @@ const drawerLinks = [
 
 <div id="drawer-overlay" class="fixed inset-0 bg-[#002201]/50 z-[100] transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
-<aside id="nav-drawer" class="fixed top-0 left-0 h-full w-[280px] max-w-full bg-[#ecffe2] z-[101] transform -translate-x-full transition-transform duration-300 ease-in-out border-r-4 border-on-surface shadow-[6px_6px_0px_0px_#002201] flex flex-col pointer-events-auto">
+<aside id="nav-drawer" class="fixed top-0 left-0 h-full w-[280px] max-w-full bg-[#ecffe2] z-[101] transform -translate-x-full transition-transform duration-300 ease-in-out border-r-4 border-on-surface shadow-hard flex flex-col pointer-events-auto">
   <div class="p-5 flex justify-between items-start border-b-4 border-on-surface/20 border-dashed bg-surface-container">
     <div class="font-headline text-2xl font-black text-secondary rotate-[-3deg] border-2 border-on-surface bg-surface-container-highest px-3 py-1 shadow-hard-sm inline-block">
       vermi.cl
@@ -207,6 +207,13 @@ const drawerLinks = [
 </div>
 
 <script>
+  import { initNewsletterForm } from "../utils/newsletter-form-handlers";
+
+  const { reset: resetNewsletterState, setLoading: setNewsletterLoading } =
+    initNewsletterForm({
+      containerSelector: ".ml-subscribe-form-43289892",
+    });
+
   const trigger = document.getElementById("menu-trigger");
   const close = document.getElementById("close-drawer");
   const drawer = document.getElementById("nav-drawer");
@@ -216,97 +223,6 @@ const drawerLinks = [
   const closeModal = document.getElementById("close-modal");
   const desktopJoin = document.getElementById("join-trigger-desktop");
   const mobileJoin = document.getElementById("join-trigger-mobile");
-  const newsletterForm = document.getElementById(
-    "newsletter-form",
-  ) as HTMLFormElement | null;
-  const newsletterSubmit = newsletterForm?.querySelector(
-    ".newsletter-submit",
-  ) as HTMLButtonElement | null;
-  const newsletterSubmitLabel = newsletterSubmit?.querySelector(
-    ".newsletter-submit-label",
-  ) as HTMLSpanElement | null;
-  const newsletterContainer = document.querySelector(
-    ".ml-subscribe-form-43289892",
-  ) as HTMLElement | null;
-  const newsletterFormRow = newsletterContainer?.querySelector(
-    ".row-form",
-  ) as HTMLElement | null;
-  const newsletterErrorRow = newsletterContainer?.querySelector(
-    ".row-error",
-  ) as HTMLElement | null;
-  const newsletterSuccessRow = newsletterContainer?.querySelector(
-    ".row-success",
-  ) as HTMLElement | null;
-
-  const setNewsletterLoading = (isLoading: boolean) => {
-    if (!newsletterSubmit || !newsletterSubmitLabel) return;
-    newsletterSubmit.disabled = isLoading || !newsletterForm;
-    newsletterSubmit.setAttribute("aria-busy", isLoading ? "true" : "false");
-    newsletterSubmitLabel.textContent = isLoading
-      ? "Enviando..."
-      : "Suscribirse ✉";
-  };
-
-  const resetNewsletterState = () => {
-    newsletterErrorRow?.classList.add("hidden");
-    newsletterSuccessRow?.classList.add("hidden");
-    newsletterFormRow?.classList.remove("hidden");
-    setNewsletterLoading(false);
-  };
-
-  const showNewsletterSuccess = () => {
-    newsletterErrorRow?.classList.add("hidden");
-    newsletterFormRow?.classList.add("hidden");
-    newsletterSuccessRow?.classList.remove("hidden");
-    setNewsletterLoading(false);
-    newsletterForm?.reset();
-  };
-
-  const showNewsletterError = () => {
-    newsletterSuccessRow?.classList.add("hidden");
-    newsletterErrorRow?.classList.remove("hidden");
-    newsletterFormRow?.classList.remove("hidden");
-    setNewsletterLoading(false);
-  };
-
-  newsletterForm?.addEventListener("submit", async (event) => {
-    event.preventDefault();
-    if (!newsletterForm || !newsletterForm.action) {
-      showNewsletterError();
-      return;
-    }
-
-    setNewsletterLoading(true);
-    newsletterErrorRow?.classList.add("hidden");
-
-    try {
-      const response = await fetch(newsletterForm.action, {
-        method: "POST",
-        body: new FormData(newsletterForm),
-        headers: {
-          Accept: "application/json",
-        },
-      });
-
-      const responseText = await response.text();
-      let payload: { success?: boolean } | null = null;
-
-      try {
-        payload = JSON.parse(responseText) as { success?: boolean };
-      } catch {
-        payload = null;
-      }
-
-      if (response.ok && payload?.success) {
-        showNewsletterSuccess();
-        return;
-      }
-
-      showNewsletterError();
-    } catch {
-      showNewsletterError();
-    }
-  });
 
   if (trigger && close && drawer && overlay) {
     const openDrawer = () => {

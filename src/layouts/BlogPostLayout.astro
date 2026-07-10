@@ -109,7 +109,7 @@ if (bottomRelatedPosts.length < maxBottom) {
   description={description} 
   ogImage={heroImage?.src} 
   schema={articleSchema}
-  mainClass="blog-post-main max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap flex-grow w-full box-border"
+  mainClass="blog-layout__main max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap flex-grow w-full box-border"
   extraLinks={[{ rel: 'alternate', type: 'text/markdown', href: markdownAlternateHref }]}
   articleMeta={{
     publishedTime: pubDate.toISOString(),
@@ -118,22 +118,22 @@ if (bottomRelatedPosts.length < maxBottom) {
   }}
 >
   <!-- Main Grid -->
-  <div class="blog-post-grid grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full">
+  <div class="blog-layout__grid grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full">
     
     <!-- Article Content (Main Column) -->
-    <article class="blog-post-article lg:col-span-8 space-y-8">
+    <article class="blog-layout__article lg:col-span-8 space-y-8">
       <!-- Header -->
       <header class="space-y-6">
         <div class="flex flex-wrap gap-3">
-          <span class={`sticker-badge font-label-md text-label-md px-3 py-1 rotate-[-1deg] ${meta.tagBg} ${meta.tagText}`}>
+          <span class={`badge--sticker font-label-md text-label-md px-3 py-1 rotate-[-1deg] ${meta.tagBg} ${meta.tagText}`}>
             {meta.label}
           </span>
-          <span class="sticker-badge bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md px-3 py-1 rotate-[2deg]">
+          <span class="badge--sticker bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md px-3 py-1 rotate-[2deg]">
             {formattedDate}
           </span>
         </div>
         
-        <h1 class="blog-post-title font-headline text-4xl md:text-5xl lg:text-6xl text-on-background font-black leading-tight tracking-tighter uppercase m-0 mb-6">
+        <h1 class="blog-layout__title font-headline text-4xl md:text-5xl lg:text-6xl text-on-background font-black leading-tight tracking-tighter uppercase m-0 mb-6">
           {title}
         </h1>
         
@@ -175,7 +175,7 @@ if (bottomRelatedPosts.length < maxBottom) {
       </figure>
 
       <!-- Content Body -->
-      <div class="editorial-body merriweather-body bg-surface-container-lowest p-6 md:p-8 border-2 border-on-surface shadow-hard organic-brutalism-alt relative">
+      <div class="prose merriweather-body bg-surface-container-lowest p-6 md:p-8 border-2 border-on-surface shadow-hard organic-brutalism-alt relative">
         <!-- Decorative tape sticker -->
         <div class="absolute -top-3 left-10 w-20 h-6 bg-secondary-fixed/80 border border-on-surface rotate-[-5deg]"></div>
         
@@ -190,7 +190,7 @@ if (bottomRelatedPosts.length < maxBottom) {
     </article>
 
     <!-- Sidebar (Secondary Column) -->
-    <aside class="blog-post-sidebar lg:col-span-4 space-y-8 mt-8 lg:mt-0">
+    <aside class="blog-layout__sidebar lg:col-span-4 space-y-8 mt-8 lg:mt-0">
       <!-- Table of Contents -->
       {tableOfContents.length > 0 && (
         <TableOfContents tableOfContents={tableOfContents} variant="desktop" />
@@ -330,74 +330,5 @@ if (bottomRelatedPosts.length < maxBottom) {
       });
     }
 
-    // Sticky sidebar scroll behavior to handle tall sidebars gracefully
-    const sidebar = document.querySelector('.blog-post-sidebar');
-    const sidebarParent = sidebar ? sidebar.parentElement : null;
-    if (sidebar instanceof HTMLElement && sidebarParent instanceof HTMLElement) {
-      let lastScrollTop = window.scrollY || document.documentElement.scrollTop;
-      let isStuckToTop = true;
-      let isStuckToBottom = false;
-      
-      // Ensure positioning context on the parent grid
-      sidebarParent.style.position = 'relative';
-
-      const handleStickyScroll = () => {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const viewportHeight = window.innerHeight;
-        const sidebarHeight = sidebar.offsetHeight;
-        const scrollDelta = scrollTop - lastScrollTop;
-        
-        // S = sidebarHeight, H = viewportHeight. Top offset is 6rem (96px). Bottom margin 32px.
-        // If it fits in the viewport, let it behave like standard sticky.
-        if (sidebarHeight < viewportHeight - 128) {
-          sidebar.style.position = 'sticky';
-          sidebar.style.top = '6rem';
-          isStuckToTop = true;
-          isStuckToBottom = false;
-          lastScrollTop = scrollTop;
-          return;
-        }
-        
-        const rect = sidebar.getBoundingClientRect();
-        const parentRect = sidebarParent.getBoundingClientRect();
-        
-        if (scrollDelta > 0) {
-          // Scrolling down: stick to bottom once bottom is reached
-          if (isStuckToTop) {
-            isStuckToTop = false;
-            const currentOffset = rect.top - parentRect.top;
-            sidebar.style.position = 'relative';
-            sidebar.style.top = `${currentOffset}px`;
-          }
-          
-          const targetTop = viewportHeight - sidebarHeight - 32;
-          if (rect.bottom <= viewportHeight - 32) {
-            sidebar.style.position = 'sticky';
-            sidebar.style.top = `${targetTop}px`;
-            isStuckToBottom = true;
-          }
-        } else if (scrollDelta < 0) {
-          // Scrolling up: stick to top once top is reached
-          if (isStuckToBottom) {
-            isStuckToBottom = false;
-            const currentOffset = rect.top - parentRect.top;
-            sidebar.style.position = 'relative';
-            sidebar.style.top = `${currentOffset}px`;
-          }
-          
-          if (rect.top >= 96) {
-            sidebar.style.position = 'sticky';
-            sidebar.style.top = '96px';
-            isStuckToTop = true;
-          }
-        }
-        
-        lastScrollTop = scrollTop;
-      };
-
-      window.addEventListener('scroll', handleStickyScroll, { passive: true });
-      window.addEventListener('resize', handleStickyScroll, { passive: true });
-      handleStickyScroll();
-    }
   </script>
 </BaseLayout>

@@ -8,7 +8,6 @@ export async function GET() {
       name: item.data.name,
       category: item.data.category,
       status: item.data.status,
-      chileanContext: item.data.chileanContext,
       instructions: item.data.instructions,
       nutrition: item.data.nutrition,
       keywords: item.data.keywords,

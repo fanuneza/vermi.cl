@@ -3,6 +3,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { getBlogPosts } from '../../utils/blog';
+import { getBlogCardRotation } from '../../utils/blog-presentation';
 
 const sortedPosts = await getBlogPosts();
 
@@ -56,35 +57,31 @@ const archiveSchema = buildSchemaGraph({
 
     <!-- Articles Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-      {sortedPosts.map((post, idx) => {
-        const rotations = ["rotate-[-1.5deg]", "rotate-[1deg]", "rotate-[-0.5deg]", "rotate-[0.5deg]"];
-        const rot = rotations[idx % rotations.length];
-        return (
-          <div class="post-card-wrapper" data-category={post.data.category}>
-            <BlogCard
-              title={post.data.title}
-              description={post.data.description}
-              slug={post.id}
-              pubDate={post.data.pubDate}
-              category={post.data.category}
-              difficulty={post.data.difficulty}
-              readingTime={post.readingTime}
-              tags={post.data.tags}
-              rotation={rot}
-              heroImage={post.data.heroImage}
-              loading={idx === 0 ? "eager" : "lazy"}
-              fetchpriority={idx === 0 ? "high" : "auto"}
-            />
-          </div>
-        );
-      })}
+      {sortedPosts.map((post, idx) => (
+        <div class="post-card-wrapper" data-category={post.data.category}>
+          <BlogCard
+            title={post.data.title}
+            description={post.data.description}
+            slug={post.id}
+            pubDate={post.data.pubDate}
+            category={post.data.category}
+            difficulty={post.data.difficulty}
+            readingTime={post.readingTime}
+            tags={post.data.tags}
+            rotation={getBlogCardRotation(idx)}
+            heroImage={post.data.heroImage}
+            loading={idx === 0 ? "eager" : "lazy"}
+            fetchpriority={idx === 0 ? "high" : "auto"}
+          />
+        </div>
+      ))}
     </div>
 
     <!-- Empty State -->
     <div id="no-posts-message" style="display: none;" class="text-center p-12 max-w-xl mx-auto border-4 border-on-surface shadow-hard bg-white organic-brutalism w-full box-border">
       <h3 class="font-headline text-2xl font-black text-on-surface uppercase mb-3">No se encontraron guías</h3>
       <p class="font-body text-base text-on-surface-variant mb-6">Pronto publicaremos más artículos sobre esta temática. Mientras tanto, explora las demás categorías.</p>
-      <a href="/blog/" id="reset-filter-btn" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn-brutal flex items-center justify-center gap-2 max-w-xs mx-auto no-underline">
+      <a href="/blog/" id="reset-filter-btn" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn--brutal flex items-center justify-center gap-2 max-w-xs mx-auto no-underline">
         Ver todas las guías
       </a>
     </div>
