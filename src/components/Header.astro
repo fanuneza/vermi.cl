@@ -47,7 +47,7 @@ const drawerLinks = [
   </button>
 
   <a href="/" class="logo-link no-underline absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-    <div class="font-headline text-headline-md font-black text-secondary border-2 border-on-surface px-2 py-1 rotate-[-2deg] bg-surface-container-low shadow-hard-sm transition-transform hover:rotate-0">
+    <div class="font-headline text-2xl font-black text-secondary border-2 border-on-surface px-2 py-1 rotate-[-2deg] bg-surface-container-low shadow-hard-sm transition-transform hover:rotate-0">
       vermi.cl
     </div>
   </a>
@@ -97,7 +97,7 @@ const drawerLinks = [
             </div>
           </>
         ) : (
-          <div class="relative bg-transparent hover:bg-surface-container px-4 py-2 border-b-4 border-transparent hover:border-on-surface transition-all rounded-sm flex items-center gap-3 text-on-surface">
+          <div class="relative bg-transparent hover:bg-surface-container px-4 py-2 border-b-4 border-transparent hover:border-on-surface transition-all flex items-center gap-3 text-on-surface">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox={link.viewBox} fill="currentColor" class={link.iconClass}>
               <path d={link.iconPath}/>
             </svg>
@@ -144,7 +144,7 @@ const drawerLinks = [
                 tooldescription="Suscribe una dirección de correo electrónico al boletín informativo mensual de vermi.cl."
               >
                 <div class="flex flex-col gap-1.5">
-                  <label class="font-label-md text-[10px] uppercase tracking-wider text-primary-deep" for="modal-email">Newsletter mensual</label>
+                  <label class="font-label-md text-label-md uppercase tracking-wider text-primary-deep" for="modal-email">Newsletter mensual</label>
                   <input
                     type="email"
                     id="modal-email"
@@ -177,7 +177,7 @@ const drawerLinks = [
               class="row-error hidden border-2 border-on-surface bg-error-tint p-4 shadow-hard-sm organic-brutalism-alt"
               aria-live="polite"
             >
-              <p class="m-0 font-label-md text-[10px] uppercase tracking-[0.22em] text-secondary">
+              <p class="m-0 font-label-md text-label-md uppercase tracking-[0.22em] text-secondary">
                 Algo falló
               </p>
               <p class="m-0 mt-2 font-body text-sm leading-relaxed text-on-surface-variant">
@@ -189,7 +189,7 @@ const drawerLinks = [
               class="row-success hidden border-2 border-on-surface bg-success-tint p-4 shadow-hard-sm organic-brutalism-alt"
               aria-live="polite"
             >
-              <p class="m-0 font-label-md text-[10px] uppercase tracking-[0.22em] text-primary">
+              <p class="m-0 font-label-md text-label-md uppercase tracking-[0.22em] text-primary">
                 Confirmado
               </p>
               <h3 class="m-0 mt-2 font-headline text-xl font-black uppercase text-on-surface">

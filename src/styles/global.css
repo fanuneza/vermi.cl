@@ -76,6 +76,14 @@
   --font-mono: "Space Mono", monospace;
   --font-serif: "Merriweather", serif;
 
+  /* Role-scale aliases matching DESIGN.md's Display/Headline/Body/Label hierarchy */
+  --font-headline-md: "Bricolage Grotesque Variable", sans-serif;
+  --font-body-md: "Fira Sans", sans-serif;
+  --font-label-md: "Space Mono", monospace;
+  --text-headline-md: clamp(1.55rem, 1.2rem + 1.05vw, 2.1rem);
+  --text-body-md: 1rem;
+  --text-label-md: 0.75rem;
+
   /* Semantic z-index scale - never reach for an arbitrary literal below */
   --z-index-behind: -1;
   --z-index-sticky: 50;
@@ -123,46 +131,51 @@ html {
   border-radius: 12px 4px 20px 8px;
 }
 
-/* Sticker Badges */
-.badge--sticker {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  border: 3px solid #002201;
-  box-shadow: 4px 4px 0px 0px #002201;
-  padding: 0.25rem 0.75rem;
-  background-color: #ffffff;
-  color: #002201;
-  user-select: none;
-  border-radius: 0;
-}
+/* Sticker Badges + Buttons live in the components layer so co-located Tailwind
+   color/border utilities (bg-primary, text-on-primary, border-2, etc.) can
+   override these defaults. Unlayered CSS always beats layered utilities
+   regardless of specificity, so without this these overrides are silently
+   ignored and every badge/button renders its white/ink default. */
+@layer components {
+  .badge--sticker {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: 3px solid #002201;
+    box-shadow: 4px 4px 0px 0px #002201;
+    padding: 0.25rem 0.75rem;
+    background-color: #ffffff;
+    color: #002201;
+    user-select: none;
+    border-radius: 0;
+  }
 
-/* Buttons */
-.btn--brutal {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border: 2px solid #002201;
-  box-shadow: 4px 4px 0px 0px #002201;
-  font-family: var(--font-headline);
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-  background-color: #ffffff;
-  color: #002201;
-  transition: all 0.1s ease;
-  user-select: none;
-}
-.btn--brutal:hover {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px 0px #002201;
-}
-.btn--brutal:active {
-  transform: translate(4px, 4px);
-  box-shadow: 0px 0px 0px 0px #002201;
+  .btn--brutal {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #002201;
+    box-shadow: 4px 4px 0px 0px #002201;
+    font-family: var(--font-headline);
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #ffffff;
+    color: #002201;
+    transition: all 0.1s ease;
+    user-select: none;
+  }
+  .btn--brutal:hover {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px 0px #002201;
+  }
+  .btn--brutal:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0px 0px 0px 0px #002201;
+  }
 }
 
 /* Torn border */

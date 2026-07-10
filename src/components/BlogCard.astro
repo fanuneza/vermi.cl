@@ -60,7 +60,7 @@ const meta = blogCardCategoryMeta[category];
         </div>
       )}
       <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
-        <span class={`font-mono text-[10px] font-bold border-2 border-on-background px-2 py-0.5 shadow-hard-xs ${meta.tagBg} ${meta.tagText}`}>
+        <span class={`font-mono text-label-md font-bold border-2 border-on-background px-2 py-0.5 shadow-hard-xs ${meta.tagBg} ${meta.tagText}`}>
           {meta.label}
         </span>
         <span class="font-mono text-xs font-bold text-on-background">{formattedDate}</span>
@@ -77,7 +77,7 @@ const meta = blogCardCategoryMeta[category];
 
       <div class="flex justify-between items-center border-t-2 border-dashed border-on-background pt-3 mt-auto">
         {readingTime && <span class="font-mono text-xs text-on-background/80">{readingTime}</span>}
-        <span class="font-mono text-[10px] font-bold border-2 border-on-background px-2 py-0.5 bg-background text-on-background">
+        <span class="font-mono text-label-md font-bold border-2 border-on-background px-2 py-0.5 bg-background text-on-background">
           {difficulty}
         </span>
       </div>

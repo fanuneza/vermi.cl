@@ -1,8 +1,8 @@
 ---
 // IsItCompostable.astro - The "¿Las lombrices pueden comer esto?" Interactive Widget
 ---
-<div id="buscador-alimentos" class="relative w-full max-w-4xl bg-surface-container-high border-4 border-on-background organic-shape-3 p-6 md:p-12 shadow-hard my-8 z-10 box-border mx-auto">
-  <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-surface text-on-background font-headline text-sm md:text-2xl px-4 md:px-6 py-2 border-4 border-on-background shadow-hard-sm rotate-[-2deg] font-black w-[90%] md:w-auto text-center md:whitespace-nowrap uppercase">
+<div id="buscador-alimentos" class="relative w-full max-w-4xl bg-surface-container-high border-2 border-on-background organic-shape-3 p-6 md:p-12 shadow-hard-sm my-8 z-10 box-border mx-auto">
+  <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-surface text-on-background font-headline text-sm md:text-lg px-4 md:px-6 py-2 border-2 border-on-background shadow-hard-xs rotate-[-2deg] font-black w-[90%] md:w-auto text-center md:whitespace-nowrap uppercase">
     ¿Las lombrices pueden comer esto?
   </div>
 
@@ -21,20 +21,19 @@
     </div>
 
     <!-- Suggestion Tags -->
-    <div class="flex flex-wrap justify-center gap-3 mt-4">
+    <div class="flex flex-wrap justify-center items-center gap-3 mt-4">
       <button class="min-h-11 bg-primary-container text-on-primary-container font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-hard-xs hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs transition-all rounded-sm rotate-1 btn-suggestion" data-food="plátano">Plátano 🍌</button>
-      <button class="min-h-11 bg-safe-badge/20 text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-hard-xs hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs transition-all rounded-sm rotate-[-1deg] btn-suggestion" data-food="palta">Palta 🥑</button>
       <button class="min-h-11 bg-mustard text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-hard-xs hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs transition-all rounded-sm rotate-2 btn-suggestion" data-food="café">Borra de café ☕</button>
       <button class="min-h-11 bg-warning-badge text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-hard-xs hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs transition-all rounded-sm rotate-[-2deg] btn-suggestion" data-food="cítricos">Cítricos 🍋</button>
       <button class="min-h-11 bg-danger-badge/10 text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-hard-xs hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs transition-all rounded-sm rotate-1 btn-suggestion" data-food="cebolla">Cebolla 🧅</button>
-      <button class="min-h-11 bg-secondary-container text-on-secondary-container font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-hard-xs hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs transition-all rounded-sm rotate-[-1deg] btn-suggestion" data-food="papa">Papa 🥔</button>
+      <a href="/blog/?category=Alimentación" class="min-h-11 flex items-center font-mono text-xs font-bold px-4 py-3 border-2 border-dashed border-on-background/50 text-on-background/70 hover:text-on-background hover:border-on-background transition-colors rounded-sm no-underline">Ver más alimentos →</a>
     </div>
   </div>
 
   <!-- Results Displays -->
   <div id="status-display-card" class="hidden w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-success-tint mt-6 box-border" aria-live="polite" aria-atomic="true">
     <div class="flex justify-between items-center border-b-2 border-on-background pb-3 mb-4">
-      <span class="font-mono text-xs font-bold text-on-background tracking-wider">[ ANÁLISIS MICROBIOLÓGICO ]</span>
+      <span class="font-mono text-xs font-bold text-on-background tracking-wider">[ VEREDICTO DE TUS LOMBRICES ]</span>
       <span id="badge-indicator" class="font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-safe-badge text-on-background">SEGURO</span>
     </div>
     <h3 id="matched-food-name" class="font-headline text-2xl md:text-3xl font-black text-on-background mb-3 uppercase">Cáscara de plátano</h3>
