@@ -165,16 +165,17 @@ const drawerLinks = [
                 >
                   <span class="newsletter-submit-label">Suscribirse ✉</span>
                 </button>
+                {/* Dev note: newsletter form isn't wired up yet — configure NEWSLETTER_FORM_CONFIG in src/utils/newsletter-form.ts */}
                 {!isNewsletterFormConfigured && (
                   <p class="m-0 font-body text-xs text-on-surface-variant">
-                    Falta pegar los datos públicos del formulario de MailerLite en <code>src/utils/newsletter-form.ts</code>.
+                    Muy pronto podrás suscribirte aquí 🌱. Mientras tanto, síguenos en Instagram para no perderte novedades.
                   </p>
                 )}
               </form>
             </div>
 
             <div
-              class="row-error hidden border-2 border-on-surface bg-error-tint p-4 shadow-hard-sm organic-brutalism-alt"
+              class="row-error hidden border-2 border-on-surface bg-error-tint p-4 organic-brutalism-alt"
               aria-live="polite"
             >
               <p class="m-0 font-label-md text-label-md uppercase tracking-[0.22em] text-secondary">
@@ -186,7 +187,7 @@ const drawerLinks = [
             </div>
 
             <div
-              class="row-success hidden border-2 border-on-surface bg-success-tint p-4 shadow-hard-sm organic-brutalism-alt"
+              class="row-success hidden border-2 border-on-surface bg-success-tint p-4 organic-brutalism-alt"
               aria-live="polite"
             >
               <p class="m-0 font-label-md text-label-md uppercase tracking-[0.22em] text-primary">

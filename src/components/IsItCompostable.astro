@@ -26,12 +26,21 @@
       <button class="min-h-11 bg-mustard text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-hard-xs hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs transition-all rounded-sm rotate-2 btn-suggestion" data-food="café">Borra de café ☕</button>
       <button class="min-h-11 bg-warning-badge text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-hard-xs hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs transition-all rounded-sm rotate-[-2deg] btn-suggestion" data-food="cítricos">Cítricos 🍋</button>
       <button class="min-h-11 bg-danger-badge/10 text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-hard-xs hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs transition-all rounded-sm rotate-1 btn-suggestion" data-food="cebolla">Cebolla 🧅</button>
-      <a href="/blog/?category=Alimentación" class="min-h-11 flex items-center font-mono text-xs font-bold px-4 py-3 border-2 border-dashed border-on-background/50 text-on-background/70 hover:text-on-background hover:border-on-background transition-colors rounded-sm no-underline">Ver más alimentos →</a>
+      <button id="toggle-all-foods" type="button" aria-expanded="false" aria-controls="all-foods-panel" class="min-h-11 flex items-center font-mono text-xs font-bold px-4 py-3 border-2 border-dashed border-on-background/50 text-on-background/70 hover:text-on-background hover:border-on-background transition-colors rounded-sm">Ver más alimentos →</button>
+    </div>
+
+    <div class="grid transition-[grid-template-rows] duration-300 ease-out" style="grid-template-rows: 0fr;" id="all-foods-wrapper">
+      <div class="overflow-hidden">
+        <div id="all-foods-panel" class="flex flex-wrap justify-center items-center gap-3 pt-4"></div>
+        <div class="flex justify-center mt-4">
+          <button id="collapse-all-foods" type="button" class="min-h-11 flex items-center font-mono text-xs font-bold px-4 py-3 border-2 border-dashed border-on-background/50 text-on-background/70 hover:text-on-background hover:border-on-background transition-colors rounded-sm">Ver menos ↑</button>
+        </div>
+      </div>
     </div>
   </div>
 
   <!-- Results Displays -->
-  <div id="status-display-card" class="hidden w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-success-tint mt-6 box-border" aria-live="polite" aria-atomic="true">
+  <div id="status-display-card" class="hidden w-full border-4 border-on-background p-6 organic-brutalism bg-success-tint mt-6 box-border" aria-live="polite" aria-atomic="true">
     <div class="flex justify-between items-center border-b-2 border-on-background pb-3 mb-4">
       <span class="font-mono text-xs font-bold text-on-background tracking-wider">[ VEREDICTO DE TUS LOMBRICES ]</span>
       <span id="badge-indicator" class="font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-safe-badge text-on-background">SEGURO</span>
@@ -46,7 +55,7 @@
   </div>
 
   <div id="search-fallback-message" class="font-mono text-sm text-ink border-3 border-dashed border-on-background p-6 text-center bg-white/20 mt-6 rounded-lg box-border" aria-live="polite" aria-atomic="true">
-    Escribe al menos dos letras para iniciar la consulta microbiológica del residuo.
+    Escribe al menos dos letras y te contamos qué opinan tus lombrices 🪱.
   </div>
 </div>
 
@@ -73,6 +82,90 @@
   const matchedNutrition = document.getElementById('matched-nutrition') as HTMLParagraphElement;
   const matchedInstructions = document.getElementById('matched-instructions') as HTMLParagraphElement;
   const suggestionButtons = document.querySelectorAll('.btn-suggestion');
+  const toggleAllFoodsBtn = document.getElementById('toggle-all-foods') as HTMLButtonElement | null;
+  const collapseAllFoodsBtn = document.getElementById('collapse-all-foods') as HTMLButtonElement | null;
+  const allFoodsWrapper = document.getElementById('all-foods-wrapper') as HTMLDivElement | null;
+  const allFoodsPanel = document.getElementById('all-foods-panel') as HTMLDivElement | null;
+  let allFoodsRendered = false;
+
+  // Food-specific emoji, keyed by normalized name. Falls back to a status-based emoji.
+  const FOOD_EMOJI: Record<string, string> = {
+    'aji': '🌶️',
+    'ajo': '🧄',
+    'almidones y harinas': '🌾',
+    'hierbas aromaticas': '🌿',
+    'aserrin': '🪵',
+    'berenjena': '🍆',
+    'betarraga': '🟣',
+    'borra de cafe': '☕',
+    'carne y huesos': '🍖',
+    'carton': '📦',
+    'cebolla': '🧅',
+    'citricos': '🍋',
+    'comida cocinada y aliñada': '🍲',
+    'cuescos y carozos': '🥭',
+    'fibra de coco': '🥥',
+    'frutas dulces de verano': '🍑',
+    'frutas tropicales y andinas': '🍍',
+    'hojas secas': '🍂',
+    'hojas verdes': '🥬',
+    'hierbas culinarias': '🌿',
+    'huevo y cascaras': '🥚',
+    'lacteos y quesos': '🧀',
+    'legumbres': '🫘',
+    'manzana': '🍎',
+    'palta (cascaras)': '🥑',
+    'pan': '🍞',
+    'papa (cascaras)': '🥔',
+    'papel': '📄',
+    'pera': '🍐',
+    'pimenton': '🫑',
+    'platano': '🍌',
+    'ramas': '🌳',
+    'tomate': '🍅',
+    'uva': '🍇',
+    'vegetales y verduras de hoja': '🥦',
+    'zanahoria': '🥕',
+  };
+
+  const STATUS_EMOJI: Record<string, string> = { safe: '🌱', warning: '⚠️', danger: '🚫' };
+  const STATUS_CLASS: Record<string, string> = {
+    safe: 'bg-safe-badge/20',
+    warning: 'bg-warning-badge',
+    danger: 'bg-danger-badge/10',
+  };
+
+  const normalizeStatus = (status: string) => {
+    if (status === 'safe' || status === 'seguro') return 'safe';
+    if (status === 'warning' || status === 'moderacion') return 'warning';
+    return 'danger';
+  };
+
+  const getFoodEmoji = (item: FoodEntry) =>
+    FOOD_EMOJI[normalizeString(item.name)] ?? STATUS_EMOJI[normalizeStatus(item.status)];
+
+  const renderAllFoodPills = () => {
+    if (!allFoodsPanel || allFoodsRendered) return;
+    allFoodsPanel.innerHTML = searchIndex
+      .map((item) => {
+        const statusKey = normalizeStatus(item.status);
+        const bgClass = STATUS_CLASS[statusKey];
+        const emoji = getFoodEmoji(item);
+        return `<button class="min-h-11 ${bgClass} text-on-background font-mono text-xs font-bold px-4 py-3 border-2 border-on-background shadow-hard-xs hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs transition-all rounded-sm btn-suggestion" data-food="${escapeHTML(item.name)}">${escapeHTML(item.name)} ${emoji}</button>`;
+      })
+      .join('');
+    allFoodsRendered = true;
+
+    // Delegate clicks for the newly-rendered pills (same behavior as the static suggestion chips)
+    allFoodsPanel.querySelectorAll('.btn-suggestion').forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        const food = (e.currentTarget as HTMLButtonElement).getAttribute('data-food') || '';
+        lookupInput.value = food;
+        await loadSearchIndex();
+        handleSearchEvent();
+      });
+    });
+  };
 
   // Eager load / lazy fallback index loader
   const loadSearchIndex = (): Promise<void> => {
@@ -127,8 +220,14 @@
     if (query.length < 2) {
       statusDisplay.classList.add('hidden');
       fallbackMessage.classList.remove('hidden');
-      fallbackMessage.textContent = 'Escribe al menos dos letras para iniciar la consulta microbiológica del residuo.';
+      fallbackMessage.textContent = 'Escribe al menos dos letras y te contamos qué opinan tus lombrices 🪱.';
       return;
+    }
+
+    if (!isIndexLoaded) {
+      statusDisplay.classList.add('hidden');
+      fallbackMessage.classList.remove('hidden');
+      fallbackMessage.textContent = 'Buscando en el diario de tus lombrices...';
     }
 
     await loadSearchIndex();
@@ -166,15 +265,15 @@
       matchedInstructions.innerHTML = renderMarkdownItalics(filteredItem.instructions);
 
       if (filteredItem.status === 'safe' || filteredItem.status === 'seguro') {
-        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-success-tint mt-6 box-border';
+        statusDisplay.className = 'w-full border-4 border-on-background p-6 organic-brutalism bg-success-tint mt-6 box-border';
         badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-safe-badge text-on-background';
         badgeIndicator.textContent = 'SEGURO';
       } else if (filteredItem.status === 'warning' || filteredItem.status === 'moderacion') {
-        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-warning-tint mt-6 box-border';
+        statusDisplay.className = 'w-full border-4 border-on-background p-6 organic-brutalism bg-warning-tint mt-6 box-border';
         badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-warning-badge text-on-background';
         badgeIndicator.textContent = 'MODERACIÓN';
       } else if (filteredItem.status === 'danger' || filteredItem.status === 'peligro') {
-        statusDisplay.className = 'w-full border-4 border-on-background p-6 shadow-hard-sm organic-brutalism bg-danger-tint mt-6 box-border';
+        statusDisplay.className = 'w-full border-4 border-on-background p-6 organic-brutalism bg-danger-tint mt-6 box-border';
         badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-danger-badge text-white';
         badgeIndicator.textContent = 'PELIGRO';
       }
@@ -213,4 +312,23 @@
     btn.addEventListener('pointerover', () => loadSearchIndex(), { once: true });
     btn.addEventListener('touchstart', () => loadSearchIndex(), { once: true });
   });
+
+  // Expand/collapse the full food list
+  if (toggleAllFoodsBtn && collapseAllFoodsBtn && allFoodsWrapper) {
+    toggleAllFoodsBtn.addEventListener('click', async () => {
+      await loadSearchIndex();
+      renderAllFoodPills();
+      allFoodsWrapper.style.gridTemplateRows = '1fr';
+      toggleAllFoodsBtn.setAttribute('aria-expanded', 'true');
+      toggleAllFoodsBtn.classList.add('hidden');
+    });
+
+    collapseAllFoodsBtn.addEventListener('click', () => {
+      allFoodsWrapper.style.gridTemplateRows = '0fr';
+      toggleAllFoodsBtn.setAttribute('aria-expanded', 'false');
+      toggleAllFoodsBtn.classList.remove('hidden');
+    });
+
+    toggleAllFoodsBtn.addEventListener('pointerover', () => loadSearchIndex(), { once: true });
+  }
 </script>

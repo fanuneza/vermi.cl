@@ -19,6 +19,7 @@
   --color-on-background: #002201;
   --color-ink: #002201;
   --color-primary: #0f5238;
+  --color-on-primary: #ffffff;
   --color-primary-container: #2d6a4f;
   --color-on-primary-container: #a8e7c5;
   --color-secondary: #a0401f;
@@ -80,6 +81,7 @@
   --font-headline-md: "Bricolage Grotesque Variable", sans-serif;
   --font-body-md: "Fira Sans", sans-serif;
   --font-label-md: "Space Mono", monospace;
+  --text-display: clamp(2rem, 1.2rem + 4vw, 3.75rem);
   --text-headline-md: clamp(1.55rem, 1.2rem + 1.05vw, 2.1rem);
   --text-body-md: 1rem;
   --text-label-md: 0.75rem;
@@ -371,7 +373,8 @@ a {
   border: 2px solid var(--color-on-surface);
   border-left-width: 8px;
   background: var(--color-primary-fixed);
-  box-shadow: 4px 4px 0 0 var(--color-on-surface);
+  /* No hard shadow: nested inside the shadow-hard .prose container, its own
+     offset shadow would double the container's, so the border carries the edge. */
   padding: 1rem 1.15rem;
   font-family: var(--font-headline);
   font-size: 1.15rem;
@@ -387,7 +390,7 @@ a {
   margin-inline: auto;
   margin-block: 2.5rem;
   border: 2px solid var(--color-on-surface);
-  box-shadow: 4px 4px 0 0 var(--color-on-surface);
+  /* No hard shadow: nested inside the shadow-hard .prose container (see blockquote). */
   border-radius: 12px 4px 20px 8px;
 }
 
@@ -401,7 +404,7 @@ a {
   font-size: 0.9rem;
   line-height: 1.45;
   border: 2px solid var(--color-on-surface);
-  box-shadow: 4px 4px 0 0 var(--color-on-surface);
+  /* No hard shadow: nested inside the shadow-hard .prose container (see blockquote). */
   background: var(--color-surface-container-lowest);
 }
 

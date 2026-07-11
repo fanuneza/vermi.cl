@@ -69,8 +69,10 @@ export function remarkAdmonitions() {
       }
 
       // Generate the organic brutalism wrapper classes based on admonition type
+      // No hard shadow: admonitions render nested inside the shadow-hard .prose
+      // container, so their own offset shadow would double it. The border carries the edge.
       let wrapperClasses =
-        "admonition border-4 border-on-surface p-5 my-6 shadow-hard-sm ";
+        "admonition border-4 border-on-surface p-5 my-6 ";
       let titleClasses =
         "admonition-title font-headline text-lg font-black uppercase mb-2 flex items-center gap-2 ";
       let contentClasses =
@@ -86,7 +88,7 @@ export function remarkAdmonitions() {
         wrapperClasses += "bg-warning-badge/10 organic-brutalism";
         titleClasses += "text-secondary";
       } else if (type === "tip") {
-        wrapperClasses += "bg-background organic-brutalism-alt shadow-hard-sm";
+        wrapperClasses += "bg-background organic-brutalism-alt";
         titleClasses += "text-primary";
       } else {
         // default note / important

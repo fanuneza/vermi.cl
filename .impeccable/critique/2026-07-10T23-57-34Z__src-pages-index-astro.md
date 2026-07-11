@@ -6,23 +6,24 @@ p1_count: 2
 timestamp: 2026-07-10T23-57-34Z
 slug: src-pages-index-astro
 ---
+
 Method: dual-agent (A: a66ac39dcc2b2997e · B: a23ff82a985dd21e5)
 
 ## Design Health Score
 
-| # | Heuristic | Score | Key Issue |
-|---|-----------|-------|-----------|
-| 1 | Visibility of System Status | 2 | Search widget gives no feedback while the food index is still loading on first interaction |
-| 2 | Match System / Real World | 2 | Widget's empty-state copy ("consulta microbiológica del residuo") and the hero's Latin binomial still read clinical against the stated "knowledgeable friend" voice |
-| 3 | User Control and Freedom | 3 | Drawer/modal both have close buttons, ESC handling, and focus restoration — solid |
-| 4 | Consistency and Standards | 2 | Footer uses uniform `rounded-xl`, directly breaking DESIGN.md's own "never uniform border-radius" rule |
-| 5 | Error Prevention | 2 | Unconfigured newsletter state exposes a developer-facing setup string directly in user-visible markup |
-| 6 | Recognition Rather Than Recall | 3 | Active nav state, breadcrumbs, suggestion chips, and `?q=` URL sync all reduce recall burden |
-| 7 | Flexibility and Efficiency | 3 | Query-param search sync makes results shareable/bookmarkable — genuinely above typical homepage effort |
-| 8 | Aesthetic and Minimalist Design | 2 | Hero still stacks badge + squiggle + 2 floating icons + heading + paragraph + 2 CTAs at once |
-| 9 | Error Recovery | 3 | No-match search state suggests concrete alternate keywords; newsletter success/error states are clearly differentiated |
-| 10 | Help and Documentation | 2 | No inline "why" next to verdict badges — a nervous user gets the answer but not the reasoning |
-| **Total** | | **24/40** | **Acceptable — significant improvements needed before users are happy** |
+| #         | Heuristic                       | Score     | Key Issue                                                                                                                                                           |
+| --------- | ------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1         | Visibility of System Status     | 2         | Search widget gives no feedback while the food index is still loading on first interaction                                                                          |
+| 2         | Match System / Real World       | 2         | Widget's empty-state copy ("consulta microbiológica del residuo") and the hero's Latin binomial still read clinical against the stated "knowledgeable friend" voice |
+| 3         | User Control and Freedom        | 3         | Drawer/modal both have close buttons, ESC handling, and focus restoration — solid                                                                                   |
+| 4         | Consistency and Standards       | 2         | Footer uses uniform `rounded-xl`, directly breaking DESIGN.md's own "never uniform border-radius" rule                                                              |
+| 5         | Error Prevention                | 2         | Unconfigured newsletter state exposes a developer-facing setup string directly in user-visible markup                                                               |
+| 6         | Recognition Rather Than Recall  | 3         | Active nav state, breadcrumbs, suggestion chips, and `?q=` URL sync all reduce recall burden                                                                        |
+| 7         | Flexibility and Efficiency      | 3         | Query-param search sync makes results shareable/bookmarkable — genuinely above typical homepage effort                                                              |
+| 8         | Aesthetic and Minimalist Design | 2         | Hero still stacks badge + squiggle + 2 floating icons + heading + paragraph + 2 CTAs at once                                                                        |
+| 9         | Error Recovery                  | 3         | No-match search state suggests concrete alternate keywords; newsletter success/error states are clearly differentiated                                              |
+| 10        | Help and Documentation          | 2         | No inline "why" next to verdict badges — a nervous user gets the answer but not the reasoning                                                                       |
+| **Total** |                                 | **24/40** | **Acceptable — significant improvements needed before users are happy**                                                                                             |
 
 **On the score moving 29→24**: this is not a regression — every issue from the prior critique (the "Problemas" card copy, the hero blur-glow, the 6-chip overload, the sequencing, the dead type tokens, the cascade-layer bug) is confirmed fixed below. A fresh, independent reviewer scored harder on aspects the first pass didn't scrutinize as closely (a dev-facing string leak, icon/color semantic mismatches, the footer's radius). This is the expected shape of iterative design work: fixing the visible layer surfaces the next layer underneath.
 
@@ -47,31 +48,37 @@ The structural work held completely — sequencing, chip overload, dead typograp
 ## Priority Issues
 
 **[P0] Newsletter form can leak a developer-facing string to real visitors**
-- **Why it matters**: In `Header.astro`, when `isNewsletterFormConfigured` is false, the rendered markup shows *"Falta pegar los datos públicos del formulario de MailerLite en `src/utils/newsletter-form.ts`"* — raw implementation instructions instead of a graceful fallback, if this ships before MailerLite is wired up.
+
+- **Why it matters**: In `Header.astro`, when `isNewsletterFormConfigured` is false, the rendered markup shows _"Falta pegar los datos públicos del formulario de MailerLite en `src/utils/newsletter-form.ts`"_ — raw implementation instructions instead of a graceful fallback, if this ships before MailerLite is wired up.
 - **Fix**: Replace with user-facing copy ("Muy pronto podrás suscribirte aquí 🌱"); keep the dev note as a code comment only.
 - **Suggested command**: `/impeccable clarify`
 
 **[P1] Jargon still lands at the two highest-anxiety moments**
+
 - **Why it matters**: The hero paragraph and the search widget's empty state ("consulta microbiológica del residuo") both read clinical at exactly the touchpoints where a nervous first-timer needs reassurance most.
 - **Fix**: Move the Latin name to a footnote/tooltip; rewrite the empty state to plain spoken Spanish.
 - **Suggested command**: `/impeccable clarify`
 
 **[P1] The hero's decorative worm icon uses the danger/error color token**
+
 - **Why it matters**: `bg-error-container`/`text-on-error-container` — the same token reserved for "PELIGRO" verdicts — colors a purely decorative worm icon. For a visitor "intimidated by the idea of live worms indoors," this visually pairs "worm" with "danger" before any reassuring copy lands.
 - **Fix**: Recolor with a neutral/tertiary token; reserve red strictly for actual danger semantics.
 - **Suggested command**: `/impeccable colorize`
 
 **[P2] Footer breaks the design system's own radius rule**
+
 - **Why it matters**: `Footer.astro` uses uniform `rounded-xl`, directly violating DESIGN.md's explicit Don't ("never use a uniform border-radius"). It's the one surface that breaks the paper-cutout illusion.
 - **Fix**: Swap to `organic-brutalism` or one of the existing `organic-shape` tokens.
 - **Suggested command**: `/impeccable polish`
 
 **[P2] "Solución de problemas" card pairs a calming badge with an alarming icon**
+
 - **Why it matters**: The card was reworded to reassure ("SIN ESTRÉS"), but its icon is still `faSkullCrossbones` — the most alarming glyph on the page, attached to the one card meant to de-escalate concern. A residual mismatch from only fixing the copy, not the icon, in the prior pass.
 - **Fix**: Swap for a neutral tool/checkmark glyph.
 - **Suggested command**: `/impeccable colorize`
 
 **[P3] No loading feedback on first search**
+
 - **Why it matters**: `handleSearchEvent` silently returns if the food index hasn't loaded yet — a fast typist sees no response and may assume the widget is broken.
 - **Fix**: Show a lightweight "buscando…" state in the fallback message while the fetch is pending.
 - **Suggested command**: `/impeccable clarify`
