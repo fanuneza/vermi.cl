@@ -117,6 +117,12 @@ html {
 }
 
 /* Custom organic and zine classes that complement Tailwind */
+/*
+ * Component roots use BEM-style zine-block names alongside Tailwind utilities.
+ * Keep the hard shadow and any rotate/translate utility on that same root: a
+ * decorative child may have its own compact shadow, but it never owns a second
+ * page-block elevation. This makes the visual owner easy to find in markup.
+ */
 .organic-shape-1 {
   border-radius: 60px 20px 50px 30px;
 }
