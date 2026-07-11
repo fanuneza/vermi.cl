@@ -38,6 +38,8 @@ npm run test
 - `src/utils/schema.ts`: builder tipado de Schema.org
 - `public/`: assets raíz, `robots.txt`, `llms.txt`, `llms-full.txt`, `_headers`
 - `.github/workflows/lychee.yml`: auditoría continua de enlaces
+- `docs/architecture.md`: decisiones de plataforma, límites estáticos y servicios externos
+- `docs/quality.md`: rutas representativas y contrato de verificación
 
 ## Despliegue
 

@@ -6,9 +6,10 @@
     "dev": "astro dev",
     "start": "astro dev",
     "format": "prettier . --write",
+    "format:check": "prettier . --check",
     "check": "astro check",
     "test": "node ./scripts/test-seo.mjs",
-    "prebuild": "npm run format",
+    "prebuild": "npm run format:check",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
