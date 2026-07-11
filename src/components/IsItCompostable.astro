@@ -30,7 +30,7 @@
     </div>
 
     <div class="grid transition-[grid-template-rows] duration-300 ease-out" style="grid-template-rows: 0fr;" id="all-foods-wrapper">
-      <div class="overflow-hidden">
+      <div class="min-h-0 overflow-y-auto overscroll-contain max-h-[50svh] md:max-h-none md:overflow-visible" role="region" aria-label="Lista ampliada de alimentos">
         <div id="all-foods-panel" class="flex flex-wrap justify-center items-center gap-3 pt-4"></div>
         <div class="flex justify-center mt-4">
           <button id="collapse-all-foods" type="button" class="min-h-11 flex items-center font-mono text-xs font-bold px-4 py-3 border-2 border-dashed border-on-background/50 text-on-background/70 hover:text-on-background hover:border-on-background transition-colors rounded-sm">Ver menos ↑</button>
@@ -144,6 +144,39 @@
   const getFoodEmoji = (item: FoodEntry) =>
     FOOD_EMOJI[normalizeString(item.name)] ?? STATUS_EMOJI[normalizeStatus(item.status)];
 
+  const collapseAllFoods = () => {
+    if (!toggleAllFoodsBtn || !allFoodsWrapper) return;
+    allFoodsWrapper.style.gridTemplateRows = '0fr';
+    toggleAllFoodsBtn.setAttribute('aria-expanded', 'false');
+    toggleAllFoodsBtn.classList.remove('hidden');
+  };
+
+  const scrollToResult = () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    statusDisplay.scrollIntoView({
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+      block: 'start',
+    });
+  };
+
+  const revealResultAfterFoodPick = () => {
+    if (!allFoodsWrapper || allFoodsWrapper.style.gridTemplateRows !== '1fr') {
+      requestAnimationFrame(scrollToResult);
+      return;
+    }
+
+    let hasScrolled = false;
+    const scrollOnce = () => {
+      if (hasScrolled) return;
+      hasScrolled = true;
+      scrollToResult();
+    };
+
+    allFoodsWrapper.addEventListener('transitionend', scrollOnce, { once: true });
+    window.setTimeout(scrollOnce, 350);
+    collapseAllFoods();
+  };
+
   const renderAllFoodPills = () => {
     if (!allFoodsPanel || allFoodsRendered) return;
     allFoodsPanel.innerHTML = searchIndex
@@ -162,7 +195,7 @@
         const food = (e.currentTarget as HTMLButtonElement).getAttribute('data-food') || '';
         lookupInput.value = food;
         await loadSearchIndex();
-        handleSearchEvent();
+        handleSearchEvent({ revealResult: true });
       });
     });
   };
@@ -212,7 +245,7 @@
     window.history.replaceState({}, '', `${url.pathname}${url.search}${url.hash}`);
   };
 
-  const handleSearchEvent = async () => {
+  const handleSearchEvent = async ({ revealResult = false } = {}) => {
     const rawQuery = lookupInput.value.trim();
     const query = normalizeString(rawQuery);
     syncQueryParam(rawQuery);
@@ -277,6 +310,8 @@
         badgeIndicator.className = 'font-mono text-sm font-bold border-2 border-on-background px-3 py-1 rounded-full bg-danger-badge text-white';
         badgeIndicator.textContent = 'PELIGRO';
       }
+
+      if (revealResult) revealResultAfterFoodPick();
     } else {
       statusDisplay.classList.add('hidden');
       fallbackMessage.classList.remove('hidden');
@@ -286,7 +321,7 @@
 
   // Bind event listeners
   lookupInput.addEventListener('focus', () => loadSearchIndex());
-  lookupInput.addEventListener('input', handleSearchEvent);
+  lookupInput.addEventListener('input', () => handleSearchEvent());
 
   // Prefetch index on mouse hover or touch start to speed up response
   lookupInput.addEventListener('pointerover', () => loadSearchIndex(), { once: true });
@@ -296,7 +331,7 @@
   if (initialQuery) {
     lookupInput.value = initialQuery;
     loadSearchIndex().then(() => {
-      handleSearchEvent();
+      handleSearchEvent({ revealResult: true });
     });
   }
 
@@ -323,11 +358,7 @@
       toggleAllFoodsBtn.classList.add('hidden');
     });
 
-    collapseAllFoodsBtn.addEventListener('click', () => {
-      allFoodsWrapper.style.gridTemplateRows = '0fr';
-      toggleAllFoodsBtn.setAttribute('aria-expanded', 'false');
-      toggleAllFoodsBtn.classList.remove('hidden');
-    });
+    collapseAllFoodsBtn.addEventListener('click', collapseAllFoods);
 
     toggleAllFoodsBtn.addEventListener('pointerover', () => loadSearchIndex(), { once: true });
   }
