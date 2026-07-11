@@ -4,7 +4,9 @@ import { Image } from 'astro:assets';
 import teamImage from '../assets/images/lombrices.jpeg';
 import { buildSchemaGraph } from '../utils/schema';
 
-const aboutImageWidths = [320, 480, 640, 768, 960] as const;
+// The first-view photo is about 336px wide on a 400px viewport. A 360px
+// variant avoids selecting the 480px source under Lighthouse's mobile profile.
+const aboutImageWidths = [320, 360, 480, 640, 768, 960] as const;
 const aboutImageSizes =
   "(max-width: 1024px) calc(100vw - 4rem), 36rem";
 

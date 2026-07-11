@@ -72,7 +72,9 @@ export const blogPostCategoryMeta: Record<
   },
 };
 
-export const blogFeatureImageWidths = [320, 480, 640, 768] as const;
+// Include close-to-render-size variants so first-view article images do not
+// download a 480px resource for a roughly 360–400px mobile slot.
+export const blogFeatureImageWidths = [320, 360, 400, 480, 640, 768] as const;
 export const blogFeatureImageSizes =
   "(max-width: 768px) calc(100vw - 2rem), 768px";
 
