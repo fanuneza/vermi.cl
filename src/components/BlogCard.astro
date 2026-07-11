@@ -42,7 +42,7 @@ const formattedDate = formatBlogDate(pubDate);
 const meta = blogCardCategoryMeta[category];
 ---
 
-<article class={`zine-block zine-block--guide border-4 border-on-background shadow-hard p-6 flex flex-col h-full min-h-[260px] transition-all duration-200 hover:scale-[1.02] hover:shadow-hard-lg organic-brutalism ${rotation} ${meta.bg}`}>
+<article class={`zine-block zine-block--guide border-2 border-on-background shadow-hard-sm p-6 flex flex-col h-full min-h-[260px] transition-all duration-200 hover:-translate-y-1 hover:shadow-hard organic-brutalism ${rotation} ${meta.bg}`}>
     <a href={`/blog/${slug}/`} class="block no-underline text-inherit">
       {heroImage && (
         <div class="zine-block__image w-full aspect-video mb-4 overflow-hidden border-4 border-on-background organic-brutalism-alt bg-tertiary-fixed">
