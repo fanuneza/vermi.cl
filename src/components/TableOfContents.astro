@@ -13,12 +13,12 @@ const { tableOfContents = [], variant = "desktop" } = Astro.props;
 // The mobile variant renders nested inside BlogPostLayout's own shadow-hard prose
 // container, so it skips its own shadow to avoid a doubled nested-shadow look.
 const wrapperClass = variant === "mobile"
-  ? "toc lg:hidden bg-tertiary-fixed border-3 border-on-surface p-6 mb-8 organic-brutalism rotate-[1deg]"
-  : "toc hidden lg:block bg-tertiary-fixed border-2 border-on-surface p-6 shadow-hard-sm organic-brutalism rotate-[1deg]";
+  ? "toc lg:hidden quiet-card quiet-card--tinted p-5 mb-8"
+  : "toc hidden lg:block quiet-card quiet-card--tinted p-5";
 
 const titleClass = variant === "mobile"
-  ? "font-headline text-xl font-bold text-on-surface mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase"
-  : "font-headline-md text-headline-md text-on-tertiary-fixed mb-4 flex items-center gap-2 border-b-2 border-on-surface pb-2 uppercase";
+  ? "font-headline text-xl font-extrabold text-on-surface mb-4 flex items-center gap-2 border-b border-on-surface/30 pb-3"
+  : "font-headline text-xl font-extrabold text-on-surface mb-4 flex items-center gap-2 border-b border-on-surface/30 pb-3";
 ---
 
 <div class={wrapperClass}>

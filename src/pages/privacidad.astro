@@ -18,37 +18,36 @@ const privacySchema = buildSchemaGraph({
   schema={privacySchema}
   mainClass="max-w-4xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-16 flex-grow w-full box-border"
 >
-  <header class="bg-surface-container border-2 border-on-surface shadow-hard-sm p-8 md:p-12 -rotate-1 relative overflow-hidden rounded-xl w-full box-border">
-    <div class="absolute -top-6 -right-6 font-mono text-[120px] text-primary opacity-15 pointer-events-none select-none">🔒</div>
-    <div class="relative z-10 flex flex-col gap-4">
-      <span class="inline-block bg-tertiary text-white border-2 border-on-surface px-3 py-1 font-label-md text-label-md w-max rotate-[2deg]">Privacidad</span>
-      <h1 class="font-headline text-4xl md:text-5xl font-black text-primary m-0 uppercase leading-none">Políticas de privacidad</h1>
-      <p class="font-body text-lg text-on-surface-variant mt-2 max-w-[600px] leading-relaxed m-0">
+  <header class="w-full box-border">
+    <div class="flex flex-col gap-4">
+      <p class="font-mono text-sm font-bold text-secondary m-0">Privacidad</p>
+      <h1 class="page-title text-primary m-0">Políticas de privacidad</h1>
+      <p class="page-lead m-0">
         Transparentes y directos. En vermi.cl respetamos tu privacidad por diseño y por defecto.
       </p>
     </div>
   </header>
 
-  <article class="flex flex-col gap-8 bg-surface-container-lowest p-6 md:p-10 border-2 border-on-surface rotate-1 rounded-xl shadow-hard-sm w-full box-border mt-8">
+  <article class="quiet-card flex flex-col gap-8 p-6 md:p-10 w-full box-border mt-8">
     <section class="space-y-4">
-      <h2 class="font-headline text-2xl md:text-3xl text-secondary m-0 uppercase">
+      <h2 class="font-headline text-2xl md:text-3xl text-secondary m-0">
         1. Recopilación de datos
       </h2>
       <p class="font-body text-base text-on-surface leading-relaxed m-0">
         vermi.cl es un portal educativo estático. No mantenemos cuentas de usuario ni una base de datos propia para el buscador de alimentos. Esa herramienta funciona de manera local en tu navegador, sin enviar tus consultas a un servidor externo controlado por vermi.cl.
       </p>
       <p class="font-body text-base text-on-surface leading-relaxed m-0">
-        Si decides suscribirte al newsletter desde el botón <strong>Unirse</strong>, tu dirección de correo se envía directamente a MailerLite, que actúa como proveedor externo de email marketing y gestiona el alta, almacenamiento y eventuales mensajes de confirmación de esa suscripción.
+        Si decides suscribirte al newsletter desde el botón <strong>Newsletter</strong>, tu dirección de correo se envía directamente a MailerLite, que actúa como proveedor externo de email marketing y gestiona el alta, almacenamiento y eventuales mensajes de confirmación de esa suscripción.
       </p>
       <p class="font-body text-base text-on-surface leading-relaxed m-0">
         Si completas y envías el formulario de contacto, tus datos (nombre, correo electrónico y mensaje) se transmiten directamente a través de una función de servidor de Cloudflare Pages a <strong>Resend</strong>, nuestro proveedor externo para el envío de correos. Resend procesa esta información con el único propósito de hacernos llegar tu consulta a nuestra casilla de soporte. No utilizaremos estos datos de contacto para fines de marketing o publicidad a menos que te suscribas explícitamente al newsletter.
       </p>
     </section>
 
-    <hr class="border-t-4 border-on-surface border-dotted my-4" />
+    <hr class="border-t-2 border-on-surface/30 my-4" />
 
     <section class="space-y-4">
-      <h2 class="font-headline text-2xl md:text-3xl text-primary m-0 uppercase">
+      <h2 class="font-headline text-2xl md:text-3xl text-primary m-0">
         2. Cookies y analíticas
       </h2>
       <p class="font-body text-base text-on-surface leading-relaxed m-0">
@@ -56,10 +55,10 @@ const privacySchema = buildSchemaGraph({
       </p>
     </section>
 
-    <hr class="border-t-4 border-on-surface border-dotted my-4" />
+    <hr class="border-t-2 border-on-surface/30 my-4" />
 
     <section class="space-y-4">
-      <h2 class="font-headline text-2xl md:text-3xl text-primary m-0 uppercase">
+      <h2 class="font-headline text-2xl md:text-3xl text-primary m-0">
         3. Proveedores y enlaces de terceros
       </h2>
       <p class="font-body text-base text-on-surface leading-relaxed m-0">

@@ -39,7 +39,7 @@ const drawerLinks = [
   }
 ];
 ---
-<nav class="bg-surface dark:bg-surface-container w-full sticky top-0 z-sticky border-b-2 border-on-surface shadow-hard-sm flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 max-w-full">
+<nav class="bg-surface/95 w-full sticky top-0 z-sticky border-b-2 border-on-surface flex justify-between items-center px-margin-mobile md:px-margin-desktop py-3 max-w-full">
   <button id="menu-trigger" aria-label="Abrir menú" aria-haspopup="dialog" aria-expanded="false" aria-controls="nav-drawer" class="min-h-11 min-w-11 md:hidden text-primary hover:scale-105 active:scale-95 transition-transform flex items-center justify-center p-2 cursor-pointer">
     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 448 512" fill="currentColor">
       <path d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/>
@@ -47,36 +47,36 @@ const drawerLinks = [
   </button>
 
   <a href="/" class="logo-link no-underline absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-    <div class="font-headline text-2xl font-black text-secondary border-2 border-on-surface px-2 py-1 rotate-[-2deg] bg-surface-container-low shadow-hard-sm transition-transform hover:rotate-0">
+    <div class="font-headline text-2xl font-black text-secondary border-2 border-on-surface px-2 py-1 -rotate-1 bg-surface-container-low">
       vermi.cl
     </div>
   </a>
 
-  <div class="hidden md:flex items-center gap-6">
-    <a class={isHome ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/">Inicio</a>
-    <a class={isBlog ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/blog/">Guías</a>
-    <a class={isNosotros ? "text-primary font-bold border-b-4 border-primary pb-0.5 hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95" : "text-on-surface-variant font-body hover:text-primary hover:translate-x-[2px] hover:translate-y-[2px] transition-all active:scale-95"} href="/nosotros/">Nosotros</a>
+  <div class="hidden md:flex items-center gap-7">
+    <a class={isBlog ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant font-body hover:text-primary"} href="/blog/">Guías</a>
+    <a class={isHome ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant font-body hover:text-primary"} href="/">Inicio</a>
+    <a class={isNosotros ? "text-primary font-bold border-b-2 border-primary pb-1" : "text-on-surface-variant font-body hover:text-primary"} href="/nosotros/">Nosotros</a>
   </div>
 
   <div class="flex items-center gap-4">
-    <button id="join-trigger-desktop" class="hidden md:flex min-h-11 items-center bg-primary-container text-on-primary-container font-label-md text-label-md px-4 py-2 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 organic-brutalism rotate-[1deg] cursor-pointer">
-      Unirse
+    <button id="join-trigger-desktop" class="btn-secondary hidden md:flex cursor-pointer bg-surface-container-low text-sm">
+      Newsletter
     </button>
 
-    <button id="join-trigger-mobile" class="min-h-11 px-2 md:hidden text-primary font-headline-md font-bold hover:scale-105 active:scale-95 transition-transform cursor-pointer">
-      Unirse
+    <button id="join-trigger-mobile" class="min-h-11 px-2 md:hidden text-primary font-headline-md font-bold cursor-pointer">
+      Newsletter
     </button>
   </div>
 </nav>
 
 <div id="drawer-overlay" class="fixed inset-0 bg-on-surface/50 z-drawer-overlay transition-opacity duration-300 opacity-0 pointer-events-none"></div>
 
-<div id="nav-drawer" role="dialog" aria-modal="true" aria-label="Menú de navegación" class="fixed top-0 left-0 h-full w-[280px] max-w-full bg-background z-drawer transform -translate-x-full transition-transform duration-300 ease-in-out border-r-4 border-on-surface shadow-hard flex flex-col pointer-events-auto">
-  <div class="p-5 flex justify-between items-start border-b-4 border-on-surface/20 border-dashed bg-surface-container">
-    <div class="font-headline text-2xl font-black text-secondary rotate-[-3deg] border-2 border-on-surface bg-surface-container-highest px-3 py-1 shadow-hard-sm inline-block">
+<div id="nav-drawer" role="dialog" aria-modal="true" aria-label="Menú de navegación" class="fixed top-0 left-0 h-full w-[280px] max-w-full bg-background z-drawer transform -translate-x-full transition-transform duration-300 ease-out border-r-2 border-on-surface flex flex-col pointer-events-auto">
+  <div class="p-5 flex justify-between items-start border-b-2 border-on-surface/30 bg-surface-container">
+    <div class="font-headline text-2xl font-black text-secondary border-2 border-on-surface bg-surface-container-highest px-3 py-1 inline-block">
       vermi.cl
     </div>
-    <button id="close-drawer" aria-label="Cerrar menú" class="min-h-11 min-w-11 text-on-surface hover:text-secondary transition-colors p-2 rotate-[5deg] hover:rotate-[15deg] bg-surface-container-low border-2 border-on-surface rounded-full shadow-hard-sm active:translate-y-[2px] active:translate-x-[2px] active:shadow-none cursor-pointer flex items-center justify-center">
+    <button id="close-drawer" aria-label="Cerrar menú" class="min-h-11 min-w-11 text-on-surface hover:text-secondary p-2 bg-surface-container-low border-2 border-on-surface rounded-full cursor-pointer flex items-center justify-center">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 384 512" fill="currentColor">
         <path d="M376.6 84.5c11.3-13.6 9.5-33.8-4.1-45.1s-33.8-9.5-45.1 4.1L192 206 56.6 47.5c-11.3-13.6-31.5-15.4-45.1-4.1s-15.4 31.5-4.1 45.1L142.9 256 7.5 427.5c-11.3 13.6-9.5 33.8 4.1 45.1s33.8 9.5 45.1-4.1L192 306 327.4 464.5c11.3 13.6 31.5 15.4 45.1 4.1s15.4-31.5 4.1-45.1L241.1 256 376.6 84.5z"/>
       </svg>
@@ -88,8 +88,7 @@ const drawerLinks = [
       <a class="group relative block w-full no-underline" href={link.href}>
         {link.isActive ? (
           <>
-            <div class="absolute inset-0 bg-on-surface border-2 border-on-surface rounded-lg shadow-hard-sm translate-x-1 translate-y-1"></div>
-            <div class="relative bg-surface-container-highest text-on-surface border-2 border-on-surface px-4 py-3 rounded-lg flex items-center gap-3">
+            <div class="relative bg-surface-container-highest text-on-surface border-2 border-on-surface px-4 py-3 organic-brutalism flex items-center gap-3">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox={link.viewBox} fill="currentColor">
                 <path d={link.iconPath}/>
               </svg>
@@ -109,7 +108,7 @@ const drawerLinks = [
   </nav>
 
   <div class="p-5 flex justify-center items-center border-t-4 border-on-surface/20 border-dashed mt-auto bg-surface-container-low">
-    <p class="font-mono text-xs text-on-surface-variant m-0 uppercase rotate-[2deg]">Hecho con cariño 🪱</p>
+    <p class="font-mono text-xs text-on-surface-variant m-0">Hecho con cariño 🪱</p>
   </div>
 </div>
 

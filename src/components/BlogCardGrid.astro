@@ -2,7 +2,6 @@
 // BlogCardGrid.astro - Reusable scrapbook-style grid of blog cards
 import BlogCard from "./BlogCard.astro";
 import type { BlogPost } from "../utils/blog";
-import { getBlogCardRotation } from "../utils/blog-presentation";
 
 interface Props {
   posts: BlogPost[];
@@ -23,7 +22,6 @@ const { posts, prioritizeFirst = false } = Astro.props;
       difficulty={post.data.difficulty}
       readingTime={post.readingTime}
       tags={post.data.tags}
-      rotation={getBlogCardRotation(idx)}
       heroImage={post.data.heroImage}
       loading={prioritizeFirst && idx === 0 ? "eager" : "lazy"}
       fetchpriority={prioritizeFirst && idx === 0 ? "high" : "auto"}

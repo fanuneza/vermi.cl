@@ -4,11 +4,7 @@ interface Props {
   title: string;
   description: string;
   badgeText: string;
-  badgeBgClass: string;
   cardBgClass: string;
-  organicShapeClass: string;
-  rotationClass: string;
-  iconBoxRotationClass: string;
   textColorHoverClass: string;
   extraClasses?: string;
 }
@@ -18,23 +14,20 @@ const {
   title,
   description,
   badgeText,
-  badgeBgClass,
   cardBgClass,
-  organicShapeClass,
-  rotationClass,
-  iconBoxRotationClass,
   textColorHoverClass,
   extraClasses = "",
 } = Astro.props;
 ---
 
-<a class={`zine-block zine-block--portal block ${cardBgClass} border-2 border-on-surface p-6 shadow-hard-sm hover:-translate-y-1 hover:shadow-hard transition-all duration-200 group ${organicShapeClass} ${rotationClass} no-underline ${extraClasses}`} href={href}>
-  <div class={`zine-block__icon bg-surface border-2 border-on-surface p-3 mb-4 inline-block shadow-hard-xs ${iconBoxRotationClass} group-hover:rotate-0 transition-transform`}>
+<a class={`quiet-card quiet-card-link zine-block zine-block--portal block ${cardBgClass} p-6 group no-underline ${extraClasses}`} href={href}>
+  <div class="zine-block__icon mb-4 inline-flex h-11 w-11 items-center justify-center text-primary">
     <slot name="icon" />
   </div>
-  <h3 class={`font-headline text-2xl font-black text-on-surface mb-2 ${textColorHoverClass} transition-colors uppercase`}>{title}</h3>
-  <p class="font-body text-base text-on-surface-variant line-clamp-3">{description}</p>
-  <div class="mt-4 flex justify-end">
-    <span class={`zine-block__badge font-label-md text-label-md text-on-surface ${badgeBgClass} px-2 py-1 border-2 border-on-surface badge--sticker`}>{badgeText}</span>
+  <h3 class={`font-headline text-2xl font-extrabold leading-tight text-on-surface mb-2 ${textColorHoverClass} transition-colors`}>{title}</h3>
+  <p class="font-body text-base leading-relaxed text-on-surface-variant">{description}</p>
+  <div class="mt-5 flex items-center justify-between gap-4 border-t border-on-surface/25 pt-4">
+    <span class="font-mono text-xs font-bold text-on-surface-variant">{badgeText}</span>
+    <span aria-hidden="true" class="text-primary font-bold">→</span>
   </div>
 </a>

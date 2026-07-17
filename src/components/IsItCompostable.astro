@@ -3,7 +3,7 @@
 ---
 <div id="buscador-alimentos" class="zine-block zine-block--food-search relative w-full max-w-4xl bg-surface-container-high border-2 border-on-background organic-shape-3 p-6 md:p-12 shadow-hard-sm my-8 z-10 box-border mx-auto">
   <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-surface text-on-background font-headline text-sm md:text-lg px-4 md:px-6 py-2 border-2 border-on-background shadow-hard-xs rotate-[-2deg] font-black w-[90%] md:w-auto text-center md:whitespace-nowrap uppercase">
-    ¿Las lombrices pueden comer esto?
+    Buscador rápido
   </div>
 
   <div class="flex flex-col gap-6 mt-6">
@@ -54,8 +54,9 @@
     <p id="matched-instructions" class="font-body text-base text-on-background leading-relaxed m-0"></p>
   </div>
 
-  <div id="search-fallback-message" class="font-mono text-sm text-ink border-3 border-dashed border-on-background p-6 text-center bg-white/20 mt-6 rounded-lg box-border" aria-live="polite" aria-atomic="true">
-    Escribe al menos dos letras y te contamos qué opinan tus lombrices 🪱.
+  <div id="search-fallback-message" class="font-mono text-sm text-ink border-2 border-dashed border-on-background p-5 text-center bg-white/20 mt-6 rounded-lg box-border" aria-live="polite" aria-atomic="true">
+    <p id="search-fallback-copy" class="m-0">Escribe al menos dos letras y te contamos qué opinan tus lombrices 🪱.</p>
+    <button id="retry-food-search" type="button" class="btn-secondary hidden mx-auto mt-4 bg-white">Reintentar</button>
   </div>
 </div>
 
@@ -76,6 +77,8 @@
   const lookupInput = document.getElementById('food-lookup-input') as HTMLInputElement;
   const statusDisplay = document.getElementById('status-display-card') as HTMLDivElement;
   const fallbackMessage = document.getElementById('search-fallback-message') as HTMLDivElement;
+  const fallbackCopy = document.getElementById('search-fallback-copy') as HTMLParagraphElement;
+  const retryButton = document.getElementById('retry-food-search') as HTMLButtonElement;
   const badgeIndicator = document.getElementById('badge-indicator') as HTMLSpanElement;
   const matchedFoodName = document.getElementById('matched-food-name') as HTMLHeadingElement;
   const matchedNutritionContainer = document.getElementById('matched-nutrition-container') as HTMLDivElement;
@@ -212,8 +215,8 @@
         searchIndex = data as FoodEntry[];
         isIndexLoaded = true;
       })
-      .catch(err => {
-        console.error('Error de inicialización del buscador local:', err);
+      .catch(() => {
+        isIndexLoaded = false;
         indexPromise = null; // Reset promise to allow retry
       });
     return indexPromise;
@@ -253,18 +256,24 @@
     if (query.length < 2) {
       statusDisplay.classList.add('hidden');
       fallbackMessage.classList.remove('hidden');
-      fallbackMessage.textContent = 'Escribe al menos dos letras y te contamos qué opinan tus lombrices 🪱.';
+      fallbackCopy.textContent = 'Escribe al menos dos letras y te contamos qué opinan tus lombrices 🪱.';
+      retryButton.classList.add('hidden');
       return;
     }
 
     if (!isIndexLoaded) {
       statusDisplay.classList.add('hidden');
       fallbackMessage.classList.remove('hidden');
-      fallbackMessage.textContent = 'Buscando en el diario de tus lombrices...';
+      fallbackCopy.textContent = 'Buscando en el diario de tus lombrices...';
+      retryButton.classList.add('hidden');
     }
 
     await loadSearchIndex();
-    if (!isIndexLoaded) return;
+    if (!isIndexLoaded) {
+      fallbackCopy.textContent = 'No pudimos cargar el buscador. Tu consulta sigue aquí para que puedas intentarlo de nuevo.';
+      retryButton.classList.remove('hidden');
+      return;
+    }
 
     // Tiered search matching to prioritize names over keywords
     let filteredItem = searchIndex.find((item) => normalizeString(item.name) === query);
@@ -283,6 +292,7 @@
 
     if (filteredItem) {
       fallbackMessage.classList.add('hidden');
+      retryButton.classList.add('hidden');
       statusDisplay.classList.remove('hidden');
 
       // Safe DOM manipulation
@@ -315,9 +325,12 @@
     } else {
       statusDisplay.classList.add('hidden');
       fallbackMessage.classList.remove('hidden');
-      fallbackMessage.textContent = `No se registran datos sobre "${lookupInput.value}". Intenta con palabras clave como café, cítricos, cartón, cebolla o carne.`;
+      fallbackCopy.textContent = `No se registran datos sobre "${lookupInput.value}". Intenta con palabras clave como café, cítricos, cartón, cebolla o carne.`;
+      retryButton.classList.add('hidden');
     }
   };
+
+  retryButton.addEventListener('click', () => handleSearchEvent({ revealResult: true }));
 
   // Bind event listeners
   lookupInput.addEventListener('focus', () => loadSearchIndex());

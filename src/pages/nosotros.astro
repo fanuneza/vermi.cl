@@ -26,9 +26,9 @@ const aboutSchema = buildSchemaGraph({
 >
 
   <!-- Hero Section -->
-  <section class="mb-12 md:mb-16 p-8 bg-surface-container border-2 border-on-surface shadow-hard-sm transform rotate-1 rounded-xl max-w-4xl mx-auto lg:mx-0">
-    <h1 class="font-headline text-4xl md:text-5xl text-primary mb-4 m-0 uppercase leading-none">Sobre mí y el propósito de vermi.cl</h1>
-    <p class="font-body text-lg md:text-xl text-on-surface-variant max-w-2xl mt-4 mb-0 leading-relaxed">
+  <section class="mb-12 md:mb-16 max-w-4xl">
+    <h1 class="page-title text-primary mb-4 m-0">Sobre mí y el propósito de vermi.cl</h1>
+    <p class="page-lead mt-4 mb-0">
       Aprender a compostar con lombrices californianas en un departamento urbano tiene sus propios desafíos. Este espacio existe para compartir soluciones prácticas, reales y con base científica para lograrlo en Chile.
     </p>
   </section>
@@ -37,7 +37,7 @@ const aboutSchema = buildSchemaGraph({
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full">
     <!-- Polaroid -->
     <div class="lg:col-span-7">
-      <div class="bg-surface-container-lowest p-6 pb-12 border-2 border-on-surface shadow-hard-sm rounded-xl organic-brutalism w-full max-w-[36rem] transform -rotate-1 hover:rotate-0 transition-transform duration-200">
+      <figure class="bg-surface-container-lowest p-5 pb-8 border-2 border-on-surface shadow-hard-sm organic-brutalism w-full max-w-[36rem] -rotate-1 m-0">
         <Image
           src={teamImage}
           alt="Fotografía detallada de lombrices californianas en compostaje activo"
@@ -50,14 +50,14 @@ const aboutSchema = buildSchemaGraph({
         <div class="mt-6 text-center">
           <span class="font-label-md text-label-md text-on-surface tracking-widest uppercase">Lombrices rojas californianas (*Eisenia fetida*) activas</span>
         </div>
-      </div>
+      </figure>
     </div>
 
     <!-- Side Scraps -->
     <div class="lg:col-span-5 flex flex-col gap-8">
       <!-- Story Scrap -->
-      <div class="bg-mustard p-6 border-2 border-on-surface shadow-hard-sm transform rotate-1 rounded-xl organic-brutalism-alt">
-        <h2 class="font-headline text-2xl font-black text-on-surface mb-3 flex items-center gap-2 uppercase">
+      <div class="quiet-card bg-mustard p-6">
+        <h2 class="font-headline text-2xl font-extrabold text-on-surface mb-3 flex items-center gap-2">
           🌱 El origen del proyecto
         </h2>
         <p class="font-body text-base text-on-surface-variant leading-relaxed m-0 mb-4">
@@ -69,8 +69,8 @@ const aboutSchema = buildSchemaGraph({
       </div>
 
       <!-- Who is this for Scrap -->
-      <div class="bg-surface p-6 border-2 border-on-surface shadow-hard-sm transform -rotate-1 rounded-xl organic-brutalism">
-        <h3 class="font-headline text-2xl font-black text-primary mb-4 uppercase">¿Para quién es este espacio?</h3>
+      <div class="quiet-card bg-surface p-6">
+        <h2 class="font-headline text-2xl font-extrabold text-primary mb-4">¿Para quién es este espacio?</h2>
         <ul class="space-y-4 list-none pl-0 m-0">
           <li class="flex items-start gap-3">
             <div class="mt-1 w-6 h-6 border-2 border-on-surface bg-secondary-container rounded-sm flex items-center justify-center shrink-0">
@@ -94,8 +94,8 @@ const aboutSchema = buildSchemaGraph({
       </div>
 
       <!-- Principles Scrap -->
-      <div class="bg-background p-6 border-2 border-on-surface shadow-hard-sm transform rotate-1 rounded-xl organic-brutalism">
-        <h3 class="font-headline text-2xl font-black text-on-surface mb-3 uppercase">Nuestros valores educativos</h3>
+      <div class="quiet-card bg-background p-6">
+        <h2 class="font-headline text-2xl font-extrabold text-on-surface mb-3">Nuestros valores educativos</h2>
         <p class="font-body text-base text-on-surface-variant leading-relaxed m-0 mb-3">
           No vendemos insumos ni lombrices. El único propósito de este sitio es ofrecer <strong>educación honesta y de confianza</strong>.
         </p>

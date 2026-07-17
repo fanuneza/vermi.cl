@@ -20,12 +20,7 @@ const contactSchema = buildSchemaGraph({
   <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start w-full">
     <!-- Header / Intro Section (Left Column) -->
     <div class="lg:col-span-5 flex flex-col gap-6 md:sticky md:top-32">
-      <!-- Sticker Badge Header -->
-      <div class="inline-block self-start">
-        <div class="bg-surface-container-highest text-primary-deep px-6 py-3 border-2 border-on-surface shadow-hard-sm transform -rotate-1 origin-bottom-left">
-          <h1 class="font-headline text-4xl md:text-5xl font-black uppercase m-0">Hablemos</h1>
-        </div>
-      </div>
+      <h1 class="page-title text-primary m-0">Hablemos</h1>
       
       <div class="space-y-6 mt-4">
         <p class="font-body text-lg text-on-surface-variant max-w-sm leading-relaxed m-0">
@@ -44,18 +39,10 @@ const contactSchema = buildSchemaGraph({
         </div>
       </div>
       
-      <!-- Decorative Box -->
-      <div class="mt-8 transform rotate-2 border-2 border-on-surface shadow-hard-sm overflow-hidden rounded bg-mustard p-6 max-w-[280px] hidden lg:block">
-        <p class="font-mono text-xs font-bold text-on-surface-variant m-0 uppercase tracking-widest">[ Tierra y cariño ]</p>
-        <p class="font-body text-sm text-on-surface-variant mt-2 mb-0 leading-relaxed">Cada residuo recuperado es un grano más de vida para nuestro suelo.</p>
-      </div>
     </div>
 
     <!-- Contact Form (Right Column) -->
-    <div class="lg:col-span-7 bg-tertiary-fixed border-2 border-on-surface p-8 md:p-12 shadow-hard-sm relative transform rotate-[0.5deg]">
-      <!-- Decorative Tape -->
-      <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 w-32 h-8 bg-surface-variant/80 border-2 border-on-surface -rotate-3 z-10"></div>
-      
+    <div class="lg:col-span-7 quiet-card bg-tertiary-fixed p-6 md:p-10">
       <form 
         id="contact-form" 
         class="space-y-8 relative z-0"
@@ -64,9 +51,9 @@ const contactSchema = buildSchemaGraph({
       >
         <!-- Name Field -->
         <div class="flex flex-col gap-2">
-          <label class="font-label-md text-label-md text-primary-deep uppercase tracking-wider" for="name">Tu Nombre</label>
+          <label class="font-mono text-sm font-bold text-primary" for="name">Tu nombre</label>
           <input 
-            class="bg-transparent border-0 border-b-4 border-on-surface px-0 py-2 focus:ring-0 focus:border-primary font-headline text-lg text-on-surface placeholder-on-surface/40 transition-colors rounded-none outline-none" 
+            class="bg-white border-2 border-on-surface px-3 py-3 focus:border-primary font-body text-base text-on-surface placeholder-on-surface/60 organic-brutalism-alt"
             id="name" 
             name="name" 
             placeholder="Juanito Lombriz" 
@@ -79,9 +66,9 @@ const contactSchema = buildSchemaGraph({
         
         <!-- Email Field -->
         <div class="flex flex-col gap-2">
-          <label class="font-label-md text-label-md text-primary-deep uppercase tracking-wider" for="email">Correo Electrónico</label>
+          <label class="font-mono text-sm font-bold text-primary" for="email">Correo electrónico</label>
           <input 
-            class="bg-transparent border-0 border-b-4 border-on-surface px-0 py-2 focus:ring-0 focus:border-primary font-headline text-lg text-on-surface placeholder-on-surface/40 transition-colors rounded-none outline-none" 
+            class="bg-white border-2 border-on-surface px-3 py-3 focus:border-primary font-body text-base text-on-surface placeholder-on-surface/60 organic-brutalism-alt"
             id="email" 
             name="email" 
             placeholder="juanito@tierra.cl" 
@@ -94,9 +81,9 @@ const contactSchema = buildSchemaGraph({
         
         <!-- Message Field -->
         <div class="flex flex-col gap-2 relative">
-          <label class="font-label-md text-label-md text-primary-deep uppercase tracking-wider" for="message">Tu Mensaje</label>
+          <label class="font-mono text-sm font-bold text-primary" for="message">Tu mensaje</label>
           <textarea 
-            class="bg-transparent border-4 border-on-surface p-4 focus:ring-0 focus:border-primary font-body text-base text-on-surface placeholder-on-surface/40 transition-colors resize-none leading-[32px] rounded" 
+            class="bg-white border-2 border-on-surface p-4 focus:border-primary font-body text-base text-on-surface placeholder-on-surface/60 resize-none leading-relaxed organic-brutalism-alt"
             id="message" 
             name="message" 
             placeholder="Cuéntanos qué pasa con tu compostera..." 
@@ -108,10 +95,10 @@ const contactSchema = buildSchemaGraph({
         
         <!-- Submit Button -->
         <button 
-          class="w-full bg-surface-container-highest text-on-surface border-2 border-on-surface py-4 px-6 font-headline text-xl uppercase tracking-wider shadow-hard-sm hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex justify-center items-center gap-2 mt-4 rounded-sm cursor-pointer" 
+          class="btn-primary w-full mt-4 cursor-pointer disabled:cursor-wait disabled:opacity-70"
           type="submit"
         >
-          <span>Enviar Mensaje 🪱</span>
+          <span>Enviar mensaje</span>
         </button>
 
         <div
@@ -167,12 +154,12 @@ const contactSchema = buildSchemaGraph({
       errorPanel?.classList.add('hidden');
 
       const submitBtn = contactForm.querySelector('button[type="submit"]') as HTMLButtonElement | null;
-      const originalText = submitBtn ? submitBtn.innerHTML : 'Enviar Mensaje 🪱';
+      const originalText = submitBtn ? submitBtn.innerHTML : '<span>Enviar mensaje</span>';
 
       // Disable button and show sending state
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = '<span>Enviando... 🪱</span>';
+        submitBtn.innerHTML = '<span>Enviando…</span>';
       }
 
       const formData = new FormData(contactForm);
@@ -191,7 +178,7 @@ const contactSchema = buildSchemaGraph({
           const detailsMsg = data.details?.message || (data.details ? JSON.stringify(data.details) : '');
           showError(`${data.error || 'Por favor, inténtalo más tarde.'}${detailsMsg ? ' Detalles: ' + detailsMsg : ''}`);
         }
-      } catch (err) {
+      } catch {
         showError('Ocurrió un error al enviar el mensaje. Revisa tu conexión a internet.');
       } finally {
         if (submitBtn) {

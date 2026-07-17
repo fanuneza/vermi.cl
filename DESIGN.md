@@ -159,6 +159,8 @@ The palette is a spring-green canvas (not a neutral gray or cream) carrying a fo
 
 **The One-Ink Rule.** Every border, hard shadow, and outline in the system is `#002201` (Deep Forest Ink) — never a lighter gray or the brand green. This single consistent ink color is what makes disparate colored surfaces read as one cohesive scrapbook.
 
+**The Signature-Intensity Rule.** Hard shadows, sticker badges, rotations, tape, and heavy outlines are reserved for signature moments: the wordmark, hero imagery, food-search verdicts, and deliberate feedback. Ordinary navigation, guide cards, utility pages, article prose, and supporting sidebars use two-pixel ink borders without shadows or rotation. The quiet surfaces create the contrast that lets the scrapbook moments remain memorable.
+
 ## 3. Typography
 
 **Display/Headline Font:** Bricolage Grotesque Variable (weight 200–800, used at 900/black), with sans-serif fallback
@@ -218,6 +220,7 @@ Components are tactile and a little wobbly: slight rotation, organic asymmetric 
 - **Shadow Strategy:** Hard at rest, Hard-hover on interaction (see Elevation).
 - **Border:** 4px solid ink border on primary cards; 2px on nested/smaller elements.
 - **Internal Padding:** 1.5rem (24px) standard card padding; 2rem on md+ breakpoints for hero-level containers.
+- **Quiet Card (`.quiet-card`):** Two-pixel ink border, `organic-brutalism-alt` corners, no rotation, and no resting shadow. This is the default for guide cards, secondary information, forms, and utility content.
 
 ### Inputs / Fields
 

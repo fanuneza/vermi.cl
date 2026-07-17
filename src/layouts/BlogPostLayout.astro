@@ -64,6 +64,7 @@ const articleSchema = buildSchemaGraph({
 });
 
 const markdownAlternateHref = `/blog/${Astro.params.slug}.md`;
+const isStartGuide = Astro.params.slug === 'vermi-en-departamento';
 
 const allPosts = await getBlogPosts();
 const currentPost = allPosts.find(p => p.id === Astro.params.slug);
@@ -124,21 +125,21 @@ if (bottomRelatedPosts.length < maxBottom) {
     <article class="blog-layout__article lg:col-span-8 space-y-8">
       <!-- Header -->
       <header class="space-y-6">
-        <div class="flex flex-wrap gap-3">
-          <span class={`badge--sticker font-label-md text-label-md px-3 py-1 rotate-[-1deg] ${meta.tagBg} ${meta.tagText}`}>
+        <div class="flex flex-wrap items-center gap-3 font-mono text-sm">
+          <span class={`rounded-full px-3 py-1 font-bold ${meta.tagBg} ${meta.tagText}`}>
             {meta.label}
           </span>
-          <span class="badge--sticker bg-secondary-fixed text-on-secondary-fixed font-label-md text-label-md px-3 py-1 rotate-[2deg]">
+          <span class="text-on-surface-variant">
             {formattedDate}
           </span>
         </div>
         
-        <h1 class="blog-layout__title font-headline text-4xl md:text-5xl lg:text-6xl text-on-background font-black leading-tight tracking-tighter uppercase m-0 mb-6">
+        <h1 class="blog-layout__title page-title text-on-background m-0 mb-6">
           {title}
         </h1>
         
         <div class="flex items-center gap-4 border-t-2 border-b-2 border-on-surface py-4 my-6">
-          <div class="w-12 h-12 rounded-full border-2 border-on-surface overflow-hidden shadow-hard-sm shrink-0">
+          <div class="w-12 h-12 rounded-full border-2 border-on-surface overflow-hidden shrink-0">
             <Image src={avatarImage} alt={author} class="w-full h-full object-cover" width={48} height={48} />
           </div>
           <div>
@@ -147,7 +148,7 @@ if (bottomRelatedPosts.length < maxBottom) {
           </div>
           
           <div class="ml-auto flex gap-2">
-            <button id="share-btn" class="w-10 h-10 bg-surface-container-high border-2 border-on-surface flex items-center justify-center hover:scale-110 hover:bg-primary-container hover:text-on-primary-container transition-all shadow-hard-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] organic-brutalism cursor-pointer" aria-label="Compartir">
+            <button id="share-btn" class="w-11 h-11 bg-surface-container-low border-2 border-on-surface flex items-center justify-center hover:bg-primary-container hover:text-on-primary-container organic-brutalism cursor-pointer" aria-label="Compartir esta guía">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
             </button>
           </div>
@@ -175,10 +176,7 @@ if (bottomRelatedPosts.length < maxBottom) {
       </figure>
 
       <!-- Content Body -->
-      <div class="prose merriweather-body bg-surface-container-lowest p-6 md:p-8 border-2 border-on-surface shadow-hard-sm organic-brutalism-alt relative">
-        <!-- Decorative tape sticker -->
-        <div class="absolute -top-3 left-10 w-20 h-6 bg-secondary-fixed/80 border border-on-surface rotate-[-5deg]"></div>
-        
+      <div class="prose merriweather-body quiet-card p-6 md:p-8 relative">
         <!-- Table of Contents for Mobile -->
         {tableOfContents.length > 0 && (
           <TableOfContents tableOfContents={tableOfContents} variant="mobile" />
@@ -196,20 +194,23 @@ if (bottomRelatedPosts.length < maxBottom) {
         <TableOfContents tableOfContents={tableOfContents} variant="desktop" />
       )}
 
-      <!-- CTA Sticker -->
-      <div class="bg-primary-container text-on-primary-container border-2 border-on-surface p-6 shadow-hard-sm organic-brutalism-alt rotate-[-2deg] relative overflow-hidden group">
-        <div class="absolute -right-10 -top-10 w-32 h-32 bg-secondary rounded-full opacity-20 group-hover:scale-150 transition-transform duration-500"></div>
-        <h2 class="font-headline-lg-mobile text-headline-lg-mobile font-black mb-2 relative z-10 uppercase leading-none">¿Dudas con tu vermi?</h2>
-        <p class="font-body-md text-body-md mb-6 relative z-10 leading-relaxed">Únete a nuestro canal de la comunidad para resolver problemas de humedad y plagas en tiempo real.</p>
-        <div class="flex flex-col gap-2 mt-2">
-          <a href="#unirse" class="block w-full bg-secondary text-white font-mono text-sm font-bold text-center py-3 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 relative z-10 no-underline">Únete a la comunidad</a>
-          <a href="/contacto/" class="block w-full bg-surface-container text-on-surface font-mono text-sm font-bold text-center py-3 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 relative z-10 no-underline">Escríbenos</a>
-        </div>
+      <div class="quiet-card quiet-card--tinted p-6">
+        <h2 class="font-headline text-2xl font-extrabold mb-2 leading-tight">
+          {isStartGuide ? 'Ya estás en la ruta inicial' : '¿Recién estás empezando?'}
+        </h2>
+        <p class="font-body mb-5 leading-relaxed text-on-surface-variant">
+          {isStartGuide
+            ? 'Cuando termines, explora las demás guías según la duda que quieras resolver.'
+            : 'Sigue la ruta inicial para elegir tu compostera, preparar la cama y evitar los errores más comunes.'}
+        </p>
+        <a href={isStartGuide ? '/blog/' : '/blog/vermi-en-departamento/'} class="font-mono text-sm font-bold text-primary underline decoration-2 underline-offset-4">
+          {isStartGuide ? 'Ver todas las guías →' : 'Ir a la guía para empezar →'}
+        </a>
       </div>
 
       <!-- Related Posts -->
-      <div class="bg-surface-container border-2 border-on-surface p-6 shadow-hard-sm organic-brutalism rotate-[0.5deg]">
-        <h2 class="font-headline-md text-headline-md mb-4 border-b-2 border-on-surface pb-2 uppercase">Te podría interesar</h2>
+      <div class="quiet-card quiet-card--tinted p-6">
+        <h2 class="font-headline text-xl font-extrabold mb-4 border-b border-on-surface/30 pb-3">También te puede servir</h2>
         <div class="space-y-4 flex flex-col gap-4">
           {sidebarRelatedPosts.map((post, idx) => {
             const isAlt = idx % 2 === 1;
@@ -239,7 +240,7 @@ if (bottomRelatedPosts.length < maxBottom) {
                       </div>
                     )}
                     <div>
-                      <h3 class="font-label-md text-label-md text-on-surface group-hover:text-primary transition-colors line-clamp-2 uppercase m-0 leading-tight">
+                      <h3 class="font-headline text-base font-bold text-on-surface group-hover:text-primary transition-colors line-clamp-2 m-0 leading-tight">
                         {post.data.title}
                       </h3>
                       <span class="text-label-md font-mono text-on-surface-variant font-bold">{categoryLabel}</span>
@@ -255,15 +256,10 @@ if (bottomRelatedPosts.length < maxBottom) {
   </div>
 
   {bottomRelatedPosts.length > 0 && (
-    <section class="mt-16 pt-12 border-t-4 border-on-background w-full box-border">
-      <h2 class="font-headline text-3xl md:text-4xl font-black text-on-surface mb-8 relative inline-block uppercase m-0">
-        Guías relacionadas
-        <div class="absolute -bottom-2 left-0 w-full h-2 bg-secondary opacity-50 -rotate-1"></div>
-      </h2>
+    <section class="mt-16 pt-12 border-t-2 border-on-background w-full box-border">
+      <h2 class="section-heading text-on-surface mb-8 m-0">Sigue aprendiendo</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {bottomRelatedPosts.map((post, idx) => {
-          const rotations = ["rotate-[-1.5deg]", "rotate-[1deg]", "rotate-[-0.5deg]"];
-          const rot = rotations[idx % rotations.length];
+        {bottomRelatedPosts.map((post) => {
           return (
             <BlogCard
               title={post.data.title}
@@ -274,7 +270,6 @@ if (bottomRelatedPosts.length < maxBottom) {
               difficulty={post.data.difficulty}
               readingTime={post.readingTime}
               tags={post.data.tags}
-              rotation={rot}
               heroImage={post.data.heroImage}
             />
           );
@@ -298,8 +293,8 @@ if (bottomRelatedPosts.length < maxBottom) {
         if (navigator.share) {
           try {
             await navigator.share(shareData);
-          } catch (err) {
-            console.log('Share sheet dismissed or failed:', err);
+          } catch {
+            // Closing the native share sheet is a normal user action.
           }
         } else {
           // Fallback to copy clipboard
@@ -314,7 +309,7 @@ if (bottomRelatedPosts.length < maxBottom) {
             
             // Create a temporary floating bubble or toast for feedback
             const toast = document.createElement('div');
-            toast.className = 'toast-enter fixed bottom-8 right-8 bg-on-surface text-background border-2 border-on-surface px-4 py-2 font-mono text-xs font-bold rounded-lg shadow-hard z-toast';
+            toast.className = 'toast-enter fixed bottom-8 right-8 bg-on-surface text-background border-2 border-on-surface px-4 py-2 font-mono text-xs font-bold rounded-lg z-toast';
             toast.setAttribute('role', 'status');
             toast.setAttribute('aria-live', 'polite');
             toast.textContent = '🪱 ¡Enlace copiado al portapapeles!';
@@ -325,8 +320,8 @@ if (bottomRelatedPosts.length < maxBottom) {
               shareBtn.setAttribute('aria-label', originalTitle || 'Compartir');
               toast.remove();
             }, 2500);
-          } catch (err) {
-            console.error('Failed to copy link:', err);
+          } catch {
+            shareBtn.setAttribute('aria-label', 'No se pudo copiar el enlace');
           }
         }
       });

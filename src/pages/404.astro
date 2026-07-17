@@ -18,13 +18,9 @@ const pageSchema = buildSchemaGraph({
   schema={pageSchema}
   mainClass="max-w-xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap md:py-24 flex-grow w-full box-border flex flex-col items-center justify-center text-center"
 >
-  <div class="bg-warning-tint border-2 border-on-surface p-8 md:p-12 shadow-hard-sm transform rotate-[-1deg] organic-brutalism max-w-md w-full relative">
-    <!-- Decorative Tape -->
-    <div class="absolute -top-4 left-10 w-24 h-6 bg-secondary-fixed/80 border border-on-surface rotate-[-4deg]"></div>
-    
+  <div class="quiet-card bg-warning-tint p-8 md:p-12 max-w-md w-full relative">
     <div class="text-7xl mb-6">🪱❌</div>
-    <h1 class="font-headline text-4xl md:text-5xl font-black text-secondary uppercase m-0 leading-tight">¡Error 404!</h1>
-    <h2 class="font-headline text-2xl font-bold text-on-surface mt-4 mb-2 uppercase">Página no encontrada</h2>
+    <h1 class="font-headline text-4xl md:text-5xl font-extrabold text-secondary m-0 leading-tight">Página no encontrada</h1>
     <p class="font-body text-base text-on-surface-variant leading-relaxed mb-6">
       La ruta que buscas no existe. Tal vez fue devorada por las lombrices californianas o se compostó por completo.
     </p>
@@ -39,8 +35,8 @@ const pageSchema = buildSchemaGraph({
       />
     </div>
 
-    <a href="/" class="inline-block bg-primary text-on-primary font-mono text-sm font-bold px-6 py-3 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 no-underline organic-brutalism">
-      Volver al Inicio
+    <a href="/blog/" class="btn-primary no-underline">
+      Explorar las guías
     </a>
   </div>
 </BaseLayout>

@@ -5,14 +5,13 @@ import IsItCompostable from '../components/IsItCompostable.astro';
 import BlogCardGrid from '../components/BlogCardGrid.astro';
 import CategoryCard from '../components/CategoryCard.astro';
 import { getLatestPosts } from '../utils/blog';
-import { faWorm, faCarrot, faBookOpen, faAppleWhole, faWrench } from '@fortawesome/free-solid-svg-icons';
+import { faCarrot, faBookOpen, faAppleWhole, faWrench } from '@fortawesome/free-solid-svg-icons';
 import { Image, getImage } from 'astro:assets';
 import heroImage from '../assets/images/hero.jpg';
 
 // Retrieve latest 3 posts for the home feed
 const sortedPosts = await getLatestPosts(3);
 
-const wormPaths = Array.isArray(faWorm.icon[4]) ? faWorm.icon[4] : [faWorm.icon[4]];
 const carrotPaths = Array.isArray(faCarrot.icon[4]) ? faCarrot.icon[4] : [faCarrot.icon[4]];
 const bookOpenPaths = Array.isArray(faBookOpen.icon[4]) ? faBookOpen.icon[4] : [faBookOpen.icon[4]];
 const appleWholePaths = Array.isArray(faAppleWhole.icon[4]) ? faAppleWhole.icon[4] : [faAppleWhole.icon[4]];
@@ -61,40 +60,29 @@ const heroSrcSet = optimizedHero.srcSet.values
   />
   <!-- Hero Section -->
   <section class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-    <!-- Decorative Background Element: two overlapping blurred blobs for atmospheric depth. -->
-    <div class="absolute -top-16 -left-16 w-56 h-56 bg-secondary-fixed rounded-full mix-blend-multiply opacity-50 blur-[80px] z-behind"></div>
-    <div class="absolute -top-4 left-20 w-40 h-40 bg-primary-fixed rounded-full mix-blend-multiply opacity-40 blur-[80px] z-behind"></div>
-    
     <div class="lg:col-span-6 flex flex-col items-start gap-6 relative z-10">
-      <!-- Badge -->
-      <div class="bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md px-3 py-1 border-3 border-on-surface shadow-hard-sm rotate-[-3deg] uppercase tracking-wider badge--sticker inline-block">
-        Aprende hoy
-      </div>
-      
-      <h1 class="font-headline text-3xl sm:text-4xl md:text-5xl font-black text-on-surface leading-none relative uppercase m-0">
-        Comienza a vermicompostar tus residuos en casa
-        <svg class="absolute -bottom-4 left-0 w-full h-4 text-primary" preserveAspectRatio="none" viewBox="0 0 100 10">
-          <path d="M0,5 Q50,15 100,5" fill="none" stroke="currentColor" stroke-width="4"></path>
-        </svg>
+      <p class="m-0 font-mono text-sm font-bold text-secondary">Guías de vermicompostaje para Chile</p>
+      <h1 class="page-title text-on-surface m-0">
+        Empieza tu vermicompostera con una guía clara
       </h1>
       
-      <p class="font-body text-lg text-on-surface-variant max-w-md mt-2 leading-relaxed">
-        Aprende a reciclar tus residuos de cocina con lombrices californianas. Transforma la materia orgánica en humus de alta calidad agrícola y dile adiós a la basura en tu hogar chileno.
+      <p class="page-lead m-0">
+        Aprende desde cero, incluso si vives en departamento. Te acompañamos para elegir tu compostera, preparar la cama y cuidar tus lombrices sin malos olores.
       </p>
       
-      <div class="flex flex-wrap gap-4 mt-4">
-        <a href="/blog/" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn--brutal flex items-center gap-2 no-underline">
-          Explora nuestro blog
+      <div class="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-2 w-full sm:w-auto">
+        <a href="/blog/vermi-en-departamento/" class="btn-primary no-underline">
+          Empieza con la guía paso a paso
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
-        <a href="#buscador-alimentos" class="bg-transparent text-on-surface font-headline text-lg px-6 py-3 rounded-lg border-2 border-on-surface shadow-hard-xs hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center gap-2 rotate-1 no-underline">
-          ¿Qué pueden comer? 🪱
+        <a href="/blog/" class="btn-secondary no-underline">
+          Ver todas las guías
         </a>
       </div>
     </div>
     
-    <div class="lg:col-span-6 relative mt-8 lg:mt-0 order-first lg:order-none">
-      <div class="relative w-full aspect-video md:aspect-square lg:aspect-[4/3] z-10">
+    <div class="lg:col-span-6 relative mt-2 lg:mt-0">
+      <div class="relative w-full aspect-[16/10] lg:aspect-[4/3] z-10 max-h-[28rem]">
         <Image 
           class="w-full h-full object-cover organic-shape-1 border-4 border-on-surface hard-shadow bg-tertiary-fixed" 
           src={heroImage} 
@@ -107,45 +95,31 @@ const heroSrcSet = optimizedHero.srcSet.values
           fetchpriority="high" 
           quality="mid"
         />
-        <!-- Decorative Floating Elements -->
+        <!-- One signature sticker keeps the scrapbook voice without crowding the image. -->
         <div class="absolute -bottom-2 -right-2 bg-surface-dim p-4 border-2 border-on-surface organic-shape-2 shadow-hard-sm rotate-[15deg]">
           <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faCarrot.icon[0]} ${faCarrot.icon[1]}`} fill="currentColor" class="text-primary">
             {carrotPaths.map((d) => <path d={d} />)}
-          </svg>
-        </div>
-        <div class="absolute -top-2 -left-2 bg-tertiary-fixed p-3 border-2 border-on-surface rounded-full shadow-hard-xs rotate-[-10deg]">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox={`0 0 ${faWorm.icon[0]} ${faWorm.icon[1]}`} fill="currentColor" class="text-tertiary">
-            {wormPaths.map((d) => <path d={d} />)}
           </svg>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Food Search Widget -->
-  <div class="w-full max-w-7xl mt-8 md:mt-12">
-    <IsItCompostable />
-  </div>
-
   <!-- Category Cards Grid -->
-  <section class="w-full max-w-7xl relative z-10 flex flex-col gap-8 mt-20 md:mt-32">
-    <h2 class="font-headline text-3xl md:text-4xl font-black text-on-surface self-start relative inline-block uppercase">
-      Aprende con nosotros
-      <div class="absolute -bottom-2 left-0 w-full h-2 bg-secondary opacity-50 -rotate-1"></div>
-    </h2>
+  <section class="w-full max-w-7xl relative z-10 flex flex-col gap-8 mt-16 md:mt-24">
+    <div class="max-w-2xl space-y-3">
+      <h2 class="section-heading text-on-surface m-0">Tu ruta para empezar</h2>
+      <p class="page-lead m-0">Parte por lo esencial y vuelve cuando aparezca una duda. No necesitas aprenderlo todo de una vez.</p>
+    </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <!-- Card 1 -->
           <CategoryCard
             href="/blog/?category=Manual"
             title="Manual de inicio"
-            description="Aprende a configurar la vermicompostera ideal para tu núcleo de cría utilizando desecho local y adáptala a la inercia térmica de tu balcón."
-            badgeText="BASICO"
-            badgeBgClass="bg-surface-dim"
+            description="Elige una compostera para tu espacio, prepara una cama húmeda y recibe tus lombrices sin complicarte."
+            badgeText="Primer paso"
             cardBgClass="bg-tertiary-fixed"
-            organicShapeClass="organic-shape-2"
-            rotationClass="rotate-1"
-            iconBoxRotationClass="-rotate-3"
             textColorHoverClass="group-hover:text-primary"
           >
             <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faBookOpen.icon[0]} ${faBookOpen.icon[1]}`} fill="currentColor" class="text-primary">
@@ -157,13 +131,9 @@ const heroSrcSet = optimizedHero.srcSet.values
           <CategoryCard
             href="/blog/?category=Alimentación"
             title="Alimentación"
-            description="El menú ideal para tus lombrices. Descubre el balance óptimo de nitrógeno y carbono y el truco de la congelación celular."
-            badgeText="DIARIO"
-            badgeBgClass="bg-secondary-fixed-dim"
+            description="Aprende qué residuos de cocina pueden comer, cuánto darles y cuándo agregar material seco."
+            badgeText="Uso diario"
             cardBgClass="bg-surface-container"
-            organicShapeClass="organic-shape-1"
-            rotationClass="-rotate-1"
-            iconBoxRotationClass="rotate-2"
             textColorHoverClass="group-hover:text-secondary"
           >
             <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox={`0 0 ${faAppleWhole.icon[0]} ${faAppleWhole.icon[1]}`} fill="currentColor" class="text-secondary">
@@ -175,13 +145,9 @@ const heroSrcSet = optimizedHero.srcSet.values
           <CategoryCard
             href="/blog/?category=Problemas"
             title="Solución de problemas"
-            description="¿Notas mal olor o algún mosquito? Son señales normales y fáciles de corregir. Aprende a reequilibrar tu compostera en pocos pasos."
-            badgeText="SIN ESTRÉS"
-            badgeBgClass="bg-error-container"
+            description="Corrige malos olores, exceso de humedad, mosquitas o fugas con instrucciones paso a paso."
+            badgeText="Cuando lo necesites"
             cardBgClass="bg-inverse-primary"
-            organicShapeClass="organic-shape-3"
-            rotationClass="rotate-2"
-            iconBoxRotationClass="-rotate-2"
             textColorHoverClass="group-hover:text-tertiary"
             extraClasses="lg:col-span-1 md:col-span-2"
           >
@@ -193,17 +159,24 @@ const heroSrcSet = optimizedHero.srcSet.values
   </section>
 
   <!-- Latest Guides Section -->
-  <section class="w-full max-w-7xl relative z-10 flex flex-col gap-8 mt-20 md:mt-32">
+  <section class="w-full max-w-7xl relative z-10 flex flex-col gap-8 mt-16 md:mt-24">
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-      <h2 class="font-headline text-3xl md:text-4xl font-black text-on-surface relative inline-block uppercase">
-        Últimas guías publicadas
-        <div class="absolute -bottom-2 left-0 w-full h-2 bg-secondary opacity-50 -rotate-1"></div>
-      </h2>
-      <a href="/blog/" class="bg-white text-on-background font-label-md text-label-md px-4 py-2 border-2 border-on-surface shadow-hard-sm hover:translate-x-[4px] hover:translate-y-[4px] hover:shadow-none transition-all active:scale-95 organic-brutalism no-underline">
+      <h2 class="section-heading text-on-surface m-0">Guías nuevas para seguir aprendiendo</h2>
+      <a href="/blog/" class="font-mono text-sm font-bold text-primary underline decoration-2 underline-offset-4">
         Ver todas las guías
       </a>
     </div>
     
     <BlogCardGrid posts={sortedPosts} />
+  </section>
+
+  <!-- The checker is a utility for readers who already have a compostera. -->
+  <section class="w-full max-w-7xl mt-16 md:mt-24" aria-labelledby="food-checker-heading">
+    <div class="mb-6 max-w-2xl space-y-3">
+      <p class="m-0 font-mono text-sm font-bold text-secondary">Para consultar mientras avanzas</p>
+      <h2 id="food-checker-heading" class="section-heading m-0 text-on-surface">¿Tus lombrices pueden comer esto?</h2>
+      <p class="page-lead m-0">Busca un residuo de cocina y revisa cómo ofrecerlo. Si todavía no tienes una compostera, empieza por las guías de arriba.</p>
+    </div>
+    <IsItCompostable />
   </section>
 </BaseLayout>

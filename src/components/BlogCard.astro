@@ -18,7 +18,6 @@ interface Props {
   difficulty?: string;
   readingTime?: string;
   tags?: readonly BlogTagSlug[];
-  rotation?: string; // e.g. "rotate-1" or "rotate-[-1.5deg]"
   heroImage?: any;
   loading?: "eager" | "lazy";
   fetchpriority?: "high" | "auto" | "low";
@@ -32,7 +31,6 @@ const {
   category,
   difficulty = "Básico",
   readingTime,
-  rotation = "rotate-0",
   heroImage,
   loading = "lazy",
   fetchpriority = "auto",
@@ -42,10 +40,10 @@ const formattedDate = formatBlogDate(pubDate);
 const meta = blogCardCategoryMeta[category];
 ---
 
-<article class={`zine-block zine-block--guide border-2 border-on-background shadow-hard-sm p-6 flex flex-col h-full min-h-[260px] transition-all duration-200 hover:-translate-y-1 hover:shadow-hard organic-brutalism ${rotation} ${meta.bg}`}>
+<article class={`quiet-card quiet-card-link zine-block zine-block--guide p-5 md:p-6 flex flex-col h-full min-h-[260px] ${meta.bg}`}>
     <a href={`/blog/${slug}/`} class="block no-underline text-inherit">
       {heroImage && (
-        <div class="zine-block__image w-full aspect-video mb-4 overflow-hidden border-4 border-on-background organic-brutalism-alt bg-tertiary-fixed">
+        <div class="zine-block__image w-full aspect-video mb-5 overflow-hidden border-2 border-on-background organic-brutalism-alt bg-tertiary-fixed">
           <Picture
             src={heroImage}
             alt={`Portada de ${title}`}
@@ -61,13 +59,13 @@ const meta = blogCardCategoryMeta[category];
         </div>
       )}
       <div class="flex justify-between items-center mb-4 flex-wrap gap-2">
-        <span class={`zine-block__category font-mono text-label-md font-bold border-2 border-on-background px-2 py-0.5 shadow-hard-xs ${meta.tagBg} ${meta.tagText}`}>
+        <span class={`zine-block__category font-mono text-xs font-bold px-2 py-1 rounded-full ${meta.tagBg} ${meta.tagText}`}>
           {meta.label}
         </span>
         <span class="font-mono text-xs font-bold text-on-background">{formattedDate}</span>
       </div>
       
-      <h3 class="font-headline text-xl md:text-2xl font-black text-on-background mb-2 leading-tight uppercase line-clamp-2">
+      <h3 class="font-headline text-xl md:text-2xl font-extrabold text-on-background mb-2 leading-tight line-clamp-2 text-balance">
         {title}
       </h3>
       <p class="font-body text-sm text-on-background/90 mb-4 flex-grow line-clamp-3">
@@ -78,7 +76,7 @@ const meta = blogCardCategoryMeta[category];
 
       <div class="zine-block__meta flex justify-between items-center border-t-2 border-dashed border-on-background pt-3 mt-auto">
         {readingTime && <span class="font-mono text-xs text-on-background/80">{readingTime}</span>}
-        <span class="font-mono text-label-md font-bold border-2 border-on-background px-2 py-0.5 bg-background text-on-background">
+        <span class="font-mono text-xs font-bold text-on-background/80">
           {difficulty}
         </span>
       </div>

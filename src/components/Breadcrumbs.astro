@@ -69,7 +69,7 @@ segments.forEach((segment, index) => {
         <li class="flex items-center gap-2" role="listitem">
           {idx > 0 && <span class="text-secondary select-none">/</span>}
           {item.isLast || !item.href ? (
-            <span class={item.isLast ? "text-on-surface-variant line-clamp-1 bg-surface-container px-2 py-0.5 border border-on-surface organic-brutalism" : "text-on-surface-variant line-clamp-1"} aria-current={item.isLast ? "page" : undefined}>
+            <span class="text-on-surface-variant line-clamp-1" aria-current={item.isLast ? "page" : undefined}>
               {item.label}
             </span>
           ) : (

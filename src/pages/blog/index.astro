@@ -3,7 +3,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { getBlogPosts } from '../../utils/blog';
-import { getBlogCardRotation } from '../../utils/blog-presentation';
 
 const sortedPosts = await getBlogPosts();
 
@@ -27,27 +26,35 @@ const archiveSchema = buildSchemaGraph({
   mainClass="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-stack-gap flex-grow w-full box-border"
 >
   <section class="w-full relative z-10 flex flex-col items-start gap-6">
-    <h1 class="font-headline text-4xl md:text-5xl lg:text-6xl text-on-surface font-black leading-tight tracking-tighter uppercase m-0">
-      Archivo de guías
+    <h1 class="page-title text-on-surface m-0">
+      Guías para cuidar tu vermicompostera
     </h1>
-    <p class="font-body text-lg text-on-surface-variant max-w-2xl leading-relaxed m-0">
-      Aprende el funcionamiento biológico de tu compostera y neutraliza los problemas típicos del clima mediterráneo de Chile.
+    <p class="page-lead m-0">
+      Empieza desde cero o encuentra una solución concreta para alimentación, humedad, clima, cosecha y problemas comunes en Chile.
     </p>
+
+    <a href="/blog/vermi-en-departamento/" class="quiet-card quiet-card-link quiet-card--tinted flex w-full max-w-3xl flex-col gap-2 p-5 no-underline sm:flex-row sm:items-center sm:justify-between">
+      <span>
+        <strong class="block font-headline text-xl text-on-surface">¿Es tu primera vez?</strong>
+        <span class="font-body text-on-surface-variant">Parte con la guía completa para comenzar en casa o departamento.</span>
+      </span>
+      <span class="shrink-0 font-mono text-sm font-bold text-primary">Empezar aquí →</span>
+    </a>
 
     <!-- Category Filter Chips -->
     <div class="flex flex-col gap-3 mb-8 items-start w-full">
-      <h2 class="font-mono text-xs font-bold text-on-surface uppercase tracking-wider m-0">[ Filtrar por categoría ]</h2>
+      <h2 class="font-headline text-lg font-extrabold text-on-surface m-0">Filtra por categoría</h2>
       <div id="filter-container" class="flex flex-wrap gap-3">
         <a
           href="/blog/"
-          class="min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none rounded-full no-underline"
+          class="min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-primary text-white rounded-full no-underline"
         >
           Todos
         </a>
         {categories.map(cat => (
           <a
             href={`/blog/?category=${cat}`}
-            class="min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-white text-on-surface shadow-hard-xs transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs rounded-full no-underline"
+            class="min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-white text-on-surface hover:bg-surface-container rounded-full no-underline"
           >
             {cat}
           </a>
@@ -68,7 +75,6 @@ const archiveSchema = buildSchemaGraph({
             difficulty={post.data.difficulty}
             readingTime={post.readingTime}
             tags={post.data.tags}
-            rotation={getBlogCardRotation(idx)}
             heroImage={post.data.heroImage}
             loading={idx === 0 ? "eager" : "lazy"}
             fetchpriority={idx === 0 ? "high" : "auto"}
@@ -78,10 +84,10 @@ const archiveSchema = buildSchemaGraph({
     </div>
 
     <!-- Empty State -->
-    <div id="no-posts-message" style="display: none;" class="text-center p-12 max-w-xl mx-auto border-2 border-on-surface shadow-hard-sm bg-white organic-brutalism w-full box-border">
-      <h3 class="font-headline text-2xl font-black text-on-surface uppercase mb-3">No se encontraron guías</h3>
+    <div id="no-posts-message" style="display: none;" class="quiet-card text-center p-8 md:p-12 max-w-xl mx-auto w-full box-border">
+      <h3 class="font-headline text-2xl font-extrabold text-on-surface mb-3">No se encontraron guías</h3>
       <p class="font-body text-base text-on-surface-variant mb-6">Pronto publicaremos más artículos sobre esta temática. Mientras tanto, explora las demás categorías.</p>
-      <a href="/blog/" id="reset-filter-btn" class="bg-primary text-on-primary font-headline text-lg px-6 py-3 rounded-lg btn--brutal flex items-center justify-center gap-2 max-w-xs mx-auto no-underline">
+      <a href="/blog/" id="reset-filter-btn" class="btn-primary max-w-xs mx-auto no-underline">
         Ver todas las guías
       </a>
     </div>
@@ -122,9 +128,9 @@ const archiveSchema = buildSchemaGraph({
         const linkCat = href.includes('category=') ? decodeURIComponent(href.split('category=')[1]) : null;
         
         if (linkCat === category) {
-          link.className = 'min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-primary text-white translate-x-[2px] translate-y-[2px] shadow-none rounded-full no-underline';
+          link.className = 'min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-primary text-white rounded-full no-underline';
         } else {
-          link.className = 'min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-white text-on-surface shadow-hard-xs transition-all hover:translate-x-[1px] hover:translate-y-[1px] hover:shadow-hard-xxs rounded-full no-underline';
+          link.className = 'min-h-11 flex items-center font-mono text-sm font-bold border-2 border-on-surface px-4 py-2.5 bg-white text-on-surface hover:bg-surface-container rounded-full no-underline';
         }
       });
     }
