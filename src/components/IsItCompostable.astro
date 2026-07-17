@@ -54,11 +54,18 @@
     <p id="matched-instructions" class="font-body text-base text-on-background leading-relaxed m-0"></p>
   </div>
 
-  <div id="search-fallback-message" class="font-mono text-sm text-ink border-2 border-dashed border-on-background p-5 text-center bg-white/20 mt-6 rounded-lg box-border" aria-live="polite" aria-atomic="true">
+  <div id="search-fallback-message" class="flex flex-col items-center gap-4 font-mono text-sm text-ink border-2 border-dashed border-on-background p-5 text-center bg-white/20 mt-6 rounded-lg box-border" aria-live="polite" aria-atomic="true">
     <p id="search-fallback-copy" class="m-0">Escribe al menos dos letras y te contamos qué opinan tus lombrices 🪱.</p>
-    <button id="retry-food-search" type="button" class="btn-secondary hidden mx-auto mt-4 bg-white">Reintentar</button>
+    <button id="retry-food-search" type="button" class="btn-secondary hidden m-0 bg-white">Reintentar</button>
   </div>
 </div>
+
+<style>
+  /* `.btn-secondary` sets display:inline-flex; preserve the semantic hidden state for this button. */
+  #retry-food-search.hidden {
+    display: none;
+  }
+</style>
 
 <script>
   interface FoodEntry {
